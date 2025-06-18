@@ -92,10 +92,10 @@ export default function LogginNavbar({ toggleChat }) {
     { name: 'Affiliate', icon: '🤝', action: ()=> navigate("/affiliate") },
     { name: 'Statistics', icon: '📊', action:  toggleStatisticsModal },
     { name: 'Transactions', icon: '💳', action: ()=> navigate("/transactions") },
-    { name: 'My Bets', icon: '🎲', action: ()=> navigate("/my-bets") },
+    // { name: 'My Bets', icon: '🎲', action: ()=> navigate("/my-bets") },
 
-    { name: 'Settings', icon: '⚙️', action: ()=> navigate("/settings") },
-    { name: 'Live Support', icon: '💬' },
+    // { name: 'Settings', icon: '⚙️', action: ()=> navigate("/settings") },
+    // { name: 'Live Support', icon: '💬' },
     { name: 'Logout', icon: '🚪', action: logout }, // Add the logout action
   ];
 
@@ -112,7 +112,7 @@ export default function LogginNavbar({ toggleChat }) {
           className="wallet-container flex"
           onClick={toggleWalletModal} // Open wallet modal on click
         >
-          <div className="bg-[var(--card-bg-10)] cursor-pointer text-white px-4 py-3 rounded-l flex items-center space-x-2 relative">
+        <div className="bg-[rgb(15,33,46)] cursor-pointer text-white px-4 py-3 rounded-l flex items-center space-x-2 relative">
             <span className="text-sm font-medium">{Number(balance).toFixed(4)}</span>
             <img
               src="/assets/token/usdt.png" // Replace with the actual path to your currency icon
@@ -120,15 +120,14 @@ export default function LogginNavbar({ toggleChat }) {
               className="w-4 h-4"
             />
           </div>
-          <div className="bg-[var(--primary-color)] text-white px-4 py-3 rounded-r flex items-center">
+          <div className="bg-blue-600 text-white px-4 py-3 rounded-r flex items-center">
             <span className="text-sm font-medium hidden md:block">Wallet</span>
             {window.innerWidth <= 768 && (
               <svg fill="currentColor" viewBox="0 0 64 64" className="svg-icon block md:hidden w-4 h-4" >
-              <title></title> 
-            <path fillRule="evenodd" d="M45.71 13.349v.024c0 4.316-2.076 8.146-5.32 10.57H24.61l-.034-.024a13.19 13.19 0 0 1-5.286-10.57c0-7.296 5.914-13.21 13.21-13.21s13.21 5.914 13.21 13.21m4.806 22.844H62.23v-3.19a5.31 5.31 0 0 0-5.3-5.31H10.14a5.624 5.624 0 0 1-5.24-5.608v-.014a5 5 0 0 1 0-.522v.012a5.546 5.546 0 0 1 5.51-5.11h3.85a17.5 17.5 0 0 1-.26-2.88v-.01H7.06A7.07 7.07 0 0 0 0 20.63v37.1a6.14 6.14 0 0 0 6.13 6.13h50.79a5.31 5.31 0 0 0 5.31-5.31v-3.19H50.5c-.092.004-.2.006-.31.006-5.296 0-9.59-4.294-9.59-9.59s4.294-9.59 9.59-9.59q.163 0 .326.006m4.733-22.63v2.89h-4.516a18.4 18.4 0 0 0 .267-2.89zm-4.516 2.89-.02.11.017-.11zM8.66 21.983c0-.98.792-1.774 1.77-1.78h4.91l.044.122a17.8 17.8 0 0 0 1.956 3.618h-6.91a1.77 1.77 0 0 1-1.77-1.77zM64 39.943v11.67l-13.488-.002a5.84 5.84 0 0 1-6.094-5.834 5.84 5.84 0 0 1 6.082-5.834zm-13.06 8.5a2.67 2.67 0 0 0 2.67-2.66v-.01a2.67 2.67 0 1 0-2.67 2.67m-1.26-28.24a18.2 18.2 0 0 1-1.998 3.74h-.002l-.038.058.04-.058H58v-3.74z" clipRule="evenodd"></path>
-            </svg>
+                <title></title> 
+                <path fillRule="evenodd" d="M45.71 13.349v.024c0 4.316-2.076 8.146-5.32 10.57H24.61l-.034-.024a13.19 13.19 0 0 1-5.286-10.57c0-7.296 5.914-13.21 13.21-13.21s13.21 5.914 13.21 13.21m4.806 22.844H62.23v-3.19a5.31 5.31 0 0 0-5.3-5.31H10.14a5.624 5.624 0 0 1-5.24-5.608v-.014a5 5 0 0 1 0-.522v.012a5.546 5.546 0 0 1 5.51-5.11h3.85a17.5 17.5 0 0 1-.26-2.88v-.01H7.06A7.07 7.07 0 0 0 0 20.63v37.1a6.14 6.14 0 0 0 6.13 6.13h50.79a5.31 5.31 0 0 0 5.31-5.31v-3.19H50.5c-.092.004-.2.006-.31.006-5.296 0-9.59-4.294-9.59-9.59s4.294-9.59 9.59-9.59q.163 0 .326.006m4.733-22.63v2.89h-4.516a18.4 18.4 0 0 0 .267-2.89zm-4.516 2.89-.02.11.017-.11zM8.66 21.983c0-.98.792-1.774 1.77-1.78h4.91l.044.122a17.8 17.8 0 0 0 1.956 3.618h-6.91a1.77 1.77 0 0 1-1.77-1.77zM64 39.943v11.67l-13.488-.002a5.84 5.84 0 0 1-6.094-5.834 5.84 5.84 0 0 1 6.082-5.834zm-13.06 8.5a2.67 2.67 0 0 0 2.67-2.66v-.01a2.67 2.67 0 1 0-2.67 2.67m-1.26-28.24a18.2 18.2 0 0 1-1.998 3.74h-.002l-.038.058.04-.058H58v-3.74z" clipRule="evenodd"></path>
+              </svg>
             )}
-         
           </div>
         </div>
 
@@ -137,8 +136,7 @@ export default function LogginNavbar({ toggleChat }) {
           <div className="absolute top-16 left-0 bg-[rgb(15,33,46)] text-white rounded shadow-lg w-64">
             {/* Enhanced Search Input */}
             <div className="p-2">
-              <input
-                type="text"
+              <input type="text"
                 placeholder="Search currency..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}

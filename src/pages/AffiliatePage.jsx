@@ -57,17 +57,16 @@ function AffiliatePage() {
         <div className="flex">
           {/* Left side - Tabs with improved sticky behavior */}
           <div className="w-[200px] mr-6">
-            <div className="sticky bg-[var(--card-bg-1)] p-2 rounded-2xl">
+            <div className="sticky bg-[rgb(15,33,46)] p-2 rounded-2xl">
               {tabs.map(tab => (
                 <button 
                   key={tab.id}
                   className={`w-full rounded-md ${tab.isDisabled && "hidden"} text-left p-3 mb-1 cursor-pointer ${
                     activeTab === tab.id 
-                      ? 'border-l-4 border-blue-600 bg-[var(--primary-color)] text-white pl-3' 
-                      : 'text-gray-300 hover:bg-[var(--card-bg-10)] hover:text-white'
+                        ? 'border-l-4 border-blue-600 bg-[#071824] text-white pl-3' 
+                      : 'text-gray-300 hover:bg-[#0a2435] hover:text-white'
                   }`}
-                  onClick={() => handleTabClick(tab.id)}
-                >
+                  onClick={() => handleTabClick(tab.id)}>
                   {tab.label}
                 </button>
               ))}
