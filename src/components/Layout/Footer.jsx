@@ -20,7 +20,7 @@ function Footer() {
   };
 
   return (
-    <footer className="bg-grey-700 py-6 px-8">
+    <footer className="bg-[#0f212e] py-6 px-8">
       <div className="flex justify-between items-start w-full">
         {/* Left side - Logo and copyright */}
         <div className="flex flex-col">
@@ -99,21 +99,7 @@ function Footer() {
           </div>
         </div>
         
-        {/* Sports column */}
-        <div className="flex flex-col">
-          <h3 className="text-white font-semibold text-base mb-4">Sports</h3>
-          <div className="flex flex-col space-y-2">
-            <a href="#" className="text-grey-300 hover:text-white text-sm transition-colors">Sportsbook</a>
-            <a href="#" className="text-grey-300 hover:text-white text-sm transition-colors">Live Sports</a>
-            <a href="#" className="text-grey-300 hover:text-white text-sm transition-colors">Soccer</a>
-            <a href="#" className="text-grey-300 hover:text-white text-sm transition-colors">Basketball</a>
-            <a href="#" className="text-grey-300 hover:text-white text-sm transition-colors">Tennis</a>
-            <a href="#" className="text-grey-300 hover:text-white text-sm transition-colors">eSports</a>
-            <a href="#" className="text-grey-300 hover:text-white text-sm transition-colors">Bet Bonuses</a>
-            <a href="#" className="text-grey-300 hover:text-white text-sm transition-colors">Sports Rules</a>
-            <a href="#" className="text-grey-300 hover:text-white text-sm transition-colors">Racing Rules</a>
-          </div>
-        </div>
+
 
             {/* Sports column */}
             <div className="flex flex-col">

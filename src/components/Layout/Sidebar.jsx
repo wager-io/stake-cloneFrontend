@@ -107,7 +107,7 @@ function Sidebar({ isOpen, toggleSidebar }) {
 
   return (
     <aside
-      className={`bg-[var(--card-bg-1)] sidebar pb-12 shadow-lg transition-all h-screen duration-300 ease-in-out fixed ${
+      className={`bg-[#0f212e] sidebar pb-12 shadow-lg transition-all h-screen duration-300 ease-in-out fixed ${
         isOpen ? 'w-[240px]' : 'w-[70px]'
       } left-0 z-[-1] pt-0`}
     >

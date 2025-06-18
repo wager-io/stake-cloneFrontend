@@ -49,11 +49,11 @@ function CasinoHome() {
       >
         {cards.map((card) => (
           <SwiperSlide key={card.id}>
-            <div className="relative flex justify-between bg-[var(--card-bg-10)] gap-2 p-3 text-white shadow-lg rounded-lg h-[13rem]">
+            <div className="relative flex justify-between bg-[rgb(33,55,67)] gap-2 p-3 text-white shadow-lg rounded-lg h-[13rem]">
               <div className="flex flex-col justify-between">
                 <div className="flex flex-col gap-2">
                   {/* Promo Badge */}
-                  <div className="top-2 left-2 bg-white w-fit text-[var(--primary-color)] text-xs font-bold px-2 py-1 rounded">
+                  <div className="top-2 left-2 bg-white w-fit text-black text-xs font-bold px-2 py-1 rounded">
                     Promo
                   </div>
                   {/* Card Content */}
@@ -62,11 +62,14 @@ function CasinoHome() {
                     <p className="text-sm mt-2">{card.details}</p>
                   </div>
                 </div>
+                <div className="relative border p-2 hover:bg-[#1e3a4a] rounded border-white w-fit cursor-pointer">
+                  <button className="text-white rounded">Play Now</button>
+                </div>
               </div>
 
               {/* Card Image */}
-              <div className="relative p-2 ">
-                <img src={card.image} alt={card.title} className="h-[90%] w-fit object-cover" />
+              <div className="relative p-2 h-full">
+                <img src={card.image} alt={card.title} className="h-full w-fit object-cover" />
               </div>
             </div>
           </SwiperSlide>
@@ -77,12 +80,12 @@ function CasinoHome() {
       <div className="custom-pagination flex justify-center mt-4"></div>
       
       {/* Full-width Search Input */}
-      <div className="my-8 w-full">
+      <div className="mt-8 w-full">
         <div className="relative">
           <input 
             type="text" 
             placeholder="Search games..." 
-            className="w-full py-3 px-4 bg-[var(--card-bg-10)] text-white border-[3px] border-[var(--card-bg-1)] rounded-lg focus:outline-none focus:border-[#1e3a4a] transition-colors"
+            className="w-full py-3 px-4 bg-[rgb(33,55,67)] text-white border-[3px] border-[rgb(33,55,67)] rounded-lg focus:outline-none focus:border-[#1e3a4a] transition-colors"
           />
           <div className="absolute right-4 top-1/2 transform -translate-y-1/2">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -91,7 +94,6 @@ function CasinoHome() {
           </div>
         </div>
       </div>
-      
         {/* Trending Games Section */}
         <InhouseGames />
 

@@ -13,22 +13,24 @@ export default function BetsLogSection() {
   ];
 
   return (
-    <div className="py-6  bg-[var(--card-bg-10)]">
+    <div className="py-6  bg-[#1a2c38]">
       <div className="container mx-auto px-0 md:px-4">
         {/* Section Header */}
 
         {/* Tabs */}
         <div className=" p-1 rounded-lg mb-6">
-          <div className="inline-flex bg-[var(--card-bg-1)] p-2 rounded-[30px] overflow-hidden">
+          <div className="inline-flex bg-[rgb(15,33,46)] p-2 rounded-[30px] overflow-hidden">
             {tabs.map(tab => (
               <button
                 key={tab.id}
                 disabled={tab.disabled}
                 className={`py-2 px-2 md:px-4 text-center rounded-[30px] text-sm font-medium transition-colors cursor-pointer mx-1 ${
                   activeTab === tab.id 
-                    ? 'bg-[var(--card-bg-10)] text-white' 
+                    ? 'bg-[rgb(26,44,56)] text-white' 
                     : 'text-gray-300 hover:text-white'
-                }`} onClick={() => setActiveTab(tab.id)}>
+                }`}
+                onClick={() => setActiveTab(tab.id)}
+              >
                 {tab.label}
               </button>
             ))}
@@ -42,7 +44,6 @@ export default function BetsLogSection() {
           {activeTab === 'sports' && <SportBets />}
           
           {activeTab === 'leaderboard' && <RaceLeaderBoard />}
-          
         </div>
       </div>
     </div>

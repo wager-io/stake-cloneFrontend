@@ -63,9 +63,9 @@ export default function CasinoSpot() {
 
   return (
     <div className="overflow-x-auto">
-      <table className="min-w-full border-8 bg-[var(--card-bg-1)] rounded-lg overflow-hidden">
+      <table className="min-w-full bg-[rgb(26,44,56)] rounded-lg overflow-hidden">
         <thead>
-          <tr className="bg-[var(--card-bg-1)] text-gray-300 text-xs">
+          <tr className="bg-[rgb(15,33,46)] text-gray-300 text-xs">
             <th className="py-3 px-4 text-left">Game</th>
             <th className="py-3 px-4 text-left">User</th>
             <th className="py-3 px-4 text-left">Time</th>
@@ -74,12 +74,12 @@ export default function CasinoSpot() {
             <th className="py-3 px-4 text-left">Payout</th>
           </tr>
         </thead>
-        <tbody className="divide-y divide-[var(--card-bg-1)]">
+        <tbody className="divide-y divide-[rgb(15,33,46)]">
           {casinoBets.map((bet, index) => (
             <tr 
               key={index} 
-              className={`text-gray-200 rounded text-sm hover:bg-[var(--card-bg-10)] transition-colors ${
-                index % 2 === 1 ? 'bg-[var(--card-bg-10)]' : ''
+              className={`text-gray-200 text-sm hover:bg-[rgb(47,69,83)] transition-colors ${
+                index % 2 === 1 ? 'bg-[rgb(33,55,67)]' : ''
               }`}
             >
               <td className="py-3 px-4">

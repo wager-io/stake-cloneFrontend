@@ -49,15 +49,13 @@ function Navbar({ toggleChat }) {
   return (
     <>
       <header className="sticky top-0 z-[999] w-full ">
-        <div className="bg-[var(--card-bg-1)] h-[60px] text-[13px] shadow-xl">
+        <div className="bg-[rgb(26,44,56)] h-[60px] text-[13px] shadow-xl">
           <div className="flex items-center justify-between px-4 h-full">
             <div className="flex items-center">
               {/* Logo SVG with Link to home */}
               <Link to="/" className="cursor-pointer">
                 {/* Show full logo on md+ screens, abbreviated on small screens */}
                 <img src="https://res.cloudinary.com/dxwhz3r81/image/upload/v1714511848/Wager__wshh2r.png" className='w-15 ' alt="" />
-               
-               
               </Link>
             </div>
             {user ? (
@@ -65,17 +63,14 @@ function Navbar({ toggleChat }) {
             ) :
             <div className="flex items-center space-x-6">
             {/* Login text link */}
-            <a 
-              href="#" 
-              className="text-grey-200 hover:text-white font-medium transition-colors"
-              onClick={handleLoginClick}
-            >
+            <button 
+              className="bg-gray-600 hover:bg-gray-500 text-white font-semibold py-3 px-6 rounded-[6px] transition-colors shadow-[0_4px_6px_rgba(0,0,0,0.3)] cursor-pointer"
+              onClick={handleLoginClick}>
               Login
-            </a>
-            
+            </button>
             {/* Register button with box shadow */}
             <button 
-              className="bg-[var(--primary-color)] hover:bg-[var(--btn-hover)] text-white font-semibold py-3 px-4 rounded-[6px] transition-colors shadow-[0_4px_6px_rgba(0,0,0,0.3)] cursor-pointer"
+              className="bg-blue-500 hover:bg-blue-400 text-white font-semibold py-3 px-4 rounded-[6px] transition-colors shadow-[0_4px_6px_rgba(0,0,0,0.3)] cursor-pointer"
               onClick={handleRegisterClick}>
               Register
             </button>
