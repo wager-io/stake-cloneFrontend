@@ -55,7 +55,7 @@ function Navbar({ toggleChat }) {
               {/* Logo SVG with Link to home */}
               <Link to="/" className="cursor-pointer">
                 {/* Show full logo on md+ screens, abbreviated on small screens */}
-                <img src="https://res.cloudinary.com/dxwhz3r81/image/upload/v1714511848/Wager__wshh2r.png" className='w-15 ' alt="" />
+                <img src="https://res.cloudinary.com/dxwhz3r81/image/upload/v1714511848/Wager__wshh2r.png" className='w-25 ' alt="" />
               </Link>
             </div>
             {user ? (
