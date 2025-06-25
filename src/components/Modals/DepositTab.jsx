@@ -184,10 +184,9 @@ export default function DepositTab() {
         {/* QR Code */}
         <div className="md:w-1/2 flex items-center justify-center bg-gray-800 rounded-lg p-4">
           {addressLoading ? (
-            <div className='p2 h-[120px] w-full'>
-              <Loader size="md" />
+            <div className='p2 h-[120px] w-full justify-center items-center'>
+                <div>Loading....</div>
             </div>
-          
           ) : depositAddress ? (
             <div className="p-2 bg-white rounded-lg">
               <QRCode value={depositAddress} size={120} />
