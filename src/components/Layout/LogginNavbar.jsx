@@ -110,14 +110,14 @@ export default function LogginNavbar({ toggleChat }) {
   return (
     <>
       <nav className="p-1 md:p-4 flex justify-center items-center space-x-0 relative z-40">
-        {balance}
+        {(balance).toFixed(4)}
         {/* Wallet Balance Container */}
         <div
           className="wallet-container flex"
           onClick={toggleWalletModal} // Open wallet modal on click
         >
         <div className="bg-[rgb(15,33,46)] cursor-pointer text-white px-4 py-3 rounded-l flex items-center space-x-2 relative">
-            <span className="text-sm font-medium">{(balance).toFixed(4)}</span>
+            <div className="text-sm font-medium">{(balance).toFixed(4)}</div>
             <img
               src="/assets/token/usdt.png" // Replace with the actual path to your currency icon
               alt="Currency Icon"
