@@ -16,6 +16,7 @@ export default function LogginNavbar({ toggleChat }) {
   const [showStatistics, setShowStatistics] = useState(false);
 
   console.log(user)
+  console.log(balance)
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
