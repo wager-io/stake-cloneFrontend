@@ -15,8 +15,24 @@ export default function LogginNavbar({ toggleChat }) {
   const location = useLocation()
   const [showStatistics, setShowStatistics] = useState(false);
 
+// Alternative approach for very small numbers
+const formatBalance = (value) => {
+  if (!value) return '0.0000';
+  
+  // Convert scientific notation to a regular number
+  const num = Number(value);
+  
+  // If the number is very small (less than 0.0001)
+  if (num < 0.0001 && num > 0) {
+    // Show scientific notation but formatted nicely
+    return num.toExponential(4);
+  }
+  
+  // Otherwise show regular decimal format
+  return num.toFixed(4);
+};
 
-  console.log(balance)
+const formattedBalance = formatBalance(balance);
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -110,14 +126,13 @@ export default function LogginNavbar({ toggleChat }) {
   return (
     <>
       <nav className="p-1 md:p-4 flex justify-center items-center space-x-0 relative z-40">
-        {(parseFloat(balance)).toFixed(4)}
         {/* Wallet Balance Container */}
         <div
           className="wallet-container flex"
           onClick={toggleWalletModal} // Open wallet modal on click
         >
         <div className="bg-[rgb(15,33,46)] cursor-pointer text-white px-4 py-3 rounded-l flex items-center space-x-2 relative">
-            <div className="text-sm font-medium">{(balance).toFixed(4)}</div>
+            <div className="text-sm font-medium">{formattedBalance}</div>
             <img
               src="/assets/token/usdt.png" // Replace with the actual path to your currency icon
               alt="Currency Icon"
@@ -165,24 +180,6 @@ export default function LogginNavbar({ toggleChat }) {
             </ul>
           </div>
         )}
-
-        {/* Search Icon */}
-        {/* <button className="md:ml-40 p-4 hidden md:block items-center bold text-white">
-          <svg
-            fill="currentColor"
-            viewBox="0 0 64 64"
-            className="svg-icon w-7 h-7 text-white mb-1 mx-1"
-          >
-            <title></title>
-            <path
-              fillRule="evenodd"
-              d="M10.266 3.893a23.1 23.1 0 1 1 25.668 38.414A23.1 23.1 0 0 1 10.266 3.893m5.112 30.764a13.9 13.9 0 1 0 15.444-23.114 13.9 13.9 0 0 0-15.444 23.114M38.55 46.33a28 28 0 0 0 7.78-7.78L64 56.22 56.22 64z"
-              clipRule="evenodd"
-            ></path>
-          </svg>
-          <span>Search</span>
-          
-        </button> */}
 
         {/* User Icon */}
         <div className="relative md:ml-40 p-4  md:block items-center bold text-white" ref={userDropdownRef}>
@@ -251,3 +248,4 @@ export default function LogginNavbar({ toggleChat }) {
     </>
   );
 }
+
