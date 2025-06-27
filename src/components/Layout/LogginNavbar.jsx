@@ -110,7 +110,7 @@ export default function LogginNavbar({ toggleChat }) {
   return (
     <>
       <nav className="p-1 md:p-4 flex justify-center items-center space-x-0 relative z-40">
-        {(balance).toFixed(4)}
+        {(parseFloat(balance)).toFixed(4)}
         {/* Wallet Balance Container */}
         <div
           className="wallet-container flex"
