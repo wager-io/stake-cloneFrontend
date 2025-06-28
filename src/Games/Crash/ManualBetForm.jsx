@@ -258,7 +258,7 @@ const ManualBetForm = () => {
         {/* Bet Next Round Button - Show when game is running and user has no active bet */}
         {!userBet && gameState.status === 'running' && !nextRoundBet && (
           <button 
-            className={`w-full py-3 bg-[var(--primary-color)]  rounded-lg text-sm font-bold transition-colors flex items-center justify-center`}
+            className={`w-full py-3 bg-blue-600 hover:bg-blue-500 rounded-lg text-sm font-bold transition-colors flex items-center justify-center`}
             onClick={handlePlaceNextRoundBet}
           >
             {!user ? (
@@ -276,7 +276,7 @@ const ManualBetForm = () => {
 
         {!userBet && gameState.status === 'crashed' && !nextRoundBet && (
           <button 
-            className={`w-full py-3 bg-[var(--primary-color)]  rounded-lg text-sm font-bold transition-colors flex items-center justify-center`}
+            className={`w-full py-3 bg-blue-600 hover:bg-blue-500  rounded-lg text-sm font-bold transition-colors flex items-center justify-center`}
             onClick={handlePlaceNextRoundBet}
           >
             {!user ? (
@@ -302,7 +302,7 @@ const ManualBetForm = () => {
         {/* Cash Out Button - Show when user has an active bet and game is running */}
         {userBet && gameState.status === 'running' && (
           <button 
-            className="w-full py-4 bg-blue-600  rounded-lg text-sm font-bold transition-colors flex items-center justify-center"
+            className="w-full py-4 bg-green-600 hover:bg-green-500 rounded-lg text-sm font-bold transition-colors flex items-center justify-center"
             onClick={handleCashout}
           >
             <FaMoneyBillWave className="mr-2" />
