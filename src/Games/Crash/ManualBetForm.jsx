@@ -155,7 +155,7 @@ const ManualBetForm = () => {
             }}
             placeholder='0.00'
             value={betAmount === '' ? '' : betAmount}
-            className="w-full p-3 pl-10 pr-28 bg-[var(--card-bg-10)] rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+            className="w-full p-3 pl-10 pr-28 bg-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
           />
           <div className="absolute right-2 flex space-x-2">
             <button 
@@ -192,7 +192,7 @@ const ManualBetForm = () => {
             onChange={(e) => setCashoutAt(Number(e.target.value))}
             min="1.01"
             step="0.1"
-            className="w-full p-3 pl-8 pr-28 bg-[var(--card-bg-10)] rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+            className="w-full p-3 pl-8 pr-28 bg-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
           />
           <div className="absolute right-2 flex space-x-2">
             <button 
@@ -219,7 +219,7 @@ const ManualBetForm = () => {
           <FaCalculator className="mr-2 text-green-400" />
           Profit on Win
         </label>
-        <div className="flex items-center justify-between p-3 bg-[var(--card-bg-10)] rounded-lg text-white">
+        <div className="flex items-center justify-between p-3 bg-gray-700 rounded-lg text-white">
           <div className="flex items-center">
             <FaArrowRight className="mr-2 text-green-400" />
             <span className="font-medium">{calculateProfit()}</span>
