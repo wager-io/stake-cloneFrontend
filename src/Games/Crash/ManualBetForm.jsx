@@ -239,7 +239,7 @@ const ManualBetForm = () => {
         {/* Place Bet Button - Only show when game is starting and user has no active bet */}
         {!userBet && gameState.status === 'starting' && (
           <button 
-            className={`w-full py-3 bg-[var(--primary-color)]  rounded-lg text-sm font-bold transition-colors flex items-center justify-center`}
+            className={`w-full py-3 bg-blue-600 hover:bg-blue-500  rounded-lg text-sm font-bold transition-colors flex items-center justify-center`}
             onClick={handlePlaceBetClick}
           >
             {!user ? (
