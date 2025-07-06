@@ -29,7 +29,6 @@ export default function Statistics({isOpen}) {
         }
         
         const response = await api.get(`/api/user/stats/${username}`)
-        
         if (response.data.success) {
           setStats(response.data.data)
         } else {
@@ -261,13 +260,25 @@ export default function Statistics({isOpen}) {
                           game="Crash" 
                           data={stats.gameBreakdown.crash} 
                         />
+                         <GameRow 
+                          game="Dice" 
+                          data={stats.gameBreakdown.dice} 
+                        />
                         <GameRow 
                           game="Plinko" 
                           data={stats.gameBreakdown.plinko} 
                         />
+                         <GameRow 
+                          game="Mines" 
+                          data={stats.gameBreakdown.mines} 
+                        />
                         <GameRow 
                           game="Hilo" 
                           data={stats.gameBreakdown.hilo} 
+                        />
+                          <GameRow 
+                          game="Limbo" 
+                          data={stats.gameBreakdown.limbo} 
                         />
                       </tbody>
                     </table>
