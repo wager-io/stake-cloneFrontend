@@ -26,14 +26,14 @@ function Footer() {
         <div className="flex flex-col">
           {/* Logo and copyright in same row */}
           
-          <div className="flex flex-col items-center mb-4">
+          <div className="flex flex-col mb-4">
             {/* Logo SVG */}
-             <img src="https://res.cloudinary.com/dxwhz3r81/image/upload/v1714511848/Wager__wshh2r.png" className='w-15 ' alt="" />
+             <img src="https://res.cloudinary.com/dxwhz3r81/image/upload/v1714511848/Wager__wshh2r.png" className='w-20 mb-4' alt="" />
 
             
             {/* Copyright text */}
             <p className="text-grey-300 text-sm">
-              © 2025 wager.com | All Rights Reserved.
+              © 2025 wagergames.casino | All Rights Reserved.
             </p>
           </div>
         </div>

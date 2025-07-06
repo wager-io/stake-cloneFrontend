@@ -42,7 +42,7 @@ function Footer() {
             
             {/* Copyright text */}
             <p className="text-grey-300 text-sm">
-              © 2025 wager.com | All Rights Reserved.
+              © 2025 wagergames.casino | All Rights Reserved.
             </p>
           </div>
         </div>

@@ -4,6 +4,7 @@ import { lazy } from 'react';
 import NotFound from '../../pages/NotFound';
 import SportHome from '../../pages/SportHome';
 import SoccerLayout from '../../sports/soccer/SoccerLayout';
+import ComingSoon from '../../pages/ComingSoon';
 
 // Import transaction components
 // Lazy-loaded components (loaded on demand)
@@ -38,9 +39,12 @@ const routes = [
   
   // Casino routes
   { path: '/casino', element: <Navigate to="/casino/home" replace /> },
-  { path: '/sport', element: <Navigate to="/sport/home" replace /> },
+  { path: '/sport', element: <Navigate to="/coming-soon" replace /> },
+  { path: '/sport/home', element: <Navigate to="/coming-soon" replace /> },
+  { path: '/coming-soon', element: <ComingSoon /> },
   { path: '/casino/home', element: <CasinoHome /> },
   { path: '/sport/home', element: <SportHome /> },
+
   { path: '/casino/game/crash', element: <CrashGame /> },
   { path: '/casino/game/mines', element: <MinesGame /> },
   { path: '/casino/game/limbo', element: <LimboGame /> },

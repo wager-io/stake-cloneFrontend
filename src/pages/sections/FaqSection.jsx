@@ -14,7 +14,7 @@ export default function FaqSection() {
       answer: (
         <>
           <p className="mb-3">
-            Leading the online gambling industry since 2017, WAGER.com offers a wide variety of online casino and sports betting options, operating globally in 15 different languages.
+            Leading the online gambling industry since 2017, wagergames.casino offers a wide variety of online casino and sports betting options, operating globally in 15 different languages.
           </p>
           <p>
             With a reputable and secure platform, WAGER Casino is home to worldwide local currencies and crypto betting options for online slot games, WAGER Originals and live casino games. WAGER Sportsbook offers unbeatable odds on all major sporting events including a range of eSport leagues.
@@ -31,7 +31,7 @@ export default function FaqSection() {
       answer: (
         <>
           <p className="mb-3">
-            WAGER.com is licensed by gaming authorities in Curacao, providing a safe and secure betting platform. WAGER is operated by Medium Rare N.V. under the Certificate of Operation (Application no. OGL/2024/1451/0918) issued by the Curaçao Gaming Control Board, which is authorised and regulated by the Government of Curaçao.
+            wagergames.casino is licensed by gaming authorities in Curacao, providing a safe and secure betting platform. WAGER is operated by Medium Rare N.V. under the Certificate of Operation (Application no. OGL/2024/1451/0918) issued by the Curaçao Gaming Control Board, which is authorised and regulated by the Government of Curaçao.
           </p>
           <p>
             WAGER is a Crypto Gambling Foundation verified operator with strong policies around Anti-Money Laundering. WAGER promotes responsible gambling with a robust self-exclusion policy and various WAGER Smart resources.
@@ -58,7 +58,7 @@ export default function FaqSection() {
       question: 'What Currencies Can I Bet With?',
       answer: (
         <p>
-          Alongside supporting local currencies, WAGER.com is the world's leading cryptocurrency casino and sportsbook, supporting 20 cryptocurrencies from Bitcoin (BTC) to Polygon (MATIC). Discover the complete list of supported crypto at WAGER.com for more details.
+          Alongside supporting local currencies, wagergames.casino is the world's leading cryptocurrency casino and sportsbook, supporting 20 cryptocurrencies from Bitcoin (BTC) to Polygon (MATIC). Discover the complete list of supported crypto at wagergames.casino for more details.
         </p>
       )
     },
@@ -91,10 +91,10 @@ export default function FaqSection() {
       answer: (
         <>
           <p className="mb-3">
-            WAGER.com is the perfect place for official sports streams, with comprehensive coverage of most popular sporting events and major tournaments, from tennis matches to MMA fights.
+            wagergames.casino is the perfect place for official sports streams, with comprehensive coverage of most popular sporting events and major tournaments, from tennis matches to MMA fights.
           </p>
           <p>
-            To live stream the latest sporting events, click on the live stream icon next to the event on WAGER Sportsbook. For full details, check out our comprehensive guide to live streaming your favourite sports on WAGER.com.
+            To live stream the latest sporting events, click on the live stream icon next to the event on WAGER Sportsbook. For full details, check out our comprehensive guide to live streaming your favourite sports on wagergames.casino.
           </p>
         </>
       )
