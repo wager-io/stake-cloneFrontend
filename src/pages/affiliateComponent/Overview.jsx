@@ -1,8 +1,11 @@
 import React, { useContext, useState } from 'react'
 import { AuthContext } from '../../context/AuthContext'
+import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'sonner'
 
 export default function Overview() {
+  const location = useLocation();
+    const navigate = useNavigate();
   const { user } = useContext(AuthContext)
   const [copied, setCopied] = useState(false)
   
@@ -23,6 +26,18 @@ export default function Overview() {
         toast.error('Failed to copy link')
       })
   }
+
+   // Handle register button click
+  const handleRegisterClick = () => {
+    navigate(`${location.pathname}?tab=register&modal=auth`);
+  };
+
+  // Handle login link click
+  const handleLoginClick = (e) => {
+    e.preventDefault();
+    navigate(`${location.pathname}?tab=login&modal=auth`);
+  };
+
 
   return (
     <div className="flex-1">
@@ -89,11 +104,11 @@ export default function Overview() {
                   </p>
                   <div className="flex gap-4">
                     {/* Login Button */}
-                    <button className="bg-[#2f4553] text-white py-2 px-4 rounded shadow-lg hover:bg-gray-500">
+                    <button onClick={handleLoginClick} className="bg-[#2f4553] text-white py-2 px-4 rounded shadow-lg hover:bg-gray-500">
                       Login
                     </button>
                     {/* Register Button */}
-                    <button className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 whitespace-nowrap">
+                    <button onClick={handleRegisterClick} className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 whitespace-nowrap">
                       Register Now
                     </button>
                   </div>
@@ -146,47 +161,7 @@ export default function Overview() {
               </div>
             )}
 
-            {/* New Section Below */}
-            <div className="w-full mt-8">
-              {/* Section Title */}
-              <h2 className="text-white font-bold text-2xl mb-4">
-                Partnering With Us is Easy
-              </h2>
 
-              {/* New Card */}
-              <div className="w-full bg-[#213743] rounded-[0.5rem] p-6 shadow-lg flex flex-col lg:flex-row gap-6">
-                {/* Steps on the Left */}
-                <div className="flex-1">
-                  <div className="flex flex-col gap-4">
-                    <div>
-                      <h3 className="text-white font-bold text-lg">Step 1</h3>
-                      <p className="text-[rgb(177,186,211)] text-sm">
-                        Create your referral campaign
-                      </p>
-                    </div>
-                    <div>
-                      <h3 className="text-white font-bold text-lg">Step 2</h3>
-                      <p className="text-[rgb(177,186,211)] text-sm">
-                        Share the referral link
-                      </p>
-                    </div>
-                    <div>
-                      <h3 className="text-white font-bold text-lg">Step 3</h3>
-                      <p className="text-[rgb(177,186,211)] text-sm">
-                        Earn and withdraw your commission
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Video Container on the Right */}
-                <div className="flex-1 flex justify-center items-center">
-                  <div className="w-full h-[200px] bg-black rounded-lg flex items-center justify-center">
-                    <p className="text-[rgb(177,186,211)] text-sm">Video Placeholder</p>
-                  </div>
-                </div>
-              </div>
-            </div>
 
             {/* New Section Below */}
             <div className="w-full mt-8">

@@ -51,9 +51,9 @@ export default function PromotionSection() {
                 </button>
                 <h3 className="text-white font-bold text-lg mb-1">{promo.title}</h3>
                 <p className="text-gray-300 text-sm mb-2">{promo.description}</p>
-                <a href="#" className="text-blue-400 text-sm font-bold hover:text-blue-300 transition-colors">
+                {/* <a href="#" className="text-blue-400 text-sm font-bold hover:text-blue-300 transition-colors">
                   Read more
-                </a>
+                </a> */}
               </div>
               
               {/* Right side image */}

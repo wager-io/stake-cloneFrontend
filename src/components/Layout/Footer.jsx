@@ -40,21 +40,14 @@ function Footer() {
         
         {/* Right side - Social media icons */}
         <div className="flex items-center space-x-5 self-center">
-          {/* Forum */}
-          <a href="#" className="text-grey-300 hover:text-white transition-colors cursor-pointer">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
-            </svg>
-          </a>
-          
-          {/* Facebook */}
+        
           <a href="#" className="text-grey-300 hover:text-white transition-colors cursor-pointer">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
             </svg>
           </a>
           
-          {/* Twitter */}
+       
           <a href="#" className="text-grey-300 hover:text-white transition-colors cursor-pointer">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
@@ -79,11 +72,10 @@ function Footer() {
       </div>
       
       {/* Horizontal line */}
-      <div className="border-t border-grey-600 my-6"></div>
+      {/* <div className="border-t border-grey-600 my-6"></div> */}
       
       {/* Footer links section */}
-      <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-8">
-        {/* Casino column */}
+      {/* <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-8">
         <div className="flex flex-col">
           <h3 className="text-white font-semibold text-base mb-4">Casino</h3>
           <div className="flex flex-col space-y-2">
@@ -99,9 +91,6 @@ function Footer() {
           </div>
         </div>
         
-
-
-            {/* Sports column */}
             <div className="flex flex-col">
           <h3 className="text-white font-semibold text-base mb-4">Support</h3>
           <div className="flex flex-col space-y-2">
@@ -112,7 +101,7 @@ function Footer() {
             <a href="#" className="text-grey-300 hover:text-white text-sm transition-colors">Self Exclusion</a>
           </div>
         </div>
-            {/* Sports column */}
+     
             <div className="flex flex-col">
           <h3 className="text-white font-semibold text-base mb-4">About Us</h3>
           <div className="flex flex-col space-y-2">
@@ -123,7 +112,7 @@ function Footer() {
             <a href="#" className="text-grey-300 hover:text-white text-sm transition-colors">Terms of Service</a>
           </div>
         </div>
-            {/* Sports column */}
+
         <div className="flex flex-col">
           <h3 className="text-white font-semibold text-base mb-4">Payment Info</h3>
           <div className="flex flex-col space-y-2">
@@ -181,7 +170,7 @@ function Footer() {
             )}
           </div>
         </div>
-      </div>
+      </div> */}
       
       {/* Bottom footer section with policies */}
       <div className="border-t border-grey-600 mt-8 pt-6 flex justify-between items-center">

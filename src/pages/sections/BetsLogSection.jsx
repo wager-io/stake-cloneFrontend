@@ -18,7 +18,7 @@ export default function BetsLogSection() {
         {/* Section Header */}
 
         {/* Tabs */}
-        <div className=" p-1 rounded-lg mb-6">
+        {/* <div className=" p-1 rounded-lg mb-6">
           <div className="inline-flex bg-[rgb(15,33,46)] p-2 rounded-[30px] overflow-hidden">
             {tabs.map(tab => (
               <button
@@ -35,7 +35,7 @@ export default function BetsLogSection() {
               </button>
             ))}
           </div>
-        </div>
+        </div> */}
 
         {/* Tab Content */}
         <div className="relative">

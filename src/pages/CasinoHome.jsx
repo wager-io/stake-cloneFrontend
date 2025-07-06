@@ -62,9 +62,9 @@ function CasinoHome() {
                     <p className="text-sm mt-2">{card.details}</p>
                   </div>
                 </div>
-                <div className="relative border p-2 hover:bg-[#1e3a4a] rounded border-white w-fit cursor-pointer">
+                {/* <div className="relative border p-2 hover:bg-[#1e3a4a] rounded border-white w-fit cursor-pointer">
                   <button className="text-white rounded">Play Now</button>
-                </div>
+                </div> */}
               </div>
 
               {/* Card Image */}
