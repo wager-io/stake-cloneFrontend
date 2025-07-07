@@ -252,7 +252,7 @@ function RegisterForm({ onClose }) {
       </form>
 
       {/* Social Login Section */}
-      <SocialLogin />
+      {/* <SocialLogin /> */}
     </>
   );
 }

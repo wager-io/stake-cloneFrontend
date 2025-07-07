@@ -136,7 +136,7 @@ function LoginForm({ onClose }) {
       </form>
 
       {/* Social Login Section */}
-      <SocialLogin />
+      {/* <SocialLogin /> */}
     </>
   );
 }
