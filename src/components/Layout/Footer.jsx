@@ -38,8 +38,7 @@ function Footer() {
           </div>
         </div>
         
-        {/* Right side - Social media icons */}
-        <div className="flex items-center space-x-5 self-center">
+        {/* <div className="flex items-center space-x-5 self-center">
         
           <a href="#" className="text-grey-300 hover:text-white transition-colors cursor-pointer">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -53,22 +52,21 @@ function Footer() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
             </svg>
           </a>
-          
-          {/* Instagram */}
+
           <a href="#" className="text-grey-300 hover:text-white transition-colors cursor-pointer">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01M6.5 6.5h11a1 1 0 011 1v11a1 1 0 01-1 1h-11a1 1 0 01-1-1v-11a1 1 0 011-1z" />
             </svg>
           </a>
           
-          {/* YouTube */}
+  
           <a href="#" className="text-grey-300 hover:text-white transition-colors cursor-pointer">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
               <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </a>
-        </div>
+        </div> */}
       </div>
       
       {/* Horizontal line */}
