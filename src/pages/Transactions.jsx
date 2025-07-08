@@ -33,12 +33,12 @@ export default function Transactions() {
     <div className="min-h-screen text-white">
       {/* Header with Title */}
       <div className="w-full py-6 px-8 flex items-center justify-start">
-        <FaExchangeAlt className="h-8 w-8 text-white mr-3" />
-        <h1 className="text-2xl font-bold text-white">Transactions</h1>
+        <FaExchangeAlt className="h-4 w-4 text-white mr-3" />
+        <h1 className="text-l font-bold text-white">Transactions</h1>
       </div>
 
       {/* Tab and Content Layout */}
-      <div className="container mx-auto px-6 py-6">
+      <div className="container mx-auto px-6 py-2">
         <div className="flex">
           {/* Left side - Tabs with improved sticky behavior */}
           <div className="w-[200px] mr-6">

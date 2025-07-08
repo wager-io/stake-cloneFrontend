@@ -14,6 +14,7 @@ const Bills = () => {
         setLoading(true);
         // Replace with your actual API endpoint
         const response = await api.get('/api/transactions/bills');
+        console.log(response)
         setBills(response.data.bills || []);
       } catch (error) {
         console.error('Error fetching bills:', error);
