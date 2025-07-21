@@ -15,7 +15,7 @@ function InhouseGames() {
       id: 1,
       title: "Crash",
       provider: "NetEnt",
-      image: "/assets/InhouseGames/crash.avif",
+      image: "/assets/InhouseGames/crash-game.png",
       players: 1243,
       path: "crash"
     },
@@ -23,7 +23,7 @@ function InhouseGames() {
       id: 2,
       title: "Mines",
       provider: "Play'n GO",
-      image: "/assets/InhouseGames/mines.avif",
+      image: "/assets/InhouseGames/mine.png",
       players: 987,
       path: "mines"
     },
@@ -31,7 +31,7 @@ function InhouseGames() {
       id: 3,
       title: "Dice",
       provider: "NetEnt",
-      image: "/assets/InhouseGames/dice.avif",
+      image: "/assets/InhouseGames/Dice.png",
       players: 1567,
       path: "dice"
     },
@@ -39,7 +39,7 @@ function InhouseGames() {
       id: 4,
       title: "Plinko",
       provider: "NetEnt",
-      image: "/assets/InhouseGames/plinko.avif",
+      image: "/assets/InhouseGames/plinko.png",
       players: 876,
       path: "plinko"
     },
@@ -47,7 +47,7 @@ function InhouseGames() {
       id: 5,
       title: "Limbo",
       provider: "Pragmatic Play",
-       image: "/assets/InhouseGames/limbo.avif",
+       image: "/assets/InhouseGames/limbo.png",
       players: 1432,
       path: "limbo"
     },
@@ -55,9 +55,9 @@ function InhouseGames() {
       id: 6,
       title: "Hilo",
       provider: "Pragmatic Play",
-       image: "/assets/InhouseGames/hilo.avif",
+       image: "/assets/InhouseGames/Hilo.png",
       players: 1432,
-      path: "hilo"
+      path: "Hilo"
     }
    ];
 

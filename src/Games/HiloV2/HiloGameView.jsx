@@ -3,7 +3,7 @@ import { useHiloGame } from "./context/HiloContext";
 import { useKeyPress } from '../../hooks/useKeyPress';
 import useDeck from "./hooks/deck";
 
-const cardBackUrl = "url(/assets/hilo/back-none.BGcPpGyo.svg)";
+const cardBackUrl = "url(/assets/hilo/hilo-card.png)";
 const bgHi = "url(/assets/hilo/bg-hi.DH5yjVB6.svg)";
 const bgLo = "url(/assets/hilo/bg-lo.DB3Mujl0.svg)";
 const bgHiStacked = "url(/assets/hilo/bg-hi-stacked.Cv2Q4gGD.svg)";

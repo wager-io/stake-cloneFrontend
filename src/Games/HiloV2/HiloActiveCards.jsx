@@ -68,7 +68,7 @@ import { useHiloGame } from './context/HiloContext';
 import useDeck from "./hooks/deck";
 import "./HiloGameView.css"; // Import the CSS for styling
 
-const cardBackUrl = 'url(/assets/hilo/back-none.BGcPpGyo.svg)';
+const cardBackUrl = 'url(/assets/hilo/hilo-card.png)';
 
 // Card component styled like HiloGameView
 function Card({ value = "A", color = "var(--grey-600)", faceDown = true, icon = null, animate = false, suite = "♠" }) {

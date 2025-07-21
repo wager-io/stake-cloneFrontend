@@ -1,7 +1,7 @@
 import React from "react";
 import { useHiloGame } from "./HiloContext";
 
-const cardBackUrl = "url(/assets/hilo/back-none.BGcPpGyo.svg)";
+const cardBackUrl = "url(/assets/hilo/hilo-card.png)";
 
 function Card({ value = "A", color = "var(--grey-600)", disabled = true, style = {}, faceDown = true, suit = "" }) {
   return (
