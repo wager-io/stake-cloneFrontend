@@ -31,7 +31,7 @@ function InhouseGames() {
       id: 3,
       title: "Dice",
       provider: "NetEnt",
-      image: "/assets/InhouseGames/Dice.png",
+      image: "/assets/InhouseGames/diceGame.png",
       players: 1567,
       path: "dice"
     },
@@ -47,7 +47,7 @@ function InhouseGames() {
       id: 5,
       title: "Limbo",
       provider: "Pragmatic Play",
-       image: "/assets/InhouseGames/limbo.png",
+       image: "/assets/InhouseGames/limboGame.png",
       players: 1432,
       path: "limbo"
     },
@@ -55,7 +55,7 @@ function InhouseGames() {
       id: 6,
       title: "Hilo",
       provider: "Pragmatic Play",
-       image: "/assets/InhouseGames/Hilo.png",
+       image: "/assets/InhouseGames/hiloGAMES.png",
       players: 1432,
       path: "Hilo"
     }
