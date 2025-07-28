@@ -13,6 +13,7 @@ import MobileSidebar from './MobileSidebar';
 
 import { routes, protectedRoutes, gameRoutes } from './routes';
 import Modals from './Modals';
+import LiveSupport from '../Modals/live-support/Index';
 
 function Layout() {
   const { user } = useContext(AuthContext);
@@ -21,6 +22,7 @@ function Layout() {
   const [isMediumScreen, setIsMediumScreen] = useState(false);
   const [activeTab, setActiveTab] = useState('Casino');
   const [showMobileSidebar, setShowMobileSidebar] = useState(false);
+  const [openLiveSupport, setOpenLiveSupport] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -116,12 +118,13 @@ function Layout() {
 
   return (
     <div className="flex min-h-screen bg-[#1a2c38]">
+      {openLiveSupport && <LiveSupport onClose={() => setOpenLiveSupport(false)} />}
       <Toaster position="bottom-right" richColors />
       <Suspense fallback={<Preload />}>
         {/* Fixed sidebar for desktop */}
         {window.innerWidth >= 750 && (
           <div className="inset-y-0 left-0 z-21">
-            <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
+            <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} setOpenLiveSupport={setOpenLiveSupport} openLiveSupport={openLiveSupport}/>
           </div>
         )}
 

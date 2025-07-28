@@ -2,7 +2,7 @@ import { useState, useContext } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom'; // Import useLocation for route checking
 import { AuthContext } from '../../context/AuthContext'; // Import AuthContext
 
-function Sidebar({ isOpen, toggleSidebar }) {
+function Sidebar({ isOpen, toggleSidebar, setOpenLiveSupport, openLiveSupport }) {
   const [isPromotionsOpen, setIsPromotionsOpen] = useState(false); // State to toggle promotions dropdown
   const [isProfileOpen, setIsProfileOpen] = useState(false); // New state for profile dropdown
   const navigate = useNavigate(); // Initialize useNavigate for navigation
@@ -36,7 +36,7 @@ function Sidebar({ isOpen, toggleSidebar }) {
   const supportNavItems = [
     // { name: 'Sponsorship', icon: 'M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M21 21v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7h18zm-3-9v-2a2 2 0 00-2-2H8a2 2 0 00-2 2v2h12z' },
     // { name: 'Responsible Gambling', icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z' },
-    // { name: 'Live Support', icon: 'M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z' },
+     { name: 'Live Support', icon: 'M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z' },
     // { name: 'Language: English', icon: 'M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129' },
   ];
 
@@ -274,7 +274,8 @@ function Sidebar({ isOpen, toggleSidebar }) {
          
           
           {/* Card container for additional nav links */}
-          <div className="mt-0 overflow-visible rounded-[4px] bg-[var(--card-bg-10)]" >
+        <div className='bg-[var(--card-bg-10)] '>
+            <div className="mt-0 overflow-visible rounded-[4px] bg-[var(--card-bg-10)]" >
             <ul>
               {cardNavItems.map((item, index) => {
                 // Skip rendering Profile if user is not logged in
@@ -288,7 +289,7 @@ function Sidebar({ isOpen, toggleSidebar }) {
                       <>
                         <button
                           onClick={() => setIsProfileOpen(!isProfileOpen)}
-                          className={`flex items-center justify-between w-full font-semibold p-3 text-grey-200 text-[13px] hover:bg-[#2f4553] hover:text-white transition-colors ${
+                          className={`flex items-center justify-between rounded w-full font-semibold p-3 text-grey-200 text-[13px] hover:bg-[#2f4553] hover:text-white transition-colors ${
                             !isOpen && 'justify-center'
                           }`}
                         >
@@ -325,7 +326,7 @@ function Sidebar({ isOpen, toggleSidebar }) {
                               <li key={subIndex} className="py-2">
                                 <button
                                   onClick={() => handleProfileItemClick(subItem)}
-                                  className="flex items-center w-full text-gray-300 hover:text-white text-sm transition-colors"
+                                  className="flex items-center rounded w-full text-gray-300 hover:text-white text-sm transition-colors"
                                 >
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -347,7 +348,7 @@ function Sidebar({ isOpen, toggleSidebar }) {
                       <>
                         <button
                           onClick={() => setIsPromotionsOpen(!isPromotionsOpen)}
-                          className={`flex items-center justify-between w-full font-semibold p-3 text-grey-200 text-[13px] hover:bg-[#2f4553] hover:text-white transition-colors ${
+                          className={`flex items-center justify-between w-full rounded font-semibold p-3 text-grey-200 text-[13px] hover:bg-[#2f4553] hover:text-white transition-colors ${
                             !isOpen && 'justify-center'
                           }`}
                         >
@@ -373,7 +374,7 @@ function Sidebar({ isOpen, toggleSidebar }) {
                               viewBox="0 0 24 24"
                               stroke="currentColor"
                               strokeWidth={2}
-                            >
+                            > 
                               <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                             </svg>
                           )}
@@ -384,7 +385,7 @@ function Sidebar({ isOpen, toggleSidebar }) {
                               <li key={subIndex} className="py-2">
                                 <a
                                   href={subItem.path}
-                                  className="text-gray-300 hover:text-white text-sm transition-colors"
+                                  className="text-gray-300 hover:text-white text-sm rounded transition-colors"
                                 >
                                   {subItem.name}
                                 </a>
@@ -396,7 +397,7 @@ function Sidebar({ isOpen, toggleSidebar }) {
                     ) : (
                       <a
                         href={item.path}
-                        className={`flex items-center ${!isOpen && 'justify-center'} font-semibold p-3 text-grey-200 text-[13px] hover:bg-[#2f4553] hover:text-white transition-colors`}
+                        className={`flex items-center ${!isOpen && 'justify-center'} rounded font-semibold p-3 text-grey-200 text-[13px] hover:bg-[#2f4553] hover:text-white transition-colors`}
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -415,15 +416,35 @@ function Sidebar({ isOpen, toggleSidebar }) {
               })}
             </ul>
           </div>
+
+          <div className='bg-gray-500 h-[1px] w-[90%] my-6 mx-2'></div>
           
           {/* Second card container for support links */}
-          <div className="mt-6 rounded-[4px] overflow-visible bg-[var(--card-bg-10)]" >
+          <div className=" rounded-[4px] overflow-visible " >
             <ul>
               {supportNavItems.map((item, index) => (
                 <li key={index} className="relative group">
+                  {item.name === 'Live Support' ? (
+                    <>
+                      <button onClick={() => setOpenLiveSupport(!openLiveSupport)}
+                        className={`flex items-center ${!isOpen && 'justify-center'} rounded w-full font-semibold p-3 text-grey-200 text-[13px] hover:bg-[#2f4553] hover:text-white transition-colors`}>
+                            <svg 
+                      xmlns="http://www.w3.org/2000/svg" 
+                      className={`${isOpen ? 'h-5 w-5 mr-3' : 'h-6 w-6 transition-transform group-hover:scale-110'}`}
+                      fill="none" 
+                      viewBox="0 0 24 24" 
+                      stroke="currentColor"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={item.icon} />
+                    </svg>
+                    {isOpen && <span>{item.name}</span>}
+                      </button>
+                    </>
+                  ) : 
+                  <>
                   <a 
                     href="#" 
-                    className={`flex items-center ${!isOpen && 'justify-center'} font-semibold p-3 text-grey-200 text-[13px] hover:bg-[#2f4553] hover:text-white transition-colors`}
+                    className={`flex items-center ${!isOpen && 'justify-center'} rounded font-semibold p-3 text-grey-200 text-[13px] hover:bg-[#2f4553] hover:text-white transition-colors`}
                   >
                     <svg 
                       xmlns="http://www.w3.org/2000/svg" 
@@ -435,7 +456,10 @@ function Sidebar({ isOpen, toggleSidebar }) {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={item.icon} />
                     </svg>
                     {isOpen && <span>{item.name}</span>}
-                  </a>
+                  </a> 
+                  </>
+                  }
+                 
                   {!isOpen && (
                     <div className="absolute left-[76px] top-0 px-3 py-1 bg-white text-grey-800 text-xs font-bold rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-[100] shadow-md ml-2 h-full flex items-center pointer-events-none">
                       {item.name}
@@ -446,9 +470,16 @@ function Sidebar({ isOpen, toggleSidebar }) {
               ))}
             </ul>
           </div>
+        </div>  
+     
+
+
 
         </nav>
       </div>
+
+      {/* Bottom section for additional links */}
+
     </aside>
   );
 }
