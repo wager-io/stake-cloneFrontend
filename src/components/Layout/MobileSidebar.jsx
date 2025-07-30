@@ -1,6 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
+import Favourites from './Favourites';
+import Recent from './Recent';
 
 const NAVBAR_HEIGHT = 60;
 const BOTTOM_NAV_HEIGHT = 64;
@@ -9,6 +11,8 @@ export default function MobileSidebar({ isOpen, toggleSidebar }) {
   const navigate = useNavigate();
   const location = useLocation();
   const { user, logout } = useContext(AuthContext);
+  const [showFavourites, setShowFavourites] = useState(false);
+  const [showRecent, setShowRecent] = useState(false);
 
   const isCasinoRoute = location.pathname.includes('/casino');
   const [isPromotionsOpen, setIsPromotionsOpen] = useState(false);
@@ -63,268 +67,324 @@ export default function MobileSidebar({ isOpen, toggleSidebar }) {
     }
   };
 
+  const handleFavouriteClick = () => {
+    setShowFavourites(true);
+    setShowRecent(false);
+    toggleSidebar(); // Close mobile sidebar
+  };
+
+  const handleRecentClick = () => {
+    setShowRecent(true);
+    setShowFavourites(false);
+    toggleSidebar(); // Close mobile sidebar
+  };
+
+  const handleCloseFavourites = () => {
+    setShowFavourites(false);
+  };
+
+  const handleCloseRecent = () => {
+    setShowRecent(false);
+  };
+
   return (
-    <aside
-      className="fixed left-0 z-40 w-full p-3"
-      style={{
-        top: NAVBAR_HEIGHT,
-        height: `calc(100vh - ${NAVBAR_HEIGHT + BOTTOM_NAV_HEIGHT}px)`,
-        background: '#0f212e',
-        maxWidth: '100vw',
-        transition: 'all 0.3s',
-        boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
-        display: isOpen ? 'flex' : 'none',
-        flexDirection: 'column'
-      }}
-    >
-      {/* Casino/Sports Buttons - Fixed at the top */}
-      <div
-        className="flex w-full gap-2 bg-[#1a2c38] border-b border-gray-700"
-        style={{
-          position: 'sticky',
-          top: 0,
-          zIndex: 10,
-        }}
-      >
-        {/* Casino Button */}
-        <button
-          onClick={() => {
-            navigate('/casino/home/');
-            if (toggleSidebar) toggleSidebar();
-          }}
-          className="relative flex-1 text-white font-semibold py-2 px-3 rounded-none text-sm transition-all overflow-hidden group cursor-pointer"
-          style={{
-            height: '36px',
-            borderRadius: 0,
-          }}
-        >
+    <>
+      <div className={`fixed inset-0 z-50 lg:hidden ${isOpen ? 'block' : 'hidden'}`}>
+        {/* Backdrop */}
+        <div className="fixed inset-0 bg-black bg-opacity-50" onClick={toggleSidebar}></div>
+        
+        {/* Sidebar */}
+        <div className={`fixed top-0 left-0 h-full w-80 bg-[#0f212e] transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+          {/* Casino/Sports Buttons - Fixed at the top */}
           <div
-            className={`absolute rounded-[4px] inset-0 bg-cover bg-center transition-opacity duration-300 ${
-              isCasinoRoute ? 'opacity-0' : 'opacity-100'
-            }`}
+            className="flex w-full gap-2 bg-[#1a2c38] border-b border-gray-700"
             style={{
-              backgroundImage: 'url(/assets/sidebar/casino-poker-cards-en.jpg)',
+              position: 'sticky',
+              top: 0,
+              zIndex: 10,
             }}
-          ></div>
-          <div
-            className={`absolute rounded-[4px] inset-0 bg-cover bg-center transition-opacity duration-300 ${
-              isCasinoRoute ? 'opacity-100' : 'opacity-0'
-            }`}
-            style={{
-              backgroundImage: 'url(/assets/sidebar/casino-poker-cards-green-en.jpg)',
-            }}
-          ></div>
-          <span className="relative z-10">CASINO</span>
-        </button>
-        {/* Sports Button */}
-        <button
-          className="relative flex-1 text-white font-semibold py-2 px-3 rounded-none text-sm transition-all overflow-hidden group cursor-pointer"
-          style={{
-            height: '36px',
-            borderRadius: 0,
-          }}
-        >
-          <div
-            className="absolute rounded-[4px] inset-0 bg-cover bg-center transition-opacity duration-300 opacity-100 group-hover:opacity-0"
-            style={{
-              backgroundImage: 'url(/assets/sidebar/sports-balls-en.jpg)',
-            }}
-          ></div>
-          <div
-            className="absolute rounded-[4px] inset-0 bg-cover bg-center transition-opacity duration-300 opacity-0 group-hover:opacity-100"
-            style={{
-              backgroundImage: 'url(/assets/sidebar/sports-balls-orange-en.jpg)',
-            }}
-          ></div>
-          <span className="relative z-10">SPORTS</span>
-        </button>
-      </div>
-
-      {/* Scrollable List */}
-      <div className="flex-1 overflow-y-auto">
-        {/* Favourites Section */}
-        <ul>
-          {FavNavItems.map((item) => (
-            <li key={item.name}>
-              <button
-                className="flex items-center w-full px-4 py-4 text-base text-gray-200 hover:bg-[#22384a] transition-colors"
-                onClick={() => {
-                  // No navigation for these, add if needed
+          >
+            {/* Casino Button */}
+            <button
+              onClick={() => {
+                navigate('/casino/home/');
+                if (toggleSidebar) toggleSidebar();
+              }}
+              className="relative flex-1 text-white font-semibold py-2 px-3 rounded-none text-sm transition-all overflow-hidden group cursor-pointer"
+              style={{
+                height: '36px',
+                borderRadius: 0,
+              }}
+            >
+              <div
+                className={`absolute rounded-[4px] inset-0 bg-cover bg-center transition-opacity duration-300 ${
+                  isCasinoRoute ? 'opacity-0' : 'opacity-100'
+                }`}
+                style={{
+                  backgroundImage: 'url(/assets/sidebar/casino-poker-cards-en.jpg)',
                 }}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 mr-3"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={item.icon} />
-                </svg>
-                {item.name}
-              </button>
-            </li>
-          ))}
-        </ul>
-        <hr className="border-gray-700 my-2" />
-
-        {/* Games Section */}
-        <ul>
-          {gamesItems.map((item) => (
-            <li key={item.name}>
-              <button
-                className="flex items-center w-full px-4 py-4 text-base text-gray-200 hover:bg-[#22384a] transition-colors"
-                onClick={() => {
-                  navigate(item.path);
-                  if (toggleSidebar) toggleSidebar();
+              ></div>
+              <div
+                className={`absolute rounded-[4px] inset-0 bg-cover bg-center transition-opacity duration-300 ${
+                  isCasinoRoute ? 'opacity-100' : 'opacity-0'
+                }`}
+                style={{
+                  backgroundImage: 'url(/assets/sidebar/casino-poker-cards-green-en.jpg)',
                 }}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 mr-3"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={item.icon} />
-                </svg>
-                {item.name}
-              </button>
-            </li>
-          ))}
-        </ul>
-        <hr className="border-gray-700 my-2" />
+              ></div>
+              <span className="relative z-10">CASINO</span>
+            </button>
+            {/* Sports Button */}
+            <button
+              className="relative flex-1 text-white font-semibold py-2 px-3 rounded-none text-sm transition-all overflow-hidden group cursor-pointer"
+              style={{
+                height: '36px',
+                borderRadius: 0,
+              }}
+            >
+              <div
+                className="absolute rounded-[4px] inset-0 bg-cover bg-center transition-opacity duration-300 opacity-100 group-hover:opacity-0"
+                style={{
+                  backgroundImage: 'url(/assets/sidebar/sports-balls-en.jpg)',
+                }}
+              ></div>
+              <div
+                className="absolute rounded-[4px] inset-0 bg-cover bg-center transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+                style={{
+                  backgroundImage: 'url(/assets/sidebar/sports-balls-orange-en.jpg)',
+                }}
+              ></div>
+              <span className="relative z-10">SPORTS</span>
+            </button>
+          </div>
 
-        {/* Card Nav Section */}
-        <ul>
-          {cardNavItems.map((item) => {
-            if (item.requiresAuth && !user) return null;
-            if (item.name === 'Profile') {
-              return (
+          {/* Scrollable List */}
+          <div className="flex-1 overflow-y-auto">
+            {/* Favourites Section */}
+            <ul>
+              {FavNavItems.map((item) => (
                 <li key={item.name}>
                   <button
-                    className="flex items-center w-full px-4 py-4 text-base text-gray-200 hover:bg-[#22384a] transition-colors justify-between"
-                    onClick={() => {}}
+                    className="flex items-center w-full px-4 py-4 text-base text-gray-200 hover:bg-[#22384a] transition-colors"
+                    onClick={() => {
+                      if (!user) return;
+                      
+                      if (item.name === 'Favourite') {
+                        handleFavouriteClick();
+                      } else if (item.name === 'Recent') {
+                        handleRecentClick();
+                      }
+                    }}
                   >
-                    <span className="flex items-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6 mr-3"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={item.icon} />
-                      </svg>
-                      {item.name}
-                    </span>
-                  </button>
-                </li>
-              );
-            }
-            if (item.name === 'Promotions') {
-              return (
-                <li key={item.name}>
-                  <button
-                    className="flex items-center w-full px-4 py-4 text-base text-gray-200 hover:bg-[#22384a] transition-colors justify-between"
-                    onClick={() => setIsPromotionsOpen((v) => !v)}
-                  >
-                    <span className="flex items-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6 mr-3"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={item.icon} />
-                      </svg>
-                      {item.name}
-                    </span>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className={`h-4 w-4 ml-2 transition-transform ${isPromotionsOpen ? 'rotate-180' : ''}`}
+                      className="h-6 w-6 mr-3"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
-                      strokeWidth={2}
                     >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={item.icon} />
                     </svg>
+                    {item.name}
                   </button>
-                  {isPromotionsOpen && (
-                    <ul className="pl-8 bg-[#1a2c38] rounded-md mt-2">
-                      {promotionsSubItems.map((subItem) => (
-                        <li key={subItem.name} className="py-2">
-                          <button
-                            className="text-gray-300 hover:text-white text-sm transition-colors"
-                            onClick={() => {
-                              navigate(subItem.path);
-                              if (toggleSidebar) toggleSidebar();
-                            }}
-                          >
-                            {subItem.name}
-                          </button>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
                 </li>
-              );
-            }
-            return (
-              <li key={item.name}>
-                <button
-                  className="flex items-center w-full px-4 py-4 text-base text-gray-200 hover:bg-[#22384a] transition-colors"
-                  onClick={() => {
-                    if (item.path) {
+              ))}
+            </ul>
+            <hr className="border-gray-700 my-2" />
+
+            {/* Games Section */}
+            <ul>
+              {gamesItems.map((item) => (
+                <li key={item.name}>
+                  <button
+                    className="flex items-center w-full px-4 py-4 text-base text-gray-200 hover:bg-[#22384a] transition-colors"
+                    onClick={() => {
                       navigate(item.path);
                       if (toggleSidebar) toggleSidebar();
-                    }
-                  }}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 mr-3"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
+                    }}
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={item.icon} />
-                  </svg>
-                  {item.name}
-                </button>
-              </li>
-            );
-          })}
-        </ul>
-        <hr className="border-gray-700 my-2" />
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-6 w-6 mr-3"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={item.icon} />
+                    </svg>
+                    {item.name}
+                  </button>
+                </li>
+              ))}
+            </ul>
+            <hr className="border-gray-700 my-2" />
 
-        {/* Support Section */}
-        <ul>
-          {supportNavItems.map((item) => (
-            <li key={item.name}>
-              <button
-                className="flex items-center w-full px-4 py-4 text-base text-gray-200 hover:bg-[#22384a] transition-colors"
-                onClick={() => {
-                  // Add navigation if needed
-                }}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 mr-3"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={item.icon} />
-                </svg>
-                {item.name}
-              </button>
-            </li>
-          ))}
-        </ul>
+            {/* Card Nav Section */}
+            <ul>
+              {cardNavItems.map((item) => {
+                if (item.requiresAuth && !user) return null;
+                if (item.name === 'Profile') {
+                  return (
+                    <li key={item.name}>
+                      <button
+                        className="flex items-center w-full px-4 py-4 text-base text-gray-200 hover:bg-[#22384a] transition-colors justify-between"
+                        onClick={() => {}}
+                      >
+                        <span className="flex items-center">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-6 w-6 mr-3"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={item.icon} />
+                          </svg>
+                          {item.name}
+                        </span>
+                      </button>
+                    </li>
+                  );
+                }
+                if (item.name === 'Promotions') {
+                  return (
+                    <li key={item.name}>
+                      <button
+                        className="flex items-center w-full px-4 py-4 text-base text-gray-200 hover:bg-[#22384a] transition-colors justify-between"
+                        onClick={() => setIsPromotionsOpen((v) => !v)}
+                      >
+                        <span className="flex items-center">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-6 w-6 mr-3"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={item.icon} />
+                          </svg>
+                          {item.name}
+                        </span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className={`h-4 w-4 ml-2 transition-transform ${isPromotionsOpen ? 'rotate-180' : ''}`}
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth={2}
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </button>
+                      {isPromotionsOpen && (
+                        <ul className="pl-8 bg-[#1a2c38] rounded-md mt-2">
+                          {promotionsSubItems.map((subItem) => (
+                            <li key={subItem.name} className="py-2">
+                              <button
+                                className="text-gray-300 hover:text-white text-sm transition-colors"
+                                onClick={() => {
+                                  navigate(subItem.path);
+                                  if (toggleSidebar) toggleSidebar();
+                                }}
+                              >
+                                {subItem.name}
+                              </button>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </li>
+                  );
+                }
+                return (
+                  <li key={item.name}>
+                    <button
+                      className="flex items-center w-full px-4 py-4 text-base text-gray-200 hover:bg-[#22384a] transition-colors"
+                      onClick={() => {
+                        if (item.path) {
+                          navigate(item.path);
+                          if (toggleSidebar) toggleSidebar();
+                        }
+                      }}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6 mr-3"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={item.icon} />
+                      </svg>
+                      {item.name}
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+            <hr className="border-gray-700 my-2" />
+
+            {/* Support Section */}
+            <ul>
+              {supportNavItems.map((item) => (
+                <li key={item.name}>
+                  <button
+                    className="flex items-center w-full px-4 py-4 text-base text-gray-200 hover:bg-[#22384a] transition-colors"
+                    onClick={() => {
+                      // Add navigation if needed
+                    }}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-6 w-6 mr-3"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={item.icon} />
+                    </svg>
+                    {item.name}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </div>
-    </aside>
+
+      {/* Favourites Modal */}
+      {showFavourites && (
+        <div className="fixed inset-0 z-[9999] bg-black bg-opacity-50 flex items-center justify-center">
+          <div className="relative w-full h-full max-w-7xl max-h-[90vh] overflow-hidden">
+            <button
+              onClick={handleCloseFavourites}
+              className="absolute top-4 right-4 z-10 bg-gray-800 hover:bg-gray-700 text-white rounded-full p-2 transition-colors"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <Favourites />
+          </div>
+        </div>
+      )}
+
+      {/* Recent Modal */}
+      {showRecent && (
+        <div className="fixed inset-0 z-[9999] bg-black bg-opacity-50 flex items-center justify-center">
+          <div className="relative w-full h-full max-w-7xl max-h-[90vh] overflow-hidden">
+            <button
+              onClick={handleCloseRecent}
+              className="absolute top-4 right-4 z-10 bg-gray-800 hover:bg-gray-700 text-white rounded-full p-2 transition-colors"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <Recent />
+          </div>
+        </div>
+      )}
+    </>
   );
 }

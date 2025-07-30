@@ -7,6 +7,9 @@ import SoccerLayout from '../../sports/soccer/SoccerLayout';
 import ComingSoon from '../../pages/ComingSoon';
 import GambleLayout from '../../pages/Gambling/GambleLayout';
 
+import Favourites from './Favourites';
+import Recent from './Recent';
+import MyBets from './MyBets';
 
 // Import transaction components
 // Lazy-loaded components (loaded on demand)
@@ -120,7 +123,7 @@ const routes = [
     path: '/gamble',
     element: <GambleLayout />,
     children: [
-      { path: '', element: <Navigate to="/gamble/terms" replace /> },
+      { path: '', element: <Navigate to="/gamble/stake-smart" replace /> },
       { path: 'stake-smart', element: <StakeSmart /> },
       { path: 'recognise-the-sign', element: <RecognisetheSign /> },
       { path: 'self-assessement', element: <SelfAssessment /> },
@@ -143,6 +146,10 @@ const routes = [
       { path: 'faqs', element: <AffiliateFAQs /> }
     ]
   },
+
+  { path: '/favourites', element: <Favourites /> },
+  { path: '/recent', element: <Recent /> },
+  { path: '/my-bets', element: <MyBets /> },
   
   // Catch-all route for 404
   { path: '*', element: <NotFound /> }

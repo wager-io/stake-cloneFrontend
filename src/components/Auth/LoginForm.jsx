@@ -3,21 +3,23 @@ import { toast } from 'sonner';
 import { AuthContext } from '../../context/AuthContext';
 import SocialLogin from './SocialLogin';
 import { login as loginAPI } from '../../services/authService';
+import ForgotPasswordModal from './ForgotPasswordModal';
 
 function LoginForm({ onClose }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const { login } = useContext(AuthContext); // Use login from AuthContext
+  const [showForgotPassword, setShowForgotPassword] = useState(false);
+  const { login } = useContext(AuthContext); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
 
     try {
-      const { user, token } = await loginAPI(email, password); // Call API
-      login(user, token); // Update context
+      const { user, token } = await loginAPI(email, password); 
+      login(user, token); 
       toast.success('Login successful!');
       onClose();
     } catch (err) {
@@ -29,7 +31,7 @@ function LoginForm({ onClose }) {
 
   const handleForgotPassword = (e) => {
     e.preventDefault();
-    toast.info('Password reset functionality coming soon!');
+    setShowForgotPassword(true);
   };
 
   const togglePasswordVisibility = () => {
@@ -134,6 +136,9 @@ function LoginForm({ onClose }) {
           </button>
         </div>
       </form>
+      {showForgotPassword && (
+        <ForgotPasswordModal onClose={() => setShowForgotPassword(false)} />
+      )}
 
       {/* Social Login Section */}
       {/* <SocialLogin /> */}
