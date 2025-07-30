@@ -11,7 +11,7 @@ export default function LiveSupport({ onClose }) {
     const [isExpanded, setIsExpanded] = React.useState(false);
 
   return (
-    <div className={`${isExpanded ? 'w-[65%] h-[99vh]' : 'w-[30%] h-[97vh]'} fixed bottom-0 bg-white right-5 z-[2000] rounded-2xl mb-1 transition-all duration-300 ease-in-out`}>
+    <div className={`live-support ${isExpanded ? 'w-[65%] h-[99vh]' : 'w-[30%] h-[97vh]'} fixed bottom-0 bg-white right-5 z-[2000] rounded-2xl mb-1 transition-all duration-300 ease-in-out`}>
         {!showChatAdmin && (
             <>
                 {tab === "home" && (

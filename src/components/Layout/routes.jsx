@@ -5,6 +5,8 @@ import NotFound from '../../pages/NotFound';
 import SportHome from '../../pages/SportHome';
 import SoccerLayout from '../../sports/soccer/SoccerLayout';
 import ComingSoon from '../../pages/ComingSoon';
+import GambleLayout from '../../pages/Gambling/GambleLayout';
+
 import Favourites from './Favourites';
 import Recent from './Recent';
 import MyBets from './MyBets';
@@ -22,6 +24,24 @@ const LimboGame = lazy(() => import('../../Games/Limbo/LimboGame'));
 const HiloGame = lazy(() => import('../../Games/HiloV2/HiloGame'));
 const PlinkoGame = lazy(() => import('../../Games/plinko/PlinkoGame'));
 const Transactions = lazy(() => import('../../pages/Transactions'));
+const PolicyLayout = lazy(() => import('../../pages/Privacy Policy/PolicyLayout'));
+const Privacy = lazy(() => import('../../pages/Privacy Policy/display/Privacy'));
+const DepositBonusRequirement = lazy(() => import('../../pages/Privacy Policy/display/depositBonusRequirement'));
+const CoinMixing = lazy(() => import('../../pages/Privacy Policy/display/CoinMixing'));
+const Providers = lazy(() => import('../../pages/Privacy Policy/display/Providers'));
+const SportsBook = lazy(() => import('../../pages/Privacy Policy/display/SportsBook'));
+const SelfExclusion = lazy(() => import('../../pages/Privacy Policy/display/SelfExclusion'));
+const RacingRules = lazy(() => import('../../pages/Privacy Policy/display/RacingRules'));
+const PokercardsRoomsrules = lazy(() => import('../../pages/Privacy Policy/display/PokerCards'));
+const PokerRefund = lazy(() => import('../../pages/Privacy Policy/display/PokerRefund'));
+const AffilateTerms = lazy(() => import('../../pages/Privacy Policy/display/AffilateTerms'));
+const CookiesPolicy = lazy(() => import('../../pages/Privacy Policy/display/CookiesPolicy'));
+
+const StakeSmart = lazy(() => import('../../pages/Gambling/display/StakeSmart'));
+const RecognisetheSign = lazy(() => import('../../pages/Gambling/display/RecogniseSign'));
+const SelfAssessment = lazy(() => import('../../pages/Gambling/display/SelfAssessment'));
+const BudgetCalculator = lazy(() => import('../../pages/Gambling/display/BudgetCalculator'));
+const ResponsibleGambling = lazy(() => import('../../pages/Gambling/display/ResponsibleGambling'));
 
 // Lazy-loaded affiliate tab components - corrected paths
 const AffiliateOverview = lazy(() => import('../../pages/affiliateComponent/Overview'));
@@ -29,6 +49,7 @@ const AffiliateCampaigns = lazy(() => import('../../pages/affiliateComponent/Cam
 const AffiliateCommission = lazy(() => import('../../pages/affiliateComponent/Commission'));
 const AffiliateReferredUsers = lazy(() => import('../../pages/affiliateComponent/ReferredUsers'));
 const AffiliateFAQs = lazy(() => import('../../pages/affiliateComponent/FAQs'));
+const TermsService = lazy(() => import('../../pages/Privacy Policy/display/TermsServices'));
 
 const Deposit = lazy(() => import('../../pages/transactionComponents/Deposit'));
 const Withdraw = lazy(() => import('../../pages/transactionComponents/Withdraw'));
@@ -73,6 +94,44 @@ const routes = [
       { path: 'others', element: <Others /> }
     ]
   },
+
+    // Affiliate routes with nested components
+  {
+    path: '/policies',
+    element: <PolicyLayout />,
+    children: [
+      { path: '', element: <Navigate to="/policies/terms" replace /> },
+      { path: 'terms', element: <TermsService /> },
+      { path: 'privacy', element: <Privacy /> },
+      { path: 'providers', element: <Providers /> },
+      { path: 'coin-mixing', element: <CoinMixing /> },
+      { path: 'sportsbook', element: <SportsBook /> },
+      { path: 'cookies policy', element: <CookiesPolicy /> },
+      { path: 'self-exclusion', element: <SelfExclusion/> },
+      { path: 'racing-rles', element: <RacingRules /> },
+      { path: 'poker cards', element: <PokercardsRoomsrules /> },
+      { path: 'deposit-bonus-requirement', element: <DepositBonusRequirement /> },
+      { path: 'poker-refund-policy', element: <PokerRefund /> },
+      { path: 'affilate-terms', element: <AffilateTerms /> },
+    ]
+  },
+
+
+
+    // Affiliate routes with nested components
+  {
+    path: '/gamble',
+    element: <GambleLayout />,
+    children: [
+      { path: '', element: <Navigate to="/gamble/stake-smart" replace /> },
+      { path: 'stake-smart', element: <StakeSmart /> },
+      { path: 'recognise-the-sign', element: <RecognisetheSign /> },
+      { path: 'self-assessement', element: <SelfAssessment /> },
+      { path: 'budget-calculator', element: <BudgetCalculator /> },
+      { path: 'responsible-gambling', element: <ResponsibleGambling /> },
+    ]
+  },
+  
   
   // Affiliate routes with nested components
   {
