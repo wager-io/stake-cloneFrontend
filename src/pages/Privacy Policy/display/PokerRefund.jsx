@@ -5,13 +5,13 @@ export default function PokerRefund() {
   const containerStyle = {
     padding: "20px",
     fontFamily: "Arial, sans-serif",
-    backgroundColor: "#f9f9f9",
-    color: "#333",
+    // backgroundColor: "#f9f9f9",
+    color: "white",
     maxWidth: "90%",
     margin: "20px auto",
     borderRadius: "10px",
     lineHeight: "1.6",
-    border: "1px solid #ccc",
+    // border: "1px solid #ccc",
     overflowY: "auto",
     maxHeight: "90vh"
   };
@@ -21,14 +21,14 @@ export default function PokerRefund() {
     fontSize: "26px",
     marginBottom: "20px",
     fontWeight: "bold",
-    color: "#222"
+    color: "white"
   };
 
   const sectionTitle = {
     fontSize: "20px",
     marginTop: "25px",
     fontWeight: "bold",
-    color: "#444"
+    color: "white"
   };
 
   const subItem = {
@@ -42,7 +42,7 @@ export default function PokerRefund() {
 
   const note = {
     fontStyle: "italic",
-    color: "#666",
+    color: "white",
     marginTop: "20px"
   };
 
@@ -71,6 +71,7 @@ export default function PokerRefund() {
       </ul>
 
       <h2 style={sectionTitle}>2. Cancellation and Refund</h2>
+      
 
       <h3 style={sectionTitle}>2.1. Where Cancellation Occurs before a Tournament Commences</h3>
       <ul>

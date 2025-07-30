@@ -2,24 +2,24 @@ import React from 'react'
 
 export default function SelfExclusion() {
   return (
-    <div style={{ fontFamily: 'Arial, sans-serif', padding: '20px', color: 'white', lineHeight: '1.6' }}>
-      <h2 style={{ color: 'white' }}>Self-Exclusion Policy</h2>
-      <p>If you feel you are no longer able to control your gambling or gamble safely, we offer you the option to self-exclude from betting with us. To begin the self-exclusion process, please visit our Stake Smart page.</p>
+    <div style={{ padding: '30px', fontFamily: 'Arial, sans-serif', lineHeight: '1.6', color: 'white', overflowY: "scroll", maxHeight: "90vh",  }}>
+      <h2 style={{ color: 'white', fontSize: '28px',  fontWeight: 'bold' }}>Self-Exclusion Policy</h2><br />
+      <p>If you feel you are no longer able to control your gambling or gamble safely, we offer you the option to self-exclude from betting with us. To begin the self-exclusion process, please visit our Stake Smart page.</p><br />
 
-      <h3 style={{ color: 'white' }}>1. Overview</h3>
-      <p>For the majority of people, gambling is an enjoyable leisure and entertainment activity. But for some, gambling can have negative impacts...</p>
+      <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>1. Overview</h3><br />
+      <p>For the majority of people, gambling is an enjoyable leisure and entertainment activity. But for some, gambling can have negative impacts...</p><br />
 
-      <h3 style={{ color: 'white' }}>2. What is Responsible Gambling?</h3>
-      <p>“Responsible Gambling” is a broad concept that aims to ensure gambling is conducted in a manner whereby the potential for harm associated with problem gambling is minimized...</p>
+      <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>2. What is Responsible Gambling?</h3><br />
+      <p>“Responsible Gambling” is a broad concept that aims to ensure gambling is conducted in a manner whereby the potential for harm associated with problem gambling is minimized...</p><br />
 
-      <h3 style={{ color: 'white' }}>3. What is Problem Gambling?</h3>
-      <p>Problem gambling occurs when a person loses control over their gambling, and as a result, this may have impacted their life in a negative manner.</p>
+      <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>3. What is Problem Gambling?</h3><br />
+      <p>Problem gambling occurs when a person loses control over their gambling, and as a result, this may have impacted their life in a negative manner.</p><br />
 
-      <h3 style={{ color: 'white' }}>4. Customer Care Principles</h3>
-      <p>At Stake, we want to be an industry leader in providing a safe environment for our customers...</p>
+      <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>4. Customer Care Principles</h3><br />
+      <p>At Stake, we want to be an industry leader in providing a safe environment for our customers...</p><br />
 
-      <h3 style={{ color: 'white' }}>5. Responsible Gambling Policy</h3>
-      <p>We are committed to sharing responsibility, with Governments and communities and individuals, for helping customers control their gambling...</p>
+      <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>5. Responsible Gambling Policy</h3><br />
+      <p>We are committed to sharing responsibility, with Governments and communities and individuals, for helping customers control their gambling...</p><br />
       <ul>
         <li>Allowing our customers to self-exclude from betting with us;</li>
         <li>Providing Responsible Gambling information and messages to our customers;</li>
@@ -33,30 +33,30 @@ export default function SelfExclusion() {
         <li>Enabling people adversely affected by gambling to have access to timely and appropriate assistance and information;</li>
         <li>Promoting a shared understanding of responsible gambling practices;</li>
         <li>Ensuring the gambling industry provides safe and supportive environments.</li>
-      </ul>
+      </ul><br />
 
-      <h3 style={{ color: 'white' }}>6. Minors</h3>
-      <p>We are committed to protecting minors by actively taking steps to exclude them from placing a wager using our betting platforms...</p>
+      <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>6. Minors</h3><br />
+      <p>We are committed to protecting minors by actively taking steps to exclude them from placing a wager using our betting platforms...</p><br />
 
-      <h3 style={{ color: 'white' }}>7. Filtering Options</h3>
-      <p>Filtering options can be enabled to help prevent minors from accessing gambling content. We encourage the use of tools such as:</p>
+      <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>7. Filtering Options</h3><br />
+      <p>Filtering options can be enabled to help prevent minors from accessing gambling content. We encourage the use of tools such as:</p><br />
       <ul>
         <li><strong>Betblocker:</strong> <a href="https://www.betblocker.org/">https://www.betblocker.org/</a></li>
         <li><strong>Netnanny:</strong> <a href="https://www.netnanny.com/">https://www.netnanny.com/</a></li>
         <li><strong>Gamblock:</strong> <a href="http://www.gamblock.com/">http://www.gamblock.com/</a></li>
       </ul>
-      <p>*Stake does not accept any liability in respect of any third-party software.</p>
+      <p>*Stake does not accept any liability in respect of any third-party software.</p><br />
 
-      <h3 style={{ color: 'white' }}>8. Additional Help</h3>
+      <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>8. Additional Help</h3><br />
       <p>If you or someone you know is struggling with gambling, support is available:</p>
       <ul>
         <li><strong>Gamblers Anonymous:</strong> <a href="https://gamblersanonymous.org/ga/">https://gamblersanonymous.org/ga/</a></li>
         <li><strong>Gambling Therapy:</strong> <a href="https://www.gamblingtherapy.org/">https://www.gamblingtherapy.org/</a> | Email: support@gamblingtherapy.org</li>
         <li><strong>National Council on Problem Gambling:</strong> Helpline: +1 800 426 2537 | Chat: <a href="https://www.ncpgambling.org/help-treatment/chat/">Chat Here</a></li>
         <li><strong>Gamtalk:</strong> <a href="https://www.gamtalk.org/treatment-support/">https://www.gamtalk.org/treatment-support/</a></li>
-      </ul>
+      </ul><br />
 
-      <h3 style={{ color: 'white' }}>9. Conditions and Processes</h3>
+      <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>9. Conditions and Processes</h3><br />
       <p>Self-exclusion means stopping betting or gambling for a specified or indefinite time. When you initiate self-exclusion:</p>
       <ul>
         <li>You won’t access your account during this period</li>

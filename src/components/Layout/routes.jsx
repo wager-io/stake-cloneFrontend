@@ -26,7 +26,7 @@ const PlinkoGame = lazy(() => import('../../Games/plinko/PlinkoGame'));
 const Transactions = lazy(() => import('../../pages/Transactions'));
 const PolicyLayout = lazy(() => import('../../pages/Privacy Policy/PolicyLayout'));
 const Privacy = lazy(() => import('../../pages/Privacy Policy/display/Privacy'));
-const depositBonusRequirement= lazy(() => import('../../pages/Privacy Policy/display/depositBonusRequirement'));
+const DepositBonusRequirement = lazy(() => import('../../pages/Privacy Policy/display/depositBonusRequirement'));
 const CoinMixing = lazy(() => import('../../pages/Privacy Policy/display/CoinMixing'));
 const Providers = lazy(() => import('../../pages/Privacy Policy/display/Providers'));
 const SportsBook = lazy(() => import('../../pages/Privacy Policy/display/SportsBook'));
@@ -110,7 +110,7 @@ const routes = [
       { path: 'self-exclusion', element: <SelfExclusion/> },
       { path: 'racing-rles', element: <RacingRules /> },
       { path: 'poker cards', element: <PokercardsRoomsrules /> },
-      { path: 'deposit-bonus-requirement', element: <depositBonusRequirement /> },
+      { path: 'deposit-bonus-requirement', element: <DepositBonusRequirement /> },
       { path: 'poker-refund-policy', element: <PokerRefund /> },
       { path: 'affilate-terms', element: <AffilateTerms /> },
     ]

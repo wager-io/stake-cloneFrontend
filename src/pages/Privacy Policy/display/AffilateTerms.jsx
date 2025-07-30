@@ -5,11 +5,11 @@ export default function AffilateTerms() {
     padding: "20px",
     fontFamily: "Arial, sans-serif",
     lineHeight: "1.6",
-    color: "#333",
-    backgroundColor: "#f9f9f9",
+    color: "white",
+    // backgroundColor: "#f9f9f9",
     maxHeight: "90vh",
     overflowY: "scroll",
-    border: "1px solid #ccc",
+    // border: "1px solid #ccc",
     borderRadius: "8px",
     margin: "20px auto",
     width: "90%",
@@ -19,14 +19,14 @@ export default function AffilateTerms() {
     fontSize: "20px",
     fontWeight: "bold",
     marginTop: "30px",
-    color: "#222",
+    color: "white",
   };
 
   const subHeader = {
     fontSize: "16px",
     fontWeight: "bold",
     marginTop: "15px",
-    color: "#444",
+    color: "white",
   };
 
   const paragraph = {
@@ -39,7 +39,7 @@ export default function AffilateTerms() {
 
   return (
     <div style={containerStyle}>
-      <h1 style={{ textAlign: "center", fontSize: "28px", marginBottom: "20px" }}>
+      <h1 style={{ textAlign: "center", fontSize: "28px", marginBottom: "20px", fontWeight: "bold", color: "white" }}>
         Stake Affiliate Terms
       </h1>
 
@@ -126,7 +126,7 @@ export default function AffilateTerms() {
       <h2 style={sectionHeader}>Schedules (A–D)</h2>
       <p style={paragraph}>The full schedules A, B, C, and D detail your services, standards, payment structure, and eligibility.</p>
 
-      <p style={{ fontSize: "14px", marginTop: "40px", textAlign: "center", color: "#888" }}>
+      <p style={{ fontSize: "14px", marginTop: "40px", textAlign: "center", color: "white" }}>
         © {new Date().getFullYear()} Stake Affiliate Program Terms
       </p>
     </div>

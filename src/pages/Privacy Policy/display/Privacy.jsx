@@ -9,28 +9,31 @@ export default function Privacy() {
     fontFamily: 'Arial, sans-serif',
     fontSize: '14px',
     lineHeight: '1.6',
-    color: '#333',
-    backgroundColor: '#fff',
+    color: 'white',
+    // backgroundColor: '#fff',
     borderRadius: '8px',
     boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
     overflowY: 'auto',
     height: '90vh',
+    maxHeight: "90vh",
+    overflowY: "scroll",
   };
 
   const headingStyle = {
-    fontSize: '20px',
+    fontSize: '28px',
     fontWeight: 'bold',
     marginTop: '30px',
     marginBottom: '10px',
-    color: '#111',
+    color: 'white',
+    textAlign: 'center'
   };
 
   const subHeadingStyle = {
-    fontSize: '16px',
+    fontSize: '17px',
     fontWeight: 'bold',
     marginTop: '20px',
     marginBottom: '10px',
-    color: '#222',
+    color: 'white',
   };
 
   const emailStyle = {

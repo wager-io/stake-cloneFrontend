@@ -10,13 +10,16 @@ export default function CookiesPolicy() {
     color: 'white',
     lineHeight: '1.6',
     fontSize: '16px',
+    maxHeight: "90vh",
+    overflowY: "scroll",
   };
 
   const headingStyle = {
-    fontSize: '22px',
+    fontSize: '28px',
     fontWeight: 'bold',
     marginBottom: '15px',
     color: 'white',
+    textAlign: 'center',
   };
 
   const subHeadingStyle = {
