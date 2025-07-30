@@ -1,4 +1,4 @@
-.tabs-container {
+.live-support .tabs-container {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -11,7 +11,7 @@
   background-color: white;
 }
 
-.tab-item {
+.live-support .tabs-container .tab-item {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,14 +21,14 @@
   transition: color 0.2s;
 }
 
-.tab-item.active {
+.live-support .tabs-container .tab-item.active {
   color: #1e90ff;
 }
 
-.tab-item:hover svg {
+.live-support .tabs-container .tab-item:hover svg {
   color: #1e90ff;
   transition: color 0.2s;
 }
-.tab-item svg {
+.live-support .tabs-container .tab-item svg {
   font-size: 1.5rem; 
 }

@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
+    "@giphy/js-fetch-api": "^5.7.0",
+    "@giphy/react-components": "^10.1.0",
     "@headlessui/react": "^2.2.3",
     "@heroicons/react": "^2.2.0",
     "@pixi/particle-emitter": "^5.0.8",
@@ -19,7 +21,7 @@
     "axios": "^1.9.0",
     "country-state-city": "^3.2.1",
     "date-fns": "^4.1.0",
-    "emoji-picker-react": "^4.12.2",
+    "emoji-picker-react": "^4.13.2",
     "fabric": "^6.6.5",
     "framer-motion": "^12.11.4",
     "gsap": "^3.13.0",
