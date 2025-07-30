@@ -5,6 +5,9 @@ import NotFound from '../../pages/NotFound';
 import SportHome from '../../pages/SportHome';
 import SoccerLayout from '../../sports/soccer/SoccerLayout';
 import ComingSoon from '../../pages/ComingSoon';
+import Favourites from './Favourites';
+import Recent from './Recent';
+import MyBets from './MyBets';
 
 // Import transaction components
 // Lazy-loaded components (loaded on demand)
@@ -84,6 +87,10 @@ const routes = [
       { path: 'faqs', element: <AffiliateFAQs /> }
     ]
   },
+
+  { path: '/favourites', element: <Favourites /> },
+  { path: '/recent', element: <Recent /> },
+  { path: '/my-bets', element: <MyBets /> },
   
   // Catch-all route for 404
   { path: '*', element: <NotFound /> }

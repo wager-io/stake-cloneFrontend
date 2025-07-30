@@ -32,7 +32,7 @@ export default function LiveSupport({ onClose }) {
 
 
         {showChatAdmin && (
-            <ChatAdmin setShowChatAdmin={setShowChatAdmin} />
+            <ChatAdmin onClose={onClose} />
         )}
 
     </div>

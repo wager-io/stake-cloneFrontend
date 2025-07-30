@@ -1,6 +1,8 @@
 import { useState, useContext } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom'; // Import useLocation for route checking
 import { AuthContext } from '../../context/AuthContext'; // Import AuthContext
+import Favourites from './Favourites';
+import Recent from './Recent';
 
 function Sidebar({ isOpen, toggleSidebar, setOpenLiveSupport, openLiveSupport }) {
   const [isPromotionsOpen, setIsPromotionsOpen] = useState(false); // State to toggle promotions dropdown
@@ -8,6 +10,8 @@ function Sidebar({ isOpen, toggleSidebar, setOpenLiveSupport, openLiveSupport })
   const navigate = useNavigate(); // Initialize useNavigate for navigation
   const location = useLocation(); // Get the current route
   const { user, logout } = useContext(AuthContext); // Get user and logout function from AuthContext
+  const [showFavourites, setShowFavourites] = useState(false);
+  const [showRecent, setShowRecent] = useState(false);
 
   const isCasinoRoute = location.pathname.includes('/casino'); // Check if the current route includes "/casino"
   const isSportRoute = location.pathname.includes('/sport'); // Check if the current route includes "/sport"
@@ -103,305 +107,145 @@ function Sidebar({ isOpen, toggleSidebar, setOpenLiveSupport, openLiveSupport })
     }
   };
 
+  const handleFavouriteClick = () => {
+    setShowFavourites(true);
+    setShowRecent(false);
+  };
+
+  const handleRecentClick = () => {
+    setShowRecent(true);
+    setShowFavourites(false);
+  };
+
+  const handleCloseFavourites = () => {
+    setShowFavourites(false);
+  };
+
+  const handleCloseRecent = () => {
+    setShowRecent(false);
+  };
+
+  // Helper to determine if a sidebar item is active
+  const isActive = (path) => location.pathname === path;
+
   return (
-    <aside
-      className={`bg-[#0f212e] sidebar pb-12 shadow-lg transition-all h-screen duration-300 ease-in-out fixed ${
-        isOpen ? 'w-[240px]' : 'w-[70px]'
-      } left-0 z-[-1] pt-0`}
-    >
-
-      {/* Top menu bar with hamburger and buttons */}
-      <div className="flex items-center px-4 h-[60px] shadow-md relative z-[-1]">
-        <button
-          className="text-grey-200 hover:text-white mr-4 cursor-pointer"
-          onClick={toggleSidebar}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+    <>
+      <aside
+        className={`bg-[#0f212e] sidebar pb-12 shadow-lg transition-all h-screen duration-300 ease-in-out fixed ${
+          isOpen ? 'w-[240px]' : 'w-[70px]'
+        } left-0 z-[-1] pt-0`}
+      >
+        {/* Top menu bar with hamburger and buttons */}
+        <div className="flex items-center px-4 h-[60px] shadow-md relative z-[-1]">
+          <button
+            className="text-grey-200 hover:text-white mr-4 cursor-pointer"
+            onClick={toggleSidebar}
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-        </button>
-
-        {isOpen && (
-          <div className="flex space-x-2">
-            {/* Casino Button */}
-            <button
-              onClick={() => navigate('/casino/home/')} // Navigate to /casino/home/
-              className="relative text-white font-semibold py-2 px-3 rounded-[6px] text-sm transition-all overflow-hidden group cursor-pointer"
-              style={{
-                width: '80px',
-                height: '36px',
-              }}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
             >
-              <div
-                className={`absolute rounded-[4px] inset-0 bg-cover bg-center transition-opacity duration-300 group-hover:opacity-0 ${
-                  isCasinoRoute ? 'opacity-0' : 'opacity-100'
-                }`}
-                style={{
-                  backgroundImage: 'url(/assets/sidebar/casino-poker-cards-en.jpg)',
-                }}
-              ></div>
-              <div
-                className={`absolute rounded-[4px] inset-0 bg-cover bg-center transition-opacity duration-300 group-hover:opacity-100 ${
-                  isCasinoRoute ? 'opacity-100' : 'opacity-0'
-                }`}
-                style={{
-                  backgroundImage: 'url(/assets/sidebar/casino-poker-cards-green-en.jpg)',
-                }}
-              ></div>
-              <span className="relative z-10">CASINO</span>
-            </button>
-            {/* Sports Button */}
-            <button
-              onClick={() => navigate('/sport/home/')} // Navigate to /sport/home/
-              className="relative text-white font-semibold py-2 px-3 rounded-md text-sm transition-all overflow-hidden group cursor-pointer"
-              style={{
-                width: '80px',
-                height: '36px',
-              }}
-            >
-              <div
-                className="absolute rounded-[4px] inset-0 bg-cover bg-center transition-opacity duration-300 opacity-100 group-hover:opacity-0"
-                style={{
-                  backgroundImage: 'url(/assets/sidebar/sports-balls-en.jpg)',
-                }}
-              ></div>
-              <div
-                className={`absolute rounded-[4px] inset-0 bg-cover bg-center transition-opacity duration-300 group-hover:opacity-100 ${
-                  isSportRoute ? 'opacity-100' : 'opacity-0'
-                }`}
-                style={{
-                  backgroundImage: 'url(/assets/sidebar/sports-balls-orange-en.jpg)',
-                }}
-              ></div>
-              <span className="relative z-10">SPORTS</span>
-            </button>
-          </div>
-        )}
-      </div>
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+          {isOpen && (
+            <div className="flex space-x-2">
+              {/* Casino Button */}
+              <button
+                onClick={() => navigate('/casino/home/')}
+                className="relative text-white font-semibold py-2 px-3 rounded-[6px] text-sm transition-all overflow-hidden group cursor-pointer"
+                style={{ width: '80px', height: '36px' }}
+              >
+                <div
+                  className={`absolute rounded-[4px] inset-0 bg-cover bg-center transition-opacity duration-300 group-hover:opacity-0 ${isCasinoRoute ? 'opacity-0' : 'opacity-100'}`}
+                  style={{ backgroundImage: 'url(/assets/sidebar/casino-poker-cards-en.jpg)' }}
+                ></div>
+                <div
+                  className={`absolute rounded-[4px] inset-0 bg-cover bg-center transition-opacity duration-300 group-hover:opacity-100 ${isCasinoRoute ? 'opacity-100' : 'opacity-0'}`}
+                  style={{ backgroundImage: 'url(/assets/sidebar/casino-poker-cards-green-en.jpg)' }}
+                ></div>
+                <span className="relative z-10">CASINO</span>
+              </button>
+              {/* Sports Button */}
+              <button
+                onClick={() => navigate('/sport/home/')}
+                className="relative text-white font-semibold py-2 px-3 rounded-md text-sm transition-all overflow-hidden group cursor-pointer"
+                style={{ width: '80px', height: '36px' }}
+              >
+                <div
+                  className="absolute rounded-[4px] inset-0 bg-cover bg-center transition-opacity duration-300 opacity-100 group-hover:opacity-0"
+                  style={{ backgroundImage: 'url(/assets/sidebar/sports-balls-en.jpg)' }}
+                ></div>
+                <div
+                  className={`absolute rounded-[4px] inset-0 bg-cover bg-center transition-opacity duration-300 group-hover:opacity-100 ${isSportRoute ? 'opacity-100' : 'opacity-0'}`}
+                  style={{ backgroundImage: 'url(/assets/sidebar/sports-balls-orange-en.jpg)' }}
+                ></div>
+                <span className="relative z-10">SPORTS</span>
+              </button>
+            </div>
+          )}
+        </div>
+        <div className="h-full overflow-y-auto">
+          <nav className="px-4 py-6">
 
-      
-
-      <div className="h-full overflow-y-auto">
-        <nav className="px-4 py-6">
-            {/* Second card container for support links */}
-           {isCasinoRoute && 
-          <div className="mt-6 mb-5 rounded-[4px] overflow-visible bg-[var(--card-bg-10)]" >
-            <ul>
-              {FavNavItems.map((item, index) => (
-                <li key={index} className="relative group">
-                  <a 
-                    href="#" 
-                    className={`flex items-center ${!isOpen && 'justify-center'} font-semibold p-3 
-                    ${!user ? 'text-gray-500 cursor-not-allowed' : 'text-grey-200 hover:bg-[#2f4553] hover:text-white'} 
-                    text-[13px] transition-colors`}
-                    onClick={(e) => !user && e.preventDefault()}
-                  >
-                    <svg 
-                      xmlns="http://www.w3.org/2000/svg" 
-                      className={`${isOpen ? 'h-5 w-5 mr-3' : 'h-6 w-6 transition-transform group-hover:scale-110'} 
-                      ${!user ? 'text-gray-500' : ''}`}
-                      fill="none" 
-                      viewBox="0 0 24 24" 
-                      stroke="currentColor"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={item.icon} />
-                    </svg>
-                    {isOpen && <span>{item.name}</span>}
-                  </a>
-                  {!isOpen && (
-                    <div className="absolute left-[76px] top-0 px-3 py-1 bg-white text-grey-800 text-xs font-bold rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-[100] shadow-md ml-2 h-full flex items-center pointer-events-none">
-                      {item.name}
-                      {!user && <span className="ml-1 text-red-500">(Login required)</span>}
-                      <div className="absolute top-1/2 left-[-6px] transform -translate-y-1/2 w-3 h-3 bg-white rotate-45"></div>
-                    </div>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
-            }
-
-          {/* Games card container */}
-          {isCasinoRoute && 
-           <div className="mt-6 rounded-[4px] mb-5 overflow-visible bg-[var(--card-bg-10)]" >
-            {isOpen && (
-              <div className="px-4 py-2 border-b border-[#1a3547]">
-                <h3 className="text-gray-400 text-xs font-semibold uppercase tracking-wider">Games</h3>
-              </div>
-            )}
-            <div className={isOpen ? "pt-1" : ""}>
+            <div className="mt-6 mb-5 rounded-[4px] overflow-visible bg-[var(--card-bg-10)]">
               <ul>
-                {gamesItems.map((item, index) => (
+                {[
+                  { name: 'Favourites', icon: FavNavItems[0].icon, path: '/favourites' },
+                  { name: 'Recent', icon: FavNavItems[1].icon, path: '/recent' },
+                  { name: 'Challenges', icon: FavNavItems[2].icon, path: '/challenges' },
+                  { name: 'My Bets', icon: FavNavItems[3].icon, path: '/my-bets' },
+                ].map((item, index) => (
                   <li key={index} className="relative group">
-                    <a 
-                      href={item.path} 
-                      className={`flex items-center ${!isOpen && 'justify-center'} font-semibold p-3 text-grey-200 text-[13px] hover:bg-[#2f4553] hover:text-white transition-colors`}
+                    <a
+                      href="#"
+                      className={`flex items-center font-semibold p-3 text-[13px] transition-colors rounded ${isActive(item.path) ? 'bg-[#22384a] text-white' : 'text-grey-200 hover:bg-[#2f4553] hover:text-white'} ${!isOpen && 'justify-center'}`}
+                      onClick={e => {
+                        e.preventDefault();
+                        navigate(item.path);
+                      }}
                     >
-                      <svg 
-                        xmlns="http://www.w3.org/2000/svg" 
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
                         className={`${isOpen ? 'h-5 w-5 mr-3' : 'h-6 w-6 transition-transform group-hover:scale-110'}`}
-                        fill="none" 
-                        viewBox="0 0 24 24" 
+                        fill="none"
+                        viewBox="0 0 24 24"
                         stroke="currentColor"
                       >
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={item.icon} />
                       </svg>
                       {isOpen && <span>{item.name}</span>}
                     </a>
-                    {!isOpen && (
-                      <div className="absolute left-[76px] top-0 px-3 py-1 bg-white text-grey-800 text-xs font-bold rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-[100] shadow-md ml-2 h-full flex items-center pointer-events-none">
-                        {item.name}
-                        <div className="absolute top-1/2 left-[-6px] transform -translate-y-1/2 w-3 h-3 bg-white rotate-45"></div>
-                      </div>
-                    )}
                   </li>
                 ))}
               </ul>
             </div>
-          </div>
-          }
-         
-          
-          {/* Card container for additional nav links */}
-        <div className='bg-[var(--card-bg-10)] '>
-            <div className="mt-0 overflow-visible rounded-[4px] bg-[var(--card-bg-10)]" >
-            <ul>
-              {cardNavItems.map((item, index) => {
-                // Skip rendering Profile if user is not logged in
-                if (item.requiresAuth && !user) {
-                  return null;
-                }
-                
-                return (
-                  <li key={index} className="relative group">
-                    {item.name === 'Profile' ? (
-                      <>
-                        <button
-                          onClick={() => setIsProfileOpen(!isProfileOpen)}
-                          className={`flex items-center justify-between rounded w-full font-semibold p-3 text-grey-200 text-[13px] hover:bg-[#2f4553] hover:text-white transition-colors ${
-                            !isOpen && 'justify-center'
-                          }`}
-                        >
-                          <div className="flex items-center">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              className={`${isOpen ? 'h-5 w-5 mr-3' : 'h-6 w-6'}`}
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                            >
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={item.icon} />
-                            </svg>
-                            {isOpen && <span>{item.name}</span>}
-                          </div>
-                          {isOpen && (
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              className={`h-4 w-4 transform transition-transform ${
-                                isProfileOpen ? 'rotate-180' : ''
-                              }`}
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                              strokeWidth={2}
-                            >
-                              <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                            </svg>
-                          )}
-                        </button>
-                        {isProfileOpen && isOpen && (
-                          <ul className="pl-4 pr-4 bg-[#142736] rounded-md mt-2 py-2">
-                            {profileSubItems.map((subItem, subIndex) => (
-                              <li key={subIndex} className="py-2">
-                                <button
-                                  onClick={() => handleProfileItemClick(subItem)}
-                                  className="flex items-center rounded w-full text-gray-300 hover:text-white text-sm transition-colors"
-                                >
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="h-4 w-4 mr-2"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                  >
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={subItem.icon} />
-                                  </svg>
-                                  <span>{subItem.name}</span>
-                                </button>
-                              </li>
-                            ))}
-                          </ul>
-                        )}
-                      </>
-                    ) : item.name === 'Promotions' ? (
-                      <>
-                        <button
-                          onClick={() => setIsPromotionsOpen(!isPromotionsOpen)}
-                          className={`flex items-center justify-between w-full rounded font-semibold p-3 text-grey-200 text-[13px] hover:bg-[#2f4553] hover:text-white transition-colors ${
-                            !isOpen && 'justify-center'
-                          }`}
-                        >
-                          <div className="flex items-center">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              className={`${isOpen ? 'h-5 w-5 mr-3' : 'h-6 w-6'}`}
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                            >
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={item.icon} />
-                            </svg>
-                            {isOpen && <span>{item.name}</span>}
-                          </div>
-                          {isOpen && (
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              className={`h-4 w-4 transform transition-transform ${
-                                isPromotionsOpen ? 'rotate-180' : ''
-                              }`}
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                              strokeWidth={2}
-                            > 
-                              <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                            </svg>
-                          )}
-                        </button>
-                        {isPromotionsOpen && isOpen && (
-                          <ul className="pl-8 bg-[#1a2c38] rounded-md mt-2">
-                            {promotionsSubItems.map((subItem, subIndex) => (
-                              <li key={subIndex} className="py-2">
-                                <a
-                                  href={subItem.path}
-                                  className="text-gray-300 hover:text-white text-sm rounded transition-colors"
-                                >
-                                  {subItem.name}
-                                </a>
-                              </li>
-                            ))}
-                          </ul>
-                        )}
-                      </>
-                    ) : (
+            {/* Games section always visible */}
+            <div className="mt-6 rounded-[4px] mb-5 overflow-visible bg-[var(--card-bg-10)]">
+              {isOpen && (
+                <div className="px-4 py-2 border-b border-[#1a3547]">
+                  <h3 className="text-gray-400 text-xs font-semibold uppercase tracking-wider">Games</h3>
+                </div>
+              )}
+              <div className={isOpen ? 'pt-1' : ''}>
+                <ul>
+                  {gamesItems.map((item, index) => (
+                    <li key={index} className="relative group">
                       <a
                         href={item.path}
-                        className={`flex items-center ${!isOpen && 'justify-center'} rounded font-semibold p-3 text-grey-200 text-[13px] hover:bg-[#2f4553] hover:text-white transition-colors`}
+                        className={`flex items-center font-semibold p-3 text-[13px] transition-colors rounded ${isActive(item.path) ? 'bg-[#22384a] text-white' : 'text-grey-200 hover:bg-[#2f4553] hover:text-white'} ${!isOpen && 'justify-center'}`}
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
-                          className={`${isOpen ? 'h-5 w-5 mr-3' : 'h-6 w-6'}`}
+                          className={`${isOpen ? 'h-5 w-5 mr-3' : 'h-6 w-6 transition-transform group-hover:scale-110'}`}
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
@@ -410,77 +254,47 @@ function Sidebar({ isOpen, toggleSidebar, setOpenLiveSupport, openLiveSupport })
                         </svg>
                         {isOpen && <span>{item.name}</span>}
                       </a>
-                    )}
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-
-          <div className='bg-gray-500 h-[1px] w-[90%] my-6 mx-2'></div>
-          
-          {/* Second card container for support links */}
-          <div className=" rounded-[4px] overflow-visible " >
-            <ul>
-              {supportNavItems.map((item, index) => (
-                <li key={index} className="relative group">
-                  {item.name === 'Live Support' ? (
-                    <>
-                      <button onClick={() => setOpenLiveSupport(!openLiveSupport)}
-                        className={`flex items-center ${!isOpen && 'justify-center'} rounded w-full font-semibold p-3 text-grey-200 text-[13px] hover:bg-[#2f4553] hover:text-white transition-colors`}>
-                            <svg 
-                      xmlns="http://www.w3.org/2000/svg" 
-                      className={`${isOpen ? 'h-5 w-5 mr-3' : 'h-6 w-6 transition-transform group-hover:scale-110'}`}
-                      fill="none" 
-                      viewBox="0 0 24 24" 
-                      stroke="currentColor"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={item.icon} />
-                    </svg>
-                    {isOpen && <span>{item.name}</span>}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            
+            {/* Support section */}
+            <div className="mt-6 rounded-[4px] mb-5 overflow-visible bg-[var(--card-bg-10)]">
+              {isOpen && (
+                <div className="px-4 py-2 border-b border-[#1a3547]">
+                  <h3 className="text-gray-400 text-xs font-semibold uppercase tracking-wider">Support</h3>
+                </div>
+              )}
+              <div className={isOpen ? 'pt-1' : ''}>
+                <ul>
+                  {supportNavItems.map((item, index) => (
+                    <li key={index} className="relative group">
+                      <button
+                        className={`w-full flex items-center font-semibold p-3 text-[13px] transition-colors rounded ${openLiveSupport ? 'bg-[#22384a] text-white' : 'text-grey-200 hover:bg-[#2f4553] hover:text-white'} ${!isOpen && 'justify-center'}`}
+                        onClick={() => setOpenLiveSupport(!openLiveSupport)}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className={`${isOpen ? 'h-5 w-5 mr-3' : 'h-6 w-6 transition-transform group-hover:scale-110'}`}
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={item.icon} />
+                        </svg>
+                        {isOpen && <span>{item.name}</span>}
                       </button>
-                    </>
-                  ) : 
-                  <>
-                  <a 
-                    href="#" 
-                    className={`flex items-center ${!isOpen && 'justify-center'} rounded font-semibold p-3 text-grey-200 text-[13px] hover:bg-[#2f4553] hover:text-white transition-colors`}
-                  >
-                    <svg 
-                      xmlns="http://www.w3.org/2000/svg" 
-                      className={`${isOpen ? 'h-5 w-5 mr-3' : 'h-6 w-6 transition-transform group-hover:scale-110'}`}
-                      fill="none" 
-                      viewBox="0 0 24 24" 
-                      stroke="currentColor"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={item.icon} />
-                    </svg>
-                    {isOpen && <span>{item.name}</span>}
-                  </a> 
-                  </>
-                  }
-                 
-                  {!isOpen && (
-                    <div className="absolute left-[76px] top-0 px-3 py-1 bg-white text-grey-800 text-xs font-bold rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-[100] shadow-md ml-2 h-full flex items-center pointer-events-none">
-                      {item.name}
-                      <div className="absolute top-1/2 left-[-6px] transform -translate-y-1/2 w-3 h-3 bg-white rotate-45"></div>
-                    </div>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>  
-     
-
-
-
-        </nav>
-      </div>
-
-      {/* Bottom section for additional links */}
-
-    </aside>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </aside>
+    </>
   );
 }
 
