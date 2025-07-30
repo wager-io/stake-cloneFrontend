@@ -1,0 +1,192 @@
+.home-container {
+  position: relative;
+  padding: 32px 24px 24px;
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  background: #fff;
+  width: 100%;
+  max-width: 500px;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  font-family: 'Segoe UI', sans-serif;
+}
+
+
+.home-bg-container {
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  width: calc(100% + 10px);
+  height: 300px; 
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.home-bg-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.4) 100%);
+  z-index: 1;
+}
+
+.home-bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+}
+
+
+.home-header,
+.home-title,
+.home-subtitle,
+.home-cards,
+.home-search {
+  position: relative;
+  z-index: 2;
+}
+
+
+.home-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.home-logo {
+  height: 32px;
+}
+
+.home-right-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.home-avatars {
+  display: flex;
+  gap: 8px;
+}
+
+.home-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+
+.home-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+  margin-left: 8px;
+}
+
+
+.home-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 4px;
+}
+
+.home-subtitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 32px;
+}
+
+
+.home-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.home-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  z-index: 3;
+  
+}
+
+.home-card-title {
+  font-weight: 700;
+  font-size: 16px;
+  color: #1e1e1e;
+  margin-bottom: 6px;
+}
+
+.home-card-desc {
+  font-size: 14px;
+  color: #6c7a89;
+}
+
+
+.home-search {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #e3e6ea;
+  border-radius: 12px;
+  padding: 0 12px;
+  height: 48px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.home-search input {
+  border: none;
+  outline: none;
+  flex: 1;
+  font-size: 15px;
+  background: transparent;
+  color: #1e1e1e;
+}
+
+.home-search-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #1e90ff;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-card-title-button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1e1e1e;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+  width: 100%;
+  transition: color 0.2s;
+}
+
+.home-card-title-button:hover {
+  color: #1e90ff; 
+}
+
+
+

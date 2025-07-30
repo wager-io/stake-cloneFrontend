@@ -1,0 +1,109 @@
+.message-box {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.message-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid #eee;
+  font-size: 18px;
+  font-weight: bold;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  color: #000;
+}
+
+.message-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 20px;
+  text-align: center;
+  color: #444;
+  background-color: #fefefe;
+}
+
+.message-icon {
+  font-size: 42px;
+  margin-bottom: 12px;
+  color: #007bff;
+}
+
+.message-body h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.message-body p {
+  font-size: 14px;
+  margin-top: 8px;
+  color: #777;
+}
+
+.message-input-container {
+  display: flex;
+  padding: 14px 16px;
+  border-top: 1px solid #eee;
+  background: #fafafa;
+  gap: 10px;
+}
+
+.message-input-container input {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.2s ease;
+}
+
+.message-input-container input:focus {
+  border-color: #007bff;
+}
+
+.send-btn {
+  padding: 10px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.send-btn:hover {
+  background-color: #0056b3;
+}
+
+.message-header span {
+  color: #111;
+  font-size: 18px;
+  font-weight: 700;
+}
