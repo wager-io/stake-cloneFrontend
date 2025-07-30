@@ -5,7 +5,7 @@ import { toast } from 'sonner';
 export const serverUrl = () => {
     let url = location.hostname === "localhost" || location.hostname === "127.0.0.1" 
     ? "http://localhost:8000" : "https://wager-backend.onrender.com"
-     return "https://wager-backend.onrender.com"
+     return url
 }
 
 // Create an Axios instance
