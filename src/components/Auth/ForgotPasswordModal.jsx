@@ -1,24 +1,31 @@
 import { useState } from 'react';
 import './ForgotPasswordModal.css';
 import OTPInputModal from './OTPInputModal';
+import { toast } from 'sonner';
+import api from '../../utils/api';
 
-function ForgotPasswordModal({ onClose }) {
+function ForgotPasswordModal({ onClose, onNavigateToLogin }) {
   const [email, setEmail] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState('');
   const [showOTPModal, setShowOTPModal] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    setError('');
+
     try {
+      const response = await api.post('/auth/forget', { email });
       
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      setShowOTPModal(true);
+      if (response.data.success) {
+        toast.success(response.data.message || 'OTP sent successfully!');
+        setShowOTPModal(true);
+      } else {
+        toast.error(response.data.message || 'Failed to send OTP. Please try again.');
+      }
     } catch (err) {
-      setError('Failed to send OTP. Please try again.');
+      console.error('Send OTP error:', err);
+      const errorMessage = err.response?.data?.message || 'Failed to send OTP. Please try again.';
+      toast.error(errorMessage);
     } finally {
       setIsLoading(false);
     }
@@ -39,17 +46,6 @@ function ForgotPasswordModal({ onClose }) {
           Forgot Password
         </div>
         <div className="forgot-modal-body">
-          {success ? (
-            <div className="forgot-modal-success">
-              <p>If an account with that email exists, a password reset link has been sent.</p>
-              <button
-                className="forgot-modal-success-btn"
-                onClick={onClose}
-              >
-                Close
-              </button>
-            </div>
-          ) : (
             <form onSubmit={handleSubmit}>
               <div className="forgot-modal-field">
                 <label className="forgot-modal-label">
@@ -64,7 +60,6 @@ function ForgotPasswordModal({ onClose }) {
                   required
                 />
               </div>
-              {error && <div className="forgot-modal-error">{error}</div>}
               <div className="forgot-modal-actions">
                 <button
                   type="submit"
@@ -75,7 +70,6 @@ function ForgotPasswordModal({ onClose }) {
                 </button>
               </div>
             </form>
-          )}
         </div>
       </div>
       {showOTPModal && (
@@ -85,6 +79,7 @@ function ForgotPasswordModal({ onClose }) {
             onClose();
           }}
           email={email}
+          onNavigateToLogin={onNavigateToLogin}
         />
       )}
     </div>

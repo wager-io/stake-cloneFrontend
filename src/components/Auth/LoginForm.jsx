@@ -137,7 +137,13 @@ function LoginForm({ onClose }) {
         </div>
       </form>
       {showForgotPassword && (
-        <ForgotPasswordModal onClose={() => setShowForgotPassword(false)} />
+        <ForgotPasswordModal 
+          onClose={() => setShowForgotPassword(false)} 
+          onNavigateToLogin={() => {
+            setShowForgotPassword(false);
+            // The login form is already visible, so we just close the forgot password modal
+          }}
+        />
       )}
 
       {/* Social Login Section */}

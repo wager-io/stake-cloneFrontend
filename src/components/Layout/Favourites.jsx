@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
 import './Favourites.css';
 
 const Favourites = () => {
@@ -7,22 +9,44 @@ const Favourites = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [favourites, setFavourites] = useState([]);
+  const swiperRef = useRef(null);
   const gamesPerPage = 12;
 
   // TODO: Replace with real data from backend API
   // API endpoint should be: GET /api/user/favourites
   // Response should include: { games: [{ id, title, image, path }] }
-  // Favourites are games that the user has manually marked as favorite
   const sampleFavourites = [
-    // Empty array since no games have been marked as favorite yet
-    // Users can add games to favorites from the main games list
+    {
+      id: 1,
+      title: "Plinko",
+      image: "/assets/InhouseGames/plinko.png",
+      path: "/casino/plinko"
+    },
+    {
+      id: 2,
+      title: "Limbo",
+      image: "/assets/InhouseGames/limboGame.png",
+      path: "/casino/limbo"
+    },
+    {
+      id: 3,
+      title: "Hilo",
+      image: "/assets/InhouseGames/hiloGAMES.png",
+      path: "/casino/Hilo"
+    },
+    {
+      id: 4,
+      title: "Crash",
+      image: "/assets/InhouseGames/crash-game.png",
+      path: "/casino/crash"
+    }
   ];
 
   useEffect(() => {
     // TODO: Replace with API call to backend
     // For now, clear any old localStorage data and start fresh
     localStorage.removeItem('userFavourites'); // Clear old sample data
-    setFavourites(sampleFavourites); // Empty array
+    setFavourites(sampleFavourites); // Set sample data
     
     // When backend is ready, replace above with:
     // fetchUserFavourites().then(games => setFavourites(games));
@@ -60,9 +84,7 @@ const Favourites = () => {
       <div className="favourites-header">
         <h1 className="favourites-title">Favourites</h1>
         <div className="favourites-crown">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
-          </svg>
+          <img src="/group-banner-default.png" alt="Favourite Games" className="favourites-icon" />
         </div>
       </div>
 
@@ -83,27 +105,55 @@ const Favourites = () => {
 
       <div className="favourites-content">
         {currentGames.length > 0 ? (
-          <div className="favourites-grid">
-            {currentGames.map((game) => (
-              <div key={game.id} className="game-card" onClick={() => handleGameClick(game.path)}>
-                <div className="game-card-content">
-                  <div className="game-image-section">
-                    <img src={game.image} alt={game.title} className="game-image" />
-                  </div>
-                  <button 
-                    className="remove-favourite-btn"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleRemoveFavourite(game.id);
-                    }}
+          <div className="w-full h-[240px] mb-6">
+            <Swiper
+              onSwiper={(swiper) => {
+                swiperRef.current = swiper;
+              }}
+              spaceBetween={16}
+              slidesPerView={5}
+              slidesPerGroup={5}
+              breakpoints={{
+                320: {
+                  slidesPerView: 2,
+                  slidesPerGroup: 2,
+                  spaceBetween: 10,
+                },
+                640: {
+                  slidesPerView: 3,
+                  slidesPerGroup: 3,
+                  spaceBetween: 12,
+                },
+                768: {
+                  slidesPerView: 4,
+                  slidesPerGroup: 4,
+                  spaceBetween: 14,
+                },
+                1024: {
+                  slidesPerView: 5,
+                  slidesPerGroup: 5,
+                  spaceBetween: 16,
+                },
+              }}
+              className="h-full"
+            >
+              {currentGames.map((game) => (
+                <SwiperSlide key={game.id} className="!w-auto">
+                  <div 
+                    className="h-full flex flex-col items-center justify-center transform transition-transform duration-400 hover:-translate-y-2 cursor-pointer"
+                    onClick={() => handleGameClick(game.path)}
                   >
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M6 18L18 6M6 6l12 12"/>
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            ))}
+                    <div>
+                      <img 
+                        src={game.image} 
+                        alt={game.title} 
+                        className="w-[150px] h-[200px] object-cover rounded-[12px]"
+                      />
+                    </div>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
         ) : (
           <div className="empty-state">

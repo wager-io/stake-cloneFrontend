@@ -1,47 +1,71 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import api from '../../utils/api';
+import { format } from 'date-fns';
+import { toast } from 'sonner';
 import './MyBets.css';
 
 const MyBets = () => {
   const navigate = useNavigate();
   const [bets, setBets] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('Casino');
   const [currentPage, setCurrentPage] = useState(1);
+  const [pagination, setPagination] = useState({
+    page: 1,
+    limit: 10,
+    total: 0,
+    totalPages: 0
+  });
   const betsPerPage = 10;
 
-  // TODO: Replace with real data from backend API
-  // API endpoint should be: GET /api/user/bets
-  // Response should include: { bets: [{ id, game, betId, date, betAmount, multiplier, payout, gameType }] }
-  const sampleBets = [
-    // Empty array since no bets have been placed yet
-    // When user places bets, they will be added here by the backend
-  ];
+  const fetchBets = async (page = 1) => {
+    try {
+      setLoading(true);
+      const response = await api.get('/api/transactions/bills', {
+        params: {
+          page,
+          limit: pagination.limit
+        }
+      });
+      
+      console.log(response.data);
+      setBets(response.data.bills || []);
+      setPagination(response.data.pagination || {
+        page,
+        limit: 10,
+        total: 0,
+        totalPages: 0
+      });
+    } catch (error) {
+      console.error('Error fetching bets:', error);
+      toast.error('Failed to load bets');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    // TODO: Replace with API call to backend
-    // For now, clear any old localStorage data and start fresh
-    localStorage.removeItem('userBets'); // Clear old sample data
-    setBets(sampleBets); // Empty array
-    
-    // When backend is ready, replace above with:
-    // fetchUserBets().then(bets => setBets(bets));
+    fetchBets();
   }, []);
+
+  // Handle page change
+  const handlePageChange = (newPage) => {
+    if (newPage > 0 && newPage <= pagination.totalPages) {
+      fetchBets(newPage);
+    }
+  };
 
   const filteredBets = bets.filter(bet => 
     activeTab === 'Casino' ? bet.gameType === 'casino' : bet.gameType === 'sports'
   );
 
-  const totalPages = Math.ceil(filteredBets.length / betsPerPage);
-  const startIndex = (currentPage - 1) * betsPerPage;
-  const endIndex = startIndex + betsPerPage;
-  const currentBets = filteredBets.slice(startIndex, endIndex);
-
   const handlePreviousPage = () => {
-    setCurrentPage(prev => Math.max(prev - 1, 1));
+    handlePageChange(pagination.page - 1);
   };
 
   const handleNextPage = () => {
-    setCurrentPage(prev => Math.min(prev + 1, totalPages));
+    handlePageChange(pagination.page + 1);
   };
 
   const formatCurrency = (amount) => {
@@ -52,15 +76,12 @@ const MyBets = () => {
     return `${multiplier.toFixed(2)}x`;
   };
 
-  const formatDate = (date) => {
-    return new Date(date).toLocaleString('en-US', {
-      month: '2-digit',
-      day: '2-digit',
-      year: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-      hour12: true
-    });
+  const formatDate = (dateString) => {
+    try {
+      return format(new Date(dateString), 'MMM dd, yyyy HH:mm');
+    } catch (error) {
+      return 'Invalid date';
+    }
   };
 
   return (
@@ -90,7 +111,12 @@ const MyBets = () => {
       </div>
 
       <div className="my-bets-content">
-        {currentBets.length > 0 ? (
+        {loading ? (
+          <div className="text-center py-8">
+            <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-blue-500 mx-auto"></div>
+            <p className="mt-3 text-sm text-gray-300">Loading bets...</p>
+          </div>
+        ) : filteredBets.length > 0 ? (
           <div className="bets-table-container">
             <table className="bets-table">
               <thead>
@@ -104,35 +130,35 @@ const MyBets = () => {
                 </tr>
               </thead>
               <tbody>
-                {currentBets.map((bet) => (
-                  <tr key={bet.id} className="bet-row">
+                {filteredBets.map((bet, index) => (
+                  <tr key={bet.transaction_id || index} className="bet-row">
                     <td className="game-cell">
                       <div className="game-info">
                         <div className="game-icon">
-                          <span>{bet.game.charAt(0)}</span>
+                          <span>{bet.transaction_type.charAt(0)}</span>
                         </div>
-                        <span className="game-name">{bet.game}</span>
+                        <span className="game-name">{bet.transaction_type}</span>
                       </div>
                     </td>
                     <td className="bet-id-cell">
-                      <span className="bet-id">{bet.betId}</span>
+                      <span className="bet-id">{bet.transaction_id}</span>
                     </td>
                     <td className="date-cell">
-                      <span className="bet-date">{formatDate(bet.date)}</span>
+                      <span className="bet-date">{formatDate(bet.timestamp)}</span>
                     </td>
                     <td className="amount-cell">
                       <span className="bet-amount">
-                        {formatCurrency(bet.betAmount)}
-                        <span className="currency-icon">🪙</span>
+                        {parseFloat(bet.amount).toFixed(4)}
+                        <span className="currency-icon">{bet.currency}</span>
                       </span>
                     </td>
                     <td className="multiplier-cell">
-                      <span className="multiplier">{formatMultiplier(bet.multiplier)}</span>
+                      <span className="multiplier">-</span>
                     </td>
                     <td className="payout-cell">
-                      <span className={`payout ${bet.payout > bet.betAmount ? 'profit' : 'loss'}`}>
-                        {formatCurrency(bet.payout)}
-                        <span className="currency-icon">🪙</span>
+                      <span className={`payout ${parseFloat(bet.amount) > 0 ? 'profit' : 'loss'}`}>
+                        {parseFloat(bet.balance).toFixed(4)}
+                        <span className="currency-icon">{bet.currency}</span>
                       </span>
                     </td>
                   </tr>
@@ -153,23 +179,23 @@ const MyBets = () => {
         )}
       </div>
 
-      {totalPages > 1 && (
+      {pagination.totalPages > 1 && (
         <div className="my-bets-pagination">
           <div className="pagination-info">
-            <span>1 result | Page {currentPage}</span>
+            <span>Showing {bets.length} of {pagination.total} bets | Page {pagination.page} of {pagination.totalPages}</span>
           </div>
           <div className="pagination-controls">
             <button 
               className="pagination-btn"
               onClick={handlePreviousPage}
-              disabled={currentPage === 1}
+              disabled={pagination.page === 1}
             >
               Previous
             </button>
             <button 
               className="pagination-btn"
               onClick={handleNextPage}
-              disabled={currentPage === totalPages}
+              disabled={pagination.page === pagination.totalPages}
             >
               Next
             </button>

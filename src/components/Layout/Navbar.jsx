@@ -38,7 +38,7 @@ function Navbar({ toggleChat }) {
     }
   }, [location.search]);
 
-  // Close modal and clear URL parameters
+  
   const closeModal = () => {
     const searchParams = new URLSearchParams(location.search);
     searchParams.delete('modal');
@@ -52,9 +52,9 @@ function Navbar({ toggleChat }) {
         <div className="bg-[rgb(26,44,56)] h-[60px] text-[13px] shadow-xl">
           <div className="flex items-center justify-between px-4 h-full">
             <div className="flex items-center">
-              {/* Logo SVG with Link to home */}
+             
               <Link to="/" className="cursor-pointer">
-                {/* Show full logo on md+ screens, abbreviated on small screens */}
+               
                 <img src="https://res.cloudinary.com/dxwhz3r81/image/upload/v1714511848/Wager__wshh2r.png" className='w-25 ' alt="" />
               </Link>
             </div>
@@ -68,7 +68,7 @@ function Navbar({ toggleChat }) {
               onClick={handleLoginClick}>
               Login
             </button>
-            {/* Register button with box shadow */}
+           
             <button 
               className="bg-blue-500 hover:bg-blue-400 text-white font-semibold py-3 px-4 rounded-[6px] transition-colors shadow-[0_4px_6px_rgba(0,0,0,0.3)] cursor-pointer"
               onClick={handleRegisterClick}>
@@ -79,7 +79,7 @@ function Navbar({ toggleChat }) {
         </div>
       </header>
 
-      {/* Auth Modal */}
+      
       {showAuthModal && (
         <AuthModal 
           isOpen={showAuthModal} 
