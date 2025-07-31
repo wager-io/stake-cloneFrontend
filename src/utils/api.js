@@ -53,17 +53,20 @@ api.interceptors.response.use(
     
     // Handle forbidden errors (403)
     else if (error.response && error.response.status === 403) {
-      toast.error('You do not have permission to perform this action');
+      console.log(error.response )
+      // toast.error('You do not have permission to perform this action');
     }
     
     // Handle server errors (500)
     else if (error.response && error.response.status >= 500) {
-      toast.error('Server error. Please try again later.');
+      coneole.log(error.response )
+      // toast.error('Server error. Please try again later.');
     }
     
     // Handle network errors
     else if (error.request && !error.response) {
-      toast.error('Network error. Please check your connection.');
+      // toast.error('Network error. Please check your connection.');
+      console.log(error.request)
     }
     
     // Log the error for debugging

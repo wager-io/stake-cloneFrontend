@@ -1,7 +1,6 @@
 .home-container {
   position: relative;
   padding: 32px 24px 24px;
-  border-radius: 24px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
   background: #fff;
   width: 100%;
@@ -10,23 +9,22 @@
   display: flex;
   flex-direction: column;
 
-  font-family: 'Segoe UI', sans-serif;
 }
 
 
-.home-bg-container {
+.live-support .home-container  .home-bg-container {
   position: absolute;
   top: -5px;
   left: -5px;
   width: calc(100% + 10px);
   height: 300px; 
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
   overflow: hidden;
   z-index: 0;
 }
 
-.home-bg-container::after {
+.live-support .home-container  .home-bg-container::after {
   content: '';
   position: absolute;
   top: 0;
@@ -37,7 +35,7 @@
   z-index: 1;
 }
 
-.home-bg-image {
+.live-support .home-container  .home-bg-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -46,39 +44,39 @@
 }
 
 
-.home-header,
-.home-title,
-.home-subtitle,
-.home-cards,
-.home-search {
+.live-support .home-container  .home-header,
+.live-support .home-container  .home-title,
+.live-support .home-container  .home-subtitle,
+.live-support .home-container  .home-cards,
+.live-support .home-container  .home-search {
   position: relative;
   z-index: 2;
 }
 
 
-.home-header {
+.live-support .home-container  .home-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 16px;
 }
 
-.home-logo {
+.live-support .home-container  .home-logo {
   height: 32px;
 }
 
-.home-right-header {
+.live-support .home-container  .home-right-header {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.home-avatars {
+.live-support .home-container  .home-avatars {
   display: flex;
   gap: 8px;
 }
 
-.home-avatar {
+.live-support .home-container  .home-avatar {
   width: 32px;
   height: 32px;
   border-radius: 50%;
@@ -86,7 +84,7 @@
 }
 
 
-.home-close {
+.live-support .home-container  .home-close {
   background: none;
   border: none;
   font-size: 24px;
@@ -96,14 +94,14 @@
 }
 
 
-.home-title {
+.live-support .home-container  .home-title {
   font-size: 1.75rem;
   font-weight: 600;
   color: white;
   margin-bottom: 4px;
 }
 
-.home-subtitle {
+.live-support .home-container  .home-subtitle {
   font-size: 1.25rem;
   font-weight: 700;
   color: white;
@@ -111,14 +109,14 @@
 }
 
 
-.home-cards {
+.live-support .home-container .home-cards {
   display: flex;
   flex-direction: column;
   gap: 16px;
   margin-bottom: 24px;
 }
 
-.home-card {
+.live-support .home-container .home-card {
   background: #fff;
   border-radius: 16px;
   padding: 20px;
@@ -127,20 +125,20 @@
   
 }
 
-.home-card-title {
+.live-support .home-container .home-card-title {
   font-weight: 700;
   font-size: 16px;
   color: #1e1e1e;
   margin-bottom: 6px;
 }
 
-.home-card-desc {
+.live-support .home-container .home-card-desc {
   font-size: 14px;
   color: #6c7a89;
 }
 
 
-.home-search {
+.live-support .home-container .home-search {
   display: flex;
   align-items: center;
   background: #fff;
@@ -151,7 +149,7 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
-.home-search input {
+.live-support .home-container .home-search input {
   border: none;
   outline: none;
   flex: 1;
@@ -160,7 +158,7 @@
   color: #1e1e1e;
 }
 
-.home-search-btn {
+.live-support .home-container .home-search-btn {
   background: none;
   border: none;
   cursor: pointer;
@@ -171,7 +169,7 @@
   justify-content: center;
 }
 
-.home-card-title-button {
+.live-support .home-container .home-card-title-button {
   background: none;
   border: none;
   font-size: 16px;
@@ -184,7 +182,7 @@
   transition: color 0.2s;
 }
 
-.home-card-title-button:hover {
+.live-support .home-container .home-card-title-button:hover {
   color: #1e90ff; 
 }
 
