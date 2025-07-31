@@ -9,7 +9,6 @@ export default function Privacy() {
     fontFamily: 'Arial, sans-serif',
     fontSize: '14px',
     lineHeight: '1.6',
-    color: 'white',
     // backgroundColor: '#fff',
     borderRadius: '8px',
     boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',

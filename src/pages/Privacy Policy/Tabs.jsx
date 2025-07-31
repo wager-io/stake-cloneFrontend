@@ -3,9 +3,10 @@ import { NavLink } from 'react-router'
 
 export default function PolicyTabs() {
   let tabs = [
-    { name: "Privacy", route: "privacy"},
-    { name: "Terms and Services", route: "terms"},
+   { name: "Terms and Services", route: "terms"},
     { name: "depositBonusRequirement", route: "deposit-bonus-requirement"},
+   { name: "Anti-Money Laundering", route: "anti-money-laundering"},
+    { name: "Privacy", route: "privacy"},
     { name: "Coin Mixing", route: "coin-mixing"},
     { name: "Providers", route: "providers"},
     { name: "Sports Book", route: "sportsbook"},
@@ -15,6 +16,7 @@ export default function PolicyTabs() {
     { name: "Poker cards Rooms rules", route: "poker cards"},
     { name: "Poker Refund Policy", route: "poker-refund-policy"},
     { name: "Affilate Terms", route: "affilate-terms"},
+  
   ]
   return (
     <div className="bg-[var(--grey-700)] min-w-[180px] sticky ">

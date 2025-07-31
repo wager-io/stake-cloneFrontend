@@ -5,8 +5,6 @@ export default function AffilateTerms() {
     padding: "20px",
     fontFamily: "Arial, sans-serif",
     lineHeight: "1.6",
-    color: "white",
-    // backgroundColor: "#f9f9f9",
     maxHeight: "90vh",
     overflowY: "scroll",
     // border: "1px solid #ccc",

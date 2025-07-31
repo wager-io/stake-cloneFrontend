@@ -5,8 +5,6 @@ export default function PokerRefund() {
   const containerStyle = {
     padding: "20px",
     fontFamily: "Arial, sans-serif",
-    // backgroundColor: "#f9f9f9",
-    color: "white",
     maxWidth: "90%",
     margin: "20px auto",
     borderRadius: "10px",

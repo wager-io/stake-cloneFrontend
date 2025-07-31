@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+
 
 function Footer() {
   const [language, setLanguage] = useState('English');
@@ -38,53 +40,53 @@ function Footer() {
           </div>
         </div>
         
-        {/* <div className="flex items-center space-x-5 self-center">
+        <div className="flex items-center space-x-5 self-center">
         
-          <a href="#" className="text-grey-300 hover:text-white transition-colors cursor-pointer">
+          <a href="https://www.facebook.com/" className="text-grey-300 hover:text-white transition-colors cursor-pointer">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
             </svg>
           </a>
           
        
-          <a href="#" className="text-grey-300 hover:text-white transition-colors cursor-pointer">
+          <a href="https://x.com/" className="text-grey-300 hover:text-white transition-colors cursor-pointer">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
             </svg>
           </a>
 
-          <a href="#" className="text-grey-300 hover:text-white transition-colors cursor-pointer">
+          <a href="https://www.instagram.com/" className="text-grey-300 hover:text-white transition-colors cursor-pointer">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01M6.5 6.5h11a1 1 0 011 1v11a1 1 0 01-1 1h-11a1 1 0 01-1-1v-11a1 1 0 011-1z" />
             </svg>
           </a>
           
   
-          <a href="#" className="text-grey-300 hover:text-white transition-colors cursor-pointer">
+          <a href="https://www.youtube.com/" className="text-grey-300 hover:text-white transition-colors cursor-pointer">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
               <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </a>
-        </div> */}
+        </div> 
       </div>
       
-      {/* Horizontal line */}
-      {/* <div className="border-t border-grey-600 my-6"></div> */}
+       {/* Horizontal line */}
+       <div className="border-t border-grey-600 my-6"></div>
       
       {/* Footer links section */}
-      {/* <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-8">
+      <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-8">
         <div className="flex flex-col">
           <h3 className="text-white font-semibold text-base mb-4">Casino</h3>
           <div className="flex flex-col space-y-2">
-            <a href="#" className="text-grey-300 hover:text-white text-sm transition-colors">Casino Games</a>
-            <a href="#" className="text-grey-300 hover:text-white text-sm transition-colors">Slots</a>
-            <a href="#" className="text-grey-300 hover:text-white text-sm transition-colors">Live Casino</a>
-            <a href="#" className="text-grey-300 hover:text-white text-sm transition-colors">Roulette</a>
-            <a href="#" className="text-grey-300 hover:text-white text-sm transition-colors">Blackjack</a>
-            <a href="#" className="text-grey-300 hover:text-white text-sm transition-colors">Poker</a>
-            <a href="#" className="text-grey-300 hover:text-white text-sm transition-colors">Providers</a>
-            <a href="#" className="text-grey-300 hover:text-white text-sm transition-colors">Promos & Competitions</a>
+            <NavLink to="/casino/game/crash" className="text-grey-300 hover:text-white text-sm transition-colors">Casino Games</NavLink>
+            <NavLink to="/vip-club" className="text-grey-300 hover:text-white text-sm transition-colors">Slots</NavLink>
+            <NavLink to="/casino" className="text-grey-300 hover:text-white text-sm transition-colors">Live Casino</NavLink>
+            <NavLink to="/affiliate/overview" className="text-grey-300 hover:text-white text-sm transition-colors">Affilate Program</NavLink>
+            <NavLink to="/casino/game/plinko" className="text-grey-300 hover:text-white text-sm transition-colors">Plinko</NavLink>
+            <NavLink to="/policies/poker cards" className="text-grey-300 hover:text-white text-sm transition-colors">Poker</NavLink>
+            <NavLink to="/policies/providers" className="text-grey-300 hover:text-white text-sm transition-colors">Providers</NavLink>
+            <NavLink to="/affiliate/commission" className="text-grey-300 hover:text-white text-sm transition-colors">Promos & Competitions</NavLink>
 
           </div>
         </div>
@@ -92,44 +94,44 @@ function Footer() {
             <div className="flex flex-col">
           <h3 className="text-white font-semibold text-base mb-4">Support</h3>
           <div className="flex flex-col space-y-2">
-            <a href="#" className="text-grey-300 hover:text-white text-sm transition-colors">Help Center</a>
-            <a href="#" className="text-grey-300 hover:text-white text-sm transition-colors">Fairness</a>
-            <a href="#" className="text-grey-300 hover:text-white text-sm transition-colors">Gambling Helpline</a>
-            <a href="#" className="text-grey-300 hover:text-white text-sm transition-colors">Live Support</a>
-            <a href="#" className="text-grey-300 hover:text-white text-sm transition-colors">Self Exclusion</a>
+            <NavLink to="/" className="text-grey-300 hover:text-white text-sm transition-colors">Help Center</NavLink>
+            <NavLink to="#" className="text-grey-300 hover:text-white text-sm transition-colors">Fairness</NavLink>
+            <NavLink to="/gamble/stake-smart" className="text-grey-300 hover:text-white text-sm transition-colors">Gambling Helpline</NavLink>
+            <NavLink to="#" className="text-grey-300 hover:text-white text-sm transition-colors">Live Support</NavLink>
+            <NavLink to="/policies/self-exclusion" className="text-grey-300 hover:text-white text-sm transition-colors">Self Exclusion</NavLink>
           </div>
         </div>
      
             <div className="flex flex-col">
           <h3 className="text-white font-semibold text-base mb-4">About Us</h3>
           <div className="flex flex-col space-y-2">
-            <a href="#" className="text-grey-300 hover:text-white text-sm transition-colors">VIP Club</a>
-            <a href="#" className="text-grey-300 hover:text-white text-sm transition-colors">Affiliate</a>
-            <a href="#" className="text-grey-300 hover:text-white text-sm transition-colors">Privacy Policy</a>
-            <a href="#" className="text-grey-300 hover:text-white text-sm transition-colors">AML Policy</a>
-            <a href="#" className="text-grey-300 hover:text-white text-sm transition-colors">Terms of Service</a>
+            <NavLink to="/policies/racing-rles" className="text-grey-300 hover:text-white text-sm transition-colors">Racing Rules</NavLink>
+            <NavLink to="/policies/affilate-terms" className="text-grey-300 hover:text-white text-sm transition-colors">Affiliate</NavLink>
+            <NavLink to="/policies/privacy" className="text-grey-300 hover:text-white text-sm transition-colors">Privacy Policy</NavLink>
+            <NavLink to="/policies/anti-money-laundering" className="text-grey-300 hover:text-white text-sm transition-colors">AML Policy</NavLink>
+            <NavLink to="/policies/terms" className="text-grey-300 hover:text-white text-sm transition-colors">Terms of Service</NavLink>
           </div>
         </div>
 
         <div className="flex flex-col">
           <h3 className="text-white font-semibold text-base mb-4">Payment Info</h3>
           <div className="flex flex-col space-y-2">
-            <a href="#" className="text-grey-300 hover:text-white text-sm transition-colors">Deposit & Withdrawals</a>
-            <a href="#" className="text-grey-300 hover:text-white text-sm transition-colors">Currency Guide</a>
-            <a href="#" className="text-grey-300 hover:text-white text-sm transition-colors">Crypto Guide</a>
-            <a href="#" className="text-grey-300 hover:text-white text-sm transition-colors">Supported Crypto</a>
-            <a href="#" className="text-grey-300 hover:text-white text-sm transition-colors">How to Use the Vault</a>
-            <a href="#" className="text-grey-300 hover:text-white text-sm transition-colors">How Much to Bet With</a>
+            <NavLink to="/policies/deposit-bonus-requirement" className="text-grey-300 hover:text-white text-sm transition-colors">Deposit Requirements</NavLink>
+            <NavLink to="/policies/coin-mixing" className="text-grey-300 hover:text-white text-sm transition-colors">Coin</NavLink>
+            <NavLink to="/policies/sportsbook" className="text-grey-300 hover:text-white text-sm transition-colors">Sports</NavLink>
+            <NavLink to="/policies/cookies policy" className="text-grey-300 hover:text-white text-sm transition-colors">Cookies Policy</NavLink>
+            <NavLink to="/policies/poker cards" className="text-grey-300 hover:text-white text-sm transition-colors">Poker Rules</NavLink>
+            <NavLink to="/policies/poker-refund-policy" className="text-grey-300 hover:text-white text-sm transition-colors">Poker Refund</NavLink>
           </div>
         </div>
         <div className="flex flex-col">
           <h3 className="text-white font-semibold text-base mb-4">How-to Guides</h3>
           <div className="flex flex-col space-y-2">
-            <a href="#" className="text-grey-300 hover:text-white text-sm transition-colors">How-to Guides</a>
-            <a href="#" className="text-grey-300 hover:text-white text-sm transition-colors">Online Casino Guide</a>
-            <a href="#" className="text-grey-300 hover:text-white text-sm transition-colors">Sports Betting Guide</a>
-            <a href="#" className="text-grey-300 hover:text-white text-sm transition-colors">How to Live Stream Sports</a>
-            <a href="#" className="text-grey-300 hover:text-white text-sm transition-colors">House Edge Guide</a>
+            <NavLink to="/gamble/recognise-the-sign" className="text-grey-300 hover:text-white text-sm transition-colors">Recognise the Sign</NavLink>
+            <NavLink to="/gamble/self-assessement" className="text-grey-300 hover:text-white text-sm transition-colors">Self Assessment</NavLink>
+            <NavLink to="/gamble/responsible-gambling" className="text-grey-300 hover:text-white text-sm transition-colors">Responsible Gambling</NavLink>
+            <NavLink to="/gamble/budget-calculator" className="text-grey-300 hover:text-white text-sm transition-colors">Budget Calculator</NavLink>
+            <NavLink to="/gamble/stake-smart" className="text-grey-300 hover:text-white text-sm transition-colors">Stake Smart</NavLink>
           </div>
         </div>
         <div className="flex flex-col">
@@ -168,7 +170,7 @@ function Footer() {
             )}
           </div>
         </div>
-      </div> */}
+      </div>
       
       {/* Bottom footer section with policies */}
       <div className="border-t border-grey-600 mt-8 pt-6 flex justify-between items-center">

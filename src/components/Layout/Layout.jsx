@@ -17,7 +17,7 @@ import LiveSupport from '../Modals/live-support/Index';
 
 function Layout() {
   const { user } = useContext(AuthContext);
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth >= 750);
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [isMediumScreen, setIsMediumScreen] = useState(false);
   const [activeTab, setActiveTab] = useState('Casino');
@@ -59,9 +59,9 @@ function Layout() {
     else setActiveTab('Browse');
   }, [location.pathname]);
 
-  // Prevent body scroll when MobileSidebar is open
+  // Prevent body scroll when Sidebar is open on mobile
   useEffect(() => {
-    if (showMobileSidebar) {
+    if (sidebarOpen && window.innerWidth < 750) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
@@ -70,7 +70,7 @@ function Layout() {
     return () => {
       document.body.style.overflow = '';
     };
-  }, [showMobileSidebar]);
+  }, [sidebarOpen]);
 
   const renderRoutes = () => {
     return routes.map(route => {
@@ -121,12 +121,14 @@ function Layout() {
       {openLiveSupport && <LiveSupport onClose={() => setOpenLiveSupport(false)} />}
       <Toaster position="bottom-right" richColors />
       <Suspense fallback={<Preload />}>
-        {/* Fixed sidebar for desktop */}
-        {window.innerWidth >= 750 && (
-          <div className="inset-y-0 left-0 z-21">
-            <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} setOpenLiveSupport={setOpenLiveSupport} openLiveSupport={openLiveSupport}/>
-          </div>
-        )}
+        {/* Sidebar for all screen sizes */}
+        <Sidebar 
+          isOpen={sidebarOpen} 
+          toggleSidebar={toggleSidebar} 
+          setOpenLiveSupport={setOpenLiveSupport} 
+          openLiveSupport={openLiveSupport}
+          isMobile={window.innerWidth < 750}
+        /> 
 
         {/* Main content */}
         <div
@@ -138,22 +140,21 @@ function Layout() {
                   : 'pl-[240px]'
                 : 'pl-[70px]'
               : 'ml-0'
-          } ${isChatOpen ? 'pr-[370px]' : ''}`}
-        >
+          } ${isChatOpen ? 'pr-[370px]' : ''}`}>
           {/* Fixed navbar */}
           <div className="sticky top-0 z-20">
             <Navbar toggleChat={toggleChat} isGameRoute={isGameRoute()} />
           </div>
 
           {/* MobileSidebar under Navbar and above nav tabs */}
-          {window.innerWidth < 750 && showMobileSidebar && (
+          {/* {window.innerWidth < 750 && showMobileSidebar && (
             <div className="z-10 relative">
               <MobileSidebar
                 isOpen={showMobileSidebar}
                 toggleSidebar={() => setShowMobileSidebar(false)}
               />
             </div>
-          )}
+          )} */}
 
           {/* Main content */}
           <main className="flex-1 overflow-y-auto w-full p-0 md:p-0 relative scrollY bg-[var(--bg-color)]">
@@ -184,16 +185,16 @@ function Layout() {
         <nav className="fixed bottom-0 left-0 right-0 z-30 bg-[#0f212e] border-t border-gray-700 flex justify-between items-center h-16 px-2">
           <button
             className={`flex flex-col items-center flex-1 focus:outline-none ${
-              activeTab === 'Browse' && showMobileSidebar
+              activeTab === 'Browse' && sidebarOpen
                 ? 'text-blue-400 font-bold'
                 : 'text-gray-300 hover:text-blue-400'
             }`}
             onClick={() => {
-              if (activeTab === 'Browse' && showMobileSidebar) {
-                setShowMobileSidebar(false);
+              if (activeTab === 'Browse' && sidebarOpen) {
+                setSidebarOpen(false);
               } else {
                 setActiveTab('Browse');
-                setShowMobileSidebar(true);
+                setSidebarOpen(true);
               }
             }}
           >
@@ -206,7 +207,7 @@ function Layout() {
             }`}
             onClick={() => {
               setActiveTab('Casino');
-              setShowMobileSidebar(false);
+              setSidebarOpen(false);
               navigate('/casino/home');
             }}
           >
@@ -219,7 +220,7 @@ function Layout() {
             }`}
             onClick={() => {
               setActiveTab('Bets');
-              setShowMobileSidebar(false);
+              setSidebarOpen(false);
               navigate('/bets');
             }}
           >
