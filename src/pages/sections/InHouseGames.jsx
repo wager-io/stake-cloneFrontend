@@ -57,7 +57,15 @@ function InhouseGames() {
       provider: "Pragmatic Play",
        image: "/assets/InhouseGames/hiloGAMES.png",
       players: 1432,
-      path: "Hilo"
+      path: "hilo"
+    },
+    {
+      id: 7,
+      title: "Keno",
+      provider: "Pragmatic Play",
+       image: "/assets/InhouseGames/keno.avif",
+      players: 1432,
+      path: "keno"
     }
    ];
 

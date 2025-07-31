@@ -10,8 +10,24 @@ export default function LiveSupport({ onClose }) {
     const [showChatAdmin, setShowChatAdmin] = React.useState(false);
     const [isExpanded, setIsExpanded] = React.useState(false);
 
+    // Prevent body scroll on mobile when modal is open
+    React.useEffect(() => {
+        if (window.innerWidth < 768) { // Mobile breakpoint
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // Cleanup function to restore scroll when component unmounts
+        return () => {
+            document.body.style.overflow = '';
+        };
+    }, []);
+
   return (
-    <div className={`live-support ${isExpanded ? 'w-[65%] h-[99vh]' : 'w-[30%] h-[97vh]'} fixed bottom-0 bg-white right-5 z-[2000] rounded-2xl mb-1 transition-all duration-300 ease-in-out`}>
+    <div className={`live-support fixed bg-white z-[2000] transition-all duration-300 ease-in-out
+      w-full h-full top-0 left-0 rounded-none
+      md:bottom-1 md:right-5 md:rounded-2xl md:mb-1 md:top-auto md:left-auto
+      ${isExpanded ? 'md:w-[65%] md:h-[99vh]' : 'md:w-[30%] md:h-[90%]'}
+    `}>
         {!showChatAdmin && (
             <>
                 {tab === "home" && (
@@ -24,7 +40,6 @@ export default function LiveSupport({ onClose }) {
                {tab === "help" && (
                     <Help onClose={onClose} isExpanded={isExpanded} setIsExpanded={setIsExpanded} />
                 )}
-
                 {!isExpanded && <Tabs tab={tab} setTab={setTab}/>}
             </>
         )}

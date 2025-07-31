@@ -6,8 +6,6 @@ export default function Home({ onClose }) {
     
   return (
     <div className="home-container">
-
-     
       <div className="home-bg-container">
         <img
           src="/6aef330c08558c4347f0d23ce04307cc.png"
@@ -16,7 +14,6 @@ export default function Home({ onClose }) {
         />
       </div>
 
-    
       <div className="home-header">
         <img
           src="https://res.cloudinary.com/dxwhz3r81/image/upload/v1714511848/Wager__wshh2r.png"
