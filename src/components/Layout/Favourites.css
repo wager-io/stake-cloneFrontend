@@ -6,7 +6,7 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.favourites-header {
+.favourites-container  .favourites-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -14,7 +14,7 @@
   position: relative;
 }
 
-.favourites-title {
+.favourites-container  .favourites-title {
   font-size: 2.5rem;
   font-weight: 700;
   color: white;
@@ -22,7 +22,7 @@
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.favourites-crown {
+.favourites-header .favourites-crown {
   position: absolute;
   right: 0;
   top: 50%;
@@ -31,7 +31,7 @@
   color: #ffd700;
 }
 
-.favourites-crown svg {
+.favourites-header .favourites-crown svg {
   width: 3rem;
   height: 3rem;
 }
