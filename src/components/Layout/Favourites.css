@@ -6,7 +6,7 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.favourites-header {
+.favourites-container  .favourites-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -14,7 +14,7 @@
   position: relative;
 }
 
-.favourites-title {
+.favourites-container  .favourites-title {
   font-size: 2.5rem;
   font-weight: 700;
   color: white;
@@ -22,7 +22,7 @@
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.favourites-crown {
+.favourites-header .favourites-crown {
   position: absolute;
   right: 0;
   top: 50%;
@@ -31,7 +31,7 @@
   color: #ffd700;
 }
 
-.favourites-crown svg {
+.favourites-header .favourites-crown svg {
   width: 3rem;
   height: 3rem;
 }
@@ -42,7 +42,8 @@
 
 .search-input-container {
   position: relative;
-  max-width: 400px;
+  max-width: 100%;
+  width: 100%;
 }
 
 .search-icon {
@@ -58,14 +59,15 @@
 
 .search-input {
   width: 100%;
-  padding: 1rem 1rem 1rem 3rem;
+  padding: 0.75rem 1rem 0.75rem 3rem;
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 12px;
+  border-radius: 8px;
   color: white;
-  font-size: 1rem;
+  font-size: 0.9rem;
   outline: none;
   transition: all 0.3s ease;
+  height: 40px;
 }
 
 .search-input::placeholder {

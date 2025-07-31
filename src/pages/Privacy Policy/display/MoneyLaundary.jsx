@@ -5,7 +5,7 @@ export default function MoneyLaundary() {
     marginBottom: '20px',
     lineHeight: '1.6',
     fontSize: '16px',
-    color: 'white',
+    
   };
 
   const headingStyle = {

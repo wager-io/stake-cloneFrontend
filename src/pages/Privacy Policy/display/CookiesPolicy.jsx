@@ -7,7 +7,7 @@ export default function CookiesPolicy() {
     maxWidth: '1000px',
     margin: 'auto',
     fontFamily: 'Arial, sans-serif',
-    color: 'white',
+   
     lineHeight: '1.6',
     fontSize: '16px',
     maxHeight: "90vh",

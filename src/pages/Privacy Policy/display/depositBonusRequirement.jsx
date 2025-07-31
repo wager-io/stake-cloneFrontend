@@ -10,13 +10,13 @@ export default function depositBonusRequirement() {
       borderRadius: '10px',
       fontFamily: 'Segoe UI, sans-serif',
       fontSize: '16px',
-      color: '#333',
+      // color: '#333',
       lineHeight: '1.7',
       boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
       overflowY: 'scroll',
       maxHeight: '90vh'
     }}>
-      <h2 style={{ color: '#222', paddingBottom: '5px' }}>
+      <h2 style={{color: '#fff', paddingBottom: '5px', fontWeight: "bold",  fontSize: '28px' }}>
         Deposit Bonus Requirement
       </h2>
       <p>
@@ -41,12 +41,12 @@ export default function depositBonusRequirement() {
         borderRadius: '8px',
         marginTop: '20px'
       }}>
-        <h3 style={{ color: '#222', paddingBottom: '5px' }}>3 Oaks Gaming</h3>
+        <h3 style={{color: '#fff', paddingBottom: '5px', fontWeight: "bold" , fontSize: '18px'}}>3 Oaks Gaming</h3>
         <ul>
           <li>All games</li>
         </ul>
 
-        <h3 style={{ marginTop: '20px', marginBottom: '10px', color: '#000' }}>AvatarUX</h3>
+        <h3 style={{ marginTop: '20px', marginBottom: '10px', color: '#fff', fontWeight: "bold", fontSize: '18px' }}>AvatarUX</h3>
         <ul>
           <li>7 Lucky Gods</li>
           <li>King of Samba</li>
@@ -55,7 +55,7 @@ export default function depositBonusRequirement() {
           <li>Toad's Bounty</li>
         </ul>
 
-        <h3 style={{ marginTop: '20px', marginBottom: '10px', color: '#000' }}>Belatra</h3>
+        <h3 style={{ marginTop: '20px', marginBottom: '10px', color: '#fff', fontWeight: "bold", fontSize:'18px' }}>Belatra</h3>
         <ul>
           <li>7 Days The Spanish Armada</li>
           <li>Full Moon Magic</li>
@@ -64,7 +64,7 @@ export default function depositBonusRequirement() {
           <li>Zombie Town</li>
         </ul>
 
-        <h3 style={{ marginTop: '20px', marginBottom: '10px', color: '#000' }}>BGaming</h3>
+        <h3 style={{ marginTop: '20px', marginBottom: '10px', color: '#fff', fontWeight: "bold",  fontSize: '18px' }}>BGaming</h3>
         <ul>
           <li>Adventures</li>
           <li>Blackbeard’s Bounty</li>
@@ -85,7 +85,7 @@ export default function depositBonusRequirement() {
           <li>Wild West Trueways</li>
         </ul>
 
-        <h3 style={{ marginTop: '20px', marginBottom: '10px', color: '#000' }}>Big Time Gaming</h3>
+        <h3 style={{ marginTop: '20px', marginBottom: '10px', color: '#fff', fontWeight: "bold", fontSize: '18px' }}>Big Time Gaming</h3>
         <ul>
           <li>Golden Goose Megaways</li>
           <li>Holy Diver Megaways</li>
@@ -93,7 +93,7 @@ export default function depositBonusRequirement() {
           <li>Royal Mint</li>
         </ul>
 
-        <h3 style={{ marginTop: '20px', marginBottom: '10px', color: '#000' }}>Game Titles</h3>
+        <h3 style={{ marginTop: '20px', marginBottom: '10px', color: '#fff', fontWeight: "bold", fontSize: '18px' }}>Game Titles</h3>
         <ul>
         <li>Blueprint</li>
         <li>Bankin' More Bacon</li>
@@ -130,13 +130,13 @@ export default function depositBonusRequirement() {
         <li>The G.O.A.T</li>
         </ul>
 
-        <h3 style={{ marginTop: '20px', marginBottom: '10px', color: '#000' }}>Bombay Live</h3>
+        <h3 style={{ marginTop: '20px', marginBottom: '10px', color: '#fff', fontWeight: "bold", fontSize: '18px' }}>Bombay Live</h3>
         <ul>
           <li>Royal Riches Roulette</li>
         </ul>
       
 
-  <h3 style={{ marginTop: '20px', marginBottom: '10px', color: '#000' }}>Booming Games</h3>
+  <h3 style={{ marginTop: '20px', marginBottom: '10px', color: '#fff', fontWeight: "bold",  fontSize: '18px'}}>Booming Games</h3>
         <ul>
           <li>Bang Bang Reloaded</li>
           <li>Billy Bob Boom</li>
@@ -152,8 +152,8 @@ export default function depositBonusRequirement() {
         </ul>
       </div>
 
-      
-        <h3 style={{ marginTop: '20px', marginBottom: '10px', color: '#000' }}>ELK Studios</h3>
+
+        <h3 style={{ marginTop: '20px', marginBottom: '10px', color: '#fff', fontWeight: "bold", fontSize: '18px' }}>ELK Studios</h3>
         <ul>
           <li>Birthday!</li>
           <li>Bloopers</li>
@@ -167,8 +167,8 @@ export default function depositBonusRequirement() {
         </ul>
       
 
-      
-        <h3 style={{ marginTop: '20px', marginBottom: '10px', color: '#000' }}>Endorphina</h3>
+
+        <h3 style={{ marginTop: '20px', marginBottom: '10px', color: '#fff', fontWeight: "bold", fontSize: '18px' }}>Endorphina</h3>
         <ul>
           <li>2025 Hit Slot</li>
           <li>Amazons Riches</li>
@@ -193,8 +193,8 @@ export default function depositBonusRequirement() {
         </ul>
       
 
- 
-        <h3 style={{ marginTop: '20px', marginBottom: '10px', color: '#000' }}>Evolution</h3>
+
+        <h3 style={{ marginTop: '20px', marginBottom: '10px', color: '#fff', fontWeight: "bold", fontSize: '18px' }}>Evolution</h3>
         <ul>
           <li>Auto-Roulette</li>
           <li>Bac Bo</li>
@@ -206,8 +206,8 @@ export default function depositBonusRequirement() {
         </ul>
      
 
-      
-        <h3 style={{ marginTop: '20px', marginBottom: '10px', color: '#000' }}>Fantasma Games</h3>
+
+        <h3 style={{ marginTop: '20px', marginBottom: '10px', color: '#fff', fontWeight: "bold", fontSize: '18px' }}>Fantasma Games</h3>
         <ul>
           <li>1001 Nights of Riches</li>
           <li>24 Star Dream</li>
@@ -229,8 +229,8 @@ export default function depositBonusRequirement() {
         </ul>
      
 
-     
-        <h3 style={{ marginTop: '20px', marginBottom: '10px', color: '#000' }}>Fat Panda</h3>
+
+        <h3 style={{ marginTop: '20px', marginBottom: '10px', color: '#fff', fontWeight: "bold", fontSize: '18px' }}>Fat Panda</h3>
         <ul>
           <li>Lucky Monkey</li>
           <li>Lucky Mouse</li>
@@ -240,8 +240,8 @@ export default function depositBonusRequirement() {
         </ul>
    
 
-  
-        <h3 style={{ marginTop: '20px', marginBottom: '10px', color: '#000' }}>GameArt</h3>
+
+        <h3 style={{ marginTop: '20px', marginBottom: '10px', color: '#fff', fontWeight: "bold", fontSize: '18px' }}>GameArt</h3>
         <ul>
           <li>Angry Dragons</li>
           <li>Dead Mouse Adventures</li>
@@ -329,15 +329,15 @@ export default function depositBonusRequirement() {
         </ul>
      
 
-      
-        <h3 style={{ color: '#222', paddingBottom: '5px' }}>Hacksaw Gaming</h3>
+
+        <h3 style={{color: '#fff', paddingBottom: '5px', fontWeight: "bold", fontSize: '18px' }}>Hacksaw Gaming</h3>
         <ul>
           <li>Stick'Em</li>
         </ul>
       
 
-      
-        <h3 style={{ color: '#222', paddingBottom: '5px' }}>Jade Rabbit</h3>
+
+        <h3 style={{color: '#fff', paddingBottom: '5px', fontWeight: "bold", fontSize: '18px' }}>Jade Rabbit</h3>
         <ul>
           <li>Ace Race</li>
           <li>Angler's Paradise</li>
@@ -346,14 +346,14 @@ export default function depositBonusRequirement() {
         </ul>
       
 
-      
-        <h3 style={{ color: '#222', paddingBottom: '5px' }}>Just Slots</h3>
+
+        <h3 style={{color: '#fff', paddingBottom: '5px', fontWeight: "bold", fontSize: '18px' }}>Just Slots</h3>
         <ul>
           <li>Shogun SkyLord</li>
         </ul>
-      
-      
-        <h3 style={{ color: '#222', paddingBottom: '5px' }}>NetEnt</h3>
+
+
+        <h3 style={{color: '#fff', paddingBottom: '5px', fontWeight: "bold", fontSize: '18px' }}>NetEnt</h3>
         <ul>
           <li>Babylon Riches</li>
           <li>Buckshot Wilds</li>
@@ -383,8 +383,8 @@ export default function depositBonusRequirement() {
         </ul>
       
 
-      
-        <h3 style={{ color: '#222', paddingBottom: '5px' }}>Novomatic</h3>
+
+        <h3 style={{color: '#fff', paddingBottom: '5px', fontWeight: "bold", fontSize: '18px' }}>Novomatic</h3>
         <ul>
           <li>8 Bullets Hold & Win</li>
           <li>Christmas Boom</li>
@@ -394,8 +394,8 @@ export default function depositBonusRequirement() {
         </ul>
       
 
-      
-        <h2 style={{ color: '#222', paddingBottom: '5px' }}>Octoplay</h2>
+
+        <h2 style={{color: '#fff', paddingBottom: '5px', fontWeight: "bold", fontSize: '18px' }}>Octoplay</h2>
         <ul>
           <li>777 Hot Reels: Supercharged</li>
           <li>Break the Piggy Bank</li>
@@ -412,7 +412,7 @@ export default function depositBonusRequirement() {
         </ul>
       
 
-      <h2 style={{ color: '#222', paddingBottom: '5px' }}>OneTouch</h2>
+      <h2 style={{color: '#fff', paddingBottom: '5px', fontWeight: "bold", fontSize: '18px' }}>OneTouch</h2>
       <ul>
         <li>Flexing Dragons</li>
         <li>Gifts Of Horus</li>
@@ -425,8 +425,8 @@ export default function depositBonusRequirement() {
         <li>Wild Voodoo</li>
       </ul>
 
-      
-      <h2 style={{ color: '#222', paddingBottom: '5px' }}>Peter & Sons</h2>
+
+      <h2 style={{color: '#fff', paddingBottom: '5px', fontWeight: "bold", fontSize: '18px' }}>Peter & Sons</h2>
       <ul>
         <li>Animafia</li>
         <li>Blood Club</li>
@@ -441,8 +441,8 @@ export default function depositBonusRequirement() {
         <li>Zombies - At the door</li>
       </ul>
 
-      
-      <h2 style={{ color: '#222', paddingBottom: '5px' }}>PG Soft</h2>
+
+      <h2 style={{color: '#fff', paddingBottom: '5px', fontWeight: "bold", fontSize: '18px' }}>PG Soft</h2>
       <ul>
         <li>Dragon Hatch</li>
         <li>Dragon Hatch 2</li>
@@ -454,8 +454,8 @@ export default function depositBonusRequirement() {
         <li>Futebol Fever</li>
       </ul>
 
-    
-      <h2 style={{ color: '#222', paddingBottom: '5px' }}>PlaynGo</h2>
+
+      <h2 style={{color: '#fff', paddingBottom: '5px', fontWeight: "bold", fontSize: '18px' }}>PlaynGo</h2>
       <ul>
         <li>1001 Mystery Genie Fortunes</li>
         <li>3 Clown Monty 2</li>
@@ -497,14 +497,14 @@ export default function depositBonusRequirement() {
         <li>Viking Runecraft</li>
       </ul>
 
-      
-      <h2 style={{ color: '#222', paddingBottom: '5px' }}>Playson</h2>
+
+      <h2 style={{color: '#fff', paddingBottom: '5px', fontWeight: "bold", fontSize: '18px' }}>Playson</h2>
       <ul>
         <li>All games</li>
       </ul>
 
-      
-      <h2 style={{ color: '#222', paddingBottom: '5px' }}>PopiPlay</h2>
+
+      <h2 style={{color: '#fff', paddingBottom: '5px', fontWeight: "bold", fontSize: '18px' }}>PopiPlay</h2>
       <ul>
         <li>Guns and Dragons</li>
         <li>Mythos</li>
@@ -512,7 +512,7 @@ export default function depositBonusRequirement() {
         <li>Wild Wild Bank</li>
       </ul>
 
-      <h2 style={{ marginTop: '0', marginBottom: '10px', color: '#000' }}>Pragmatic Play</h2>
+      <h2 style={{ marginTop: '0', marginBottom: '10px', color: '#fff', fontWeight: "bold", fontSize: '18px' }}>Pragmatic Play</h2>
       <ul>
         <li>3 Kingdoms - Battle of Red Cliffs</li>
         <li>5 Lions Gold</li>
@@ -546,13 +546,13 @@ export default function depositBonusRequirement() {
         <li>Witch Heart Megaways</li>
       </ul>
 
-      <h2 style={{ marginTop: '0', marginBottom: '10px', color: '#000' }}>Print Studios</h2>
+      <h2 style={{ marginTop: '0', marginBottom: '10px', color: '#fff', fontWeight: "bold", fontSize: '18px' }}>Print Studios</h2>
       <ul>
         <li>Big Stack Lumberjack</li>
         <li>Honey Hunters</li>
       </ul>
 
-      <h2 style={{ marginTop: '0', marginBottom: '10px', color: '#000' }}>Push Gaming</h2>
+      <h2 style={{ marginTop: '0', marginBottom: '10px', color: '#fff', fontWeight: "bold", fontSize: '18px' }}>Push Gaming</h2>
       <ul>
         <li>Big Bite Push Ways</li>
         <li>Blaze of Ra</li>
@@ -574,7 +574,7 @@ export default function depositBonusRequirement() {
         <li>Wild Swarm Triple Hive</li>
       </ul>
 
-      <h2 style={{ marginTop: '0', marginBottom: '10px', color: '#000' }}>Quickspin</h2>
+      <h2 style={{ marginTop: '0', marginBottom: '10px', color: '#fff', fontWeight: "bold", fontSize: '18px' }}>Quickspin</h2>
       <ul>
         <li>Brawlers Bar Cash Collect</li>
         <li>Crown of Valor</li>
@@ -582,7 +582,7 @@ export default function depositBonusRequirement() {
         <li>Shields of Lambda</li>
       </ul>
 
-      <h2 style={{ marginTop: '0', marginBottom: '10px', color: '#000' }}>Red Rake Gaming</h2>
+      <h2 style={{ marginTop: '0', marginBottom: '10px', color: '#fff', fontWeight: "bold", fontSize: '18px' }}>Red Rake Gaming</h2>
       <ul>
         <li>Boomerang Jack's Lost Mines</li>
         <li>Captain Wild</li>
@@ -602,7 +602,7 @@ export default function depositBonusRequirement() {
         <li>Vikings Journey</li>
       </ul>
 
-      <h2 style={{ color: '#222',  paddingBottom: '5px' }}>Red Tiger</h2>
+      <h2 style={{color: '#fff',  paddingBottom: '5px', fontWeight: "bold", fontSize: '18px' }}>Red Tiger</h2>
       <ul>
         <li>10,001 Nights Megaways</li>
         <li>Bounty Raid 2</li>
@@ -651,7 +651,7 @@ export default function depositBonusRequirement() {
 
 
 
-<h2 style={{ color: '#222',  paddingBottom: '5px' }}>Relax Gaming</h2>
+<h2 style={{color: '#fff',  paddingBottom: '5px', fontWeight: "bold", fontSize: '18px' }}>Relax Gaming</h2>
       <ul>
         <li>10,000 Years Before Cash</li>
         <li>5 Monsters</li>
@@ -673,15 +673,15 @@ export default function depositBonusRequirement() {
         <li>Wild Buccaneers Triple Treasure</li>
       </ul>
 
-     
-      <h2 style={{ color: '#222',  paddingBottom: '5px' }}>Slotmill</h2>
+
+      <h2 style={{color: '#fff',  paddingBottom: '5px', fontWeight: "bold", fontSize: '18px' }}>Slotmill</h2>
       <ul>
         <li>Cash Pandas</li>
         <li>Sands of Eternity</li>
       </ul>
 
-      
-      <h2 style={{ color: '#222',  paddingBottom: '5px' }}>Spinomenal</h2>
+
+      <h2 style={{color: '#fff',  paddingBottom: '5px', fontWeight: "bold", fontSize: '18px' }}>Spinomenal</h2>
       <ul>
         <li>1 Reel Baba Yaga</li>
         <li>1 Reel Beauty</li>
@@ -734,13 +734,13 @@ export default function depositBonusRequirement() {
         <li>Story of the Samurai – 10 Lines</li>
       </ul>
 
-            <h2 style={{ color: '#222',  paddingBottom: '5px' }}>Spribe</h2>
+            <h2 style={{color: '#fff',  paddingBottom: '5px', fontWeight: "bold", fontSize: '18px' }}>Spribe</h2>
       <ul>
         <li>Aviator</li>
       </ul>
 
-      
-      <h2 style={{ color: '#222',  paddingBottom: '5px' }}>Stake Originals</h2>
+
+      <h2 style={{color: '#fff',  paddingBottom: '5px', fontWeight: "bold", fontSize: '18px' }}>Stake Originals</h2>
       <ul>
         <li>Blackjack</li>
         <li>Cases</li>
@@ -760,14 +760,14 @@ export default function depositBonusRequirement() {
         <li>Snakes</li>
       </ul>
 
-      
-      <h2 style={{ color: '#222',  paddingBottom: '5px' }}>Stake Poker</h2>
+
+      <h2 style={{color: '#fff',  paddingBottom: '5px', fontWeight: "bold", fontSize: '18px' }}>Stake Poker</h2>
       <ul>
         <li>Stake Poker</li>
       </ul>
 
-     
-      <h2 style={{ color: '#222',  paddingBottom: '5px' }}>Thunderkick</h2>
+
+      <h2 style={{color: '#fff',  paddingBottom: '5px', fontWeight: "bold", fontSize: '18px' }}>Thunderkick</h2>
       <ul>
         <li>12 Bolts of Thunder</li>
         <li>1429 Uncharted Seas</li>
@@ -779,8 +779,8 @@ export default function depositBonusRequirement() {
         <li>Ways of Athena</li>
       </ul>
 
-      
-      <h2 style={{ color: '#222',  paddingBottom: '5px' }}>Truelab</h2>
+
+      <h2 style={{color: '#fff',  paddingBottom: '5px', fontWeight: "bold", fontSize: '18px' }}>Truelab</h2>
       <ul>
         <li>Aztec Legend</li>
         <li>Crypts of Fortune</li>
@@ -790,13 +790,13 @@ export default function depositBonusRequirement() {
         <li>Victoria Wild Deluxe</li>
       </ul>
 
-      <h2 style={{ color: '#222', paddingBottom: '5px' }}>VoltEnt</h2>
+      <h2 style={{color: '#fff', paddingBottom: '5px', fontWeight: "bold", fontSize: '18px' }}>VoltEnt</h2>
       <ul>
         <li>All games</li>
       </ul>
 
-      
-      <h2 style={{ color: '#222', paddingBottom: '5px' }}>Wazdan</h2>
+
+      <h2 style={{color: '#fff', paddingBottom: '5px', fontWeight: "bold", fontSize: '18px' }}>Wazdan</h2>
       <ul>
         <li>All games</li>
       </ul>

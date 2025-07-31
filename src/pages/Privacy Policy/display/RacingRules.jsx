@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function RacingRules() {
    return (
-    <div style={{ padding: '30px', fontFamily: 'Arial, sans-serif', lineHeight: '1.6', color: 'white', overflowY: "scroll", maxHeight: "90vh",  }}>
+    <div style={{ padding: '30px', fontFamily: 'Arial, sans-serif', lineHeight: '1.6', overflowY: "scroll", maxHeight: "90vh",  }}>
       <h1 style={{ color: 'white', fontSize: '28px',  fontWeight: 'bold' }}>1. General</h1><br />
       <p><strong>a.</strong> The official results for a race are determined in accordance with the applicable rules of racing set by the governing body in the jurisdiction in which the race event is run.</p>
       <p><strong>b.</strong> All racing bets are settled based on the declaration of the official final result of the race as made by the relevant racing authority on the day...</p>

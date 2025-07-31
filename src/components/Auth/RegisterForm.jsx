@@ -80,7 +80,7 @@ function RegisterForm({ onClose }) {
     }
   };
 
-  // Check password strength
+  
   const checkPasswordStrength = (password) => {
     let score = 0;
     let message = 'Too weak';
@@ -100,7 +100,7 @@ function RegisterForm({ onClose }) {
     setPasswordStrength({ score, message });
   };
 
-  // Helper function for password strength colors
+  
   const getStrengthColor = (score) => {
     if (score >= 4) return 'bg-green-500';
     if (score === 3) return 'bg-yellow-500';
@@ -108,7 +108,7 @@ function RegisterForm({ onClose }) {
     return 'bg-red-500';
   };
 
-  // Helper function for password strength text colors
+  
   const getStrengthTextColor = (score) => {
     if (score >= 4) return 'text-green-500';
     if (score === 3) return 'text-yellow-500';
@@ -145,7 +145,7 @@ function RegisterForm({ onClose }) {
     setStep(step + 1);
   };
 
-  // Navigate to previous step
+  
   const prevStep = () => {
     setStep(step - 1);
   };

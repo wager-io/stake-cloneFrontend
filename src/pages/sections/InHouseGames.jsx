@@ -47,7 +47,7 @@ function InhouseGames() {
       id: 5,
       title: "Limbo",
       provider: "Pragmatic Play",
-       image: "/assets/InhouseGames/limboGame.png",
+      image: "/assets/InhouseGames/limboGame.png",
       players: 1432,
       path: "limbo"
     },

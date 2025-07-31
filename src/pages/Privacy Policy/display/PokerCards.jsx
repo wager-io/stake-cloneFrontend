@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function PokerCards() {
   return (
-    <div style={{ padding: '30px', fontFamily: 'Arial, sans-serif', lineHeight: '1.6', color: 'white', overflowY: "scroll", maxHeight: "90vh",  }}>
+    <div style={{ padding: '30px', fontFamily: 'Arial, sans-serif', lineHeight: '1.6', overflowY: "scroll", maxHeight: "90vh",  }}>
       <h1 style={{ color: 'white', fontSize: '28px', textAlign: 'center', fontWeight: 'bold' }}>Stake Poker Card Room Rules</h1><br />
 
       <section>
