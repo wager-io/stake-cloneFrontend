@@ -15,6 +15,7 @@ export default function PolicyTabs() {
     { name: "Poker cards Rooms rules", route: "poker cards"},
     { name: "Poker Refund Policy", route: "poker-refund-policy"},
     { name: "Affilate Terms", route: "affilate-terms"},
+    { name: "Anti-Money Laundering", route: "anti-money-laundering"},
   ]
   return (
     <div className="bg-[var(--grey-700)] min-w-[180px] sticky ">

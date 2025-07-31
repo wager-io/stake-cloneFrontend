@@ -36,6 +36,8 @@ const PokercardsRoomsrules = lazy(() => import('../../pages/Privacy Policy/displ
 const PokerRefund = lazy(() => import('../../pages/Privacy Policy/display/PokerRefund'));
 const AffilateTerms = lazy(() => import('../../pages/Privacy Policy/display/AffilateTerms'));
 const CookiesPolicy = lazy(() => import('../../pages/Privacy Policy/display/CookiesPolicy'));
+const AntiMoneyLaundering = lazy(() => import('../../pages/Privacy Policy/display/MoneyLaundary'));
+
 
 const StakeSmart = lazy(() => import('../../pages/Gambling/display/StakeSmart'));
 const RecognisetheSign = lazy(() => import('../../pages/Gambling/display/RecogniseSign'));
@@ -113,6 +115,7 @@ const routes = [
       { path: 'deposit-bonus-requirement', element: <DepositBonusRequirement /> },
       { path: 'poker-refund-policy', element: <PokerRefund /> },
       { path: 'affilate-terms', element: <AffilateTerms /> },
+      { path: 'anti-money-laundering', element: <AntiMoneyLaundering /> },
     ]
   },
 
