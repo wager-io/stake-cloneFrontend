@@ -1,0 +1,262 @@
+.keno-wrapper .keno-container {
+  display: flex;
+  background: #2a3441;
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.keno-wrapper .left-panel {
+  width: 280px;
+  padding: 20px;
+  background: #242e3a;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.keno-wrapper .right-panel {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.keno-wrapper .mode-toggle {
+  display: flex;
+  background: #1a232e;
+  border-radius: 25px;
+  padding: 4px;
+}
+
+.keno-wrapper .mode-button {
+  flex: 1;
+  padding: 10px 20px;
+  background: transparent;
+  border: none;
+  color: #8b9db3;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.keno-wrapper .mode-button.active {
+  background: #3b4a5c;
+  color: #ffffff;
+}
+
+.keno-wrapper .input-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.keno-wrapper .input-label {
+  color: #8b9db3;
+  font-size: 14px;
+}
+
+.keno-wrapper .bet-amount-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.keno-wrapper .bet-input {
+  width: 100%;
+  background: #1a232e;
+  border: 1px solid #3b4a5c;
+  color: #ffffff;
+  padding: 12px 15px;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+}
+
+.keno-wrapper .bet-controls {
+  display: flex;
+  gap: 4px;
+  margin-left: 8px;
+}
+
+.keno-wrapper .bet-control-btn {
+  width: 32px;
+  height: 32px;
+  background: #3b4a5c;
+  border: none;
+  color: #ffffff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.keno-wrapper .bet-control-btn.bitcoin {
+  background: #f7931a;
+}
+
+.keno-wrapper .bet-amount-display {
+  color: #8b9db3;
+  font-size: 12px;
+  text-align: right;
+}
+
+.keno-wrapper .risk-select {
+  background: #1a232e;
+  border: 1px solid #3b4a5c;
+  color: #ffffff;
+  padding: 12px 15px;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+}
+
+.keno-wrapper .action-button {
+  background: #3b4a5c;
+  border: none;
+  color: #ffffff;
+  padding: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.keno-wrapper .action-button:hover {
+  background: #4a5866;
+}
+
+.keno-wrapper .bet-button {
+  background: #22c55e;
+  border: none;
+  color: #ffffff;
+  padding: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: auto;
+  transition: background 0.2s;
+}
+
+.keno-wrapper .bet-button:hover {
+  background: #16a34a;
+}
+
+.keno-wrapper .number-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 12px;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.keno-wrapper .number-button {
+  width: 60px;
+  height: 60px;
+  background: #3b4a5c;
+  border: none;
+  color: #ffffff;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), inset 0 -1px 0 rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.keno-wrapper .number-button:hover {
+  background: #4a5866;
+}
+
+.keno-wrapper .number-button.selected {
+  background: #22c55e;
+}
+
+.keno-wrapper .bottom-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 40px;
+}
+
+.keno-wrapper .selection-info {
+  color: #8b9db3;
+  font-size: 14px;
+}
+
+.keno-wrapper .top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: #1f2937;
+  border-top: 1px solid #374151;
+  margin-top: auto;
+}
+
+.keno-wrapper .nav-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.keno-wrapper .nav-icon {
+  width: 40px;
+  height: 40px;
+  background: #374151;
+  border: none;
+  color: #9ca3af;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.keno-wrapper .nav-icon:hover {
+  background: #4b5563;
+  color: #ffffff;
+}
+
+.keno-wrapper .fairness-btn {
+  background: #374151;
+  border: none;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.keno-wrapper .fairness-btn:hover {
+  background: #4b5563;
+}
+
+@media (max-width: 768px) {
+  .keno-wrapper .keno-container {
+    flex-direction: column;
+    height: auto;
+  }
+  .keno-wrapper .left-panel {
+    width: 100%;
+  }
+  .keno-wrapper .number-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .keno-wrapper .number-button {
+    width: 50px;
+    height: 50px;
+  }
+}
