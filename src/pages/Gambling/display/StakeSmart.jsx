@@ -4,6 +4,9 @@ import '../style/gamble.css'
 export default function StakeSmart() {
   return (
     <div>
+      <div className="bg-[#1a73e8] p-4 rounded-lg mb-6">
+           <img src="/download.png" alt="" />
+          </div>
       <h1 className='text-white'><strong>Mission Statement</strong></h1> 
       <p className='inline'>
         Stake is dedicated to fostering responsible gambling practices to all customers on our platform and within our community. We are committed to ensuring that our customers are educated on our various responsible gambling tools available for use, promote gambling as a form of entertainment and empowering individuals to make informed decisions about their gambling activities.

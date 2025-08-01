@@ -19,7 +19,7 @@ export default function PolicyTabs() {
   
   ]
   return (
-    <div className="bg-[var(--grey-700)] min-w-[180px] sticky ">
+    <div className="bg-[var(--grey-700)] min-w-[250px] sticky p-2 ">
       {tabs.map((item, index)=>(
         <div key={index} className="tabs-controllers py-3 w-full">
           <NavLink to={item.route} className="text-white font-bold p-2 w-full"  >  

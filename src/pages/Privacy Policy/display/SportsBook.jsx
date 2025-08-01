@@ -2,8 +2,8 @@ import React from 'react'
 
 export default function SportsBook() {
   return (
-    <div style={{ padding: '20px', fontFamily: 'Segoe UI, sans-serif', backgroundColor: '#fff' }}>
-      <h1 style={{ color: '#333', marginBottom: '20px' }}>Sportsbook Rules and Policies</h1>
+    <div style={{ padding: '30px', fontFamily: 'Arial, sans-serif', lineHeight: '1.6', overflowY: "scroll", maxHeight: "90vh",  }}>
+      <h1 style={{ color: 'white', fontSize: '28px',  fontWeight: 'bold', textAlign: 'center' }}>Sportsbook Rules and Policies</h1>
 
       
       <ul>
@@ -51,7 +51,7 @@ export default function SportsBook() {
         <li>Counter-Strike: Global Offensive - Wingman</li>
         <li>Other Esports Titles</li>
       </ul>
-      <h2 style={{ color: '#1a1a1a', marginTop: '30px' }}>General</h2>
+      <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>General</h2>
       <p>Matches not played as listed<br />
       In situations where the event is played at a venue different to that listed, all bets on the event will stand provided the match is not switched to the opponent’s ground and home and away team for a listed match are not reversed, in which we reserve the right to void betting.</p>
 
@@ -201,12 +201,12 @@ export default function SportsBook() {
   </li>
 </ul>
 
- <h2 className="text-xl font-semibold">Third Party Content</h2>
+ <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Third Party Content</h2>
       <p>
         The Stake sportsbook contains content provided by Third Party Providers. This includes the information related to sports scores and analytics. Stake is not responsible for, do not endorse and make no representation either expressly or impliedly concerning the Third Party Content provided on our platform. You rely on Third Party Content completely at your own risk.
       </p>
 
-      <h2 className="text-xl font-semibold">Player Props</h2>
+      <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Player Props</h2>
       <p>
         Specific terminology used for player prop bets:
       </p>
@@ -235,7 +235,7 @@ export default function SportsBook() {
         For combined Same Game Multis (SGMs), each individual SGM is treated as a separate “leg” within the overall bet. If a selection within any SGM is voided, only that specific SGM will be voided. The remaining SGMs in the combination will still stand, and the total odds will be recalculated based on the remaining valid prices. Please note: a voided selection takes precedence over the results of other legs, including losses.
       </p>
 
-      <h2 className="text-xl font-semibold">Available Auto-Accept Options</h2>
+      <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Available Auto-Accept Options</h2>
       <p>
         Accept Any Odds – Automatically accept bets on any odds change after placement.
       </p>
@@ -252,7 +252,7 @@ export default function SportsBook() {
         No odds changes is the default setting if customer is a new customer or has not selected an option.
       </p>
 
-      <h2 className="text-xl font-semibold">Soccer</h2>
+      <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Soccer</h2>
       <p>
         All markets (except halftime, first half markets, overtime and penalty shoot- out) are considered for regular time only unless otherwise stated.
       </p>
@@ -266,10 +266,10 @@ export default function SportsBook() {
         Prematch bets on friendly matches that last between 45 and 120 minutes will be settled per the final result (2x35, 2x40, 2x60, 3x30).
       </p>
 
-     <h1 className="text-3xl font-bold mb-4">Market Descriptions & Settlement Rules</h1>
+     <h1 style={{ color: 'white', fontSize: '28px',  fontWeight: 'bold', textAlign: 'center' }}>Market Descriptions & Settlement Rules</h1>
 
-      <section className="mb-8">
-        <h2 className="text-xl font-semibold mb-2">Market Descriptions</h2>
+      <section >
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Market Descriptions</h2>
         <ul className="list-disc pl-6 space-y-2">
           <li><strong>Winning Method:</strong> In the case of multiple matches, all of them are considered for this market</li>
           <li><strong>To qualify:</strong> In the case of multiple legs, all matches are considered for this market</li>
@@ -288,8 +288,8 @@ export default function SportsBook() {
         </ul>
       </section>
 
-      <section className="mb-8">
-        <h2 className="text-xl font-semibold mb-2">Time Frame Betting</h2>
+      <section >
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Time Frame Betting</h2>
         <ul className="list-disc pl-6 space-y-2">
           <li>Defined as: 1-10 mins = 0:00–9:59, 11-20 = 10:00–19:59, etc.</li>
           <li>31-45 and 76-90 include added time</li>
@@ -298,8 +298,8 @@ export default function SportsBook() {
         </ul>
       </section>
 
-      <section className="mb-8">
-        <h2 className="text-xl font-semibold mb-2">Interval Markets</h2>
+      <section >
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Interval Markets</h2>
         <ul className="list-disc pl-6 space-y-2">
           <li>Goal time: TV announcement preferred, else match clock</li>
           <li>Corner time: Kick taken</li>
@@ -309,8 +309,8 @@ export default function SportsBook() {
         </ul>
       </section>
 
-      <section className="mb-8">
-        <h2 className="text-xl font-semibold mb-2">Booking & Card Markets</h2>
+      <section >
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Booking & Card Markets</h2>
         <ul className="list-disc pl-6 space-y-2">
           <li>Yellow = 1 card, Red = 2 cards, 2nd yellow ignored</li>
           <li>Max 3 cards per player</li>
@@ -325,8 +325,8 @@ export default function SportsBook() {
         </ul>
       </section>
 
-      <section className="mb-8">
-        <h2 className="text-xl font-semibold mb-2">Goalscorer Markets</h2>
+      <section >
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Goalscorer Markets</h2>
         <ul className="list-disc pl-6 space-y-2">
           <li>Own goals do not count</li>
           <li>Unlisted scorer: All listed bets still stand</li>
@@ -335,8 +335,8 @@ export default function SportsBook() {
         </ul>
       </section>
 
-      <section className="mb-8">
-        <h2 className="text-xl font-semibold mb-2">Next Scoring Type</h2>
+      <section >
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Next Scoring Type</h2>
         <ul className="list-disc pl-6 space-y-2">
           <li><strong>Freekick:</strong> Must be direct and awarded to kicker</li>
           <li><strong>Penalty:</strong> Must be scored directly; rebounds don’t count</li>
@@ -346,8 +346,8 @@ export default function SportsBook() {
         </ul>
       </section>
 
-      <section className="mb-8">
-        <h2 className="text-xl font-semibold mb-2">Settlement & Cancellation</h2>
+      <section >
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Settlement & Cancellation</h2>
         <ul className="list-disc pl-6 space-y-2">
           <li>All markets default to regular time unless stated otherwise</li>
           <li>If match resumes within 48h, bets stand. Otherwise, void</li>
@@ -357,8 +357,8 @@ export default function SportsBook() {
         </ul>
       </section>
 
-      <section className="mb-8">
-        <h2 className="text-xl font-semibold mb-2">Same Game Multi (SGM)</h2>
+      <section >
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Same Game Multi (SGM)</h2>
         <ul className="list-disc pl-6 space-y-2">
           <li>If one selection in an SGM is void, the whole SGM is void</li>
           <li>If combining SGMs, each SGM is its own leg</li>
@@ -368,7 +368,7 @@ export default function SportsBook() {
 
 
        <section>
-        <h2 className="text-xl font-bold">Market Description</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Market Description</h2>
         <p><strong>Winning Method:</strong> In the case of multiple matches, all of them are considered for this market</p>
         <p><strong>To qualify:</strong> In the case of multiple legs, all matches are considered for this market</p>
         <p><strong>1st Goalscorer & 1x2:</strong> Any player who doesn’t score will be settled as “other”</p>
@@ -387,7 +387,7 @@ export default function SportsBook() {
       </section>
 
       <section>
-        <h2 className="text-xl font-bold">Time Frame Betting</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Time Frame Betting</h2>
         <ul className="list-disc list-inside">
           <li>Time frames are defined as follows: 1-10 minutes is 0:00-9:59, 11-20 minutes is 10:00-19:59, etc. 1-15 minutes is 00:00-14:59, 16-30 minutes is 15:00-29:59, etc.</li>
           <li>Time periods 31-45 and 76-90 include any added time</li>
@@ -397,7 +397,7 @@ export default function SportsBook() {
       </section>
 
       <section>
-        <h2 className="text-xl font-bold">Interval Markets</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Interval Markets</h2>
         <ul className="list-disc list-inside">
           <li>Markets will be settled based on the goal time announced by TV. If this is not available, the time according to the match clock is considered.</li>
           <li>Goal markets are settled based on the time the ball crosses the line, and not the time the kick is made.</li>
@@ -410,7 +410,7 @@ export default function SportsBook() {
       </section>
 
       <section>
-        <h2 className="text-xl font-bold">Booking Markets</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Booking Markets</h2>
         <ul className="list-disc list-inside">
           <li>Yellow card counts as 1 card and red or yellow-red card as 2. The 2nd yellow for one player which leads to a yellow-red card is not considered. Consequently, one player cannot cause more than 3 cards.</li>
           <li>Settlement will be made according to all available evidence of cards shown during the regular 90 minutes play.</li>
@@ -421,7 +421,7 @@ export default function SportsBook() {
       </section>
 
       <section>
-        <h2 className="text-xl font-bold">Booking Points Markets</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Booking Points Markets</h2>
         <ul className="list-disc list-inside">
           <li>Yellow card counts as 10 points and red or yellow-red cards as 25. The 2nd yellow for one player which leads to a yellow-red card is not considered. Consequently, one player cannot cause more than 35 booking points.</li>
           <li>Settlement will be made according to all available evidence for cards shown during the regular 90 minutes play. Cards shown after the match are not considered.</li>
@@ -430,7 +430,7 @@ export default function SportsBook() {
       </section>
 
        <section>
-      <h2 className="text-xl font-bold mb-2">Goalscorer Markets</h2>
+      <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Goalscorer Markets</h2>
       <ul className="list-disc pl-6 space-y-1">
         <li>Own goals do not count in the settlement of bets</li>
         <li>If for any reason an unlisted player scores a goal all bets on listed players stand</li>
@@ -441,14 +441,14 @@ export default function SportsBook() {
     </section>
 
     <section>
-      <h2 className="text-xl font-bold mb-2">Corner Markets</h2>
+      <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Corner Markets</h2>
       <ul className="list-disc pl-6">
         <li>Corners awarded but not taken are not considered.</li>
       </ul>
     </section>
 
     <section>
-      <h2 className="text-xl font-bold mb-2">Anytime Goalscorer and Player to score X or more</h2>
+      <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Anytime Goalscorer and Player to score X or more</h2>
       <ul className="list-disc pl-6 space-y-1">
         <li>Own goals will not be considered for Anytime Goalscorer or Player to score X or more settlement purposes and are ignored</li>
         <li>All players who took part in the match since kick off or previous goal are considered as runners</li>
@@ -459,7 +459,7 @@ export default function SportsBook() {
     </section>
 
     <section>
-      <h2 className="text-xl font-bold mb-2">Next Goalscorer</h2>
+      <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Next Goalscorer</h2>
       <ul className="list-disc pl-6 space-y-1">
         <li>Own goals will not be considered for Next Goalscorer settlement purposes and are ignored</li>
         <li>All players who took part in the match since kick off or previous goal are considered as runners</li>
@@ -470,7 +470,7 @@ export default function SportsBook() {
     </section>
 
     <section>
-      <h2 className="text-xl font-bold mb-2">Next scoring type</h2>
+      <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Next scoring type</h2>
       <ul className="list-disc pl-6 space-y-1">
         <li><strong>Freekick:</strong> The goal has to be scored directly from the freekick or corner to qualify as a goal by freekick. Deflected shots count as long as the freekick or corner taker is awarded the goal</li>
         <li><strong>Penalty:</strong> Goal must be scored directly from the penalty. Goals after a rebound of a missed penalty do not count</li>
@@ -482,7 +482,7 @@ export default function SportsBook() {
     </section>
 
     <section>
-      <h2 className="text-xl font-bold mb-2">Settlement and Cancellation Rules</h2>
+      <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Settlement and Cancellation Rules</h2>
       <ul className="list-disc pl-6 space-y-1">
         <li>All markets (except halftime, first half markets, overtime and penalty shoot-out) are considered for regular time only unless otherwise stated.</li>
         <li>If a match is interrupted and continued within 48h after initial kick-off time, all open bets will be settled with the final result. Otherwise all undecided bets are considered void.</li>
@@ -498,7 +498,7 @@ export default function SportsBook() {
     </section>
 
     <section>
-      <h2 className="text-xl font-bold mb-2">Same Game Multi</h2>
+      <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Same Game Multi</h2>
       <ul className="list-disc pl-6 space-y-1">
         <li>If any selection as part of a Same game multi is void, the whole bet is considered as a void.</li>
         <li>For combined Same Game Multis (SGMs), each individual SGM is treated as a separate “leg” within the overall bet. If a selection within any SGM is voided, only that specific SGM will be voided.</li>
@@ -508,21 +508,21 @@ export default function SportsBook() {
     </section>
 
     <section>
-        <h2 className="text-xl font-bold mb-2">Player Props</h2>
-        <h3 className="font-semibold">Goals</h3>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Player Props</h2>
+        <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Goals</h3>
         <ul className="list-disc ml-5 mb-4">
           <li>The number of goals scored by a player in the opposition net.</li>
           <li>A goal may not be counted if the attempt is off target and deflected into the net by an opposition player (own goal).</li>
         </ul>
 
-        <h3 className="font-semibold">Assists</h3>
+        <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Assists</h3>
         <ul className="list-disc ml-5 mb-4">
           <li>A final contribution (pass, shot or any other touch of the ball) made by a player leading to the receiving teammate scoring a goal.</li>
           <li>An assist may not be counted if the attempt is deflected via an opposition player and the recipient was unlikely to have received the ball without the deflection.</li>
           <li>Assists are not given for own goals, penalties, goals scored directly from corners or goals scored directly from direct free kicks.</li>
         </ul>
 
-        <h3 className="font-semibold">Shots</h3>
+        <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Shots</h3>
         <ul className="list-disc ml-5 mb-4">
           <li>Any clear attempt by a player to score a goal (on target, off target or blocked).</li>
           <li>Shots going over or wide or saved by the goalkeeper are included.</li>
@@ -533,7 +533,7 @@ export default function SportsBook() {
           <li>A shot can be made with any part of the body as long as it is legal according to the rules of the game.</li>
         </ul>
 
-        <h3 className="font-semibold">Shots on Goal / Shots on Target</h3>
+        <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Shots on Goal / Shots on Target</h3>
         <ul className="list-disc ml-5 mb-4">
           <li>An attempt by a player which directly results in a goal (regardless of clear intent to score a goal), or a clear attempt by a player to score a goal that clearly would have went into the net if not for a goalkeeper save or a stop made by the last-man (with the goalkeeper clearly unable to save).</li>
           <li>Shots that hit the frame and directly go into the net resulting in a goal are included.</li>
@@ -542,7 +542,7 @@ export default function SportsBook() {
           <li>A shot can be made with any part of the body as long as it is legal according to the rules of the game.</li>
         </ul>
 
-        <h3 className="font-semibold">Passes</h3>
+        <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Passes</h3>
         <ul className="list-disc ml-5 mb-4">
           <li>Attempted pass (successful or unsuccessful) with the clear intention of one player to find a teammate.</li>
           <li>Open-play passes are included. Goal kicks, free-kicks, or corners that are played as an attempted pass (played short) are included.</li>
@@ -550,7 +550,7 @@ export default function SportsBook() {
           <li>A pass can be made with any part of the body as long as it is legal according to the rules of the game.</li>
         </ul>
 
-        <h3 className="font-semibold">Tackles</h3>
+        <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Tackles</h3>
         <ul className="list-disc ml-5 mb-4">
           <li>When a player connects with the ball in a ground challenge, successfully taking the ball away from the player in possession.</li>
           <li>All outcomes of a successful tackle are included (player/teammate takes possession, the ball goes out of play or the ball goes to an opposition player).</li>
@@ -558,10 +558,10 @@ export default function SportsBook() {
           <li>The tackled player must clearly be in possession of the ball before the tackle is made.</li>
         </ul>
 
-        <h3 className="font-semibold">Cards</h3>
+        <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Cards</h3>
         <p>Player carded: 0 = No, 1 = Yes. (Not the total number of cards received)</p>
 
-        <h3 className="font-semibold mt-4">Settlement Process</h3>
+        <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Settlement Process</h3>
         <ul className="list-disc ml-5 mb-4">
           <li>If a player does not participate, the market will be voided.</li>
           <li>If a player was not in the starting line-up, the market will be voided.</li>
@@ -574,8 +574,8 @@ export default function SportsBook() {
       </section>
 
       <section>
-        <h2 className="text-xl font-bold mb-2">Tennis</h2>
-        <h3 className="font-semibold">Settlement and cancellation rules</h3>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Tennis</h2>
+        <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Settlement and cancellation rules</h3>
         <ul className="list-disc ml-5">
           <li>A tennis match is deemed to have started with the first serve of the match.</li>
           <li>If a player retires, is disqualified, or there's a walkover in a match, all markets will be void unless their outcome has already been unconditionally determined. This includes all undecided point, game, or set-related bets.</li>
@@ -599,14 +599,14 @@ export default function SportsBook() {
 
 
       <section>
-        <h2 className="text-xl font-bold">Basketball</h2>
-        <h3 className="font-semibold mt-4">Market Description</h3>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Basketball</h2>
+        <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Market Description</h3>
         <ul className="list-disc list-inside">
           <li>Will there be overtime: Market will be settled as yes if at the end of regular time the match finishes in a draw, regardless of whether overtime is played.</li>
           <li>Who scores Xth point? (incl. ot): If a match ends before the Xth is reached, this market is considered void (cancelled).</li>
           <li>Which team will win race to x points? (incl. ot): If a match ends before the Xth is reached, this market is considered void (cancelled).</li>
         </ul>
-        <h3 className="font-semibold mt-4">Settlement and Cancellation Rules</h3>
+        <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Settlement and Cancellation Rules</h3>
         <ul className="list-disc list-inside">
           <li>Markets do not consider overtime unless otherwise stated.</li>
           <li>If a match is interrupted or postponed and is not continued within 48h after initial tip-off date, all undecided bets will be voided.</li>
@@ -614,7 +614,7 @@ export default function SportsBook() {
           <li>If markets remain open with an incorrect score which has a significant impact on the prices, we reserve the right to void betting.</li>
           <li>In the event that a match does not finish in a tie, but overtime is played for qualification purposes, the markets will be settled according to the result at the end of regular time.</li>
         </ul>
-        <h3 className="font-semibold mt-4">Player Props</h3>
+        <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Player Props</h3>
         <ul className="list-disc list-inside">
           <li>If any selection as part of a Same Game Multi is void, the whole bet is considered as a void.</li>
           <li>For combined Same Game Multis (SGMs), each individual SGM is treated as a separate “leg” within the overall bet...</li>
@@ -634,8 +634,8 @@ export default function SportsBook() {
 
       {/* American Football Section */}
       <section>
-        <h2 className="text-xl font-bold">American Football</h2>
-        <h3 className="font-semibold mt-4">Market Descriptions</h3>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>American Football</h2>
+        <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Market Descriptions</h3>
         <ul className="list-disc list-inside">
           <li>Total home team: Includes overtime.</li>
           <li>Total away team: Includes overtime.</li>
@@ -643,7 +643,7 @@ export default function SportsBook() {
           <li>Xth drive play n – pass completion: Only a forward pass will be taken into consideration...</li>
           <li>Xth drive - result: Only offensive plays will be considered for settlement purposes...</li>
         </ul>
-        <h3 className="font-semibold mt-4">Settlement and Cancellation Rules</h3>
+        <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Settlement and Cancellation Rules</h3>
         <ul className="list-disc list-inside">
           <li>In case of abandoned or postponed matches all undecided markets are considered void unless the match continues...</li>
           <li>Markets do not consider overtime unless otherwise stated.</li>
@@ -651,7 +651,7 @@ export default function SportsBook() {
           <li>Field goal yardage will not be considered for total yards gained in a play.</li>
           <li>Market outcome is determined only based on the score in the respective period...</li>
         </ul>
-        <h3 className="font-semibold mt-4">Player Props</h3>
+        <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Player Props</h3>
         <ul className="list-disc list-inside">
           <li>"Anytime Touchdown" markets include only receiving and rushing touchdowns...</li>
           <li>NFL Defensive Tackles, Assists, and Tackles+Assists only include defensive plays.</li>
@@ -662,8 +662,8 @@ export default function SportsBook() {
 
       {/* Ice Hockey Section */}
       <section>
-        <h2 className="text-xl font-bold">Ice Hockey</h2>
-        <h3 className="font-semibold mt-4">Settlement and Cancellation Rules</h3>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Ice Hockey</h2>
+        <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Settlement and Cancellation Rules</h3>
         <ul className="list-disc list-inside">
           <li>All markets are considered for regular time only unless mentioned.</li>
           <li>If a match is interrupted and continued within 48h, bets will be settled with the final result...</li>
@@ -671,20 +671,20 @@ export default function SportsBook() {
           <li>If a wrong score is entered all markets will be cancelled for the time...</li>
           <li>The period must have been completed for bets to stand.</li>
         </ul>
-        <h3 className="font-semibold mt-4">Player Props</h3>
+        <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Player Props</h3>
         <ul className="list-disc list-inside">
           <li>Pre-match only.</li>
           <li>Goalie Win: the goalie on ice when the winning goal is scored receives the win.</li>
           <li>Overtime is included; penalties are excluded.</li>
           <li>If the stated player logs playing time according to NHL.com, all bets will stand.</li>
         </ul>
-        <h3 className="font-semibold mt-4">Anytime Goalscorer and Player to Score a Point (Live/Inplay Only)</h3>
+        <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Anytime Goalscorer and Player to Score a Point (Live/Inplay Only)</h3>
         <ul className="list-disc list-inside">
           <li>All offered players are considered as runners.</li>
           <li>If an unlisted player scores a goal or earns a point, listed player bets stand.</li>
           <li>Only goals and assists scored during regular time are considered.</li>
         </ul>
-        <h3 className="font-semibold mt-4">Next Scoring Type</h3>
+        <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Next Scoring Type</h3>
         <ul className="list-disc list-inside">
           <li>Even strength</li>
           <li>Power-play</li>
@@ -696,11 +696,11 @@ export default function SportsBook() {
       </section>
 
       <section>
-      <h2 className="text-xl font-bold">Baseball</h2>
+      <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Baseball</h2>
       <p>A baseball match is usually scheduled for 9 innings but, in some instances, can be scheduled for anywhere between 5 to 8. Matches don’t need to play for the full number of scheduled innings for the result to be considered official.</p>
       <p><strong>Mercy Rule:</strong> For matches where the Mercy Rule format is applicable, in event of a match being completed early due to one competitor having a large and presumable insurmountable scoring lead over the other, all markets will be settled based on the final result. Markets will not be voided due to the match being completed early.</p>
 
-      <h3 className="text-lg font-semibold">Market Descriptions</h3>
+      <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Market Descriptions</h3>
       <ul className="list-disc pl-6 space-y-1">
         <li>1x2: The match must go the full number of scheduled innings, otherwise the market will be voided. If the match ends early due to a Mercy rule all bets on the Winner and 1x2 markets will stand.</li>
         <li>Winner (incl. Extra Innings): The Winner market will be settled for pre-match betting if the match goes at least 5 innings (4.5 if the home team is leading) and is considered official.</li>
@@ -723,7 +723,7 @@ export default function SportsBook() {
         <li>Same Game Multi (Bet Builder): Voided on postponed, canceled or abandoned games. Game must be played on original date and finalized.</li>
       </ul>
 
-      <h3 className="text-lg font-semibold">Settlement and Cancellation Rules</h3>
+      <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Settlement and Cancellation Rules</h3>
       <ul className="list-disc pl-6 space-y-1">
         <li>Possible extra innings are not considered unless stated.</li>
         <li>Postponed match: All markets voided unless played same day.</li>
@@ -734,7 +734,7 @@ export default function SportsBook() {
         <li>Double headers: Resulted as normal.</li>
       </ul>
 
-      <h3 className="text-lg font-semibold">Player & Same Game Multi Markets</h3>
+      <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Player & Same Game Multi Markets</h3>
       <ul className="list-disc pl-6 space-y-1">
         <li>Bets before venue change are voided.</li>
         <li>Abandoned before natural end & no resume in 5 hrs = bets voided.</li>
@@ -745,7 +745,7 @@ export default function SportsBook() {
         <li>Game ends early but marked as 'FINAL' on MLB.com: Props & SGMs stand.</li>
       </ul>
 
-      <h3 className="text-lg font-semibold">Batter</h3>
+      <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Batter</h3>
       <ul className="list-disc pl-6 space-y-1">
         <li>Hits (H): Reaching base via fair ball without defensive error.</li>
         <li>Home Runs (HR): Touching all 4 bases via hit, no error.</li>
@@ -754,14 +754,14 @@ export default function SportsBook() {
         <li>Hits + Runs + RBIs: Sum of all 3.</li>
       </ul>
 
-      <h3 className="text-lg font-semibold">Pitcher</h3>
+      <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Pitcher</h3>
       <ul className="list-disc pl-6 space-y-1">
         <li>Strikeouts (SO): Batter receives strike three.</li>
         <li>Earned Runs: Runs not caused by errors/passed balls.</li>
         <li>Win Probability: Must pitch 5+ innings, team must stay ahead post-sub.</li>
       </ul>
 
-      <h3 className="text-lg font-semibold">At-Bat Markets</h3>
+      <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>At-Bat Markets</h3>
       <ul className="list-disc pl-6 space-y-1">
         <li>Hit: Any fair base hit including singles to HRs.</li>
         <li>Strikeout: Includes out at 1st or safe due to wild pitch/passed ball.</li>
@@ -771,7 +771,7 @@ export default function SportsBook() {
         <li>No Action: If inning ends or player changes mid at-bat.</li>
       </ul>
 
-      <h3 className="text-lg font-semibold">Rapid Markets</h3>
+      <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Rapid Markets</h3>
       <ul className="list-disc pl-6 space-y-1">
         <li>Player doesn’t bat again: undecided props voided.</li>
         <li>Foul ball always considered a strike.</li>
@@ -779,14 +779,14 @@ export default function SportsBook() {
         <li>If Bet Builder selection voided, entire bet void.</li>
       </ul>
 
-      <h3 className="text-lg font-semibold">Mexican Baseball League (LMB)</h3>
+      <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Mexican Baseball League (LMB)</h3>
       <p>If a doubleheader is played on days other than Tuesday or Wednesday and games are set for 7 innings, all Totals and Handicap pre-match bets are void.</p>
     </section>
 
     <section>
-      <h2 className="text-xl font-bold">Mixed Martial Arts (MMA)</h2>
+      <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Mixed Martial Arts (MMA)</h2>
 
-      <h3 className="text-lg font-semibold">Market Descriptions</h3>
+      <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Market Descriptions</h3>
       <ul className="list-disc pl-6 space-y-1">
         <li>Winner (To Win the Fight): Void if draw. Technical/Majority Draw = void.</li>
         <li>1x2 (Fight Result): Draw wins if fight ends in draw.</li>
@@ -796,7 +796,7 @@ export default function SportsBook() {
         <li>Will the fight go the distance?: Technical Decision = fight has NOT gone distance.</li>
       </ul>
 
-      <h3 className="text-lg font-semibold">Match Abandonments/Postponements</h3>
+      <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Match Abandonments/Postponements</h3>
       <ul className="list-disc pl-6 space-y-1">
         <li>All markets settled on official fight result.</li>
         <li>Bets void if fight doesn’t happen on scheduled date.</li>
@@ -809,11 +809,11 @@ export default function SportsBook() {
     </section>
 
      <section>
-        <h2 className="text-xl font-semibold mb-2">Boxing</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Boxing</h2>
         <p>All markets are settled according to the result available immediately after the end of the fight.</p>
         <p>Any subsequent appeals or amendments to the result are not be taken into consideration for settlement purposes.</p>
 
-        <h3 className="text-lg font-medium mt-4">Market descriptions</h3>
+        <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Market descriptions</h3>
         <ul className="list-disc pl-5 space-y-2 mt-2">
           <li>
             <strong>Winner (To Win the Fight):</strong> Predict which competitor will win the bout. No draw selection is offered. For the Winner market where no draw selection is offered all bets will be void in the event of a draw (this includes a fight which ends in a Majority Draw or a Technical Draw).
@@ -835,7 +835,7 @@ export default function SportsBook() {
           </li>
         </ul>
 
-        <h3 className="text-lg font-medium mt-4">Match Abandonments/Postponements</h3>
+        <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Match Abandonments/Postponements</h3>
         <ul className="list-disc pl-5 space-y-2 mt-2">
           <li>The odds provider reserves the right to void bets if a fight does not take place for any reason on the scheduled date.</li>
           <li>If either fighter fails to answer the bell for the next round then his opponent will be deemed to have won in the previous round.</li>
@@ -850,7 +850,7 @@ export default function SportsBook() {
       <section>
         <h2 className="text-xl font-semibold mb-2">Golf</h2>
 
-        <h3 className="text-lg font-medium mt-4">Market descriptions</h3>
+        <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Market descriptions</h3>
         <ul className="list-disc pl-5 space-y-2 mt-2">
           <li>
             <strong>2 Balls:</strong> Predict which player will shoot the lowest score in the listed round. If both players retire at the same hole, the market will be void. Market will be void if both competitors achieve the same score for the affected round. A player can be considered as runner if he tees off on his first scheduled hole.
@@ -878,7 +878,7 @@ export default function SportsBook() {
           </li>
         </ul>
 
-        <h3 className="text-lg font-medium mt-4">Settlement and cancellation rules</h3>
+        <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Settlement and cancellation rules</h3>
         <ul className="list-disc pl-5 space-y-2 mt-2">
           <li>Dead heat rule applies for 3 ball markets.</li>
           <li>If players are displayed incorrectly, we reserve the right to void betting.</li>
@@ -898,15 +898,15 @@ export default function SportsBook() {
 
 
       <section>
-  <h2 className="text-xl font-semibold mb-2">Handball</h2>
+  <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Handball</h2>
 
-  <h3 className="text-lg font-medium mt-4">Market descriptions</h3>
+  <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Market descriptions</h3>
   <ul className="list-disc pl-5 space-y-2 mt-2">
     <li>Who scores Xth point? (incl. ot): If a match ends before the Xth is reached, this market is considered void (cancelled).</li>
     <li>Which team will win race to x points (incl. ot)? If a match ends before the Xth is reached, this market is considered void (cancelled).</li>
   </ul>
 
-  <h3 className="text-lg font-medium mt-4">Settlement and cancellation rules</h3>
+  <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Settlement and cancellation rules</h3>
   <ul className="list-disc pl-5 space-y-2 mt-2">
     <li>All markets (except who scores the Xth point and Which team will win race to X points) are considered for regular time only.</li>
     <li>If the match goes to a 7-meter shootout; the markets "Who scores Xth point?" and "Which team will win race to X points?" will be voided.</li>
@@ -918,16 +918,16 @@ export default function SportsBook() {
 </section>
 
 <section>
-  <h2 className="text-xl font-semibold mb-2">Volleyball + Beach Volleyball</h2>
+  <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Volleyball + Beach Volleyball</h2>
 
-  <h3 className="text-lg font-medium mt-4">Market descriptions</h3>
+  <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Market descriptions</h3>
   <ul className="list-disc pl-5 space-y-2 mt-2">
     <li>Will there be a 4th set: If the 4th set has started, then the outcome will be yes</li>
     <li>Will there be a 5th set: If the 5th set has started, then the outcome will be yes</li>
     <li>Who scores [Xth] point in set [y]: If a set ends before the Xth point is reached, this market is considered void (cancelled)</li>
   </ul>
 
-  <h3 className="text-lg font-medium mt-4">Settlement and cancellation rules</h3>
+  <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Settlement and cancellation rules</h3>
   <ul className="list-disc pl-5 space-y-2 mt-2">
     <li>In the case of a match not being finished, all undecided markets are considered void.</li>
     <li>Golden set is not considered in any of the mentioned markets.</li>
@@ -955,19 +955,19 @@ export default function SportsBook() {
     <li>If competitors (which are reflected as dedicated selections) retire in different laps, the number of finished laps is considered for settlement purposes.</li>
   </ul>
 
-  <h3 className="text-lg font-medium mt-4">Markets for fastest lap</h3>
+  <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Markets for fastest lap</h3>
   <ul className="list-disc pl-5 space-y-2 mt-2">
     <li>The driver who achieved the fastest lap in the specified lap, cluster of laps or race is considered as the winner.</li>
     <li>The lap time in milliseconds is valid for settlement purposes.</li>
   </ul>
 
-  <h3 className="text-lg font-medium mt-4">Head2head markets & Winner of group</h3>
+  <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Head2head markets & Winner of group</h3>
   <ul className="list-disc pl-5 space-y-2 mt-2">
     <li>If all competitors (which are reflected as dedicated selections) retire in the same lap, the market will be voided.</li>
     <li>Markets will be considered void if one of the drivers retires in or before the formation lap.</li>
   </ul>
 
-  <h3 className="text-lg font-medium mt-4">Markets for overtakings</h3>
+  <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Markets for overtakings</h3>
   <ul className="list-disc pl-5 space-y-2 mt-2">
     <li>An overtaking needs to be maintained until the end of the lap in order to be considered for settlement purposes.</li>
     <li>Overtakings during the first lap are not considered for settlement purposes.</li>
@@ -976,20 +976,20 @@ export default function SportsBook() {
     <li>Lapping and unlapping is not considered as overtaking</li>
   </ul>
 
-  <h3 className="text-lg font-medium mt-4">Markets for retirements</h3>
+  <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Markets for retirements</h3>
   <ul className="list-disc pl-5 space-y-2 mt-2">
     <li>A car is considered as retired for settlement purposes if it doesn’t pass the finish line when the session is considered as completed, unless it is disqualified or did not start the race.</li>
     <li>If more than 1 competitor retires in the same lap where the first retirement happened, the dead heat rule will be applied.</li>
     <li>If a car retires in the pit or pit lane, the last started lap is considered for settlement purposes.</li>
   </ul>
 
-  <h3 className="text-lg font-medium mt-4">Markets for pit stops</h3>
+  <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Markets for pit stops</h3>
   <ul className="list-disc pl-5 space-y-2 mt-2">
     <li>The car which enters the pit-lane first will be considered as winner of this market.</li>
     <li>If a car enters the pit lane and retires it will still be considered as a pit stop for settlement purposes.</li>
   </ul>
 
-  <h3 className="text-lg font-medium mt-4">Total finishers market rules</h3>
+  <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Total finishers market rules</h3>
   <ul className="list-disc pl-5 space-y-2 mt-2">
     <li>Winner (team), Top x (team) and Head2head (team) are settled with the team which has the best ranked car in the final result.</li>
     <li>1st to retire (teams) is settled with the team which retired one car first.</li>
@@ -1000,7 +1000,7 @@ export default function SportsBook() {
 </section>
 
 <section>
-  <h2 className="text-xl font-semibold mb-2">MotoGP</h2>
+  <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>MotoGP</h2>
 
   <ul className="list-disc pl-5 space-y-2 mt-2">
     <li>Unless otherwise stated in the market rules, the result at the time of the podium presentation is considered valid for settlement purposes.</li>
@@ -1009,7 +1009,7 @@ export default function SportsBook() {
     <li>If competitors (which are reflected as dedicated selections) retire in different laps, the number of finished laps is considered for settlement purposes.</li>
   </ul>
 
-  <h3 className="text-lg font-medium mt-4">Head2head markets</h3>
+  <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Head2head markets</h3>
   <ul className="list-disc pl-5 space-y-2 mt-2">
     <li>If all competitors (which are reflected as dedicated selections) retire in the same lap, the market will be voided.</li>
     <li>Markets will be considered void if one of the drivers retires in or before the warm-up lap.</li>
@@ -1027,13 +1027,13 @@ export default function SportsBook() {
     <li>If a competitor does not participate in the race at all (no start), all bets on this competitor should be voided.</li>
   </ul>
 
-  <h3 className="text-lg font-medium mt-4">Head2head markets</h3>
+  <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Head2head markets</h3>
   <ul className="list-disc pl-5 space-y-2 mt-2">
     <li>Markets will be considered void if one of the drivers retires in or before the warm-up lap.</li>
     <li>If all competitors (which are reflected as dedicated selections) retire in the same lap, the market will be voided.</li>
   </ul>
 
-  <h3 className="text-lg font-medium mt-4">Top 3 market</h3>
+  <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Top 3 market</h3>
   <ul className="list-disc pl-5 space-y-2 mt-2">
     <li>If the number of finishers is lower than 3, then the competitor who retired the latest will be settled as won. This applies until 3 competitors are settled as won.</li>
   </ul>
@@ -1041,7 +1041,7 @@ export default function SportsBook() {
 
 <section>
   <h2 className="text-xl font-semibold mb-2">Futsal</h2>
-  <h3 className="text-lg font-medium mt-4">Settlement and cancellation rules</h3>
+  <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Settlement and cancellation rules</h3>
   <ul className="list-disc pl-5 space-y-2 mt-2">
     <li>All markets (except halftime, first half markets, overtime and penalty shoot out) are considered for regular time only.</li>
     <li>If a match is interrupted and continued within 48h after the initial kick-off date, all open bets will be settled with the final result. Otherwise all undecided bets are considered void.</li>
@@ -1056,7 +1056,7 @@ export default function SportsBook() {
 
 <section>
   <h2 className="text-xl font-semibold mb-2">Badminton</h2>
-  <h3 className="text-lg font-medium mt-4">Settlement and cancellation rules</h3>
+  <h3 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Settlement and cancellation rules</h3>
   <ul className="list-disc pl-5 space-y-2 mt-2">
     <li>In the case of a match not being finished, all undecided markets are considered void.</li>
     <li>If a match is interrupted or postponed and is not continued within 48h after initial start date, betting will be void.</li>
@@ -1264,7 +1264,7 @@ export default function SportsBook() {
   </section>
 
   <section>
-        <h2 className="text-xl font-bold">Market description</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Market description</h2>
         <p>
           Match betting - Who will win the match? All match betting will be settled in accordance with official competition rules. In matches affected by adverse weather, bets will be settled according to the official result. If there is no official result, all bets will be void. In the case of a tie, if the official competition rules do not determine a winner then dead-heat rules will apply. In competitions where a bowl off or super over determines a winner, bets will be settled on the official result. In First Class Matches, if the official result is a tie, bets will be settled as a dead-heat between both teams. Bets on the draw will be settled as losers. If a match is abandoned due to external factors, then bets will be void unless a winner is declared based on the official competition rules. If a match is cancelled then all bets will be void if it is not restarted within 48 hours of its advertised start time.
         </p>
@@ -1321,7 +1321,7 @@ export default function SportsBook() {
         </p>
       </section>
         <section>
-        <h2 className="text-xl font-bold">Match Statistics Markets</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Match Statistics Markets</h2>
         <p>Match Wickets - How many wickets will fall in the match? Retired hurt does not count as a dismissal. Wickets in a super over do not count. Bets will settle if the game is reduced to more than 80% of the overs scheduled and the match is complete, regardless of the overs bowled for the game to reach a conclusion.</p>
         <p>Match Ducks - How many ducks will be scored in total in the match? A duck is classed as someone being dismissed for zero runs. Retired hurt does not count as a dismissal. Ducks in a super over do not count. Bets will settle if the game is reduced to more than 80% of the overs scheduled and the match is complete, regardless of the overs bowled for the game to reach a conclusion.</p>
         <p>Match Milestones - How many of the specified milestone (50/100) will be scored in total in the match? This is determined by how many individual innings of 50+ or 100+ are scored in the match. A score of over 100 would count as both a 50 and a 100. Bets will settle if the game is reduced to more than 80% of the overs scheduled and the match is complete, regardless of the overs bowled for the game to reach a conclusion.</p>
@@ -1351,7 +1351,7 @@ export default function SportsBook() {
       </section>
 
       <section>
-        <h2 className="text-xl font-bold">General Format Note</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>General Format Note</h2>
         <p>
           All runs, whether off the bat or not are included. For example, a wide with three extra runs taken equates to 4 runs in total off that delivery. This also includes penalty runs which occur during the delivery. For example, if the ball hits a fielder’s helmet on the outfield (5 penalty runs) while the batters run 1, this would result in 6 runs off that delivery.
         </p>
@@ -1361,7 +1361,7 @@ export default function SportsBook() {
       </section>
 
       <section>
-        <h2 className="text-xl font-bold">Runs in Over</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Runs in Over</h2>
         <p>
           How many runs will be scored in the specified over? The specified over must be completed for bets to stand unless settlement has already been determined. If an innings ends during an over then that over will be deemed to be complete unless the innings is ended due to external factors, including bad weather, in which case all bets will be void, unless settlement has already been determined.
         </p>
@@ -1371,126 +1371,126 @@ export default function SportsBook() {
       </section>
 
       <section>
-        <h2 className="text-xl font-bold">Boundary in Over</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Boundary in Over</h2>
         <p>
           Will there be a boundary scored in the specified over? As “Runs in Over”. Only boundaries scored from the bat (off any delivery – legal or not) will count as a boundary. Overthrows, all run fours and extras do not count as boundaries.
         </p>
       </section>
 
       <section>
-        <h2 className="text-xl font-bold">Wickets in Over</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Wickets in Over</h2>
         <p>
           Will a wicket fall in the specified over? For settlement purposes, any wicket will count, including run outs. A batter retiring hurt does not count as a wicket. If a batter is timed out or retired out then the wicket is deemed to have taken place on the previous ball. Retired hurt does not count as a dismissal.
         </p>
       </section>
 
       <section>
-        <h2 className="text-xl font-bold">Over Odd/Even</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Over Odd/Even</h2>
         <p>
           Will the number of runs scored in the specified over be odd or even? Zero will be deemed as an even number.
         </p>
       </section>
 
       <section>
-        <h2 className="text-xl font-bold">Runs in Groups of Overs</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Runs in Groups of Overs</h2>
         <p>
           How many runs will be scored in the specified number of overs? If the specified number of overs are not complete the bet will be void, unless the team is all out, declares, reaches their target or settlement of the bet has already been determined. Extras and penalty runs in the particular group of overs count towards settlement of that group. In limited overs matches, bets will be void if the total innings is reduced at any stage to less than 80% of the stated maximum overs at the time the bet was placed, unless settlement of the bet was already determined before the reduction. For the Hundred, an over will consist of 5 legal deliveries, so a full innings will be made up of 20 overs. All other rules remain the same as other limited overs formats.
         </p>
       </section>
 
       <section>
-        <h2 className="text-xl font-bold">Wickets in Groups of Overs</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Wickets in Groups of Overs</h2>
         <p>
           How many wickets will fall in the specified number of overs? If the specified number of overs are not complete the bet will be void, unless the team is all out, declares, reaches their target or settlement of the bet has already been determined. In limited overs matches, bets will be void if the total innings is reduced at any stage to less than 80% of the stated maximum overs at the time the bet was placed, unless settlement of the bet was already determined. For settlement purposes, if a batter is timed out or retired out then the wicket is deemed to have taken place on the previous ball. Retired hurt does not count as a dismissal. For the Hundred, an over will consist of 5 legal deliveries, so a full innings will be made up of 20 overs. All other rules remain the same as other limited overs formats.
         </p>
       </section>
 
       <section>
-        <h2 className="text-xl font-bold">Runs in Session</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Runs in Session</h2>
         <p>
           How many runs will be scored in the specified session? The result is determined by the total number of runs scored in the specified session, regardless of which team has scored them. If fewer than 20 overs are bowled in a session, bets will be void unless settlement has already been determined.
         </p>
       </section>
 
       <section>
-        <h2 className="text-xl font-bold">Innings Runs</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Innings Runs</h2>
         <p>
           How many runs will a team score in a specified innings? The number of runs scored in specific innings. In limited overs matches, bets will be void if it has not been possible to complete at least 80% of the overs scheduled to have been bowled at the time the bet was placed due to external factors, including bad weather, unless settlement of the bet has already been determined before the reduction. Bets placed on a future innings will remain valid regardless of the runs scored in any current or previous innings. In drawn First Class matches, will be void if fewer than 200 overs have been bowled, unless settlement of the bet has already been determined. Bets will also be void in drawn first class matches, if less than 60 overs have been bowled in an incomplete innings, unless settlement of the bet has already been determined. If a team declares, that innings will be considered complete for the purposes of settlement. Bets placed Pre-Match will settle irrespective of which team bats first.
         </p>
       </section>
 
       <section>
-        <h2 className="text-xl font-bold">Innings Wickets</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Innings Wickets</h2>
         <p>
           How many wickets will the batting team lose in the current innings? Retired hurt does not count as a dismissal. In limited overs matches, bets will be void if it has not been possible to complete at least 80% of the overs scheduled to have been bowled at the time the bet was placed due to external factors, including bad weather, unless settlement of the bet has already been determined before the reduction. In drawn First Class matches, bets will be void if fewer than 200 overs have been bowled, unless settlement of the bet has already been determined.
         </p>
       </section>
 
       <section>
-        <h2 className="text-xl font-bold">Innings Fours</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Innings Fours</h2>
         <p>
           How many fours will the batting team hit in their specified innings? Specific innings fours. In limited overs matches, bets will be void if it has not been possible to complete at least 80% of the overs scheduled to be bowled in the innings due to external factors, including bad weather, unless settlement of the bet has already been determined before the reduction. Only fours scored from the bat (off any delivery – legal or not) will count towards the total fours. Overthrows, all run fours and extras do not count.
         </p>
       </section>
 
       <section>
-        <h2 className="text-xl font-bold">Innings Sixes</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Innings Sixes</h2>
         <p>
           How many sixes will the batting team hit in their specified innings? Specific innings sixes. In limited overs matches, bets will be void if it has not been possible to complete at least 80% of the overs scheduled to be bowled in the innings due to external factors, including bad weather, unless settlement of the bet has already been determined before the reduction. Only sixes scored from the bat (off any delivery – legal or not) will count towards the total sixes. Overthrows, all run sixes and extras do not count.
         </p>
       </section>
 
       <section>
-        <h2 className="text-xl font-bold">Innings Extras</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Innings Extras</h2>
         <p>
           How many extras will be added to the named team's batting innings? Specific innings extras. In limited overs matches, bets will be void if it has not been possible to complete at least 80% of the overs scheduled to have been bowled in the innings at the time the bet was placed due to external factors, including bad weather, unless settlement of the bet has already been determined.
         </p>
       </section>
 
        <section>
-        <h2 className="text-xl font-bold">Innings Wides Conceded</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Innings Wides Conceded</h2>
         <p>
           How many wides will be bowled by the named bowling team? Specific innings wides. In limited overs matches, bets will be void if it has not been possible to complete at least 80% of the overs scheduled to have been bowled in the innings at the time the bet was placed due to external factors, including bad weather, unless settlement of the bet has already been determined before the reduction. Any runs resulting from a wide delivery, except penalty runs, will count towards the final total. Wides in a super over do not count.
         </p>
       </section>
 
       <section>
-        <h2 className="text-xl font-bold">Innings Ducks</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Innings Ducks</h2>
         <p>
           How many ducks will be scored in the named team's batting innings? In limited overs matches, bets will be void if it has not been possible to complete at least 80% of the overs scheduled to have been bowled in the innings at the time the bet was placed due to external factors, including bad weather, unless settlement of the bet has already been determined before the reduction. In drawn First Class matches, bets will be void if fewer than 200 overs have been bowled, unless settlement of the bet has already been determined. A duck is classed as someone being dismissed for zero runs. Retired hurt does not count as a dismissal. Ducks in a super over do not count.
         </p>
       </section>
 
       <section>
-        <h2 className="text-xl font-bold">Innings Run Outs</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Innings Run Outs</h2>
         <p>
           How many run outs will be conceded in the specified innings? In limited overs matches, bets will be void if it has not been possible to complete at least 80% of the overs scheduled to have been bowled in the innings at the time the bet was placed due to external factors, including bad weather, unless settlement of the bet has already been determined before the reduction. Run Outs in a super over do not count. In First Class games, only first innings run outs will count.
         </p>
       </section>
 
       <section>
-        <h2 className="text-xl font-bold">Maximum Over in Innings</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Maximum Over in Innings</h2>
         <p>
           How many runs will be scored off the highest scoring over of the current innings? In limited overs matches, bets will be void if it has not been possible to complete at least 80% of the overs scheduled to be bowled in the innings due to external factors, including bad weather, unless settlement of the bet has already been determined before the reduction. In drawn First Class matches, bets will be void if fewer than 200 overs have been bowled, unless settlement of the bet has already been determined. All runs, including extras, count towards settlement. Super overs do not count. For “The Hundred” tournament, an over will consist of 5 legal deliveries, so a full innings will be made up of 20 overs. All other rules remain the same as other limited overs formats.
         </p>
       </section>
 
       <section>
-        <h2 className="text-xl font-bold">Innings Runs - Odd or Even</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Innings Runs - Odd or Even</h2>
         <p>
           Will the total innings runs be odd or even? If the innings is abandoned, forfeited or there is no official result, all bets will be void. Zero counts as an Even number.
         </p>
       </section>
 
       <section>
-        <h2 className="text-xl font-bold">Innings to Finish with a Boundary</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Innings to Finish with a Boundary</h2>
         <p>
           Will the last ball of the innings be a boundary? Only boundaries scored from the bat (off any delivery – legal or not) will count as a boundary. Overthrows, all run fours and extras do not count as boundaries. In limited overs matches, bets will be void if there is any reduction in the number of overs scheduled to have been bowled at the time the bet was placed due to external factors, including bad weather. If the match is abandoned or there is no official result, all bets will be void.
         </p>
       </section>
 
       <section>
-        <h2 className="text-xl font-bold">Top Batter in Innings</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Top Batter in Innings</h2>
         <p>
           Which batter will score the most runs for the named team? The result of this market is determined on the batter with the highest individual score in a team’s innings.
         </p>
@@ -1509,7 +1509,7 @@ export default function SportsBook() {
       </section>
 
       <section>
-        <h2 className="text-xl font-bold">Top Bowler in Innings</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Top Bowler in Innings</h2>
         <p>
           Which bowler will take the most wickets for the named team? The result of this market is determined on the bowler with the highest individual number of wickets in an individual innings.
         </p>
@@ -1531,7 +1531,7 @@ export default function SportsBook() {
       </section>
 
       <section>
-        <h2 className="text-xl font-bold">Last Player Standing</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Last Player Standing</h2>
         <p>
           Which batter will be not out upon completion of the innings? If there are two or more batters who are not out upon completion of the innings, the winner for the purpose of settlement will be the last batter to face a delivery (legal or not). Players will not be deemed to have been not out if they were no longer at the crease having retired hurt or did not bat. If more than 11 players bat, the market will be void.
         </p>
@@ -1577,13 +1577,13 @@ export default function SportsBook() {
 </section>
 
 <section>
-        <h2 className="text-xl font-bold">Batter Milestones</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Batter Milestones</h2>
         <p>Will the named batter reach the specified milestone? Same rules as "Batter Runs".</p>
       </section>
 
       {/* Batter Deliveries Faced */}
       <section>
-        <h2 className="text-xl font-bold">Batter Deliveries Faced</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Batter Deliveries Faced</h2>
         <p>
           How many deliveries will the named batter face? To match the scorecard, so in this case
           wides do not count, but no-balls do. If a batter retires hurt, but returns later, the total
@@ -1608,7 +1608,7 @@ export default function SportsBook() {
 
       {/* Batter Method of Dismissal */}
       <section>
-        <h2 className="text-xl font-bold">Batter Method of Dismissal</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Batter Method of Dismissal</h2>
         <p>
           How will the named batter be out? If the specified batter is not out, all bets will be void. If
           the specified batter retires, and does not return to bat later, all bets will be void. If that
@@ -1622,7 +1622,7 @@ export default function SportsBook() {
 
       {/* Bowler Wickets */}
       <section>
-        <h2 className="text-xl font-bold">Bowler Wickets</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Bowler Wickets</h2>
         <p>
           How many wickets will the named bowler take? If a bowler does not bowl, bets will be void.
         </p>
@@ -1639,7 +1639,7 @@ export default function SportsBook() {
 
       {/* Bowler Runs Conceded */}
       <section>
-        <h2 className="text-xl font-bold">Bowler Runs Conceded</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Bowler Runs Conceded</h2>
         <p>
           How many runs will the named bowler concede? To match the scorecard: wides and no-balls count,
           but byes, leg byes and penalty runs do not. If a bowler does not bowl, bets will be void.
@@ -1656,7 +1656,7 @@ export default function SportsBook() {
 
       {/* Named Player Performance */}
       <section>
-        <h2 className="text-xl font-bold">Named Player Performance</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Named Player Performance</h2>
         <p>
           How many points will the named player score in the player performance system? 1 point per run scored,
           20 per wicket, 10 per catch, 25 per stumping.
@@ -1676,21 +1676,21 @@ export default function SportsBook() {
       </section>
 
        <section>
-        <h2 className="text-xl font-bold">Batter Matchbet</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Batter Matchbet</h2>
         <p>Which of the named players will score the most runs? In limited overs matches, bets will be void if it has not been possible to complete at least 80% of the scheduled overs in either innings due to external factors, including bad weather, unless settlement has been determined. In drawn First Class matches, bets will be void if fewer than 200 overs have been bowled, unless settlement of the bet has already been determined.</p>
         <p>Both players must be named in the starting XI, or appear as a substitute. If either does not then subsequently bat all bets are still settled. Runs scored in a super over do not count.</p>
       </section>
 
       {/* Bowler Matchbet */}
       <section>
-        <h2 className="text-xl font-bold">Bowler Matchbet</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Bowler Matchbet</h2>
         <p>Which of the named players will take the most wickets? In limited overs matches, bets will be void if it has not been possible to complete at least 80% of the scheduled overs in either innings due to external factors, including bad weather, unless settlement has been determined. In drawn First Class matches, bets will be void if fewer than 200 overs have been bowled, unless settlement of the bet has already been determined.</p>
         <p>Both players must be named in the starting XI, or appear as a substitute. If either does not then subsequently bowl all bets are still settled. Wickets taken in a super over do not count.</p>
       </section>
 
       {/* All-Rounder Matchbet */}
       <section>
-        <h2 className="text-xl font-bold">All-Rounder Matchbet</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>All-Rounder Matchbet</h2>
         <p>Which of the named players will score the most points in the player performance scoring system? Points are scored as follows: 1 point per run scored, 20 points per wicket taken, 10 points per catch taken, 25 points per stumping taken.</p>
         <p>In limited overs matches, bets will be void if it has not been possible to complete at least 80% of the scheduled overs in either innings due to external factors, including bad weather, unless settlement has been determined. In drawn First Class matches, bets will be void if fewer than 200 overs have been bowled, unless settlement of the bet has already been determined.</p>
         <p>Both players must be named in the starting XI, or appear as a substitute. If either player does not then subsequently bat or bowl then all bets are still settled. Points scored in a super over do not count.</p>
@@ -1698,7 +1698,7 @@ export default function SportsBook() {
 
       {/* Keeper Matchbet */}
       <section>
-        <h2 className="text-xl font-bold">Keeper Matchbet</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Keeper Matchbet</h2>
         <p>Which of the named wicket keepers score more points in the player performance scoring system? Points are scored as follows: 1 point per run scored, 20 points per wicket taken, 10 points per catch taken, 25 points per stumping taken.</p>
         <p>In limited overs matches, bets will be void if it has not been possible to complete at least 80% of the scheduled overs in either innings due to external factors, including bad weather, unless settlement has been determined. In drawn First Class matches, bets will be void if fewer than 200 overs have been bowled, unless settlement of the bet has already been determined.</p>
         <p>Both named players must start the match as a wicket keeper, or appear as a substitute, but if their playing role changes for any reason all bets will still be settled in accordance with scoring system above. Points scored in a super over do not count.</p>
@@ -1706,32 +1706,32 @@ export default function SportsBook() {
 
       {/* Fall of Next Wicket */}
       <section>
-        <h2 className="text-xl font-bold">Fall of Next Wicket</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Fall of Next Wicket</h2>
         <p>How many runs will the batting team have scored when the next wicket falls? If the partnership is ended by the end of an innings, bets will settle at the final score. For settlement purposes, a batter retiring hurt does not count as a wicket.</p>
         <p>In limited overs matches, bets will be void if it has not been possible to complete at least 80% of the scheduled overs in either innings due to external factors, unless settlement has already been determined, or goes on to be determined. Result will be considered determined if the line at which the bet was placed is passed, or the wicket in question falls. In drawn First Class matches, bets will be void if fewer than 200 overs have been bowled, unless settlement of the bet has already been determined.</p>
       </section>
 
       {/* Next Player Out */}
       <section>
-        <h2 className="text-xl font-bold">Next Player Out</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Next Player Out</h2>
         <p>Which batter will be the next to be dismissed? If either batter retires hurt or the batters at the crease are different from those quoted, the bets placed on both batters will be declared void. If no more wickets fall, all bets will be void.</p>
       </section>
 
       {/* Method of Next Dismissal */}
       <section>
-        <h2 className="text-xl font-bold">Method of Next Dismissal</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Method of Next Dismissal</h2>
         <p>How will the next batter be out? The result will be determined by the dismissal method of the next wicket that falls. A batter retiring hurt does not count as a wicket. If a batter is retired out, all bets will be void. If the specified wicket does not fall, all bets will be void. Caught and bowled is included in fielder catch. "Other" dismissal method in cricket include: hit wicket, timed out, obstructing the field and hit the ball twice.</p>
       </section>
 
       {/* Race to 'X' Runs */}
       <section>
-        <h2 className="text-xl font-bold">Race to 'X' Runs</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Race to 'X' Runs</h2>
         <p>Which batter will reach the specified number of runs first? All bets stand, regardless of any curtailment. If neither batter reaches the specified number of runs the markets will be settled as ‘Neither’.</p>
       </section>
 
       {/* Next Boundary Four or Six */}
       <section>
-        <h2 className="text-xl font-bold">Next Boundary Four or Six</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Next Boundary Four or Six</h2>
         <p>Will the next boundary be a four or a six? If there are no more boundaries in the innings, bets will be void. Only boundaries scored from the bat (off any delivery – legal or not) will count as a boundary. Overthrows, all run fours and extras do not count as boundaries.</p>
         <p>In limited overs matches, bets will be void if the total innings is reduced at any stage to less than 80% of the stated maximum overs at the time the bet was placed, unless settlement of the bet was already determined before the reduction. In drawn First Class matches, bets will be void if fewer than 200 overs are bowled, unless settlement of the bet has already been determined.</p>
         <p>Boundaries scored in a super over do not count.</p>
@@ -1739,69 +1739,69 @@ export default function SportsBook() {
 
       {/* Winning Over */}
       <section>
-        <h2 className="text-xl font-bold">Winning Over</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Winning Over</h2>
         <p>In which over of the named team's innings will the match be completed? All bets will be void if there is no official result. In limited overs matches, all bets will be void if, subsequent to placing the bet, the maximum overs possible are reduced in any way.</p>
       </section>
 
       {/* Both Teams to Score ‘X’ Runs */}
       <section>
-        <h2 className="text-xl font-bold">Both Teams to Score ‘X’ Runs</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Both Teams to Score ‘X’ Runs</h2>
         <p>Will both teams score the specified number of runs? In limited overs matches, bets will be void if it has not been possible to complete at least 80% of the overs scheduled to have been bowled in both innings at the time the bet was placed due to external factors, including bad weather, unless settlement of the bet has already been determined before the reduction. In drawn First Class matches, bets will be void if fewer than 100 overs have been bowled in either teams first innings, unless settlement of the bet has already been determined.</p>
         <p>Only runs scored in the first innings count. If a team declares, that innings will be considered complete for the purposes of settlement.</p>
       </section>
 
       {/* Either Batter Method of Dismissal */}
       <section>
-        <h2 className="text-xl font-bold">Either Batter Method of Dismissal</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Either Batter Method of Dismissal</h2>
         <p>Will either of the named batters be dismissed in the specified method? All bets will settle, regardless of whether either batter remains not out, or retired hurt, at the end of the innings.</p>
       </section>
 
       {/* Both Batter Method of Dismissal */}
       <section>
-        <h2 className="text-xl font-bold">Both Batter Method of Dismissal</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Both Batter Method of Dismissal</h2>
         <p>Will both of the named batters be dismissed in the specified method? Same rules as “Either Batter Method of Dismissal”.</p>
       </section>
 
       {/* Runs off Consecutive Deliveries */}
       <section>
-        <h2 className="text-xl font-bold">Runs off Consecutive Deliveries</h2>
+        <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Runs off Consecutive Deliveries</h2>
         <p>How many runs will be scored off each of the specified deliveries? Same rules as “Runs off Delivery” except the specified number of runs must be scored off both named deliveries.</p>
       </section>
 
       <section>
-  <h2>Wicket off Delivery</h2>
+  <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Wicket off Delivery</h2>
   <p>Will a wicket fall in the specified delivery? The specified delivery must be completed for bets to stand. For settlement purposes, any wicket will count, including run outs. A batter retiring hurt does not count as a wicket. If a batter is timed out or retired out then the wicket is deemed to have taken place on the previous ball.</p>
 </section>
 
 <section>
-  <h2>Both Batters to Score ‘X’ Runs in Over</h2>
+  <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Both Batters to Score ‘X’ Runs in Over</h2>
   <p>Will both batters score the specified number of runs in the over? The specified over must be completed for bets to stand unless settlement has already been determined. If an innings ends during an over then that over will be deemed to be complete unless the innings is ended due to external factors, including bad weather, in which case all bets will be void, unless settlement has already been determined. If the over does not commence for any reason, all bets will be void. Runs must be scored off the bat to count towards settlement. Bets will settle regardless of whether or not either of the specified batters are dismissed or retired hurt before the over commences.</p>
 </section>
 
 <section>
-  <h2>Both Batters to Score a Boundary in Over</h2>
+  <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Both Batters to Score a Boundary in Over</h2>
   <p>Will both batters score a boundary in the over? Same rules as “Both Batters to Score ‘X’ Runs in Over”. Both fours and sixes count as boundaries. Only fours or sixes scored from the bat (off any delivery – legal or not) will count. Overthrows, all run fours and extras do not count.</p>
 </section>
 
 <section>
-  <h2>Both a Four and a Six to be Scored in an Over</h2>
+  <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Both a Four and a Six to be Scored in an Over</h2>
   <p>Will both a four and a six be scored in the over? The specified over must be completed for bets to stand unless settlement has already been determined. If an innings ends during an over then that over will be deemed to be complete unless the innings is ended due to external factors, including bad weather, in which case all bets will be void, unless settlement has already been determined. If the over does not commence for any reason, all bets will be void. Only fours or sixes scored from the bat (off any delivery – legal or not) will count. Overthrows, all run fours and extras do not count.</p>
 </section>
 
 <section>
-  <h2>Batter and Bowler Combo Milestones</h2>
+  <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Batter and Bowler Combo Milestones</h2>
   <p>Will the named batter, and the named bowler, reach their specified milestones? For batter – same as “Batter Runs”. In first class games, only runs scored in the first innings will count. For bowler – if a bowler does not bowl, they will be deemed to have taken 0 wickets.</p>
   <p>In limited overs matches, bets will be void if it has not been possible to complete at least 80% of the scheduled overs in the relevant innings due to external factors, including bad weather, unless settlement has been determined. In drawn First Class matches, bets will be void if fewer than 200 overs have been bowled, unless the player’s bowling innings is complete. The result will be considered determined if the lines at which the bet was placed are passed.</p>
   <p>In First Class games, only first innings wickets will count and runs. Wickets and runs scored in a super over do not count.</p>
 </section>
 
 <section>
-  <h2>Batters Combo Milestones</h2>
+  <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Batters Combo Milestones</h2>
   <p>Will both the batters reach their specified milestones? Same rules as “Combined Batter Runs”.</p>
 </section>
 
 <section>
-  <h2>Notes for all Markets</h2>
+  <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Notes for all Markets</h2>
   <ul>
     <li>Players sent off/retired out: A player being sent off is viewed as retired out, so counts as a wicket.</li>
     <li>Concussion substitutions: When a player leaves the field as a concussion substitute, this does not count as a wicket. If the player does not return later, the final result will be as it stood when the player left the field. When a player enters the match as a concussion substitute, for settlement purposes both they and the player replaced are looked upon as to have played a full part in the match.</li>
@@ -1812,12 +1812,12 @@ export default function SportsBook() {
 </section>
 
 <section>
-  <h2>All Other Sports</h2>
+  <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>All Other Sports</h2>
   <p>No sport-specific rules, general rules apply.</p>
 </section>
 
 <section>
-  <h2>Politics & Entertainment Specials</h2>
+  <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>Politics & Entertainment Specials</h2>
   <ul>
     <li>"U.S Recession in 2025?" - settled on or before Jan 1, 2026, based on National Bureau of Economic Research info.</li>
     <li>"Will Bitcoin Reach $150k in 2025?" - settled based on CoinMarketCap data.</li>
@@ -1836,8 +1836,8 @@ export default function SportsBook() {
 </section>
 
 
- <div className="p-4 space-y-6">
-      <h2 className="text-2xl font-bold">Esports General</h2>
+ <div>
+      <h2 style={{ color: 'white', fontSize: '20px',  fontWeight: 'bold' }}>Esports General</h2>
 
       {/* 1. Settlement Rules */}
       <div>
@@ -1989,7 +1989,7 @@ export default function SportsBook() {
         <h2 className="text-2xl font-bold mb-2">Glossary</h2>
         <ul className="list-disc list-inside space-y-2">
           <li><strong>T / CT (Terrorists / Counter-terrorists):</strong> title specific name of Dark / Light team</li>
-          <li><strong>Round:</strong> Team wins Rounds to win the Map. A Round is won when 1) one team eliminates the other, or 2) by Terrorists when they successfully detonate the bomb, or 3) by Counter-terrorists when the bomb does not detonate in 115 seconds from the start of the Round, or 4) by Counter-terrorists when the bomb is defused. The first team to score 16 Rounds wins the Map in CSGO while in CS2 the first team to score 13 Rounds wins the Map.</li>
+          <li><strong>Round:</strong> Team wins Rounds to win the Map. A Round is won when 1. one team eliminates the other, or 2. by Terrorists when they successfully detonate the bomb, or 3 by Counter-terrorists when the bomb does not detonate in 115 seconds from the start of the Round, or 4. by Counter-terrorists when the bomb is defused. The first team to score 16 Rounds wins the Map in CSGO while in CS2 the first team to score 13 Rounds wins the Map.</li>
           <li><strong>Overtime:</strong> In case of Map draw score (15:15 for CSGO or 12:12 for CS2), first overtime is being played in Bo6 format. In case of another draw (18:18 for CSGO or 15:15 for CS2), next overtime with the same rules will be played. This process repeats until one team wins overtime. Overtime rules can be tournament-specific.</li>
           <li><strong>Pistol Round:</strong> 1. and 16. Round on a particular Map.</li>
         </ul>
@@ -2041,7 +2041,7 @@ export default function SportsBook() {
             A / D (Attackers / Defenders): title specific name of Dark / Light team
           </li>
           <li>
-            Round: Team wins Rounds to win the Map. A Round is won when 1) one team eliminates the other, or 2) by Attackers when they successfully detonate the spike, or 3) by Defenders when the spike does not detonate in 45 seconds from the start of the Round, or 4) by Defenders when the spike is defused. The first team to score 13 Rounds wins the Map.
+            Round: Team wins Rounds to win the Map. A Round is won when 1. one team eliminates the other, or 2. by Attackers when they successfully detonate the spike, or 3) by Defenders when the spike does not detonate in 45 seconds from the start of the Round, or 4) by Defenders when the spike is defused. The first team to score 13 Rounds wins the Map.
           </li>
           <li>
             Overtime: In case of Map draw score (12:12), first overtime is being played in Bo2 format. In case of another draw (13:13), next overtime with the same rules will be played. This process repeats until one team wins overtime. Overtime rules can be tournament-specific.
@@ -2077,7 +2077,7 @@ export default function SportsBook() {
             A / D (Attackers / Defenders): title specific name of Dark / Light team
           </li>
           <li>
-            Round: Team wins Rounds to win the Map. A Round is won when 1) one team eliminates the other, or 2) by Attackers when they successfully detonate the spike, or 3) by Defenders when the spike does not detonate in 45 seconds from the start of the Round, or 4) by Defenders when the spike is defused. The first team to score 13 Rounds wins the Map.
+            Round: Team wins Rounds to win the Map. A Round is won when 1* one team eliminates the other, or 2* by Attackers when they successfully detonate the spike, or 3) by Defenders when the spike does not detonate in 45 seconds from the start of the Round, or 4) by Defenders when the spike is defused. The first team to score 13 Rounds wins the Map.
           </li>
           <li>
             Overtime: In case of Map draw score (12:12), first overtime is being played in Bo2 format. In case of another draw (13:13), next overtime with the same rules will be played. This process repeats until one team wins overtime. Overtime rules can be tournament-specific.
@@ -2306,8 +2306,7 @@ export default function SportsBook() {
           <li><strong>Exact Match score:</strong> what would be the final score of the Match, presented as “No. of Maps won by team A: No. of Maps won by team B”.</li>
           <li><strong>Team to win at least 1 Map yes/no:</strong> whether a certain team wins at least one Map in a particular Match.</li>
           <li><strong>Map winner 2-way:</strong> which team won the Map.</li>
-        </ul>
-      </section>
+        </ul>      </section>
 
 
     </div>
