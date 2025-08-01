@@ -23,6 +23,7 @@ const DiceoGame = lazy(() => import('../../Games/Dice/DiceGame'));
 const LimboGame = lazy(() => import('../../Games/Limbo/LimboGame'));
 const HiloGame = lazy(() => import('../../Games/HiloV2/HiloGame'));
 const PlinkoGame = lazy(() => import('../../Games/plinko/PlinkoGame'));
+const KenoGame = lazy(() => import('../../Games/Keno/Keno'));
 const Transactions = lazy(() => import('../../pages/Transactions'));
 const PolicyLayout = lazy(() => import('../../pages/Privacy Policy/PolicyLayout'));
 const Privacy = lazy(() => import('../../pages/Privacy Policy/display/Privacy'));
@@ -77,6 +78,7 @@ const routes = [
   { path: '/casino/game/dice', element: <DiceoGame /> },
   { path: '/casino/game/hilo', element: <HiloGame /> },
   { path: '/casino/game/plinko', element: <PlinkoGame /> },
+  { path: '/casino/game/keno', element: <KenoGame /> },
   
   // soccer routes
   { path: '/sport/game/:sportId', element: <SoccerLayout /> },
@@ -172,6 +174,7 @@ const gameRoutes = [
   '/casino/game/dice',
   '/casino/game/mines',
   '/casino/game/limbo',
+  '/casino/game/keno',
 ];
 
 // Export the routes and helper functions
