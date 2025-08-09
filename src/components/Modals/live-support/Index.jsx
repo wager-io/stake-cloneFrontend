@@ -10,7 +10,6 @@ export default function LiveSupport({ onClose }) {
     const [showChatAdmin, setShowChatAdmin] = React.useState(false);
     const [isExpanded, setIsExpanded] = React.useState(false);
 
-    // Prevent body scroll on mobile when modal is open
     React.useEffect(() => {
         if (window.innerWidth < 768) { // Mobile breakpoint
             document.body.style.overflow = 'hidden';
