@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function SelfExclusion() {
   return (
-    <div style={{ padding: '30px', fontFamily: 'Arial, sans-serif', lineHeight: '1.6', color: 'white', overflowY: "scroll", maxHeight: "90vh",  }}>
+    <div style={{ padding: '30px', fontFamily: 'Arial, sans-serif', lineHeight: '1.6', overflowY: "scroll", maxHeight: "90vh",  }}>
       <h2 style={{ color: 'white', fontSize: '28px',  fontWeight: 'bold' }}>Self-Exclusion Policy</h2><br />
       <p>If you feel you are no longer able to control your gambling or gamble safely, we offer you the option to self-exclude from betting with us. To begin the self-exclusion process, please visit our Stake Smart page.</p><br />
 

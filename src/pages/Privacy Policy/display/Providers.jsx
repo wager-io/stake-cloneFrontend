@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Providers() {
   return (
-    <div style={{ padding: '30px', fontFamily: 'Arial, sans-serif', lineHeight: '1.6', color: 'white', overflowY: "scroll", maxHeight: "90vh",  }}>
+    <div style={{ padding: '30px', fontFamily: 'Arial, sans-serif', lineHeight: '1.6', overflowY: "scroll", maxHeight: "90vh",  }}>
           <h1 style={{ color: 'white', fontSize: '28px',  fontWeight: 'bold' }}>Provider Availability Policy</h1><br />
 
     <h2 style={{ color: 'white', fontSize: '17px',  fontWeight: 'bold' }}>1. Absolute Restriction</h2><br />

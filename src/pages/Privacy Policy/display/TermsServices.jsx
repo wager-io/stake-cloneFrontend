@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function TermsServices() {
   return (
-  <div style={{ padding: '30px', fontFamily: 'Arial, sans-serif', lineHeight: '1.6', color: 'white', overflowY: "scroll", maxHeight: "90vh",  }}>
+  <div style={{ padding: '30px', fontFamily: 'Arial, sans-serif', lineHeight: '1.6', overflowY: "scroll", maxHeight: "90vh",  }}>
   <h2 style={{ color: 'white', fontSize: '28px',  fontWeight: 'bold', textAlign: 'center' }}>Privacy Policy</h2>
   <p>This is the privacy policy of Medium Rare N.V. (owner and operator of Stake.) This Privacy Policy sets out how Stake.com will manage your personal information which we collect as a result of your membership of Stake, your use of our websites located at <a href="https://stake.com/" target="_blank" rel="noopener noreferrer">https://stake.com/</a> and any pages or websites under the 'Stake' brand including any mobile phone or tablet applications that are owned and/or operated by us or whenever we otherwise deal with you. We are committed to ensuring that the personal information we collect about you is protected and is used, stored and disclosed in accordance with the Privacy Act and this Privacy Policy.</p>
 
