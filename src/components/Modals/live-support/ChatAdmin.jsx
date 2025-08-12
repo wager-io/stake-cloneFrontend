@@ -9,7 +9,7 @@ import EmojiPicker from 'emoji-picker-react'
 import { useAuth } from '../../../context/AuthContext'
 import io from 'socket.io-client'
 import './styles/ChatAdmin.css'
-import { backendUrl } from '../../../../../admin/src/api/axios'
+import { backendUrl } from '../../../api/auth';
 
 const gf = new GiphyFetch('dc6zaTOxFJmzC')
 

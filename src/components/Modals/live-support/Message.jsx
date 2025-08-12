@@ -3,7 +3,7 @@ import { IoClose, IoChatboxOutline, IoTicketOutline, IoTimeOutline, IoCheckmarkD
 import { LuSendHorizontal } from "react-icons/lu";
 import { useAuth } from '../../../context/AuthContext';
 import io from 'socket.io-client';
-import { backendUrl } from '../../../../../admin/src/api/axios';
+import { backendUrl } from '../../../api/auth';
 
 export default function Messages({ setShowChatAdmin, onClose }) {
   const [previousTickets, setPreviousTickets] = useState([])
