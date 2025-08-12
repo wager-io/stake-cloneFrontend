@@ -130,7 +130,7 @@ function HeroSection() {
                   "radial-gradient(circle at 100% 100%, var(--grey-500) 0, var(--grey-500) 6px, transparent 6px) 0% 0%/8px 8px no-repeat, radial-gradient(circle at 0 100%, var(--grey-500) 0, var(--grey-500) 6px, transparent 6px) 100% 0%/8px 8px no-repeat, radial-gradient(circle at 100% 0, var(--grey-500) 0, var(--grey-500) 6px, transparent 6px) 0% 100%/8px 8px no-repeat, radial-gradient(circle at 0 0, var(--grey-500) 0, var(--grey-500) 6px, transparent 6px) 100% 100%/8px 8px no-repeat, linear-gradient(var(--grey-500), var(--grey-500)) 50% 50%/calc(100% - 4px) calc(100% - 16px) no-repeat, linear-gradient(var(--grey-500), var(--grey-500)) 50% 50%/calc(100% - 16px) calc(100% - 4px) no-repeat, linear-gradient(var(--degrees), transparent var(--percentage), var(--border-color) 100%)",
               }}>
               <img
-                src="/assets/landingpage/explore-casino-en.avif"
+                src="/assets/landingpage/casino-section.png"
                 alt="Explore Casino"
                 className="w-full h-full object-cover rounded"
               />
@@ -154,7 +154,7 @@ function HeroSection() {
                   "radial-gradient(circle at 100% 100%, var(--grey-500) 0, var(--grey-500) 6px, transparent 6px) 0% 0%/8px 8px no-repeat, radial-gradient(circle at 0 100%, var(--grey-500) 0, var(--grey-500) 6px, transparent 6px) 100% 0%/8px 8px no-repeat, radial-gradient(circle at 100% 0, var(--grey-500) 0, var(--grey-500) 6px, transparent 6px) 0% 100%/8px 8px no-repeat, radial-gradient(circle at 0 0, var(--grey-500) 0, var(--grey-500) 6px, transparent 6px) 100% 100%/8px 8px no-repeat, linear-gradient(var(--grey-500), var(--grey-500)) 50% 50%/calc(100% - 4px) calc(100% - 16px) no-repeat, linear-gradient(var(--grey-500), var(--grey-500)) 50% 50%/calc(100% - 16px) calc(100% - 4px) no-repeat, linear-gradient(var(--degrees), transparent var(--percentage), var(--border-color) 100%)",
               }}>
               <img
-                src="/assets/landingpage/explore-sports-en.avif"
+                src="/assets/landingpage/sport-section.png"
                 alt="Explore Sports"
                 className="w-full h-full object-cover rounded"
               />

@@ -1,15 +1,13 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { lazy } from 'react';
-import NotFound from '../../pages/NotFound';
-import SportHome from '../../pages/SportHome';
-import SoccerLayout from '../../sports/soccer/SoccerLayout';
-import ComingSoon from '../../pages/ComingSoon';
-import GambleLayout from '../../pages/Gambling/GambleLayout';
 
-import Favourites from './Favourites';
-import Recent from './Recent';
-import MyBets from './MyBets';
+const GambleLayout = lazy(() => import('../../pages/Gambling/GambleLayout'));
+const ComingSoon = lazy(() => import('../../pages/ComingSoon'));
+const SoccerLayout = lazy(() => import('../../sports/soccer/SoccerLayout'));
+const SportHome = lazy(() => import('../../pages/SportHome'));
+const NotFound = lazy(() => import('../../pages/NotFound'));
+
 
 const Home = lazy(() => import('../../pages/LandingPage'));
 const CasinoHome = lazy(() => import('../../pages/CasinoHome'));
@@ -51,6 +49,9 @@ const Deposit = lazy(() => import('../../pages/transactionComponents/Deposit'));
 const Withdraw = lazy(() => import('../../pages/transactionComponents/Withdraw'));
 const Bills = lazy(() => import('../../pages/transactionComponents/Bills'));
 const Others = lazy(() => import('../../pages/transactionComponents/Others'));
+const MyBets = lazy(() => import('./MyBets'));
+const Favourites = lazy(() => import('./Favourites'));
+const Recent = lazy(() => import('./Recent'));
 
 // Define all application routes
 const routes = [

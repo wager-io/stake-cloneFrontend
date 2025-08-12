@@ -1,19 +1,20 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { lazy, Suspense } from 'react';
 import { Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom';
-import Navbar from './Navbar';
-import Sidebar from './Sidebar';
-import Footer from './Footer';
-import Preload from '../common/Preloader';
-import Chats from './Chat';
+
 import { Toaster } from 'sonner';
 import { AuthContext } from '../../context/AuthContext';
 import { FaSearch, FaDice, FaReceipt, FaComments } from 'react-icons/fa';
-import MobileSidebar from './MobileSidebar';
+
+const LiveSupport = lazy(() => import('../Modals/live-support/Index'));
+const Modals = lazy(() => import('./Modals'));
+const Chats = lazy(() => import('./Chat'));
+const Footer = lazy(() => import('./Footer'));
+const Preload = lazy(() => import('../common/Preloader'));
+const Sidebar = lazy(() => import('./Sidebar'));
+const Navbar = lazy(() => import('./Navbar'));
 
 import { routes, protectedRoutes, gameRoutes } from './routes';
-import Modals from './Modals';
-import LiveSupport from '../Modals/live-support/Index';
 
 function Layout() {
   const { user } = useContext(AuthContext);
@@ -21,7 +22,6 @@ function Layout() {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [isMediumScreen, setIsMediumScreen] = useState(false);
   const [activeTab, setActiveTab] = useState('Casino');
-  const [showMobileSidebar, setShowMobileSidebar] = useState(false);
   const [openLiveSupport, setOpenLiveSupport] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
@@ -118,10 +118,10 @@ function Layout() {
 
   return (
     <div className="flex min-h-screen bg-[#1a2c38]">
-      {openLiveSupport && <LiveSupport onClose={() => setOpenLiveSupport(false)} />}
+
       <Toaster position="bottom-right" richColors />
       <Suspense fallback={<Preload />}>
-        {/* Sidebar for all screen sizes */}
+        {openLiveSupport && <LiveSupport onClose={() => setOpenLiveSupport(false)} />}
         <Sidebar 
           isOpen={sidebarOpen} 
           toggleSidebar={toggleSidebar} 

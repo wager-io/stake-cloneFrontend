@@ -68,8 +68,8 @@ export const AuthProvider = ({ children }) => {
   // Fetch VIP tiers
   const fetchVipTiers = async () => {
     try {
-      const tiers = await getAllVipTiers();
-      setVipTiers(tiers);
+      // const tiers = await getAllVipTiers();
+      // setVipTiers(tiers);
     } catch (err) {
       console.error('Failed to fetch VIP tiers:', err);
       // Set default tiers if fetch fails

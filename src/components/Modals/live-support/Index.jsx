@@ -8,14 +8,13 @@ import Help from './Help';
 export default function LiveSupport({ onClose }) {
     const [tab, setTab] = React.useState("home");
     const [showChatAdmin, setShowChatAdmin] = React.useState(false);
+    const [selectedTicketId, setSelectedTicketId] = React.useState(null);
     const [isExpanded, setIsExpanded] = React.useState(false);
 
     React.useEffect(() => {
-        if (window.innerWidth < 768) { // Mobile breakpoint
+        if (window.innerWidth < 768) { 
             document.body.style.overflow = 'hidden';
         }
-        
-        // Cleanup function to restore scroll when component unmounts
         return () => {
             document.body.style.overflow = '';
         };
@@ -33,7 +32,10 @@ export default function LiveSupport({ onClose }) {
                     <Home onClose={onClose} />
                 )}
                 {tab === "message" && (
-                    <Messages setShowChatAdmin={setShowChatAdmin} onClose={onClose} />
+                    <Messages setShowChatAdmin={(show, ticketId = null) => {
+                        setShowChatAdmin(show);
+                        setSelectedTicketId(ticketId);
+                    }} onClose={onClose} />
                 )}
 
                {tab === "help" && (
@@ -46,7 +48,13 @@ export default function LiveSupport({ onClose }) {
 
 
         {showChatAdmin && (
-            <ChatAdmin onClose={onClose} />
+            <ChatAdmin 
+                ticketId={selectedTicketId}
+                onClose={()=> {
+                    setShowChatAdmin(false);
+                    setSelectedTicketId(null);
+                }} 
+            />
         )}
 
     </div>
