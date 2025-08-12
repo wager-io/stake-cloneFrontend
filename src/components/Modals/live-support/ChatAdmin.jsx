@@ -9,7 +9,7 @@ import EmojiPicker from 'emoji-picker-react'
 import { useAuth } from '../../../context/AuthContext'
 import io from 'socket.io-client'
 import './styles/ChatAdmin.css'
-import { backendUrl } from '../../../api/auth';
+import { serverUrl } from '../../../utils/api';
 
 const gf = new GiphyFetch('dc6zaTOxFJmzC')
 
@@ -37,7 +37,7 @@ export default function ChatAdmin({ onClose, ticketId = null }) {
 
   useEffect(() => {
     if (user) {
-      const newSocket = io(backendUrl(), {
+      const newSocket = io(serverUrl(), {
         withCredentials: true
       })
 

@@ -3,7 +3,7 @@ import { IoClose, IoChatboxOutline, IoTicketOutline, IoTimeOutline, IoCheckmarkD
 import { LuSendHorizontal } from "react-icons/lu";
 import { useAuth } from '../../../context/AuthContext';
 import io from 'socket.io-client';
-import { backendUrl } from '../../../api/auth';
+import { serverUrl } from '../../../utils/api';
 
 export default function Messages({ setShowChatAdmin, onClose }) {
   const [previousTickets, setPreviousTickets] = useState([])
@@ -16,7 +16,7 @@ export default function Messages({ setShowChatAdmin, onClose }) {
   useEffect(() => {
     if (user) {
       // Initialize socket connection
-      const newSocket = io(backendUrl(), {
+      const newSocket = io(serverUrl(), {
         withCredentials: true
       })
 
