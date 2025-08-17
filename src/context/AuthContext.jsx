@@ -62,7 +62,7 @@ export const AuthProvider = ({ children }) => {
     }
     
     // Fetch VIP tiers regardless of authentication
-    fetchVipTiers();
+    // fetchVipTiers();
   }, []);
 
   // Fetch VIP tiers
@@ -100,7 +100,7 @@ export const AuthProvider = ({ children }) => {
         fetchUserVipProgress();
       }
     } catch (err) {
-      // console.error('Failed to fetch user profile:', err);
+      console.error('Failed to fetch user profile:', err);
       setUser(null); // Clear user state on error
     } finally {
       setIsLoading(false); // Stop loading
@@ -142,7 +142,7 @@ export const AuthProvider = ({ children }) => {
     setUser(userData); // Update user state
     setBalance(userData.balance);
     // Fetch VIP progress after login
-    fetchUserVipProgress();
+    // fetchUserVipProgress();
   };
 
   const resendVerificationCode = async (email) => {
@@ -159,7 +159,7 @@ export const AuthProvider = ({ children }) => {
     Cookies.set('authToken', token); // Save token to cookies
     setUser(userData); // Update user state
     // Initialize VIP progress for new user
-    fetchUserVipProgress();
+    // fetchUserVipProgress();
   };
 
   // Handle user logout
