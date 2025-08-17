@@ -2,17 +2,11 @@ import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { lazy } from 'react';
 
-const GambleLayout = lazy(() => import('../../pages/Gambling/GambleLayout'));
-const ComingSoon = lazy(() => import('../../pages/ComingSoon'));
-const SoccerLayout = lazy(() => import('../../sports/soccer/SoccerLayout'));
-const SportHome = lazy(() => import('../../pages/SportHome'));
-const NotFound = lazy(() => import('../../pages/NotFound'));
-
-
+// Critical path components - load first
 const Home = lazy(() => import('../../pages/LandingPage'));
 const CasinoHome = lazy(() => import('../../pages/CasinoHome'));
-const AffiliatePage = lazy(() => import('../../pages/AffiliatePage'));
-const VipClubPage = lazy(() => import('../../pages/VipClubPage'));
+
+// Games - load on demand
 const CrashGame = lazy(() => import('../../Games/Crash/Index'));
 const MinesGame = lazy(() => import('../../Games/Mines/MinesGame'));
 const DiceoGame = lazy(() => import('../../Games/Dice/DiceGame'));
@@ -20,9 +14,25 @@ const LimboGame = lazy(() => import('../../Games/Limbo/LimboGame'));
 const HiloGame = lazy(() => import('../../Games/HiloV2/HiloGame'));
 const PlinkoGame = lazy(() => import('../../Games/plinko/PlinkoGame'));
 const KenoGame = lazy(() => import('../../Games/Keno/Keno'));
+
+// Secondary pages - load when accessed
+const ComingSoon = lazy(() => import('../../pages/ComingSoon'));
+const SportHome = lazy(() => import('../../pages/SportHome'));
+const VipClubPage = lazy(() => import('../../pages/VipClubPage'));
+const AffiliatePage = lazy(() => import('../../pages/AffiliatePage'));
 const Transactions = lazy(() => import('../../pages/Transactions'));
+const NotFound = lazy(() => import('../../pages/NotFound'));
+
+// Sports
+const SoccerLayout = lazy(() => import('../../sports/soccer/SoccerLayout'));
+
+// Layouts
+const GambleLayout = lazy(() => import('../../pages/Gambling/GambleLayout'));
 const PolicyLayout = lazy(() => import('../../pages/Privacy Policy/PolicyLayout'));
+
+// Policy pages - only load when needed
 const Privacy = lazy(() => import('../../pages/Privacy Policy/display/Privacy'));
+const TermsService = lazy(() => import('../../pages/Privacy Policy/display/TermsServices'));
 const DepositBonusRequirement = lazy(() => import('../../pages/Privacy Policy/display/depositBonusRequirement'));
 const CoinMixing = lazy(() => import('../../pages/Privacy Policy/display/CoinMixing'));
 const Providers = lazy(() => import('../../pages/Privacy Policy/display/Providers'));
@@ -34,21 +44,28 @@ const PokerRefund = lazy(() => import('../../pages/Privacy Policy/display/PokerR
 const AffilateTerms = lazy(() => import('../../pages/Privacy Policy/display/AffilateTerms'));
 const CookiesPolicy = lazy(() => import('../../pages/Privacy Policy/display/CookiesPolicy'));
 const AntiMoneyLaundering = lazy(() => import('../../pages/Privacy Policy/display/MoneyLaundary'));
+
+// Gambling pages
 const StakeSmart = lazy(() => import('../../pages/Gambling/display/StakeSmart'));
 const RecognisetheSign = lazy(() => import('../../pages/Gambling/display/RecogniseSign'));
 const SelfAssessment = lazy(() => import('../../pages/Gambling/display/SelfAssessment'));
 const BudgetCalculator = lazy(() => import('../../pages/Gambling/display/BudgetCalculator'));
 const ResponsibleGambling = lazy(() => import('../../pages/Gambling/display/ResponsibleGambling'));
+
+// Affiliate pages
 const AffiliateOverview = lazy(() => import('../../pages/affiliateComponent/Overview'));
 const AffiliateCampaigns = lazy(() => import('../../pages/affiliateComponent/Campaigns'));
 const AffiliateCommission = lazy(() => import('../../pages/affiliateComponent/Commission'));
 const AffiliateReferredUsers = lazy(() => import('../../pages/affiliateComponent/ReferredUsers'));
 const AffiliateFAQs = lazy(() => import('../../pages/affiliateComponent/FAQs'));
-const TermsService = lazy(() => import('../../pages/Privacy Policy/display/TermsServices'));
+
+// Transaction pages
 const Deposit = lazy(() => import('../../pages/transactionComponents/Deposit'));
 const Withdraw = lazy(() => import('../../pages/transactionComponents/Withdraw'));
 const Bills = lazy(() => import('../../pages/transactionComponents/Bills'));
 const Others = lazy(() => import('../../pages/transactionComponents/Others'));
+
+// User pages
 const MyBets = lazy(() => import('./MyBets'));
 const Favourites = lazy(() => import('./Favourites'));
 const Recent = lazy(() => import('./Recent'));
