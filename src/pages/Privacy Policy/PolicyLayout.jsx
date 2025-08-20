@@ -9,6 +9,7 @@ import { IoCloseSharp } from 'react-icons/io5';import { useNavigate } from 'reac
 export default function PolicyLayout() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [selectedPolicy, setSelectedPolicy] = useState('Privacy');
  const navigate = useNavigate();
   function toggleForm() {
     navigate('/casino/home');
@@ -23,25 +24,25 @@ export default function PolicyLayout() {
 
   const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
 
-  const policyLinks = [
-    <NavLink to="/policies/deposit-bonus-requirement">Deposit Bonus Requirements</NavLink>,
-    <NavLink to="/policies/anti-money-laundering">Anti-Money Laundering</NavLink>,
-    <NavLink to="/policies/privacy">privacy</NavLink>,
-    <NavLink to="/policies/coin-mixing">Coin Mixing</NavLink>,
-    <NavLink to="/policies/providers">Providers</NavLink>,
-    <NavLink to="/policies/sportsbook">Sports Book</NavLink>,
-    <NavLink to="/policies/cookies policy">Cookies Policy</NavLink>,
-    <NavLink to="/policies/self-exclusion">Self-Exclusion</NavLink>,
-    <NavLink to="/policies/racing-rles">Racing Rules</NavLink>,
-    <NavLink to="/policies/poker cards">Poker Card Room Rules</NavLink>,
-    <NavLink to="/policies/poker-refund-policy">Poker Refund Policy</NavLink>,
-    <NavLink to="/policies/affilate-terms">Affiliate Terms</NavLink>,
+  const policyOptions = [
+    { path: "/policies/deposit-bonus-requirement", label: "Deposit Bonus Requirements" },
+    { path: "/policies/anti-money-laundering", label: "Anti-Money Laundering" },
+    { path: "/policies/privacy", label: "Privacy" },
+    { path: "/policies/coin-mixing", label: "Coin Mixing" },
+    { path: "/policies/providers", label: "Providers" },
+    { path: "/policies/sportsbook", label: "Sports Book" },
+    { path: "/policies/cookies policy", label: "Cookies Policy" },
+    { path: "/policies/self-exclusion", label: "Self-Exclusion" },
+    { path: "/policies/racing-rles", label: "Racing Rules" },
+    { path: "/policies/poker cards", label: "Poker Card Room Rules" },
+    { path: "/policies/poker-refund-policy", label: "Poker Refund Policy" },
+    { path: "/policies/affilate-terms", label: "Affiliate Terms" },
   ];
 
   return (
-    <div className='policy-container'>
-      <div className='content'>
-        <div className="header-content">
+    <div className='relative py-5 px-6'>
+      <div className='flex justify-between items-center w-full px-5'>
+        <div className="header-content flex items-center gap-3">
           <RiShieldKeyholeFill size={25} />
           <h1 className='policies'>Policies</h1>
         </div>
@@ -52,14 +53,14 @@ export default function PolicyLayout() {
 
       {/* Dropdown for Mobile */}
       {isMobile && (
-        <div className="relative px-5 mt-3">
+        <div className="relative mt-3">
           <button
             onClick={toggleDropdown}
-            className="flex items-center justify-between w-[29px] px-4 py-2 bg-[#1f2937] text-white text-[20px] rounded-md font-semibold"
+            className="flex items-center justify-between w-full px-4 py-3 bg-[var(--grey-700)] border border-gray-300 text-white text-sm rounded-lg shadow-sm font-medium  transition-colors"
           >
-            Privacy
+            {selectedPolicy}
             <svg
-              className="w-4 h-4 ml-2"
+              className={`w-4 h-4 ml-2 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`}
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -69,17 +70,21 @@ export default function PolicyLayout() {
           </button>
 
           {isDropdownOpen && (
-            <div className="absolute left-0 mt-2 w-full bg-white rounded-md shadow-lg z-50">
-              {policyLinks.map((item, index) => (
-                <a
+            <div className="absolute left-0 mt-2 w-full bg-[var(--grey-700)]  rounded-lg shadow-lg z-50">
+              {policyOptions.map((option, index) => (
+                <NavLink
                   key={index}
-                  href="#"
-                  className={`block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 ${
-                    item === 'Privacy' ? 'text-blue-600 font-semibold' : ''
+                  to={option.path}
+                  onClick={() => {
+                    setSelectedPolicy(option.label);
+                    setIsDropdownOpen(false);
+                  }}
+                  className={`block px-4 py-2 text-sm text-white  last:border-b-0 ${
+                    option.label === selectedPolicy ? 'bg-blue-600 text-blue-600 font-semibold rounded' : ''
                   }`}
                 >
-                  {item}
-                </a>
+                  {option.label}
+                </NavLink>
               ))}
             </div>
           )}
@@ -87,9 +92,9 @@ export default function PolicyLayout() {
       )}
 
       {/* Content Body */}
-      <div className="content-body flex gap-5 w-full relative my-[20px] px-[60px]">
+      <div className="content-body flex gap-5 w-full relative my-[20px] ">
         {!isMobile && <Tabs />}
-        <div className="bg-[var(--grey-700)] p-3 w-fit inline">
+        <div className="bg-[var(--grey-700)]  w-fit inline">
           <Outlet />
         </div>
       </div>

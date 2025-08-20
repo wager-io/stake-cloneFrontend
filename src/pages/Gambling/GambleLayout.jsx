@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 export default function GambleLayout() {
    const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [selectedGamble, setSelectedGamble] = useState('Stake Smart');
   const navigate = useNavigate();
   function toggleForm() {
     navigate('/casino/home');
@@ -23,35 +24,36 @@ export default function GambleLayout() {
 
   const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
 
-  const policyLinks = [
-    <NavLink to="/gamble/stake-smart">Stake Smart</NavLink>,
-    <NavLink to="/gamble/recognise-the-sign">Recognise the Signs</NavLink>,
-    <NavLink to="/gamble/responsible-gambling">Responsible Gambling FAQ'S</NavLink>,
-    <NavLink to="/gamble/self-assessement">Self-Assessment</NavLink>,
-    <NavLink to="/gamble/budget-calculator">Budegt calculator</NavLink>,
+  const gambleOptions = [
+    { path: "/gamble/stake-smart", label: "Stake Smart" },
+    { path: "/gamble/recognise-the-sign", label: "Recognise the Signs" },
+    { path: "/gamble/responsible-gambling", label: "Responsible Gambling FAQ's" },
+    { path: "/gamble/self-assessement", label: "Self-Assessment" },
+    { path: "/gamble/budget-calculator", label: "Budget Calculator" },
   ];
 
 
   return (
-    <div className='gamble-container'>
-        <div className='content'>
-            <div className="header-content">
-                <RiShieldKeyholeFill size={25}/>
-                <h1 className='ResponsibleGambling'>Responsible Gambling</h1>
-            </div>
-            <button className="close-btn" onClick={toggleForm}>
-                <IoCloseSharp />
-            </button>
-        {/* Dropdown for Mobile */}
+    <div className='relative py-5 px-6'>
+      <div className='flex justify-between items-center w-full px-5'>
+        <div className="header-content flex items-center gap-3">
+          <RiShieldKeyholeFill size={25}/>
+          <h1 className='ResponsibleGambling'>Responsible Gambling</h1>
+        </div>
+        <button className="close-btn" onClick={toggleForm}>
+          <IoCloseSharp />
+        </button>
+      </div>
+      {/* Dropdown for Mobile */}
       {isMobile && (
-        <div className="relative px-5 mt-3">
+        <div className="relative mt-3">
           <button
             onClick={toggleDropdown}
-            className="flex items-center justify-between w-[29px] px-4 py-2 bg-[#1f2937] text-white text-[20px] rounded-md font-semibold"
+            className="flex items-center justify-between w-full px-4 py-3 bg-white border border-gray-300 text-gray-800 text-sm rounded-lg shadow-sm font-medium hover:bg-gray-50 transition-colors"
           >
-            Stake Smart
+            {selectedGamble}
             <svg
-              className="w-4 h-4 ml-2"
+              className={`w-4 h-4 ml-2 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`}
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -61,31 +63,34 @@ export default function GambleLayout() {
           </button>
 
           {isDropdownOpen && (
-            <div className="absolute left-0 mt-2 w-full bg-white rounded-md shadow-lg z-50">
-              {policyLinks.map((item, index) => (
-                <a
+            <div className="absolute left-0 mt-2 w-full bg-white border border-gray-200 rounded-lg shadow-lg z-50">
+              {gambleOptions.map((option, index) => (
+                <NavLink
                   key={index}
-                  href="#"
-                  className={`block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 ${
-                    item === 'Privacy' ? 'text-blue-600 font-semibold' : ''
+                  to={option.path}
+                  onClick={() => {
+                    setSelectedGamble(option.label);
+                    setIsDropdownOpen(false);
+                  }}
+                  className={`block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 border-b border-gray-100 last:border-b-0 ${
+                    option.label === selectedGamble ? 'bg-blue-50 text-blue-600 font-semibold' : ''
                   }`}
                 >
-                  {item}
-                </a>
+                  {option.label}
+                </NavLink>
               ))}
             </div>
           )}
         </div>
       )}
-        </div>
 
       {/* Content Body */}
-      <div className="content-body flex gap-5 w-full relative my-[20px] px-[60px]">
+      <div className="content-body flex gap-5 w-full relative my-[20px] px-[20px]">
         {!isMobile && <Tab />}
-        <div className='bg-[var(--grey-700)] p-3 w-fit inline'>
+        <div className="bg-[var(--grey-700)] p-3 w-fit inline rounded">
           <Outlet />
         </div>
       </div>
     </div>
-  )
+  );
 }

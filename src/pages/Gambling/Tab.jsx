@@ -12,10 +12,17 @@ export default function GambleTabs() {
   ]
 
   return (
-    <div className="bg-[var(--grey-700)] min-w-[180px] h-[200px] sticky ">
+    <div className="bg-[var(--grey-700)] min-w-[250px] sticky p-2 rounded">
       {tabs.map((item, index)=>(
-        <div key={index} className="tabs-controllers py-3 w-full">
-          <NavLink to={item.route} className="text-white font-bold p-2 w-full"  >  
+        <div key={index} className="tabs-controllers py-1 w-full">
+          <NavLink 
+            to={item.route} 
+            className={({ isActive }) => 
+              `block text-white font-bold p-3 w-full rounded transition-colors ${
+                isActive ? 'bg-blue-600 text-white' : 'hover:bg-gray-600'
+              }`
+            }
+          >  
             {item.name}
           </NavLink>
         </div>

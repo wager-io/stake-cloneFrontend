@@ -83,6 +83,18 @@
     list-style-position: inside;
 }
   .gamble-container  ul li {
-    list-style:disc;
-    list-style-position: inside;
+  list-style:disc;
+  list-style-position: inside;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  transition: transform 0.3s ease;
+}
+
+.close-btn:hover {
+  transform: rotate(90deg);
 }
