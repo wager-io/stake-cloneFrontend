@@ -18,6 +18,8 @@ import {
   Dangerous as MinesIcon,
   Casino as DiceIcon,
   TrendingUp as HiloIcon,
+  ScatterPlot as PlinkoIcon,
+  Timeline as LimboIcon,
   Menu as MenuIcon,
   Close as CloseIcon
 } from '@mui/icons-material';
@@ -114,6 +116,16 @@ function Sidebar({ isOpen, toggleSidebar, setOpenLiveSupport, openLiveSupport, i
       name: 'Hilo', 
       icon: HiloIcon, 
       path: '/casino/game/hilo'
+    },
+    { 
+      name: 'Plinko', 
+      icon: PlinkoIcon, 
+      path: '/casino/game/plinko'
+    },
+    { 
+      name: 'Limbo', 
+      icon: LimboIcon, 
+      path: '/casino/game/limbo'
     },
   ];
 

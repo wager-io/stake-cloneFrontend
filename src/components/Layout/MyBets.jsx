@@ -8,7 +8,7 @@ import './MyBets.css';
 const MyBets = () => {
   const navigate = useNavigate();
   const [bets, setBets] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [activeTab, setActiveTab] = useState('Casino');
   const [currentPage, setCurrentPage] = useState(1);
   const [pagination, setPagination] = useState({
@@ -46,7 +46,7 @@ const MyBets = () => {
   };
 
   useEffect(() => {
-    fetchBets();
+    // fetchBets();
   }, []);
 
   // Handle page change
