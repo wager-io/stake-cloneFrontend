@@ -305,7 +305,7 @@ const Layout = memo(() => {
               onClick={() => {
                 setActiveTab('Bets');
                 setSidebarOpen(false);
-                navigate('/bets');
+                navigate('/my-bets');
               }}
             >
               <FaReceipt className="text-xl mb-1" />

@@ -217,7 +217,7 @@ function Sidebar({ isOpen, toggleSidebar, setOpenLiveSupport, openLiveSupport, i
                 {[
                   { name: 'Favourites', icon: FavNavItems[0].icon, path: '/favourites' },
                   { name: 'Recent', icon: FavNavItems[1].icon, path: '/recent' },
-                  { name: 'Challenges', icon: FavNavItems[2].icon, path: '/challenges' },
+                  // { name: 'Challenges', icon: FavNavItems[2].icon, path: '/challenges' },
                   { name: 'My Bets', icon: FavNavItems[3].icon, path: '/my-bets' },
                 ].map((item, index) => (
                   <li key={index} className="relative group">

@@ -20,21 +20,21 @@ const Recent = () => {
       id: 1,
       title: "Crash",
       image: "/assets/InhouseGames/crash-game.png",
-      path: "/casino/crash",
+      path: "/casino/game/crash",
       lastPlayed: new Date(Date.now() - 2 * 60 * 60 * 1000) // 2 hours ago
     },
     {
       id: 2,
       title: "Mines",
       image: "/assets/InhouseGames/mine.png",
-      path: "/casino/mines",
+      path: "/casino/game/mines",
       lastPlayed: new Date(Date.now() - 5 * 60 * 60 * 1000) // 5 hours ago
     },
     {
       id: 3,
       title: "Dice",
       image: "/assets/InhouseGames/diceGame.png",
-      path: "/casino/dice",
+      path: "/casino/game/dice",
       lastPlayed: new Date(Date.now() - 24 * 60 * 60 * 1000) // 1 day ago
     }
   ];

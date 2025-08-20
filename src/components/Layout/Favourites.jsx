@@ -20,25 +20,25 @@ const Favourites = () => {
       id: 1,
       title: "Plinko",
       image: "/assets/InhouseGames/plinko.png",
-      path: "/casino/plinko"
+      path: "/casino/game/plinko"
     },
     {
       id: 2,
       title: "Limbo",
       image: "/assets/InhouseGames/limboGame.png",
-      path: "/casino/limbo"
+      path: "/casino/game/limbo"
     },
     {
       id: 3,
       title: "Hilo",
       image: "/assets/InhouseGames/hiloGAMES.png",
-      path: "/casino/Hilo"
+      path: "/casino/game/Hilo"
     },
     {
       id: 4,
       title: "Crash",
       image: "/assets/InhouseGames/crash-game.png",
-      path: "/casino/crash"
+      path: "/casino/game/crash"
     }
   ];
 
