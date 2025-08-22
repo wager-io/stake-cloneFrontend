@@ -7,6 +7,7 @@ import { AuthContext } from '../../context/AuthContext';
 
 // Only import essential icons, lazy load others
 import { FaSearch, FaDice, FaReceipt, FaComments } from 'react-icons/fa';
+import Preloader from '../../loader/Preloader';
 
 // Core components - only load essentials immediately
 const Navbar = lazy(() => import('./Navbar'));
@@ -171,17 +172,16 @@ const Layout = memo(() => {
   }
 
   return (
-    <div className="flex min-h-screen bg-[#1a2c38]">
+    <>
+      <Suspense fallback={<Preloader />}>
+        <div className="flex min-h-screen bg-[#1a2c38]">
 
       <Toaster position="bottom-right" richColors />
       {openLiveSupport && (
-        <Suspense fallback={<LoadingSpinner />}>
           <LiveSupport onClose={() => setOpenLiveSupport(false)} />
-        </Suspense>
       )}
       
       {componentsReady ? (
-        <Suspense fallback={<div className="w-16 bg-[#1a2c38]"></div>}>
           <Sidebar 
             isOpen={sidebarOpen} 
             toggleSidebar={toggleSidebar} 
@@ -189,7 +189,6 @@ const Layout = memo(() => {
             openLiveSupport={openLiveSupport}
             isMobile={isMobile}
           /> 
-        </Suspense>
       ) : (
         <div className="w-16 bg-[#1a2c38]"></div>
       )}
@@ -223,11 +222,9 @@ const Layout = memo(() => {
           {/* Main content */}
           <main className="flex-1 overflow-y-auto w-full p-0 md:p-0 relative scrollY bg-[var(--bg-color)]">
             {routesData ? (
-              <Suspense fallback={<LoadingSpinner />}>
                 <Routes>
                   {renderRoutes}
                 </Routes>
-              </Suspense>
             ) : (
               <LoadingSpinner />
             )}
@@ -235,17 +232,13 @@ const Layout = memo(() => {
 
           {/* Footer - hide on game routes */}
           {!isGameRoute() && (
-            <Suspense fallback={<div className="h-16"></div>}>
               <Footer />
-            </Suspense>
           )}
         </div>
 
         {/* Chat Panel */}
         {isChatOpen && (
-          <Suspense fallback={<LoadingSpinner />}>
             <Chats closeChat={toggleChat} />
-          </Suspense>
         )}
 
         {/* Backdrop for desktop */}
@@ -259,13 +252,10 @@ const Layout = memo(() => {
         )}
         {/* Load modals after components are ready */}
         {componentsReady && (
-          <Suspense fallback={null}>
             <Modals />
-          </Suspense>
         )}
             {/* Bottom navigation for mobile devices */}
       {isMobile && (
-        <Suspense fallback={null}>
           <nav className="fixed bottom-0 left-0 right-0 z-30 bg-[#0f212e] border-t border-gray-700 flex justify-between items-center h-16 px-2">
             <button
               className={`flex flex-col items-center flex-1 focus:outline-none ${
@@ -321,9 +311,12 @@ const Layout = memo(() => {
               <span className="text-xs">Chats</span>
             </button>
           </nav>
-        </Suspense>
       )}
     </div>
+      </Suspense>
+
+    </>
+
   );
 });
 

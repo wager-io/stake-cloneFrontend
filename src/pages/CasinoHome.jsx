@@ -6,6 +6,8 @@ import 'swiper/css/navigation';
 import { Pagination, Navigation } from 'swiper/modules'; // Corrected import path
 import InhouseGames from './sections/InHouseGames';
 import BetsLogSection from './sections/BetsLogSection';
+import GameCard from './sections/GameCard';
+import RecentWins from './sections/RecentWins';
 
 
 function CasinoHome() {
@@ -22,62 +24,12 @@ function CasinoHome() {
 
   return (
     <div className="p-2 md:p-6">
-      <Swiper
-        slidesPerView={3}
-        spaceBetween={10}
-        loop={true}
-        breakpoints={{
-          320: {
-            slidesPerView: 1,
-            spaceBetween: 10,
-          },
-          640: {
-            slidesPerView: 2,
-            spaceBetween: 10,
-          },
-          1024: {
-            slidesPerView: 2,
-            spaceBetween: 10,
-          },
-          1240: {
-            slidesPerView: 3,
-            spaceBetween: 10,
-          },
-        }}
-        modules={[Pagination, Navigation]}
-        className="mySwiper"
-      >
-        {cards.map((card) => (
-          <SwiperSlide key={card.id}>
-            <div className="relative flex justify-between bg-[rgb(33,55,67)] gap-2 p-3 text-white shadow-lg rounded-lg h-[13rem]">
-              <div className="flex flex-col justify-between">
-                <div className="flex flex-col gap-2">
-                  {/* Promo Badge */}
-                  <div className="top-2 left-2 bg-white w-fit text-black text-xs font-bold px-2 py-1 rounded">
-                    Promo
-                  </div>
-                  {/* Card Content */}
-                  <div className="p-1">
-                    <h2 className="text-xl font-bold">{card.title}</h2>
-                    <p className="text-sm mt-2">{card.details}</p>
-                  </div>
-                </div>
-                {/* <div className="relative border p-2 hover:bg-[#1e3a4a] rounded border-white w-fit cursor-pointer">
-                  <button className="text-white rounded">Play Now</button>
-                </div> */}
-              </div>
-
-              {/* Card Image */}
-              <div className="relative p-2 h-full">
-                <img src={card.image} alt={card.title} className="h-full w-fit object-cover" />
-              </div>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      <GameCard />
       
       {/* Custom Pagination */}
       <div className="custom-pagination flex justify-center mt-4"></div>
+
+      <RecentWins />
       
       {/* Full-width Search Input */}
       <div className="mt-8 w-full">

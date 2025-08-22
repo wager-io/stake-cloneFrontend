@@ -1,201 +1,242 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { FiHeart, FiUser, FiLock, FiPlay, FiStar, FiUsers } from 'react-icons/fi';
 import 'swiper/css';
-import './Recent.css';
+import GameCard from '../../pages/sections/GameCard';
+import UsersBetLayout from '../../pages/sections/BetsLogSection';
 
-const Recent = () => {
+export default function Recents() {
   const navigate = useNavigate();
-  const [searchQuery, setSearchQuery] = useState('');
-  const [currentPage, setCurrentPage] = useState(1);
-  const [recentGames, setRecentGames] = useState([]);
   const swiperRef = useRef(null);
-  const gamesPerPage = 12;
-
-  // TODO: Replace with real data from backend API
-  // API endpoint should be: GET /api/user/recent-games
-  // Response should include: { games: [{ id, title, image, path, lastPlayed }] }
-  const sampleRecentGames = [
+  
+  // Simulate user login state - change to true to test logged in state
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  
+  // Mock favourite games data
+  const recentseGames = [
     {
       id: 1,
       title: "Crash",
+      provider: "NetEnt",
       image: "/assets/InhouseGames/crash-game.png",
-      path: "/casino/game/crash",
-      lastPlayed: new Date(Date.now() - 2 * 60 * 60 * 1000) // 2 hours ago
+      players: 1243,
+      path: "crash",
+      isFavourite: true
     },
     {
       id: 2,
-      title: "Mines",
-      image: "/assets/InhouseGames/mine.png",
-      path: "/casino/game/mines",
-      lastPlayed: new Date(Date.now() - 5 * 60 * 60 * 1000) // 5 hours ago
+      title: "Plinko",
+      provider: "NetEnt",
+      image: "/assets/InhouseGames/plinko.png",
+      players: 876,
+      path: "plinko",
+      isFavourite: true
     },
     {
       id: 3,
+      title: "Mines",
+      provider: "Play'n GO",
+      image: "/assets/InhouseGames/mine.png",
+      players: 987,
+      path: "mines",
+      isFavourite: true
+    },
+    {
+      id: 4,
       title: "Dice",
+      provider: "NetEnt",
       image: "/assets/InhouseGames/diceGame.png",
-      path: "/casino/game/dice",
-      lastPlayed: new Date(Date.now() - 24 * 60 * 60 * 1000) // 1 day ago
+      players: 1567,
+      path: "dice",
+      isFavourite: true
     }
   ];
 
-  useEffect(() => {
-    // TODO: Replace with API call to backend
-    // For now, clear any old localStorage data and start fresh
-    localStorage.removeItem('userRecentGames'); // Clear old sample data
-    setRecentGames(sampleRecentGames); // Set sample data
-    
-    // When backend is ready, replace above with:
-    // fetchRecentGames().then(games => setRecentGames(games));
-  }, []);
-
-  const filteredGames = recentGames.filter(game =>
-    game.title.toLowerCase().includes(searchQuery.toLowerCase())
-  );
-
-  const totalPages = Math.ceil(filteredGames.length / gamesPerPage);
-  const startIndex = (currentPage - 1) * gamesPerPage;
-  const endIndex = startIndex + gamesPerPage;
-  const currentGames = filteredGames.slice(startIndex, endIndex);
-
-  const handleGameClick = (gamePath) => {
-    navigate(gamePath);
-  };
-
-  const handleRemoveRecent = (gameId) => {
-    const updatedRecentGames = recentGames.filter(game => game.id !== gameId);
-    setRecentGames(updatedRecentGames);
-    localStorage.setItem('userRecentGames', JSON.stringify(updatedRecentGames));
-  };
-
-  const handlePreviousPage = () => {
-    setCurrentPage(prev => Math.max(prev - 1, 1));
-  };
-
-  const handleNextPage = () => {
-    setCurrentPage(prev => Math.min(prev + 1, totalPages));
-  };
-
-  const formatTimeAgo = (date) => {
-    const now = new Date();
-    const diffInMs = now - new Date(date);
-    const diffInHours = Math.floor(diffInMs / (1000 * 60 * 60));
-    const diffInDays = Math.floor(diffInHours / 24);
-
-    if (diffInDays > 0) {
-      return `${diffInDays} day${diffInDays > 1 ? 's' : ''} ago`;
-    } else if (diffInHours > 0) {
-      return `${diffInHours} hour${diffInHours > 1 ? 's' : ''} ago`;
-    } else {
-      const diffInMinutes = Math.floor(diffInMs / (1000 * 60));
-      return `${diffInMinutes} minute${diffInMinutes > 1 ? 's' : ''} ago`;
+  const handlePrev = () => {
+    if (swiperRef.current) {
+      const visibleSlides = swiperRef.current.params.slidesPerView;
+      swiperRef.current.slideTo(swiperRef.current.activeIndex - visibleSlides);
     }
   };
 
-  return (
-    <div className="recent-container">
-      <div className="recent-header">
-        <h1 className="recent-title">Recent</h1>
-        <div className="recent-clock">
-          <img src="/group-banner-default.png" alt="Recent Games" className="recent-icon" />
-        </div>
-      </div>
+  const handleNext = () => {
+    if (swiperRef.current) {
+      const visibleSlides = swiperRef.current.params.slidesPerView;
+      swiperRef.current.slideTo(swiperRef.current.activeIndex + visibleSlides);
+    }
+  };
 
-      <div className="recent-search">
-        <div className="search-input-container">
-          <svg className="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-          </svg>
-          <input
-            type="text"
-            placeholder="Search your game"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="search-input"
-          />
-        </div>
-      </div>
+  const handleGameClick = (gamePath) => {
+    navigate(`/casino/game/${gamePath}`);
+  };
 
-      <div className="recent-content">
-        {currentGames.length > 0 ? (
-          <div className="w-full h-[240px] mb-6">
-            <Swiper
-              onSwiper={(swiper) => {
-                swiperRef.current = swiper;
-              }}
-              spaceBetween={16}
-              slidesPerView={5}
-              slidesPerGroup={5}
-              breakpoints={{
-                320: {
-                  slidesPerView: 2,
-                  slidesPerGroup: 2,
-                  spaceBetween: 10,
-                },
-                640: {
-                  slidesPerView: 3,
-                  slidesPerGroup: 3,
-                  spaceBetween: 12,
-                },
-                768: {
-                  slidesPerView: 4,
-                  slidesPerGroup: 4,
-                  spaceBetween: 14,
-                },
-                1024: {
-                  slidesPerView: 5,
-                  slidesPerGroup: 5,
-                  spaceBetween: 16,
-                },
-              }}
-              className="h-full"
+  const handleLoginClick = () => {
+    // Simulate login - in real app, this would open a login modal or navigate to login page
+    setIsLoggedIn(true);
+  };
+
+  const removeFavourite = (gameId) => {
+    // In real app, this would call API to remove from favourites
+    console.log(`Removing game ${gameId} from favourites`);
+  };
+
+
+  // Favourites content component
+  const FavouritesContent = () => (
+    <div className="py-8">
+      <div className="container mx-auto px-4">
+        {/* Header */}
+        <div className="flex justify-between items-center mb-8">
+          <div className="flex items-center">
+            <div 
+              className="w-12 h-12 rounded-lg flex items-center justify-center mr-4"
+              style={{ backgroundColor: 'var(--blue-600)' }}
             >
-              {currentGames.map((game) => (
-                <SwiperSlide key={game.id} className="!w-auto">
-                  <div 
-                    className="h-full flex flex-col items-center justify-center transform transition-transform duration-400 hover:-translate-y-2 cursor-pointer"
-                    onClick={() => handleGameClick(game.path)}
-                  >
-                    <div>
-                      <img 
-                        src={game.image} 
-                        alt={game.title} 
-                        className="w-[150px] h-[200px] object-cover rounded-[12px]"
-                      />
-                    </div>
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
+              <FiHeart className="w-6 h-6 text-white" />
+            </div>
+            <div>
+              <h1 
+                className="text-2xl md:text-3xl font-bold"
+                style={{ color: 'var(--grey-200)' }}
+              >
+                My Recent
+              </h1>
+              
+              <p 
+                className="text-sm mt-1"
+                style={{ color: 'var(--grey-300)' }}
+              >
+                {isLoggedIn ? recentseGames.length : ""} Recent games
+              </p>
+            </div>
           </div>
-        ) : (
-          <div className="empty-state">
-            <p>No recent games found</p>
-            <p>Play some games to see them here</p>
-          </div>
-        )}
-      </div>
-
-      {totalPages > 1 && (
-        <div className="recent-pagination">
-          <button 
-            className="pagination-btn"
-            onClick={handlePreviousPage}
-            disabled={currentPage === 1}
-          >
-            Previous
-          </button>
-          <button 
-            className="pagination-btn"
-            onClick={handleNextPage}
-            disabled={currentPage === totalPages}
-          >
-            Next
-          </button>
+          
+          {recentseGames.length > 0 && (
+            <div className="flex border rounded-[30px] px-2 border-[var(--grey-500)] overflow-hidden">
+              <button 
+                onClick={handlePrev}
+                className="flex items-center justify-center cursor-pointer rounded-[30px] p-2 text-[var(--grey-300)] hover:text-[var(--blue-400)] transition-colors"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <div className="w-px bg-[var(--grey-500)]"></div>
+              <button 
+                onClick={handleNext}
+                className="flex items-center justify-center rounded-[30px] cursor-pointer p-2 text-[var(--grey-300)] hover:text-[var(--blue-400)] transition-colors"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+          )}
         </div>
-      )}
+
+
+
+          {isLoggedIn ? (
+                    <div className="w-full h-[240px] mb-6">
+                      <Swiper
+                        onSwiper={(swiper) => {
+                          swiperRef.current = swiper;
+                        }}
+                        spaceBetween={16}
+                        slidesPerView={5}
+                        slidesPerGroup={5}
+                        breakpoints={{
+                          320: {
+                            slidesPerView: 2,
+                            slidesPerGroup: 2,
+                            spaceBetween: 10,
+                          },
+                          640: {
+                            slidesPerView: 3,
+                            slidesPerGroup: 3,
+                            spaceBetween: 12,
+                          },
+                          768: {
+                            slidesPerView: 4,
+                            slidesPerGroup: 4,
+                            spaceBetween: 14,
+                          },
+                          1024: {
+                            slidesPerView: 5,
+                            slidesPerGroup: 5,
+                            spaceBetween: 16,
+                          },
+                        }}
+                        className="h-full"
+                      >
+                        {recentseGames.map(game => (
+                          <SwiperSlide key={game.id} className="!w-auto">
+                            <div 
+                              className="h-full flex flex-col items-center justify-center transform transition-transform duration-400 hover:-translate-y-2 cursor-pointer"
+                              onClick={() => handleGameClick(game.path)}
+                            >
+                              <div>
+                                <div className='rounded-[12px]'
+                                    style={{ 
+                                    backgroundColor: 'var(--grey-600)',
+                                    border: '1px solid var(--grey-500)',
+                                  }} >
+                                  <img 
+                                    src={game.image} 
+                                    alt={game.title} 
+                                    className="w-[150px] h-[200px] object-cover rounded-[12px]"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </SwiperSlide>
+                        ))}
+                      </Swiper>
+                    </div>
+          ) : (
+                <div className="text-center py-12">
+
+                <h3 
+                    className="text-lg font-bold mb-4"
+                    style={{ color: 'var(--grey-200)' }}
+                >
+                    Log in to access your Recent Games
+                </h3>
+
+                <button 
+                    onClick={handleLoginClick}
+                    className="px-6 py-3 rounded-lg font-semibold text-white transition-all duration-200 hover:scale-105"
+                    style={{ backgroundColor: 'var(--blue-600)' }}
+                    onMouseEnter={(e) => {
+                    e.target.style.backgroundColor = 'var(--blue-500)'
+                    e.target.style.boxShadow = '0 4px 16px rgba(20, 117, 225, 0.4)'
+                    }}
+                    onMouseLeave={(e) => {
+                    e.target.style.backgroundColor = 'var(--blue-600)'
+                    e.target.style.boxShadow = 'none'
+                    }}
+                >
+                    <FiUser className="inline w-4 h-4 mr-2" />
+                    Log In
+                </button>
+                </div>
+          )}
+
+
+      </div>
     </div>
   );
-};
 
-export default Recent; 
+  return (
+    <div 
+      className="min-h-[calc(100vh-4rem)] py-8 px-5"
+      style={{ backgroundColor: 'var(--grey-800)' }}
+    >
+        <GameCard />
+       <FavouritesContent /> 
+
+       <UsersBetLayout />
+    </div>
+  );
+}

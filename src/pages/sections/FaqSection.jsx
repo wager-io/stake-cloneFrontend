@@ -14,14 +14,9 @@ export default function FaqSection() {
       answer: (
         <>
           <p className="mb-3">
-            Leading the online gambling industry since 2017, wagergames.casino offers a wide variety of online casino and sports betting options, operating globally in 15 different languages.
+          WAGER is a next-generation online gaming platform launched in 2023. We specialize in crypto-only betting and casino gaming, offering a secure, modern, and global experience. From sports and eSports to live casino and WAGER Originals, we bring players an all-in-one entertainment hub powered by cryptocurrency.
           </p>
-          <p>
-            With a reputable and secure platform, WAGER Casino is home to worldwide local currencies and crypto betting options for online slot games, WAGER Originals and live casino games. WAGER Sportsbook offers unbeatable odds on all major sporting events including a range of eSport leagues.
-          </p>
-          <p className="mt-3">
-            We host regular bet bonuses and promotions and offer an exclusive VIP Club experience - all with a simple-to-use deposit process on our licensed platform.
-          </p>
+       
         </>
       )
     },
@@ -31,11 +26,9 @@ export default function FaqSection() {
       answer: (
         <>
           <p className="mb-3">
-            wagergames.casino is licensed by gaming authorities in Curacao, providing a safe and secure betting platform. WAGER is operated by Medium Rare N.V. under the Certificate of Operation (Application no. OGL/2024/1451/0918) issued by the Curaçao Gaming Control Board, which is authorised and regulated by the Government of Curaçao.
+            Yes. WAGER operates on a fully licensed platform, ensuring fairness, transparency, and player protection across all games and bets.
           </p>
-          <p>
-            WAGER is a Crypto Gambling Foundation verified operator with strong policies around Anti-Money Laundering. WAGER promotes responsible gambling with a robust self-exclusion policy and various WAGER Smart resources.
-          </p>
+      
         </>
       )
     },
@@ -45,10 +38,7 @@ export default function FaqSection() {
       answer: (
         <>
           <p className="mb-3">
-            WAGER is committed to providing a safe environment for our community. We pride ourselves in offering the most up to date and accessible smarter gambling resources. Our responsible gambling guidelines paired with our monthly budget calculator have been developed to help our players set appropriate betting limits.
-          </p>
-          <p>
-            When betting with local and crypto currencies, players can be sure their funds are securely stored using our WAGER Vault feature.
+          Absolutely. With blockchain-backed transactions, advanced encryption, and strict platform security, your funds and personal information are always protected. Crypto deposits and withdrawals add an extra layer of safety, speed, and privacy.
           </p>
         </>
       )
@@ -58,47 +48,11 @@ export default function FaqSection() {
       question: 'What Currencies Can I Bet With?',
       answer: (
         <p>
-          Alongside supporting local currencies, wagergames.casino is the world's leading cryptocurrency casino and sportsbook, supporting 20 cryptocurrencies from Bitcoin (BTC) to Polygon (MATIC). Discover the complete list of supported crypto at wagergames.casino for more details.
+         WAGER is 100% crypto-based. We support major cryptocurrencies, giving you fast deposits, instant play, and seamless withdrawals without banks or middlemen.
         </p>
       )
     },
-    {
-      id: 'card5',
-      question: 'What Sports Can I Bet On?',
-      answer: (
-        <>
-          <p className="mb-3">
-            From major football and basketball leagues to Dota 2 and CS:GO action, we cover all bases for sports and eSports markets. We offer industry leading odds and tailored betting resources including expert picks and predictions on our WAGER News Blog.
-          </p>
-          <p>
-            You can bet on all major upcoming sporting events, place live bets and live stream all the biggest sporting events for free on WAGER Sportsbook.
-          </p>
-        </>
-      )
-    },
-    {
-      id: 'card7',
-      question: 'What Types of Casino Games Can I Play?',
-      answer: (
-        <p>
-          Browse our wide variety of popular casino games and enjoy a fair and fun online gaming experience. WAGER's online casino platform features a range of game categories including slot games, live casino games, WAGER Originals and many classics like Blackjack, Roulette, Poker, and Baccarat, right from your browser. WAGER brings you the best gameplay from esteemed iGaming providers like Pragmatic Play, Hacksaw Gaming, Twist Gaming and Evolution Gaming.
-        </p>
-      )
-    },
-    {
-      id: 'card8',
-      question: 'How Do I Watch Live Streams?',
-      answer: (
-        <>
-          <p className="mb-3">
-            wagergames.casino is the perfect place for official sports streams, with comprehensive coverage of most popular sporting events and major tournaments, from tennis matches to MMA fights.
-          </p>
-          <p>
-            To live stream the latest sporting events, click on the live stream icon next to the event on WAGER Sportsbook. For full details, check out our comprehensive guide to live streaming your favourite sports on wagergames.casino.
-          </p>
-        </>
-      )
-    }
+    
   ];
 
   return (

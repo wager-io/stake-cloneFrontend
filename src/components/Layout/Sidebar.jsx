@@ -45,7 +45,7 @@ function Sidebar({ isOpen, toggleSidebar, setOpenLiveSupport, openLiveSupport, i
     }
   };
 
-  const isCasinoRoute = location.pathname.includes('/casino'); 
+  const isCasinoRoute = !location.pathname.includes('/sport'); 
   const isSportRoute = location.pathname.includes('/sport'); 
 
   const cardNavItems = [

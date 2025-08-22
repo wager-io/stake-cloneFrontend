@@ -1,51 +1,31 @@
-import React, { useState } from 'react'
-import CasinoSpot from './betlog/CasinoSpot';
-import SportBets from './betlog/SportBets';
-import RaceLeaderBoard from './betlog/RaceLeaderBoard';
+import React, { useState } from 'react';
+import AllBets from './tabs/AllBets';
+import MyBets from './tabs/Mybets';
 
-export default function BetsLogSection() {
-  const [activeTab, setActiveTab] = useState('casino');
-
-  const tabs = [
-    { id: 'casino', label: 'Casino Bets', disabled: false },
-    { id: 'sports', label: 'Sport Bets', disabled: true },
-    { id: 'leaderboard', label: 'Race LeaderBoard', disabled: true }
-  ];
-
+export default function UsersBetLayout() {
+  const [activeTab, setActive] = useState("all")
   return (
-    <div className="py-6  bg-[#1a2c38]">
-      <div className="container mx-auto px-0 md:px-4">
-        {/* Section Header */}
-
-        {/* Tabs */}
-        {/* <div className=" p-1 rounded-lg mb-6">
-          <div className="inline-flex bg-[rgb(15,33,46)] p-2 rounded-[30px] overflow-hidden">
-            {tabs.map(tab => (
-              <button
-                key={tab.id}
-                disabled={tab.disabled}
-                className={`py-2 px-2 md:px-4 text-center rounded-[30px] text-sm font-medium transition-colors cursor-pointer mx-1 ${
-                  activeTab === tab.id 
-                    ? 'bg-[rgb(26,44,56)] text-white' 
-                    : 'text-gray-300 hover:text-white'
-                }`}
-                onClick={() => setActiveTab(tab.id)}
-              >
-                {tab.label}
-              </button>
-            ))}
+    <>
+      <div className='py-5 flex flex-col gap-3 px-3'>
+          <div className='w-fit p-1 flex gap-2 bg-[var(--grey-700)] rounded-lg'>
+            <button 
+              onClick={()=> setActive("all")} 
+              className={`${activeTab === "all" ? "bg-[var(--blue-600)] text-white scale-100" : "text-[var(--grey-200)] hover:bg-[var(--grey-600)]"} p-3 px-6 rounded-lg transition-all duration-200 font-medium`}
+            >
+              All Bets
+            </button>
+            <button 
+              onClick={()=> setActive("my")} 
+              className={`${activeTab !== "all" ? "bg-[var(--blue-600)] text-white scale-100" : "text-[var(--grey-200)] hover:bg-[var(--grey-600)]"} p-3 px-6 rounded-lg transition-all duration-200 font-medium`}
+            >
+              My Bets
+            </button>
           </div>
-        </div> */}
-
-        {/* Tab Content */}
-        <div className="relative">
-          {activeTab === 'casino' && <CasinoSpot />}
           
-          {activeTab === 'sports' && <SportBets />}
-          
-          {activeTab === 'leaderboard' && <RaceLeaderBoard />}
-        </div>
+          {/* Render the appropriate table based on active tab */}
+          {activeTab === "all" && <AllBets />}
+          {activeTab === "my" && <MyBets />}
       </div>
-    </div>
-  )
+    </>
+  );
 }

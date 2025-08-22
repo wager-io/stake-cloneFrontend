@@ -30,7 +30,6 @@ function HeroSection() {
       style={{ backgroundImage: 'url("/assets/landingpage/header-bg.DLFzM8kq.png")' }}
     >
       <div className="grid grid-cols-1 p-5 md:grid-cols-2 gap-14">
-        {/* Left Column - Title, Signup Button, and Social Icons */}
         {!user ? (
           <div className={`${isMobile ? 'text-center mx-auto' : 'text-left'}`} style={{ maxWidth: isMobile ? "100%" : "408px" }}>
             <h1 className="text-white font-bold mb-8" style={{ fontSize: "2rem" }}>
