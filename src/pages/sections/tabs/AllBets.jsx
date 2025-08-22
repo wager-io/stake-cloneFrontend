@@ -6,7 +6,7 @@ export default function AllBets() {
   const initialBetsData = [
     { 
       id: 1,
-      game: 'Aviator', 
+      game: 'Crash', 
       user: 'Player123', 
       betAmount: 10.50, 
       multiplier: '2.45x', 
@@ -14,7 +14,7 @@ export default function AllBets() {
     },
     { 
       id: 2,
-      game: 'Sweet Bonanza', 
+      game: 'Dice', 
       user: 'LuckyWin88', 
       betAmount: 5.00, 
       multiplier: '0.00x', 
@@ -22,7 +22,7 @@ export default function AllBets() {
     },
     { 
       id: 3,
-      game: 'Gates of Olympus', 
+      game: 'Hilo', 
       user: 'HighRoller', 
       betAmount: 25.00, 
       multiplier: '3.20x', 
@@ -30,7 +30,7 @@ export default function AllBets() {
     },
     { 
       id: 4,
-      game: 'Crash', 
+      game: 'Keno', 
       user: 'CryptoKing', 
       betAmount: 15.75, 
       multiplier: '1.85x', 
@@ -38,7 +38,7 @@ export default function AllBets() {
     },
     { 
       id: 5,
-      game: 'Mines', 
+      game: 'Limbo', 
       user: 'Hidden', 
       betAmount: 8.25, 
       multiplier: '0.00x', 
@@ -46,7 +46,7 @@ export default function AllBets() {
     },
     { 
       id: 6,
-      game: 'Plinko', 
+      game: 'Mines', 
       user: 'BetMaster', 
       betAmount: 12.00, 
       multiplier: '4.50x', 
@@ -54,7 +54,7 @@ export default function AllBets() {
     },
     { 
       id: 7,
-      game: 'Blackjack', 
+      game: 'Plinko', 
       user: 'CardShark', 
       betAmount: 20.00, 
       multiplier: '2.00x', 
@@ -62,7 +62,7 @@ export default function AllBets() {
     },
     { 
       id: 8,
-      game: 'Book of Dead', 
+      game: 'Crash', 
       user: 'SlotFan99', 
       betAmount: 3.50, 
       multiplier: '0.00x', 
@@ -78,7 +78,7 @@ export default function AllBets() {
     },
     { 
       id: 10,
-      game: 'Roulette', 
+      game: 'Hilo', 
       user: 'SpinWinner', 
       betAmount: 18.50, 
       multiplier: '5.75x', 
@@ -91,7 +91,7 @@ export default function AllBets() {
   const [isNewBetAdding, setIsNewBetAdding] = useState(false)
 
   // Sample data for generating new bets
-  const gameOptions = ['Aviator', 'Sweet Bonanza', 'Gates of Olympus', 'Crash', 'Mines', 'Plinko', 'Blackjack', 'Book of Dead', 'Dice', 'Roulette']
+  const gameOptions = ['Crash', 'Dice', 'Hilo', 'Keno', 'Limbo', 'Mines', 'Plinko']
   const userOptions = ['WinStreak', 'BetMaster', 'LuckyGamer', 'CryptoWin', 'GameChanger', 'RiskTaker', 'BigBaller', 'WagerKing', 'BetBeast', 'Hidden']
   
   // Function to generate a new bet
@@ -142,23 +142,20 @@ export default function AllBets() {
   // Icon switch based on game name
   const getGameIcon = (gameName) => {
     switch (gameName.toLowerCase()) {
-      case 'aviator':
-        return FiZap
-      case 'sweet bonanza':
-      case 'book of dead':
-        return FiTarget
-      case 'gates of olympus':
-        return FiZap
       case 'crash':
+        return FiZap
       case 'dice':
         return FiHexagon
+      case 'hilo':
+        return FiChevronUp
+      case 'keno':
+        return FiTarget
+      case 'limbo':
+        return FiZap
       case 'mines':
         return FiEyeOff
       case 'plinko':
         return FiTarget
-      case 'blackjack':
-      case 'roulette':
-        return FiZap
       default:
         return FiZap
     }

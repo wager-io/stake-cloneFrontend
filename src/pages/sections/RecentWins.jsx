@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react'
 
 export default function RecentWins() {
   const gameImages = {
-    'Crash': '/assets/InhouseGames/Crash.png',
-    'Dice': '/assets/InhouseGames/Dice.png', 
-    'Hilo': '/assets/InhouseGames/Hilo.png',
+    'Crash': '/assets/InhouseGames/crash-game.png',
+    'Dice': '/assets/InhouseGames/diceGame.png', 
+    'Hilo': '/assets/InhouseGames/hiloGAMES.png',
     'Keno': '/assets/InhouseGames/keno.png',
-    'Limbo': '/assets/InhouseGames/limbo1.png',
-    'Mines': '/assets/InhouseGames/mine.png',
+    'Limbo': '/assets/InhouseGames/limboGame.png',
+    'Mines': '/assets/InhouseGames/mine.png"',
     'Plinko': '/assets/InhouseGames/plinko.png'
   }
 

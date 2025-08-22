@@ -6,7 +6,7 @@ export default function MyBets() {
   const betsData = [
     { 
       id: 1,
-      game: 'Aviator', 
+      game: 'Crash', 
       gameId: '2345tyhmjtdrgsdf', 
       betAmount: 10.50, 
       multiplier: '2.45x', 
@@ -14,56 +14,56 @@ export default function MyBets() {
     },
     { 
       id: 2,
-      game: 'Sweet Bonanza', 
-      gameId: '2345tyhmjtdrgsdf', 
+      game: 'Dice', 
+      gameId: '3456uijnktesrsdf', 
       betAmount: 5.00, 
       multiplier: '0.00x', 
       payout: 0.00
     },
     { 
       id: 3,
-      game: 'Gates of Olympus', 
-      gameId: '2345tyhmjtdrgsdf', 
+      game: 'Hilo', 
+      gameId: '4567plkmnbvtesdf', 
       betAmount: 25.00, 
       multiplier: '3.20x', 
       payout: 80.00
     },
     { 
       id: 4,
-      game: 'Crash', 
-      gameId: '2345tyhmjtdrgsdf', 
+      game: 'Keno', 
+      gameId: '5678qwertybnjhgf', 
       betAmount: 15.75, 
       multiplier: '1.85x', 
       payout: 29.14
     },
     { 
       id: 5,
-      game: 'Mines', 
-      gameId: '2345tyhmjtdrgsdf', 
+      game: 'Limbo', 
+      gameId: '6789zxcvbnmqwert', 
       betAmount: 8.25, 
       multiplier: '0.00x', 
       payout: 0.00
     },
     { 
       id: 6,
-      game: 'Plinko', 
-      gameId: '2345tyhmjtdrgsdf', 
+      game: 'Mines', 
+      gameId: '7890asdfghjklpoi', 
       betAmount: 12.00, 
       multiplier: '4.50x', 
       payout: 54.00
     },
     { 
       id: 7,
-      game: 'Blackjack', 
-      gameId: '2345tyhmjtdrgsdf', 
+      game: 'Plinko', 
+      gameId: '8901uiopasdfghjk', 
       betAmount: 20.00, 
       multiplier: '2.00x', 
       payout: 40.00
     },
     { 
       id: 8,
-      game: 'Book of Dead', 
-      gameId: '2345tyhmjtdrgsdf', 
+      game: 'Crash', 
+      gameId: '9012mnbvcxzasdfg', 
       betAmount: 3.50, 
       multiplier: '0.00x', 
       payout: 0.00
@@ -71,15 +71,15 @@ export default function MyBets() {
     { 
       id: 9,
       game: 'Dice', 
-      gameId: '2345tyhmjtdrgsdf', 
+      gameId: '1234poiuytrewqlk', 
       betAmount: 7.25, 
       multiplier: '1.95x', 
       payout: 14.14
     },
     { 
       id: 10,
-      game: 'Roulette', 
-      gameId: '2345tyhmjtdrgsdf', 
+      game: 'Hilo', 
+      gameId: '2468lkjhgfdsamnb', 
       betAmount: 18.50, 
       multiplier: '5.75x', 
       payout: 106.38
@@ -89,23 +89,20 @@ export default function MyBets() {
   // Icon switch based on game name
   const getGameIcon = (gameName) => {
     switch (gameName.toLowerCase()) {
-      case 'aviator':
-        return FiZap
-      case 'sweet bonanza':
-      case 'book of dead':
-        return FiTarget
-      case 'gates of olympus':
-        return FiZap
       case 'crash':
+        return FiZap
       case 'dice':
         return FiHexagon
+      case 'hilo':
+        return FiChevronUp
+      case 'keno':
+        return FiTarget
+      case 'limbo':
+        return FiZap
       case 'mines':
         return FiEyeOff
       case 'plinko':
         return FiTarget
-      case 'blackjack':
-      case 'roulette':
-        return FiZap
       default:
         return FiZap
     }
