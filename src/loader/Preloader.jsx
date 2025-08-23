@@ -17,7 +17,7 @@ export default function Preloader() {
           
           {/* Spinning ring around logo */}
           <div 
-            className="absolute inset-0 rounded-full border-2 border-transparent border-t-current animate-spin"
+            className="absolute inset-0 rounded-full border-2 border-transparent border-t-current "
             style={{ 
               color: 'var(--accent-purple)',
               width: '80px',
@@ -30,7 +30,7 @@ export default function Preloader() {
         </div>
 
         {/* Loading dots */}
-        <div className="flex space-x-1 mt-3">
+        {/* <div className="flex space-x-1 mt-3">
           <div 
             className="w-2 h-2 rounded-full animate-bounce"
             style={{ 
@@ -52,7 +52,7 @@ export default function Preloader() {
               animationDelay: '300ms'
             }}
           />
-        </div>
+        </div> */}
       </div>
     </div>
   )

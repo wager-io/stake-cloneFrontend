@@ -24,7 +24,7 @@ export default function RecentWins() {
 
   const gameNames = ['Crash', 'Dice', 'Hilo', 'Keno', 'Limbo', 'Mines', 'Plinko']
   const usernames = ['BetMaster', 'CoinHunter', 'WinStreak', 'LuckyGamer', 'RiskTaker', 'BigBaller', 'CryptoWin', 'GameChanger', 'WagerKing', 'BetBeast']
-  const amounts = ['1.2 ETH', '0.8 BTC', '650 USDT', '2.1 ETH', '1.5 BTC', '890 USDT', '3.4 ETH', '0.9 BTC', '1250 USDT', '2.8 ETH']
+  const amounts = ['1.2 USDT', '40.8 usdt', '650 USDT', '27.1 USDT', '1.5 USDT', '890 USDT', '32.4 USDT', '10.9 USDT', '1250 USDT', '2.8 USDT']
 
   const addNewWin = () => {
     const randomGame = gameNames[Math.floor(Math.random() * gameNames.length)]

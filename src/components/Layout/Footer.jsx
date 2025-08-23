@@ -51,11 +51,11 @@ function Footer() {
           <div className="flex flex-col">
             <h3 className="text-white font-semibold text-lg mb-4">Gaming</h3>
             <div className="flex flex-col space-y-3">
-              <NavLink to="/policies/sportsbook" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">Sports Book</NavLink>
-              <NavLink to="/policies/poker cards" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">Poker Rules</NavLink>
-              <NavLink to="/policies/racing-rles" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">Racing Rules</NavLink>
+              <NavLink to="/casino/game/mines" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">Mines</NavLink>
+              <NavLink to="/casino/game/plinko" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">PLinko</NavLink>
+              <NavLink to="/casino/game/crash" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">Crash</NavLink>
               <NavLink to="/gamble/responsible-gambling" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">Responsible Gaming</NavLink>
-              <NavLink to="/gamble/budget-calculator" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">Budget Calculator</NavLink>
+              <NavLink to="/casino/game/hilo" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">Hilo</NavLink>
             </div>
           </div>
         </div>
