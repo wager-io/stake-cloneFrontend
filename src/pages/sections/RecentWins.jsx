@@ -7,7 +7,7 @@ export default function RecentWins() {
     'Hilo': '/assets/InhouseGames/hiloGAMES.png',
     'Keno': '/assets/InhouseGames/keno.png',
     'Limbo': '/assets/InhouseGames/limboGame.png',
-    'Mines': '/assets/InhouseGames/mine.png"',
+    'Mines': '/assets/InhouseGames/mine.png',
     'Plinko': '/assets/InhouseGames/plinko.png'
   }
 
