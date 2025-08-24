@@ -60,8 +60,8 @@ function AuthModal({ isOpen, onClose, initialTab = 'login' }) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#00000075] bg-opacity-70">
-      <div className="bg-[#1a2c38] rounded-lg shadow-xl w-full max-w-md mx-4 overflow-hidden relative max-h-[90vh] flex flex-col">
+    <div className="fixed inset-0 z-[99454599] flex items-center justify-center bg-[#00000075] bg-opacity-70">
+      <div className="bg-[#1a2c38] rounded-lg shadow-xl w-full md:max-w-md mx-4 overflow-hidden relative max-h-[100vh] md:max-h-[90vh] flex flex-col">
         {/* Close button */}
         <button 
           onClick={onClose}

@@ -205,7 +205,7 @@ function RegisterForm({ onClose }) {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="flex flex-col h-full">
         {/* Progress Bar */}
         <div className="flex w-full mb-6">
           {Array.from({ length: totalSteps }).map((_, index) => (
@@ -216,8 +216,10 @@ function RegisterForm({ onClose }) {
           ))}
         </div>
         
-        {/* Current Step Component */}
-        {renderStepComponent()}
+        {/* Current Step Component (Scrollable) */}
+        <div className="flex-grow overflow-y-auto pr-2 custom-scrollbar max-h-[calc(76vh-200px)]"> {/* Adjust max-h as needed */}
+          {renderStepComponent()}
+        </div>
         
         {/* Navigation Buttons */}
         <div className="flex justify-between mt-6">
