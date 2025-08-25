@@ -14,19 +14,8 @@ export default function Preloader() {
             alt="WagerGames Logo" 
             className="h-16 w-auto animate-pulse"
           />
-          
-          {/* Spinning ring around logo */}
-          <div 
-            className="absolute inset-0 rounded-full border-2 border-transparent border-t-current "
-            style={{ 
-              color: 'var(--accent-purple)',
-              width: '80px',
-              height: '80px',
-              top: '-8px',
-              left: '50%',
-              transform: 'translateX(-50%)'
-            }}
-          />
+       
+
         </div>
 
         {/* Loading dots */}

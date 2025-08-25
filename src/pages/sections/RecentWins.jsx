@@ -12,11 +12,11 @@ export default function RecentWins() {
   }
 
   const initialWins = [
-    { id: 1, username: 'CryptoKing', game: 'Crash', amount: '2.5 ETH', isNew: false },
-    { id: 2, username: 'LuckyPlayer', game: 'Dice', amount: '1.8 BTC', isNew: false },
+    { id: 1, username: 'CryptoKing', game: 'Crash', amount: '288.5 USDT', isNew: false },
+    { id: 2, username: 'LuckyPlayer', game: 'Dice', amount: '10.8 USDT', isNew: false },
     { id: 3, username: 'DiamondHands', game: 'Plinko', amount: '950 USDT', isNew: false },
-    { id: 4, username: 'MoonWalker', game: 'Limbo', amount: '3.2 ETH', isNew: false },
-    { id: 5, username: 'WagerMaster', game: 'Hilo', amount: '1.1 BTC', isNew: false }
+    { id: 4, username: 'MoonWalker', game: 'Limbo', amount: '3.2 USDT', isNew: false },
+    { id: 5, username: 'WagerMaster', game: 'Hilo', amount: '100.1 USDT', isNew: false }
   ]
 
   const [wins, setWins] = useState(initialWins)
