@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import VipCard from '../landingPageComponent/VipCard';
 
@@ -121,7 +121,8 @@ function HeroSection() {
         {/* Right Column - Cards side by side */}
         <div className="flex flex-row justify-center space-x-3">
           {/* First Card */}
-          <div className="bg-[#1e3a4a] rounded-[6px] h-fit overflow-hidden shadow-lg w-full transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer">
+
+          <NavLink to={"/casino/home"} className="bg-[#1e3a4a] rounded-[6px] h-fit overflow-hidden shadow-lg w-full transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer">
             <div
               className="relative h-46 p-[3px]"
               style={{
@@ -143,9 +144,11 @@ function HeroSection() {
                 </div>
               </div>
             </div>
-          </div>
+          </NavLink>
+
           {/* Second Card */}
-          <div className="bg-[#1e3a4a] rounded-[6px] h-fit overflow-hidden shadow-lg w-full transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer">
+
+          <NavLink to={"/coming-soon"} className="bg-[#1e3a4a] rounded-[6px] h-fit overflow-hidden shadow-lg w-full transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer">
             <div
               className="relative h-46 p-[3px]"
               style={{
@@ -167,7 +170,7 @@ function HeroSection() {
                 </div>
               </div>
             </div>
-          </div>
+          </NavLink>
         </div>
       </div>
     </div>

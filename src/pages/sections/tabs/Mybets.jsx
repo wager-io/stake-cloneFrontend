@@ -1,90 +1,111 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { FiChevronUp, FiChevronDown, FiZap, FiEyeOff, FiHexagon, FiTarget } from 'react-icons/fi'
+import api from "../../../utils/api"
+import { useAuth } from '../../../context/AuthContext'
 
 export default function MyBets() {
-  // Dummy data for the table
-  const betsData = [
-    { 
-      id: 1,
-      game: 'Crash', 
-      gameId: '2345tyhmjtdrgsdf', 
-      betAmount: 10.50, 
-      multiplier: '2.45x', 
-      payout: 25.73
-    },
-    { 
-      id: 2,
-      game: 'Dice', 
-      gameId: '3456uijnktesrsdf', 
-      betAmount: 5.00, 
-      multiplier: '0.00x', 
-      payout: 0.00
-    },
-    { 
-      id: 3,
-      game: 'Hilo', 
-      gameId: '4567plkmnbvtesdf', 
-      betAmount: 25.00, 
-      multiplier: '3.20x', 
-      payout: 80.00
-    },
-    { 
-      id: 4,
-      game: 'Keno', 
-      gameId: '5678qwertybnjhgf', 
-      betAmount: 15.75, 
-      multiplier: '1.85x', 
-      payout: 29.14
-    },
-    { 
-      id: 5,
-      game: 'Limbo', 
-      gameId: '6789zxcvbnmqwert', 
-      betAmount: 8.25, 
-      multiplier: '0.00x', 
-      payout: 0.00
-    },
-    { 
-      id: 6,
-      game: 'Mines', 
-      gameId: '7890asdfghjklpoi', 
-      betAmount: 12.00, 
-      multiplier: '4.50x', 
-      payout: 54.00
-    },
-    { 
-      id: 7,
-      game: 'Plinko', 
-      gameId: '8901uiopasdfghjk', 
-      betAmount: 20.00, 
-      multiplier: '2.00x', 
-      payout: 40.00
-    },
-    { 
-      id: 8,
-      game: 'Crash', 
-      gameId: '9012mnbvcxzasdfg', 
-      betAmount: 3.50, 
-      multiplier: '0.00x', 
-      payout: 0.00
-    },
-    { 
-      id: 9,
-      game: 'Dice', 
-      gameId: '1234poiuytrewqlk', 
-      betAmount: 7.25, 
-      multiplier: '1.95x', 
-      payout: 14.14
-    },
-    { 
-      id: 10,
-      game: 'Hilo', 
-      gameId: '2468lkjhgfdsamnb', 
-      betAmount: 18.50, 
-      multiplier: '5.75x', 
-      payout: 106.38
+  const { user } = useAuth()
+  const [ betsData, setBets ] = useState([])
+
+  const handleMybet = (async()=> {
+    try{
+      const res = await api.get(`/admin/transactions/user-bets/${user._id}`)
+      console.log(res.data?.data)
+      setBets(res.data?.data)
     }
-  ]
+    catch(err){
+      console.log(err)
+    }
+  })
+
+  useEffect(()=>{
+    console.log(user)
+    handleMybet()
+  },[])
+
+  // Dummy data for the table
+  // const betsData = [
+  //   { 
+  //     id: 1,
+  //     game: 'Crash', 
+  //     gameId: '2345tyhmjtdrgsdf', 
+  //     betAmount: 10.50, 
+  //     multiplier: '2.45x', 
+  //     payout: 25.73
+  //   },
+  //   { 
+  //     id: 2,
+  //     game: 'Dice', 
+  //     gameId: '3456uijnktesrsdf', 
+  //     betAmount: 5.00, 
+  //     multiplier: '0.00x', 
+  //     payout: 0.00
+  //   },
+  //   { 
+  //     id: 3,
+  //     game: 'Hilo', 
+  //     gameId: '4567plkmnbvtesdf', 
+  //     betAmount: 25.00, 
+  //     multiplier: '3.20x', 
+  //     payout: 80.00
+  //   },
+  //   { 
+  //     id: 4,
+  //     game: 'Keno', 
+  //     gameId: '5678qwertybnjhgf', 
+  //     betAmount: 15.75, 
+  //     multiplier: '1.85x', 
+  //     payout: 29.14
+  //   },
+  //   { 
+  //     id: 5,
+  //     game: 'Limbo', 
+  //     gameId: '6789zxcvbnmqwert', 
+  //     betAmount: 8.25, 
+  //     multiplier: '0.00x', 
+  //     payout: 0.00
+  //   },
+  //   { 
+  //     id: 6,
+  //     game: 'Mines', 
+  //     gameId: '7890asdfghjklpoi', 
+  //     betAmount: 12.00, 
+  //     multiplier: '4.50x', 
+  //     payout: 54.00
+  //   },
+  //   { 
+  //     id: 7,
+  //     game: 'Plinko', 
+  //     gameId: '8901uiopasdfghjk', 
+  //     betAmount: 20.00, 
+  //     multiplier: '2.00x', 
+  //     payout: 40.00
+  //   },
+  //   { 
+  //     id: 8,
+  //     game: 'Crash', 
+  //     gameId: '9012mnbvcxzasdfg', 
+  //     betAmount: 3.50, 
+  //     multiplier: '0.00x', 
+  //     payout: 0.00
+  //   },
+  //   { 
+  //     id: 9,
+  //     game: 'Dice', 
+  //     gameId: '1234poiuytrewqlk', 
+  //     betAmount: 7.25, 
+  //     multiplier: '1.95x', 
+  //     payout: 14.14
+  //   },
+  //   { 
+  //     id: 10,
+  //     game: 'Hilo', 
+  //     gameId: '2468lkjhgfdsamnb', 
+  //     betAmount: 18.50, 
+  //     multiplier: '5.75x', 
+  //     payout: 106.38
+  //   }
+  // ]
 
   // Icon switch based on game name
   const getGameIcon = (gameName) => {
