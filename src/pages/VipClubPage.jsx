@@ -2,6 +2,9 @@ import React, { useContext, useState, useEffect } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import VipCard from './landingPageComponent/VipCard';
 import { getAllVipTiers } from '../services/vipService';
+import { FaGift, FaHeadset, FaCalendarCheck } from 'react-icons/fa';
+import { GiReceiveMoney } from 'react-icons/gi';
+
 
 function VipClubPage() {
   const { user, userVipTier } = useContext(AuthContext);
@@ -29,25 +32,26 @@ function VipClubPage() {
         const tiersData = await getAllVipTiers();
         setVipTiers(tiersData || []);
         
-        // Set default VIP benefits if not available from API
+
+// Set default VIP benefits if not available from API
         setVipBenefits([
           {
-            icon: '/assets/vip-icons/bonus.png',
+            icon: <FaGift />,
             title: 'Exclusive Bonuses',
             description: 'Receive weekly, monthly, and level-up bonuses based on your VIP tier.'
           },
           {
-            icon: '/assets/vip-icons/support.png',
+            icon: <FaHeadset />,
             title: 'Dedicated Support',
             description: 'Get priority access to our support team with faster response times.'
           },
           {
-            icon: '/assets/vip-icons/rakeback.png',
+            icon: <GiReceiveMoney />,
             title: 'Rakeback',
             description: 'Earn a percentage of your wagers back as cashback, increasing with your VIP level.'
           },
           {
-            icon: '/assets/vip-icons/events.png',
+            icon: <FaCalendarCheck />,
             title: 'VIP Events',
             description: 'Invitations to exclusive events, both online and in-person for higher tiers.'
           }
@@ -202,11 +206,9 @@ function VipClubPage() {
   // Render a VIP benefit card
   const renderBenefitCard = (benefit, index) => (
     <div key={index} className="flex items-center bg-[#213743] rounded shadow-lg p-3">
-      <img
-        src={benefit.icon}
-        alt={`${benefit.title} Icon`}
-        className="h-16 w-16 rounded-full mr-4"
-      />
+      <div className="h-16 w-16 rounded-full mr-4 flex items-center justify-center text-4xl text-white">
+        {benefit.icon}
+      </div>
       <div>
         <h3 className="text-xl text-start font-bold text-white">{benefit.title}</h3>
         <p className="text-gray-300 text-start text-sm">
@@ -306,58 +308,7 @@ function VipClubPage() {
             </p>
           </div>
 
-          {/* Buttons */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center mt-4 sm:mt-0 space-y-4 sm:space-y-0 sm:space-x-4">
-            {/* Language Selector Dropdown */}
-            <div className="relative">
-              <label className="text-gray-400 text-xs mb-1 block">Preferred language</label>
-              <button
-                className="bg-[#1a2c38] text-white py-2 px-4 rounded flex items-center justify-between w-48"
-                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-              >
-                {selectedLanguage.name}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4 ml-2"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </button>
-            
-              {/* Dropdown Menu */}
-              {isDropdownOpen && (
-                <div className="absolute mt-2 bg-[#1a2c38] text-white rounded shadow w-48 z-10">
-                  <ul className="py-2">
-                    {supportedLanguages.map((language, idex) => (
-                      <li
-                        key={idex}
-                        className="px-4 py-2 hover:bg-[#2a3b4c] cursor-pointer"
-                        onClick={() => {
-                          setSelectedLanguage(language);
-                          setIsDropdownOpen(false);
-                        }}
-                      >
-                        {language.name}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </div>
 
-            {/* Chat With Us Button */}
-            <button className="bg-blue-600 text-white mt-5 py-2 px-6 rounded shadow hover:bg-blue-500 transition-colors">
-              Chat with us
-            </button>
-          </div>
         </div>
       </div>
     </div>
