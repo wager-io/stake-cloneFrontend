@@ -434,3 +434,35 @@ html, body {
 .boder {
   border: 1px solid var(--grey-400);
 }
+
+.loader {
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  position: relative;
+}
+.loader::after, .loader::before {
+  content: '';
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px dotted var(--color-primary);
+  position: absolute;
+  left: 0;
+  top: 0;
+  box-sizing: border-box;
+  animation: rotation 2s ease-in-out infinite;
+}
+.loader::after {
+  border-style: solid;
+  animation-delay: 1s;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} 

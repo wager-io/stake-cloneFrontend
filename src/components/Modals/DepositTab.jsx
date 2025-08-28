@@ -40,7 +40,6 @@ export default function DepositTab() {
     try {
       setLoading(true);
       const response = await api.get('/api/ccpayment/currencies');
-      
       if (response.data.success && response.data.data?.coins) {
         const coins = response.data.data.coins;
         setAvailableCoins(coins);

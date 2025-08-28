@@ -137,7 +137,6 @@ export const AuthProvider = ({ children }) => {
 
   // Handle user login
   const login = (userData, token) => {
-    console.log(token)
     Cookies.set('authToken', token); // Save token to cookies
     setUser(userData); // Update user state
     setBalance(userData.balance);

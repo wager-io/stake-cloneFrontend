@@ -59,7 +59,7 @@ api.interceptors.response.use(
     
     // Handle server errors (500)
     else if (error.response && error.response.status >= 500) {
-      coneole.log(error.response )
+      console.log(error.response )
       // toast.error('Server error. Please try again later.');
     }
     
