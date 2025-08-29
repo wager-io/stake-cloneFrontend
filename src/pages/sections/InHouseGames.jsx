@@ -55,14 +55,14 @@ function InhouseGames() {
       players: 1432,
       path: "hilo"
     },
-    {
-      id: 7,
-      title: "Keno",
-      provider: "Pragmatic Play",
-       image: "/assets/InhouseGames/keno.png",
-      players: 1432,
-      path: "keno"
-    }
+    // {
+    //   id: 7,
+    //   title: "Keno",
+    //   provider: "Pragmatic Play",
+    //    image: "/assets/InhouseGames/keno.png",
+    //   players: 1432,
+    //   path: "keno"
+    // }
    ]
 
   const swiperRef = useRef(null);
