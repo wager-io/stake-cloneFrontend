@@ -2,16 +2,29 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import { toast } from 'sonner';
 
+const baseUrl = () => {
+  let localhostUrl = "http://localhost:8000/wager";
+  let remoteUrl = "https://love-meet.onrender.com/wager";
+  
+  // Check if window is defined (client-side) before accessing location
+  const isLocalhost = typeof window !== 'undefined' && 
+    (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1");
+  
+  const _api = isLocalhost ? localhostUrl : remoteUrl;
+  return _api;
+};
+
+
 export const serverUrl = () => {
     let url = location.hostname === "localhost" || location.hostname === "127.0.0.1" 
-    ? "http://localhost:8000" : "https://wager-backend.onrender.com"
+    ? "http://localhost:8000" : "https://love-meet.onrender.com"
      return url
 }
 
 // Create an Axios instance
 const api = axios.create({
-  baseURL: serverUrl(), // Base URL for the API
-  timeout: 10000, // Request timeout (optional)
+  baseURL: baseUrl(), 
+  timeout: 10000, 
   headers: {
     'Content-Type': 'application/json',
   },

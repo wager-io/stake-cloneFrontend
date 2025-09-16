@@ -77,7 +77,6 @@ export default function Chats({ closeChat }) {
           timestamp: new Date().toISOString() // Add timestamp
         };
     
-        
         // Send the message to the backend
         SocketService.sendMessage('send_message', message);
         
@@ -106,13 +105,13 @@ export default function Chats({ closeChat }) {
         
         // Register event listeners
         SocketService.onMessage('load_previous_messages', (messages) => {
-          console.log("Received previous messages:", messages.length);
+          // console.log("Received previous messages:", messages.length);
           setChatMessages(messages);
           setTimeout(scrollToBottom, 100);
         });
         
         SocketService.onMessage('receive_message', (message) => {
-          console.log("Received new message:", message);
+          // console.log("Received new message:", message);
           setChatMessages((prevMessages) => [...prevMessages, message]);
           setTimeout(scrollToBottom, 100);
         });

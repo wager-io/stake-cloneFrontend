@@ -26,11 +26,11 @@ class SocketService {
     
     // Return immediately if already connected
     if (this.isConnected && this.socket) {
-      console.log("Already connected to socket server");
+      // console.log("Already connected to socket server");
       return Promise.resolve(this.socket);
     }
 
-    console.log("Connecting to socket server:", url);
+    // console.log("Connecting to socket server:", url);
     
     // Create a new connection promise
     this.connectionPromise = new Promise((resolve, reject) => {
@@ -52,7 +52,7 @@ class SocketService {
 
         // Set up connection event handlers
         this.socket.on('connect', () => {
-          console.log("Socket connected successfully");
+          // console.log("Socket connected successfully");
           this.isConnected = true;
           
           // Clear the timeout since we're connected
