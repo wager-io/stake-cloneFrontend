@@ -6,7 +6,6 @@ const baseUrl = () => {
   let localhostUrl = "http://localhost:8000/wager";
   let remoteUrl = "https://love-meet.onrender.com/wager";
   
-  // Check if window is defined (client-side) before accessing location
   const isLocalhost = typeof window !== 'undefined' && 
     (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1");
   

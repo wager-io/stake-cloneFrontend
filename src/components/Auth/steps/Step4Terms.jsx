@@ -9,7 +9,7 @@ function Step4Terms({ formData, handleChange }) {
         <p className="text-gray-300 text-sm leading-relaxed">
           <strong>Terms of Service Agreement</strong><br /><br />
           
-          Welcome to Azabets Casino. By registering an account, you agree to be bound by the following terms and conditions:<br /><br />
+          Welcome to Wager Casino. By registering an account, you agree to be bound by the following terms and conditions:<br /><br />
           
           <strong>1. Eligibility</strong><br />
           You must be at least 18 years of age (or the legal gambling age in your jurisdiction, whichever is higher) to use our services. By registering, you confirm that you meet this requirement.<br /><br />
