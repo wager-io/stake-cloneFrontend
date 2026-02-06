@@ -3,8 +3,8 @@ import Cookies from 'js-cookie';
 import { toast } from 'sonner';
 
 const baseUrl = () => {
-  let localhostUrl = "http://localhost:8000/wager";
-  let remoteUrl = "https://love-meet.onrender.com/wager";
+  let localhostUrl = "http://localhost:8000";
+  let remoteUrl = "https://love-meet.onrender.com";
   
   const isLocalhost = typeof window !== 'undefined' && 
     (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1");
