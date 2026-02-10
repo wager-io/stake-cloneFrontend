@@ -16,7 +16,7 @@ export const AuthProvider = ({ children }) => {
   const [vipProgress, setVipProgress] = useState(null);
   const [vipTiers, setVipTiers] = useState([]);
   const [userVipTier, setUserVipTier] = useState(null);
-  
+
   // Default VIP benefits
   const [vipBenefits] = useState([
     {
@@ -32,15 +32,15 @@ export const AuthProvider = ({ children }) => {
     {
       title: "Dedicated VIP Host",
       description: "Personal account manager to assist with all your gaming needs.",
-    icon: "/assets/affiliate-icons/b3.webp"
+      icon: "/assets/affiliate-icons/b3.webp"
     },
     {
       title: "Customized Bonuses",
       description: "Receive personalized bonuses tailored to your gaming preferences.",
-       icon: "/assets/affiliate-icons/b4.webp"
+      icon: "/assets/affiliate-icons/b4.webp"
     }
   ]);
-  
+
   // Default supported languages
   const [supportedLanguages] = useState([
     { code: 'en', name: 'English' },
@@ -55,12 +55,14 @@ export const AuthProvider = ({ children }) => {
   // Check for token in cookies and fetch user profile
   useEffect(() => {
     const token = Cookies.get('authToken'); // Get token from cookies
+    console.log("[AuthContext] Token from cookie:", token);
     if (token) {
-      fetchUserProfile(); 
+      fetchUserProfile();
     } else {
+      console.log("[AuthContext] No token found, checking storage...");
       setIsLoading(false); // No token, stop loading
     }
-    
+
     // Fetch VIP tiers regardless of authentication
     // fetchVipTiers();
   }, []);
@@ -106,7 +108,7 @@ export const AuthProvider = ({ children }) => {
       setIsLoading(false); // Stop loading
     }
   };
-  
+
   // Fetch user VIP progress
   const fetchUserVipProgress = async () => {
     try {
@@ -180,18 +182,18 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ 
-      user, 
-      isLoading, 
-      login, 
-      register, 
-      logout, 
-      resendVerificationCode, 
-      verifyCode, 
-      updateUserDetails, 
-      balance, 
+    <AuthContext.Provider value={{
+      user,
+      isLoading,
+      login,
+      register,
+      logout,
+      resendVerificationCode,
+      verifyCode,
+      updateUserDetails,
+      balance,
       setBalance,
-      newScreen, 
+      newScreen,
       setNewScreen,
       vipProgress,
       vipTiers,

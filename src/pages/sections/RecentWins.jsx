@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
+import socketService from '../../services/socketService';
 
 export default function RecentWins() {
   const gameImages = {
     'Crash': '/assets/InhouseGames/crash-game.png',
-    'Dice': '/assets/InhouseGames/diceGame.png', 
+    'Dice': '/assets/InhouseGames/diceGame.png',
     'Hilo': '/assets/InhouseGames/hiloGAMES.png',
     'Keno': '/assets/InhouseGames/keno.png',
     'Limbo': '/assets/InhouseGames/limboGame.png',
@@ -30,7 +31,7 @@ export default function RecentWins() {
     const randomGame = gameNames[Math.floor(Math.random() * gameNames.length)]
     const randomUsername = usernames[Math.floor(Math.random() * usernames.length)]
     const randomAmount = amounts[Math.floor(Math.random() * amounts.length)]
-    
+
     const newWin = {
       id: nextId,
       username: randomUsername,
@@ -46,36 +47,72 @@ export default function RecentWins() {
       }
       return updatedWins
     })
-    
+
     setNextId(prev => prev + 1)
 
     setTimeout(() => {
-      setWins(prevWins => 
-        prevWins.map(win => 
+      setWins(prevWins =>
+        prevWins.map(win =>
           win.id === newWin.id ? { ...win, isNew: false } : win
         )
       )
     }, 500)
   }
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      addNewWin()
-    }, 4000)
 
-    return () => clearInterval(interval)
-  }, [nextId])
+
+  useEffect(() => {
+    const handleNewBet = (bet) => {
+      // Only show wins (> 1.00x multiplier)
+      if (parseFloat(bet.multiplier) <= 1) return;
+
+      const newWin = {
+        id: Date.now(), // Unique ID
+        username: bet.hidden ? 'Hidden' : bet.name,
+        game: bet.game.charAt(0).toUpperCase() + bet.game.slice(1), // Capitalize
+        amount: `${parseFloat(bet.payout).toFixed(2)} ${bet.currency}`,
+        isNew: true
+      };
+
+      setWins(prevWins => {
+        const updatedWins = [newWin, ...prevWins];
+        if (updatedWins.length > 10) {
+          updatedWins.pop();
+        }
+        return updatedWins;
+      });
+
+      // Remove isNew flag for animation
+      setTimeout(() => {
+        setWins(prevWins =>
+          prevWins.map(win =>
+            win.id === newWin.id ? { ...win, isNew: false } : win
+          )
+        );
+      }, 500);
+    };
+
+    if (socketService.socket) {
+      socketService.socket.on('global-new-bet', handleNewBet);
+    }
+
+    return () => {
+      if (socketService.socket) {
+        socketService.socket.off('global-new-bet', handleNewBet);
+      }
+    };
+  }, []);
 
   return (
     <div className="py-2 px-2 md:px-3 lg:px-3">
-      <div 
+      <div
         className="text-sm md:text-sm font-bold mb-2"
         style={{ color: 'var(--text-light)' }}
       >
         Recent Wins
       </div>
       <div className="relative">
-        <div 
+        <div
           className="flex gap-4 overflow-x-auto scrollbar-hide pb-4"
           style={{
             scrollbarWidth: 'none',
@@ -84,12 +121,11 @@ export default function RecentWins() {
           }}
         >
           {wins.map((win) => (
-            <div 
+            <div
               key={win.id}
-              className={`flex-shrink-0 flex flex-col items-center p-2 rounded-xl transition-all duration-500 hover:scale-105 ${
-                win.isNew ? 'animate-slide-in' : ''
-              }`}
-              style={{ 
+              className={`flex-shrink-0 flex flex-col items-center p-2 rounded-xl transition-all duration-500 hover:scale-105 ${win.isNew ? 'animate-slide-in' : ''
+                }`}
+              style={{
                 backgroundColor: 'var(--grey-700)',
                 border: '1px solid var(--border-color)',
                 transform: win.isNew ? 'translateX(-100px)' : 'translateX(0)',
@@ -104,21 +140,21 @@ export default function RecentWins() {
               }}
             >
               <div className="w-16 h-16 md:w-26 md:h-26 rounded-lg overflow-hidden mb-1">
-                <img 
+                <img
                   src={gameImages[win.game]}
                   alt={win.game}
                   className="w-full h-full object-cover"
                 />
               </div>
-              
+
               <div className="text-center">
-                <div 
+                <div
                   className="text-sm font-semibold mb-1"
                   style={{ color: 'var( --accent-purple)' }}
                 >
                   {win.username}
                 </div>
-                <div 
+                <div
                   className="text-sm font-bold"
                   style={{ color: 'var(--text-light)' }}
                 >
@@ -128,7 +164,7 @@ export default function RecentWins() {
             </div>
           ))}
         </div>
-        
+
         <style jsx>{`
           @keyframes slideIn {
             from {

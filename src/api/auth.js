@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+import Cookies from 'js-cookie';
+
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
 // Create axios instance with base URL
 const api = axios.create({
@@ -13,7 +15,7 @@ const api = axios.create({
 // Add interceptor to include auth token in requests
 api.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('authToken');
+    const token = Cookies.get('authToken');
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
