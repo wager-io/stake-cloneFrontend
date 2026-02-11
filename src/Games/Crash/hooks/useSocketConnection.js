@@ -395,6 +395,8 @@ export default function useSocketConnection({
     });
 
     socketRef.current.on('disconnect', () => {
+      setGameState(prev => ({ ...prev, status: 'waiting' })); // Or explicitly map to status 0 if needed
+      graphStore.updateGameStatus(0); // 0 is CONNECTION
       graphStore.setErrorMessage("Disconnected from server", true);
     });
 

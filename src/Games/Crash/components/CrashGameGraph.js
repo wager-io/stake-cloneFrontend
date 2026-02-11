@@ -3,7 +3,7 @@ const { debounce } = pkg;
 import EventEmitter from "./EventEmitter";
 import { gsap } from "gsap";
 
-  // Game status enum
+// Game status enum
 const GameStatus = {
   0: 'CONNECTION',
   1: 'STARTING',
@@ -248,10 +248,10 @@ export default class CrashGameGraph extends EventEmitter {
       // 1. Make sure we have a valid startTime
       const currentTime = Date.now();
       const startTime = this.game.startTime || (currentTime + 5000); // Default to 5 seconds if not set
-      
+
       // 2. Calculate seconds and ensure it's not negative
       const seconds = Math.max(0, (startTime - currentTime) / 1000);
-      
+
       // 3. Only render if we have a positive countdown
       if (seconds > 0) {
         this.ctx.fillText(
@@ -259,19 +259,19 @@ export default class CrashGameGraph extends EventEmitter {
           this.width / 2,
           (2 * this.height) / 5
         );
-        
+
         // Optional: Add a progress bar for better visualization
         const barWidth = this.width * 0.4;
         const barHeight = this.height * 0.02;
         const barX = (this.width - barWidth) / 2;
         const barY = (2 * this.height) / 5 + 30;
-        
+
         // Background bar
         this.ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
         this.ctx.fillRect(barX, barY, barWidth, barHeight);
-        
+
         // Progress bar - assuming 5 second countdown
-        const maxTime = 5; 
+        const maxTime = 5;
         const progress = Math.min(seconds / maxTime, 1);
         this.ctx.fillStyle = this.colors[0];
         this.ctx.fillRect(barX, barY, barWidth * progress, barHeight);
@@ -297,6 +297,10 @@ export default class CrashGameGraph extends EventEmitter {
 
   calcGameData() {
     if (this.game.status === GameStatus.PROGRESS) {
+      // STOP if disconnected
+      if (this.game.status === GameStatus.CONNECTION) {
+        return;
+      }
       let elapsed = Date.now() - this.game.startTime;
       if (!this.game.paused) {
         this.currentTime = elapsed > 0 ? elapsed : 0;
@@ -361,7 +365,7 @@ export default class CrashGameGraph extends EventEmitter {
     // if (escape.usd < 1 && escape.userId !== this.game.user.userId) return;
     if (!this.rendering || document.hidden) return;
 
-    
+
     const payout = getPayoutForTime(this.currentTime) - 1;
     let data = Object.assign(
       {
@@ -386,74 +390,74 @@ export default class CrashGameGraph extends EventEmitter {
     this.escapes.push(data);
   }
   drawMessages() {
-  // Check if we have any messages to display
-  if (!this.game.errorMessage && !this.game.statusMessage && !this.game.gameStateMessage) {
-    return;
-  }
-  
-  const ctx = this.ctx;
-  const width = this.width;
-  const height = this.height;
-  
-  // Save the current context state
-  ctx.save();
-  
-  // Determine which message to display and its style
-  let message, bgColor;
-  
-  if (this.game.errorMessage) {
-    message = this.game.errorMessage;
-    bgColor = 'rgba(220, 38, 38, 0.8)'; // Red background for errors
-  } else if (this.game.statusMessage) {
-    message = this.game.statusMessage;
-    bgColor = 'rgba(30, 64, 175, 0.8)'; // Blue background for status
-  } else if (this.game.gameStateMessage) {
-    message = this.game.gameStateMessage;
-    bgColor = 'rgba(0, 0, 0, 0.7)'; // Black background for game state
-  }
-  
-  // Draw semi-transparent background
-  ctx.fillStyle = bgColor;
-  ctx.fillRect(0, 0, width, height);
-  
-  // Draw message text
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  ctx.fillStyle = '#FFFFFF';
-  ctx.font = `bold ${this.fontSizePx(8)} ${CrashGameGraph.fontFamily}`;
-  ctx.fillText(message, width / 2, height / 2);
-  
-  // If reconnecting, draw a loading spinner
-  if (this.game.reconnecting) {
-    this.drawReconnectingSpinner(width / 2, height / 2 + 40);
-  }
-  
-  // Restore the context state
-  ctx.restore();
-}
+    // Check if we have any messages to display
+    if (!this.game.errorMessage && !this.game.statusMessage && !this.game.gameStateMessage) {
+      return;
+    }
 
-drawReconnectingSpinner(x, y) {
-  const ctx = this.ctx;
-  const time = Date.now();
-  const radius = Math.round(this.height / 30);
-  
-  ctx.save();
-  
-  // Draw spinner circle
-  ctx.beginPath();
-  ctx.arc(x, y, radius, 0, Math.PI * 2);
-  ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
-  ctx.lineWidth = 3;
-  ctx.stroke();
-  
-  // Draw spinning arc
-  ctx.beginPath();
-  const startAngle = (time / 150) % (Math.PI * 2);
-  ctx.arc(x, y, radius, startAngle, startAngle + Math.PI);
-  ctx.strokeStyle = '#FFFFFF';
-  ctx.lineWidth = 3;
-  ctx.stroke();
-  
-  ctx.restore();
-}
+    const ctx = this.ctx;
+    const width = this.width;
+    const height = this.height;
+
+    // Save the current context state
+    ctx.save();
+
+    // Determine which message to display and its style
+    let message, bgColor;
+
+    if (this.game.errorMessage) {
+      message = this.game.errorMessage;
+      bgColor = 'rgba(220, 38, 38, 0.8)'; // Red background for errors
+    } else if (this.game.statusMessage) {
+      message = this.game.statusMessage;
+      bgColor = 'rgba(30, 64, 175, 0.8)'; // Blue background for status
+    } else if (this.game.gameStateMessage) {
+      message = this.game.gameStateMessage;
+      bgColor = 'rgba(0, 0, 0, 0.7)'; // Black background for game state
+    }
+
+    // Draw semi-transparent background
+    ctx.fillStyle = bgColor;
+    ctx.fillRect(0, 0, width, height);
+
+    // Draw message text
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillStyle = '#FFFFFF';
+    ctx.font = `bold ${this.fontSizePx(8)} ${CrashGameGraph.fontFamily}`;
+    ctx.fillText(message, width / 2, height / 2);
+
+    // If reconnecting, draw a loading spinner
+    if (this.game.reconnecting) {
+      this.drawReconnectingSpinner(width / 2, height / 2 + 40);
+    }
+
+    // Restore the context state
+    ctx.restore();
+  }
+
+  drawReconnectingSpinner(x, y) {
+    const ctx = this.ctx;
+    const time = Date.now();
+    const radius = Math.round(this.height / 30);
+
+    ctx.save();
+
+    // Draw spinner circle
+    ctx.beginPath();
+    ctx.arc(x, y, radius, 0, Math.PI * 2);
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+    ctx.lineWidth = 3;
+    ctx.stroke();
+
+    // Draw spinning arc
+    ctx.beginPath();
+    const startAngle = (time / 150) % (Math.PI * 2);
+    ctx.arc(x, y, radius, startAngle, startAngle + Math.PI);
+    ctx.strokeStyle = '#FFFFFF';
+    ctx.lineWidth = 3;
+    ctx.stroke();
+
+    ctx.restore();
+  }
 }

@@ -23,13 +23,9 @@ const api = axios.create({
 api.interceptors.request.use(
   (config) => {
     // Add authorization token if needed
-    const token = Cookies.get('authToken'); // Get token from cookies
-
+    const token = Cookies.get('authToken');
     if (token) {
-      console.log(`[API Interceptor] Attaching Token to ${config.url}:`, token.substring(0, 10) + '...');
       config.headers.Authorization = `Bearer ${token}`;
-    } else {
-      console.log(`[API Interceptor] No token found in Cookies for ${config.url}`);
     }
     return config;
   },

@@ -139,7 +139,7 @@ export const AuthProvider = ({ children }) => {
 
   // Handle user login
   const login = (userData, token) => {
-    Cookies.set('authToken', token); // Save token to cookies
+    Cookies.set('authToken', token, { expires: 7, secure: true, sameSite: 'lax' }); // 7 days expiration, secure for https
     setUser(userData); // Update user state
     setBalance(userData.balance);
     // Fetch VIP progress after login
@@ -157,7 +157,7 @@ export const AuthProvider = ({ children }) => {
 
   // Handle user registration
   const register = (userData, token) => {
-    Cookies.set('authToken', token); // Save token to cookies
+    Cookies.set('authToken', token, { expires: 7, secure: true, sameSite: 'lax' }); // 7 days expiration, secure for https
     setUser(userData); // Update user state
     // Initialize VIP progress for new user
     // fetchUserVipProgress();
