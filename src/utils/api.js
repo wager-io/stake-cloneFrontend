@@ -3,12 +3,11 @@ import Cookies from 'js-cookie';
 import { toast } from 'sonner';
 
 const baseUrl = () => {
-  return import.meta.env.VITE_API_URL || "https://love-meet.onrender.com";
+  return import.meta.env.VITE_API_URL || "https://wager-903d5d29a36d.herokuapp.com";
 };
 
-
 export const serverUrl = () => {
-  return import.meta.env.VITE_API_URL || "https://love-meet.onrender.com";
+  return import.meta.env.VITE_API_URL || "https://wager-903d5d29a36d.herokuapp.com";
 }
 
 // Create an Axios instance

@@ -17,7 +17,7 @@ class SocketService {
     }
 
     // Use the stored URL if none is provided
-    const url = this.serverUrl || import.meta.env.VITE_SOCKET_URL || 'http://localhost:8000';
+    const url = this.serverUrl || import.meta.env.VITE_SOCKET_URL || 'https://wager-903d5d29a36d.herokuapp.com';
 
     // Return existing promise if already connecting
     if (this.connectionPromise) {
