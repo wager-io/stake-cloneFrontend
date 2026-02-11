@@ -94,16 +94,22 @@ export const AuthProvider = ({ children }) => {
   // Fetch user profile
   const fetchUserProfile = async () => {
     try {
+      console.log("[AuthContext] Fetching user profile...");
       const response = await getUserProfile();
+      console.log("[AuthContext] Profile response:", response);
       const userData = response.user; // Extract the user object
-      setUser(userData); // Update user state with the actual user data
-      setBalance(userData.balance);
 
       if (userData) {
+        console.log("[AuthContext] Setting user:", userData.username);
+        setUser(userData); // Update user state with the actual user data
+        setBalance(userData.balance);
         fetchUserVipProgress();
+      } else {
+        console.warn("[AuthContext] No user data found in response");
+        setUser(null);
       }
     } catch (err) {
-      console.error('Failed to fetch user profile:', err);
+      console.error('[AuthContext] Failed to fetch user profile:', err);
       setUser(null);
     } finally {
       setIsLoading(false);
