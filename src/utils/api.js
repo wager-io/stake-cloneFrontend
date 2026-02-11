@@ -2,32 +2,45 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import { toast } from 'sonner';
 
-const baseUrl = () => {
-  let localhostUrl = "http://localhost:8000";
-  let remoteUrl = "https://love-meet.onrender.com";
+// Get API URL from environment variable or use fallback
+const getApiUrl = () => {
+  // Environment variable takes priority
+  const envUrl = import.meta.env?.VITE_API_URL;
+  if (envUrl) return envUrl;
   
+  // Fallback URLs based on environment
   const isLocalhost = typeof window !== 'undefined' && 
-    (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1");
+    (window.location.hostname === "localhost" || 
+     window.location.hostname === "127.0.0.1" || 
+     window.location.hostname === "192.168.1." ||
+     window.location.hostname.startsWith("192.168."));
   
-  const _api = isLocalhost ? localhostUrl : remoteUrl;
-  return _api;
+  // Default production URL - should be set via environment variable
+  const productionUrl = import.meta.env?.PROD ? 
+    (import.meta.env?.VITE_PRODUCTION_API_URL || "https://your-production-api.com") : 
+    "http://localhost:8000";
+  
+  return isLocalhost ? "http://localhost:8000" : productionUrl;
 };
 
-
-export const serverUrl = () => {
-    let url = location.hostname === "localhost" || location.hostname === "127.0.0.1" 
-    ? "http://localhost:8000" : "https://love-meet.onrender.com"
-     return url
-}
+const baseUrl = getApiUrl();
 
 // Create an Axios instance
 const api = axios.create({
-  baseURL: baseUrl(), 
-  timeout: 10000, 
+  baseURL: baseUrl, 
+  timeout: 15000, 
   headers: {
     'Content-Type': 'application/json',
   },
 });
+
+// Log API URL in development
+if (import.meta.env?.DEV) {
+  console.log(`API URL configured: ${baseUrl}`);
+}
+
+// Export serverUrl for use in other files
+export const serverUrl = () => baseUrl;
 
 // Add a request interceptor (optional, for adding tokens or logging)
 api.interceptors.request.use(

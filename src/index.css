@@ -487,3 +487,29 @@ html, body {
   .overflow-hidden > div {
     transition: transform 0.3s ease-in-out;
   }
+
+  /* Recent Wins Scrollbar Hide */
+  .recent-wins-scroll {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .recent-wins-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Slide In Animation for Recent Wins */
+  @keyframes slideIn {
+    from {
+      transform: translateX(-100px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  .animate-slide-in {
+    animation: slideIn 0.5s ease-out forwards;
+  }

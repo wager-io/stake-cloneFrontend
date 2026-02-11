@@ -35,10 +35,10 @@ export default function VipCard() {
       setVipData({
         currentTier: data.currentTier || 'None',
         nextTier: data.nextTier || 'Bronze',
-        progress: typeof data.progress === 'number' ? data.progress : 0, // Ensure progress is a number
+        progress: typeof data.progress === 'number' ? data.progress : parseFloat(data.progress) || 0,
         currentTierColor: data.currentTierDetails?.color || '#2F4553',
         nextTierColor: data.nextTierDetails?.color || '#C69C6D',
-        totalWager: data.totalWager || 0,
+        totalWager: data.currentWager || 0,
         nextTierRequirement: data.nextTierRequirement || 10000
       });
     } catch (error) {

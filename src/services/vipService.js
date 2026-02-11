@@ -4,7 +4,7 @@ import api from '../utils/api';
 export const getUserVipProgress = async () => {
   try {
     const response = await api.get('/api/vip/progress');
-    return response.data;
+    return response.data.data; // Return just the data object
   } catch (error) {
     console.error('Error fetching VIP progress:', error);
     // Return default values if API call fails

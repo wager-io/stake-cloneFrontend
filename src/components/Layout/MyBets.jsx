@@ -1,64 +1,70 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../../utils/api';
 import { format } from 'date-fns';
 import { toast } from 'sonner';
+import { AuthContext } from '../../context/AuthContext';
 import './MyBets.css';
 
 const MyBets = () => {
   const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
   const [bets, setBets] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [activeTab, setActiveTab] = useState('Casino');
+  const [activeTab, setActiveTab] = useState('All');
   const [currentPage, setCurrentPage] = useState(1);
   const [pagination, setPagination] = useState({
     page: 1,
-    limit: 10,
+    limit: 20,
     total: 0,
     totalPages: 0
   });
-  const betsPerPage = 10;
 
-  const fetchBets = async (page = 1) => {
+  const fetchBets = useCallback(async (page = 1, gameType = null) => {
     try {
       setLoading(true);
-      const response = await api.get('/api/transactions/bills', {
-        params: {
-          page,
-          limit: pagination.limit
-        }
-      });
       
-      console.log(response.data);
-      setBets(response.data.bills || []);
-      setPagination(response.data.pagination || {
+      // Build params
+      const params = {
         page,
-        limit: 10,
-        total: 0,
-        totalPages: 0
-      });
+        limit: pagination.limit
+      };
+      
+      // Only add gameType filter if not 'All'
+      if (gameType && gameType !== 'All') {
+        params.gameType = gameType;
+      }
+      
+      const response = await api.get('/api/bets', { params });
+      
+      console.log('Bets response:', response.data);
+      setBets(response.data.bets || []);
+      setPagination(prev => ({
+        ...prev,
+        ...response.data.pagination,
+        page,
+        limit: prev.limit
+      }));
     } catch (error) {
       console.error('Error fetching bets:', error);
       toast.error('Failed to load bets');
     } finally {
       setLoading(false);
     }
-  };
+  }, [pagination.limit]);
 
   useEffect(() => {
-    // fetchBets();
-  }, []);
+    if (user) {
+      fetchBets(1, activeTab);
+    }
+  }, [user, activeTab, fetchBets]);
 
   // Handle page change
   const handlePageChange = (newPage) => {
     if (newPage > 0 && newPage <= pagination.totalPages) {
-      fetchBets(newPage);
+      fetchBets(newPage, activeTab);
     }
   };
-
-  const filteredBets = bets.filter(bet => 
-    activeTab === 'Casino' ? bet.gameType === 'casino' : bet.gameType === 'sports'
-  );
 
   const handlePreviousPage = () => {
     handlePageChange(pagination.page - 1);
@@ -69,11 +75,13 @@ const MyBets = () => {
   };
 
   const formatCurrency = (amount) => {
-    return amount.toFixed(8);
+    if (!amount && amount !== 0) return '0.0000';
+    return parseFloat(amount).toFixed(4);
   };
 
   const formatMultiplier = (multiplier) => {
-    return `${multiplier.toFixed(2)}x`;
+    if (!multiplier && multiplier !== 0) return '-';
+    return `${parseFloat(multiplier).toFixed(2)}x`;
   };
 
   const formatDate = (dateString) => {
@@ -83,6 +91,27 @@ const MyBets = () => {
       return 'Invalid date';
     }
   };
+
+  const getGameIcon = (gameType) => {
+    const icons = {
+      'Crash': '🚀',
+      'Dice': '🎲',
+      'Plinko': '🎱',
+      'Mines': '💣',
+      'Limbo': '🎯',
+      'Hilo': '🃏',
+      'Keno': '🎰'
+    };
+    return icons[gameType] || '🎮';
+  };
+
+  const handleBetClick = (bet) => {
+    // Navigate to game detail or show bet details modal
+    navigate(`/casino/game/${bet.gameType.toLowerCase()}`);
+  };
+
+  // Get unique game types for tabs
+  const gameTypes = ['All', 'Crash', 'Dice', 'Plinko', 'Mines', 'Limbo', 'Hilo'];
 
   return (
     <div className="my-bets-container">
@@ -95,19 +124,20 @@ const MyBets = () => {
         </div>
       </div>
 
+      {/* Game Type Tabs */}
       <div className="my-bets-tabs">
-        <button 
-          className={`tab-button ${activeTab === 'Casino' ? 'active' : ''}`}
-          onClick={() => setActiveTab('Casino')}
-        >
-          Casino
-        </button>
-        <button 
-          className={`tab-button ${activeTab === 'Sports' ? 'active' : ''}`}
-          onClick={() => setActiveTab('Sports')}
-        >
-          Sports
-        </button>
+        {gameTypes.map((type) => (
+          <button 
+            key={type}
+            className={`tab-button ${activeTab === type ? 'active' : ''}`}
+            onClick={() => {
+              setActiveTab(type);
+              setCurrentPage(1);
+            }}
+          >
+            {type}
+          </button>
+        ))}
       </div>
 
       <div className="my-bets-content">
@@ -116,7 +146,7 @@ const MyBets = () => {
             <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-blue-500 mx-auto"></div>
             <p className="mt-3 text-sm text-gray-300">Loading bets...</p>
           </div>
-        ) : filteredBets.length > 0 ? (
+        ) : bets.length > 0 ? (
           <div className="bets-table-container">
             <table className="bets-table">
               <thead>
@@ -127,38 +157,46 @@ const MyBets = () => {
                   <th>Bet Amount</th>
                   <th>Multiplier</th>
                   <th>Payout</th>
+                  <th>Profit</th>
                 </tr>
               </thead>
               <tbody>
-                {filteredBets.map((bet, index) => (
-                  <tr key={bet.transaction_id || index} className="bet-row">
+                {bets.map((bet, index) => (
+                  <tr key={bet.betId || index} className="bet-row" onClick={() => handleBetClick(bet)}>
                     <td className="game-cell">
                       <div className="game-info">
                         <div className="game-icon">
-                          <span>{bet.transaction_type.charAt(0)}</span>
+                          <span>{getGameIcon(bet.gameType)}</span>
                         </div>
-                        <span className="game-name">{bet.transaction_type}</span>
+                        <span className="game-name">{bet.gameType}</span>
                       </div>
                     </td>
                     <td className="bet-id-cell">
-                      <span className="bet-id">{bet.transaction_id}</span>
+                      <span className="bet-id">
+                        {bet.betId ? String(bet.betId).slice(0, 8) : '-'}
+                      </span>
                     </td>
                     <td className="date-cell">
-                      <span className="bet-date">{formatDate(bet.timestamp)}</span>
+                      <span className="bet-date">{formatDate(bet.betTime || bet.createdAt)}</span>
                     </td>
                     <td className="amount-cell">
                       <span className="bet-amount">
-                        {parseFloat(bet.amount).toFixed(4)}
-                        <span className="currency-icon">{bet.currency}</span>
+                        {formatCurrency(bet.betAmount)}
+                        <span className="currency-icon">{bet.currency || 'USDT'}</span>
                       </span>
                     </td>
                     <td className="multiplier-cell">
-                      <span className="multiplier">-</span>
+                      <span className="multiplier">{formatMultiplier(bet.multiplier)}</span>
                     </td>
                     <td className="payout-cell">
-                      <span className={`payout ${parseFloat(bet.amount) > 0 ? 'profit' : 'loss'}`}>
-                        {parseFloat(bet.balance).toFixed(4)}
-                        <span className="currency-icon">{bet.currency}</span>
+                      <span className={`payout ${bet.won ? 'profit' : 'loss'}`}>
+                        {formatCurrency(bet.payout)}
+                        <span className="currency-icon">{bet.currency || 'USDT'}</span>
+                      </span>
+                    </td>
+                    <td className="profit-cell">
+                      <span className={`profit ${bet.profit >= 0 ? 'profit' : 'loss'}`}>
+                        {bet.profit >= 0 ? '+' : ''}{formatCurrency(bet.profit)}
                       </span>
                     </td>
                   </tr>

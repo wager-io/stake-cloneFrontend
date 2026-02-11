@@ -1,16 +1,58 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { AuthContext } from '../../context/AuthContext'
 import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'sonner'
+import api from '../../utils/api';
 
 export default function Overview() {
   const location = useLocation();
     const navigate = useNavigate();
   const { user } = useContext(AuthContext)
   const [copied, setCopied] = useState(false)
+  const [commissionRate, setCommissionRate] = useState(25);
+  const [referrals, setReferrals] = useState([]);
+  const [loadingReferrals, setLoadingReferrals] = useState(false);
+  
+  // Fetch commission rate from backend
+  useEffect(() => {
+    const fetchCommissionRate = async () => {
+      if (!user) return;
+      
+      try {
+        const response = await api.get('/api/affiliate/commission-rate');
+        if (response.data.commissionRate !== undefined) {
+          setCommissionRate(response.data.commissionRate);
+        }
+      } catch (err) {
+        console.log('Using default commission rate');
+      }
+    };
+    
+    fetchCommissionRate();
+  }, [user]);
+  
+  // Fetch referrals from backend
+  useEffect(() => {
+    const fetchReferrals = async () => {
+      if (!user) return;
+      
+      setLoadingReferrals(true);
+      try {
+        const response = await api.get('/api/affiliate/referrals');
+        setReferrals(response.data.referrals || []);
+      } catch (err) {
+        console.error('Failed to fetch referrals:', err);
+        setReferrals([]);
+      } finally {
+        setLoadingReferrals(false);
+      }
+    };
+    
+    fetchReferrals();
+  }, [user]);
   
   // Generate affiliate link based on username
-  const baseUrl = window.location.origin; // Gets the current origin (e.g., http://localhost:3000 or https://azabets.com)
+  const baseUrl = window.location.origin;
   const affiliateLink = user ? `${baseUrl}/?tab=register&modal=auth&ref=${user.affiliateCode || user.email.split('@')[0]}` : ''
   
   // Function to copy affiliate link to clipboard
@@ -120,7 +162,7 @@ export default function Overview() {
                 <div className="flex flex-col gap-4">
                   <h3 className="text-white font-bold text-lg">Your Affiliate Link</h3>
                   <p className="text-[rgb(177,186,211)] text-sm">
-                    Share this link with friends and earn commission on their bets. You'll receive 25% of the house edge on all bets placed by your referrals.
+                    Share this link with friends and earn commission on their bets. You'll receive {commissionRate}% of the house edge on all bets placed by your referrals.
                   </p>
                   <div className="flex flex-col md:flex-row items-center gap-3">
                     <div className="flex-1 w-full">
@@ -157,6 +199,53 @@ export default function Overview() {
                       <span className="text-yellow-400">Tip:</span> You can track the performance of your affiliate link in the "Campaigns" tab.
                     </p>
                   </div>
+                </div>
+              </div>
+            )}
+
+            {/* Referrals Section */}
+            {user && (
+              <div className="w-full bg-[#213743] rounded-[0.5rem] p-6 shadow-lg mt-6">
+                <div className="flex flex-col gap-4">
+                  <h3 className="text-white font-bold text-lg">Your Referrals</h3>
+                  <p className="text-[rgb(177,186,211)] text-sm">
+                    You have referred {referrals.length} user(s) using your affiliate code.
+                  </p>
+                  
+                  {loadingReferrals ? (
+                    <p className="text-gray-400">Loading referrals...</p>
+                  ) : referrals.length > 0 ? (
+                    <div className="mt-4 overflow-x-auto">
+                      <table className="w-full">
+                        <thead>
+                          <tr className="text-left text-gray-400 text-sm border-b border-gray-600">
+                            <th className="pb-2">Username</th>
+                            <th className="pb-2">Email</th>
+                            <th className="pb-2">Joined</th>
+                            <th className="pb-2">Status</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {referrals.map((referral, index) => (
+                            <tr key={index} className="border-b border-gray-700">
+                              <td className="py-3 text-white">{referral.username}</td>
+                              <td className="py-3 text-gray-400">{referral.email}</td>
+                              <td className="py-3 text-gray-400">
+                                {new Date(referral.createdAt).toLocaleDateString()}
+                              </td>
+                              <td className="py-3">
+                                <span className={`px-2 py-1 rounded text-xs ${referral.is_verified ? 'bg-green-600 text-white' : 'bg-yellow-600 text-white'}`}>
+                                  {referral.is_verified ? 'Verified' : 'Unverified'}
+                                </span>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  ) : (
+                    <p className="text-gray-400 mt-4">No referrals yet. Share your affiliate link to start earning!</p>
+                  )}
                 </div>
               </div>
             )}
@@ -445,7 +534,7 @@ export default function Overview() {
 
               {/* Section Details */}
               <p className="text-[rgb(177,186,211)] text-sm">
-                We’ve created digital banner templates to make it easier for you to promote your campaigns online.
+                We've created digital banner templates to make it easier for you to promote your campaigns online.
               </p>
 
               {/* New Card Below */}

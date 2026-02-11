@@ -1,17 +1,20 @@
-import React, { useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useRef, useContext } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FiHeart, FiUser, FiLock, FiPlay, FiStar, FiUsers } from 'react-icons/fi';
 import 'swiper/css';
 import GameCard from '../../pages/sections/GameCard';
 import UsersBetLayout from '../../pages/sections/BetsLogSection';
+import { AuthContext } from '../../context/AuthContext';
 
 export default function Favourite() {
   const navigate = useNavigate();
+  const location = useLocation();
   const swiperRef = useRef(null);
   
-  // Simulate user login state - change to true to test logged in state
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // Use AuthContext for login state
+  const { user } = useContext(AuthContext);
+  const isLoggedIn = !!user;
   
   // Mock favourite games data
   const favouriteGames = [
@@ -69,11 +72,6 @@ export default function Favourite() {
 
   const handleGameClick = (gamePath) => {
     navigate(`/casino/game/${gamePath}`);
-  };
-
-  const handleLoginClick = () => {
-    // Simulate login - in real app, this would open a login modal or navigate to login page
-    setIsLoggedIn(true);
   };
 
   const removeFavourite = (gameId) => {
@@ -205,7 +203,7 @@ export default function Favourite() {
                 </h3>
 
                 <button 
-                    onClick={handleLoginClick}
+                    onClick={() => navigate(`${location.pathname}?tab=login&modal=auth`)}
                     className="px-6 py-3 rounded-lg font-semibold text-white transition-all duration-200 hover:scale-105"
                     style={{ backgroundColor: 'var(--blue-600)' }}
                     onMouseEnter={(e) => {

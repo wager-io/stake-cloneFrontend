@@ -76,11 +76,10 @@ export default function RecentWins() {
       </div>
       <div className="relative">
         <div 
-          className="flex gap-4 overflow-x-auto scrollbar-hide pb-4"
+          className="flex gap-4 overflow-x-auto pb-4 recent-wins-scroll"
           style={{
             scrollbarWidth: 'none',
-            msOverflowStyle: 'none',
-            WebkitScrollbar: { display: 'none' }
+            msOverflowStyle: 'none'
           }}
         >
           {wins.map((win) => (
@@ -114,7 +113,7 @@ export default function RecentWins() {
               <div className="text-center">
                 <div 
                   className="text-sm font-semibold mb-1"
-                  style={{ color: 'var( --accent-purple)' }}
+                  style={{ color: 'var(--accent-purple)' }}
                 >
                   {win.username}
                 </div>
@@ -128,28 +127,6 @@ export default function RecentWins() {
             </div>
           ))}
         </div>
-        
-        <style jsx>{`
-          @keyframes slideIn {
-            from {
-              transform: translateX(-100px);
-              opacity: 0;
-            }
-            to {
-              transform: translateX(0);
-              opacity: 1;
-            }
-          }
-          
-          .scrollbar-hide {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-          }
-          
-          .scrollbar-hide::-webkit-scrollbar {
-            display: none;
-          }
-        `}</style>
       </div>
     </div>
   )

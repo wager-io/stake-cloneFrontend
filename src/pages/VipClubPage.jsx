@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import VipCard from './landingPageComponent/VipCard';
 import { getAllVipTiers } from '../services/vipService';
+import { DEFAULT_VIP_TIERS_SHORT_FALLBACK, VIP_TIER_ICON_PATH_LONG } from '../constants/vipDefaults';
 import { FaGift, FaHeadset, FaCalendarCheck } from 'react-icons/fa';
 import { GiReceiveMoney } from 'react-icons/gi';
 
@@ -9,19 +10,8 @@ import { GiReceiveMoney } from 'react-icons/gi';
 function VipClubPage() {
   const { user, userVipTier } = useContext(AuthContext);
   
-  const [activeTab, setActiveTab] = useState('overview');
-  const [selectedLanguage, setSelectedLanguage] = useState({name:'English'}); // Default language
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // Dropdown visibility
   const [vipTiers, setVipTiers] = useState([]);
   const [vipBenefits, setVipBenefits] = useState([]);
-  const [supportedLanguages, setSupportedLanguages] = useState([
-    { name: 'English' },
-    { name: 'Spanish' },
-    { name: 'French' },
-    { name: 'German' },
-    { name: 'Chinese' },
-    { name: 'Japanese' }
-  ]);
   const [isLoading, setIsLoading] = useState(true);
 
   // Fetch VIP tiers and benefits when component mounts
@@ -30,10 +20,10 @@ function VipClubPage() {
       try {
         setIsLoading(true);
         const tiersData = await getAllVipTiers();
-        setVipTiers(tiersData || []);
+        setVipTiers(tiersData.data || []);
         
 
-// Set default VIP benefits if not available from API
+        // Set default VIP benefits if not available from API
         setVipBenefits([
           {
             icon: <FaGift />,
@@ -58,30 +48,8 @@ function VipClubPage() {
         ]);
       } catch (error) {
         console.error('Error fetching VIP data:', error);
-        // Set default VIP tiers if API call fails
-        setVipTiers([
-          {
-            name: 'Bronze',
-            color: '#C69C6D',
-            wagerAmount: '$10,000',
-            icon: 'M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z',
-            features: ['Level Up bonuses', 'Rakeback', 'Weekly bonuses']
-          },
-          {
-            name: 'Silver',
-            color: '#B2CCCC',
-            wagerAmount: '$50,000',
-            icon: 'M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z',
-            features: ['All Bronze benefits', 'Monthly bonuses', 'Priority withdrawals']
-          },
-          {
-            name: 'Gold',
-            color: '#FFD700',
-            wagerAmount: '$250,000',
-            icon: 'M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z',
-            features: ['All Silver benefits', 'Dedicated host', 'Custom promotions']
-          }
-        ]);
+        // Use shared fallback tiers if API call fails
+        setVipTiers(DEFAULT_VIP_TIERS_SHORT_FALLBACK);
       } finally {
         setIsLoading(false);
       }
@@ -135,20 +103,37 @@ function VipClubPage() {
         <div className="flex items-center">
           <div className={`flex items-center justify-center bg-[#213743] rounded-full h-10 w-10 ${isUserTier ? 'ring-2 ring-blue-500' : ''}`}>
             {typeof tier.icon === 'string' ? (
-              <svg 
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none" 
-                viewBox="0 0 24 24" 
-                stroke={tier.color} 
-                className="h-5 w-5"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={1.5}
-                  d={tier.icon}
-                />
-              </svg>
+              tier.icon.length > 100 ? (
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none" 
+                  viewBox="0 0 96 96" 
+                  stroke={tier.color} 
+                  className="h-5 w-5"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={1.5}
+                    d={tier.icon}
+                  />
+                </svg>
+              ) : (
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke={tier.color} 
+                  className="h-5 w-5"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={1.5}
+                    d={tier.icon}
+                  />
+                </svg>
+              )
             ) : (
               <svg 
                 xmlns="http://www.w3.org/2000/svg"
