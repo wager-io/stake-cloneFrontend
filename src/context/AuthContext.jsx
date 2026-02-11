@@ -94,18 +94,19 @@ export const AuthProvider = ({ children }) => {
   // Fetch user profile
   const fetchUserProfile = async () => {
     try {
-      const profile = await getUserProfile();
-      setUser(profile); // Update user state
-      setBalance(profile.balance);
-      // Fetch VIP progress if user is logged in
-      if (profile) {
+      const response = await getUserProfile();
+      const userData = response.user; // Extract the user object
+      setUser(userData); // Update user state with the actual user data
+      setBalance(userData.balance);
+
+      if (userData) {
         fetchUserVipProgress();
       }
     } catch (err) {
       console.error('Failed to fetch user profile:', err);
-      setUser(null); // Clear user state on error
+      setUser(null);
     } finally {
-      setIsLoading(false); // Stop loading
+      setIsLoading(false);
     }
   };
 
