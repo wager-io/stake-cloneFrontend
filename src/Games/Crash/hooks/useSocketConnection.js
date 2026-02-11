@@ -43,7 +43,7 @@ export default function useSocketConnection({
       });
       return;
     }
-    
+
     // // For non-zero bets, check if user has sufficient balance
     // if (amount > 0 && amount > balance) {
     //   toast.error('Insufficient balance', {
@@ -51,19 +51,19 @@ export default function useSocketConnection({
     //   });
     //   return;
     // }
-    
+
     // Check if cashout value is valid
     if (autoCashout < 1.01) {
       toast.error('Invalid cashout value');
       return;
     }
-    
+
     // Check if socket is connected
     if (!socketRef.current || !socketRef.current.connected) {
       toast.error('Connection error');
       return;
     }
-    
+
     // Emit bet event to server
     socketRef.current.emit('throw-bet', {
       userId: user._id,
@@ -85,7 +85,7 @@ export default function useSocketConnection({
           amount,
           autoCashout
         });
-        
+
         // Update balance for non-zero bets
         if (amount >= 0) {
           setBalance(prevBalance => prevBalance - amount);
@@ -97,7 +97,7 @@ export default function useSocketConnection({
   // Callback for cashing out
   const handleCashout = useCallback(() => {
     if (!userBet || gameState.status !== 'running') return;
-    
+
     // Check if user is logged in
     if (!user) {
       toast.error('Please log in to cash out', {
@@ -105,13 +105,13 @@ export default function useSocketConnection({
       });
       return;
     }
-    
+
     // Check if socket is connected
     if (!socketRef.current || !socketRef.current.connected) {
       toast.error('Connection error');
       return;
     }
-    
+
     // Emit cashout event to server
     socketRef.current.emit('throw-escape', {
       userId: user._id,
@@ -124,7 +124,7 @@ export default function useSocketConnection({
         if (userBet?.amount >= 0) {
           const winAmount = userBet?.amount * gameState?.multiplier;
           const profit = winAmount - userBet?.amount;
-          
+
           // Update balance
           setBalance(prevBalance => prevBalance + winAmount);
           setUserBet(null);
@@ -135,45 +135,52 @@ export default function useSocketConnection({
 
   // Auto cashout effect
   useEffect(() => {
-    if (userBet && userBet.autoCashout && 
-        gameState?.status === 'running' && 
-        gameState?.multiplier >= userBet?.autoCashout) {
+    if (userBet && userBet.autoCashout &&
+      gameState?.status === 'running' &&
+      gameState?.multiplier >= userBet?.autoCashout) {
       handleCashout();
     }
   }, [userBet, gameState?.status, gameState?.multiplier, handleCashout]);
 
-  useEffect(()=>{
-     const apiBaseUrl = serverUrl();
+  useEffect(() => {
+    const apiBaseUrl = serverUrl();
     fetch(`${apiBaseUrl}/api/crash/history`)
-    .then(res => {
-      if (!res.ok) {
-        throw new Error(`HTTP error! Status: ${res.status}`);
-      }
-      return res.json();
-    })
-    .then(data => {
-      if (data.recent) {
-        setHistory(data.recent.map(game => ({
-          id: game.gameId,
-          crashPoint: game.crashedAt
-        })));
-      }
-    })
-    .catch(err => {
-      console.error("Failed to fetch crash history:", err);
-      graphStore.setErrorMessage("Failed to load game history");
-    });
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! Status: ${res.status}`);
+        }
+        return res.json();
+      })
+      .then(data => {
+        if (data.recent) {
+          setHistory(data.recent.map(game => ({
+            id: game.gameId,
+            crashPoint: game.crashedAt
+          })));
+        }
+      })
+      .catch(err => {
+        console.error("Failed to fetch crash history:", err);
+        graphStore.setErrorMessage("Failed to load game history");
+      });
   }, [])
 
   useEffect(() => {
     // Connect to Socket.IO server only if we don't already have a connection
     if (!globalSocket) {
       const socketUrl = serverUrl();
-      globalSocket = io(socketUrl);
-      
+      globalSocket = io(socketUrl, {
+        transports: ['websocket', 'polling'],
+        reconnection: true,
+        reconnectionAttempts: 10,
+        reconnectionDelay: 1000,
+        timeout: 20000,
+        withCredentials: true
+      });
+
       // Make the socket available globally for other components
       window.socket = globalSocket;
-      
+
       // Set up the beforeunload event to disconnect the socket when the page is closed
       window.addEventListener('beforeunload', () => {
         if (globalSocket) {
@@ -183,20 +190,20 @@ export default function useSocketConnection({
         }
       });
     }
-    
+
     // Store the global socket in the ref
     socketRef.current = globalSocket;
-    
+
     // Set up connection event handler
     const handleConnect = () => {
       graphStore.setStatusMessage("Connected to game server");
-      
+
       // Join the crash game room - only if we haven't processed initial data yet
       if (!initialDataProcessedRef.current) {
         socketRef.current.emit('join', {}, (response) => {
           if (response.code === 0) {
             const { data } = response;
-            
+
             // Update game state based on initial data
             setGameState({
               status: mapStatusToString(data.status),
@@ -208,7 +215,7 @@ export default function useSocketConnection({
 
             // Update graph store
             graphStore.setGameData(data);
-            
+
             // Update bets
             setBets(data.players.map(player => ({
               userId: player.userId,
@@ -229,7 +236,7 @@ export default function useSocketConnection({
                 });
               }
             }
-            
+
             // Mark that we've processed initial data
             initialDataProcessedRef.current = true;
           } else {
@@ -246,7 +253,7 @@ export default function useSocketConnection({
       // Otherwise set up the connect event listener
       socketRef.current.on('connect', handleConnect);
     }
-    
+
     // Set up all the event listeners
     socketRef.current.on('pr', (data) => {
       // Make sure we're setting the correct startTime
@@ -260,13 +267,13 @@ export default function useSocketConnection({
         multiplier: 1,
         startTime: startTime
       }));
-      
+
       // Make sure we're updating the graph store with the correct startTime
       graphStore.updateGameStatus(GameStatus.STARTING);
       graphStore.setStartTime(startTime);
       graphStore.setGameStateMessage(`Starting in ${Math.ceil(data.prepareTime / 1000)}s`);
       graphStore.resetEscapes();
-      
+
       // Reset bets for new game
       setBets([]);
       setUserBet(null);
@@ -279,7 +286,7 @@ export default function useSocketConnection({
         multiplier: 1,
         timeLeft: 0
       }));
-      
+
       graphStore.updateGameStatus(GameStatus.PROGRESS);
       graphStore.setStartTime(Date.now());
       graphStore.clearMessages();
@@ -292,13 +299,13 @@ export default function useSocketConnection({
         status: 'running',
         multiplier
       }));
-      
+
       graphStore.updateGameRate(multiplier);
     });
 
     socketRef.current.on('ed', (data) => {
       const crashPoint = data.maxRate / 100;
-      
+
       setGameState(prev => ({
         ...prev,
         status: 'crashed',
@@ -306,13 +313,13 @@ export default function useSocketConnection({
         crashPoint,
         hash: data.hash
       }));
-      
+
       graphStore.updateGameStatus(GameStatus.ENDED);
       graphStore.updateGameRate(crashPoint);
       graphStore.game.hash = data.hash;
       graphStore.game.maxRate = crashPoint;
       graphStore.setGameStateMessage(`CRASHED AT ${crashPoint.toFixed(2)}x`);
-      
+
       // Fetch crash history - using a separate function to avoid setState in useEffect issue
       fetchCrashHistory(setHistory);
     });
@@ -320,11 +327,11 @@ export default function useSocketConnection({
     socketRef.current.on('b', (bet) => {
       setBets(prev => {
         // Check if this bet already exists
-        const betExists = prev.some(existingBet => 
-          existingBet.userId === bet.userId && 
+        const betExists = prev.some(existingBet =>
+          existingBet.userId === bet.userId &&
           existingBet.amount === bet.bet
         );
-        
+
         // Only add if it doesn't exist
         if (!betExists) {
           return [
@@ -338,7 +345,7 @@ export default function useSocketConnection({
             }
           ];
         }
-        
+
         return prev;
       });
     });
@@ -350,12 +357,12 @@ export default function useSocketConnection({
 
     socketRef.current.on('e', (escape) => {
       // Update bets list
-      setBets(prev => prev.map(bet => 
-        bet.userId === escape.userId 
-          ? { ...bet, status: 'cashed_out', cashoutMultiplier: escape.rate } 
+      setBets(prev => prev.map(bet =>
+        bet.userId === escape.userId
+          ? { ...bet, status: 'cashed_out', cashoutMultiplier: escape.rate }
           : bet
       ));
-      
+
       // Add escape to graph
       const escapeData = {
         userId: escape.userId,
@@ -363,10 +370,10 @@ export default function useSocketConnection({
         rate: escape.rate,
         usd: 0 // Will be updated if bet is found
       };
-      
+
       // Find the bet to get more details - using a separate function to avoid setState in useEffect issue
       fetchPlayerDetails(socketRef.current, escape.userId, escapeData);
-      
+
       // Check if this is the current user
       if (user && escape.userId === user.id) {
         setUserBet(null);
