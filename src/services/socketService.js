@@ -15,15 +15,15 @@ class SocketService {
     if (serverUrl) {
       this.serverUrl = serverUrl;
     }
-    
+
     // Use the stored URL if none is provided
-    const url = this.serverUrl || 'http://localhost:8000';
-    
+    const url = this.serverUrl || import.meta.env.VITE_SOCKET_URL || 'https://wager-903d5d29a36d.herokuapp.com';
+
     // Return existing promise if already connecting
     if (this.connectionPromise) {
       return this.connectionPromise;
     }
-    
+
     // Return immediately if already connected
     if (this.isConnected && this.socket) {
       // console.log("Already connected to socket server");
@@ -31,7 +31,7 @@ class SocketService {
     }
 
     // console.log("Connecting to socket server:", url);
-    
+
     // Create a new connection promise
     this.connectionPromise = new Promise((resolve, reject) => {
       try {
@@ -39,7 +39,7 @@ class SocketService {
         if (this.connectionTimeout) {
           clearTimeout(this.connectionTimeout);
         }
-        
+
         // Create socket connection with more options for better reliability
         this.socket = io(url, {
           transports: ['websocket', 'polling'], // Try websocket first, fall back to polling
@@ -54,13 +54,13 @@ class SocketService {
         this.socket.on('connect', () => {
           // console.log("Socket connected successfully");
           this.isConnected = true;
-          
+
           // Clear the timeout since we're connected
           if (this.connectionTimeout) {
             clearTimeout(this.connectionTimeout);
             this.connectionTimeout = null;
           }
-          
+
           resolve(this.socket);
           this.connectionPromise = null;
         });
@@ -73,16 +73,16 @@ class SocketService {
         this.socket.on('connect_error', (error) => {
           console.error("Socket connection error:", error);
           this.isConnected = false;
-          
+
           // Don't reject here, let the timeout handle it
           // This allows multiple connection attempts
         });
-        
+
         // Set a timeout for the connection
         this.connectionTimeout = setTimeout(() => {
           if (!this.isConnected) {
             console.error("Socket connection timeout - server might be unreachable");
-            
+
             // Provide more helpful error message based on URL
             let errorMessage = "Socket connection timeout";
             if (url.includes('localhost')) {
@@ -90,11 +90,11 @@ class SocketService {
             } else {
               errorMessage += " - Check your network connection and server availability";
             }
-            
+
             const error = new Error(errorMessage);
             reject(error);
             this.connectionPromise = null;
-            
+
             // Clean up the socket to prevent memory leaks
             if (this.socket) {
               this.socket.disconnect();
@@ -102,13 +102,13 @@ class SocketService {
             }
           }
         }, 15000); // Increase timeout to 15 seconds
-        
+
       } catch (error) {
         console.error("Socket connection failed:", error);
         this.isConnected = false;
         reject(error);
         this.connectionPromise = null;
-        
+
         // Clear the timeout
         if (this.connectionTimeout) {
           clearTimeout(this.connectionTimeout);
@@ -116,7 +116,7 @@ class SocketService {
         }
       }
     });
-    
+
     return this.connectionPromise;
   }
 
@@ -141,7 +141,7 @@ class SocketService {
         return false;
       }
     }
-    
+
     // Now try to send the message
     if (this.socket && this.isConnected) {
       console.log(`Sending ${event}:`, data);
@@ -177,7 +177,7 @@ class SocketService {
       this.socket = null;
       this.isConnected = false;
     }
-    
+
     // Clear any existing timeout
     if (this.connectionTimeout) {
       clearTimeout(this.connectionTimeout);

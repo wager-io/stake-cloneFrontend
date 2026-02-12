@@ -16,7 +16,7 @@ export const AuthProvider = ({ children }) => {
   const [vipProgress, setVipProgress] = useState(null);
   const [vipTiers, setVipTiers] = useState([]);
   const [userVipTier, setUserVipTier] = useState(null);
-  
+
   // Default VIP benefits
   const [vipBenefits] = useState([
     {
@@ -32,15 +32,15 @@ export const AuthProvider = ({ children }) => {
     {
       title: "Dedicated VIP Host",
       description: "Personal account manager to assist with all your gaming needs.",
-    icon: "/assets/affiliate-icons/b3.webp"
+      icon: "/assets/affiliate-icons/b3.webp"
     },
     {
       title: "Customized Bonuses",
       description: "Receive personalized bonuses tailored to your gaming preferences.",
-       icon: "/assets/affiliate-icons/b4.webp"
+      icon: "/assets/affiliate-icons/b4.webp"
     }
   ]);
-  
+
   // Default supported languages
   const [supportedLanguages] = useState([
     { code: 'en', name: 'English' },
@@ -55,12 +55,14 @@ export const AuthProvider = ({ children }) => {
   // Check for token in cookies and fetch user profile
   useEffect(() => {
     const token = Cookies.get('authToken'); // Get token from cookies
+    console.log("[AuthContext] Token from cookie:", token);
     if (token) {
-      fetchUserProfile(); 
+      fetchUserProfile();
     } else {
+      console.log("[AuthContext] No token found, checking storage...");
       setIsLoading(false); // No token, stop loading
     }
-    
+
     // Fetch VIP tiers regardless of authentication
     // fetchVipTiers();
   }, []);
@@ -92,21 +94,28 @@ export const AuthProvider = ({ children }) => {
   // Fetch user profile
   const fetchUserProfile = async () => {
     try {
-      const profile = await getUserProfile();
-      setUser(profile); // Update user state
-      setBalance(profile.balance);
-      // Fetch VIP progress if user is logged in
-      if (profile) {
+      console.log("[AuthContext] Fetching user profile...");
+      const response = await getUserProfile();
+      console.log("[AuthContext] Profile response:", response);
+      const userData = response.user; // Extract the user object
+
+      if (userData) {
+        console.log("[AuthContext] Setting user:", userData.username);
+        setUser(userData); // Update user state with the actual user data
+        setBalance(userData.balance);
         fetchUserVipProgress();
+      } else {
+        console.warn("[AuthContext] No user data found in response");
+        setUser(null);
       }
     } catch (err) {
-      console.error('Failed to fetch user profile:', err);
-      setUser(null); // Clear user state on error
+      console.error('[AuthContext] Failed to fetch user profile:', err);
+      setUser(null);
     } finally {
-      setIsLoading(false); // Stop loading
+      setIsLoading(false);
     }
   };
-  
+
   // Fetch user VIP progress
   const fetchUserVipProgress = async () => {
     try {
@@ -137,7 +146,7 @@ export const AuthProvider = ({ children }) => {
 
   // Handle user login
   const login = (userData, token) => {
-    Cookies.set('authToken', token); // Save token to cookies
+    Cookies.set('authToken', token, { expires: 7, secure: true, sameSite: 'lax' }); // 7 days expiration, secure for https
     setUser(userData); // Update user state
     setBalance(userData.balance);
     // Fetch VIP progress after login
@@ -155,7 +164,7 @@ export const AuthProvider = ({ children }) => {
 
   // Handle user registration
   const register = (userData, token) => {
-    Cookies.set('authToken', token); // Save token to cookies
+    Cookies.set('authToken', token, { expires: 7, secure: true, sameSite: 'lax' }); // 7 days expiration, secure for https
     setUser(userData); // Update user state
     // Initialize VIP progress for new user
     // fetchUserVipProgress();
@@ -180,18 +189,18 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ 
-      user, 
-      isLoading, 
-      login, 
-      register, 
-      logout, 
-      resendVerificationCode, 
-      verifyCode, 
-      updateUserDetails, 
-      balance, 
+    <AuthContext.Provider value={{
+      user,
+      isLoading,
+      login,
+      register,
+      logout,
+      resendVerificationCode,
+      verifyCode,
+      updateUserDetails,
+      balance,
       setBalance,
-      newScreen, 
+      newScreen,
       setNewScreen,
       vipProgress,
       vipTiers,

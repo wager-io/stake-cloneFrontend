@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useAuth } from '../../context/AuthContext';
+import socketService from '../../services/socketService';
 import { useNavigate } from 'react-router-dom';
 import api from '../../utils/api';
 import { format } from 'date-fns';
@@ -6,6 +8,7 @@ import { toast } from 'sonner';
 import './MyBets.css';
 
 const MyBets = () => {
+  const { user } = useAuth();
   const navigate = useNavigate();
   const [bets, setBets] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -28,7 +31,7 @@ const MyBets = () => {
           limit: pagination.limit
         }
       });
-      
+
       console.log(response.data);
       setBets(response.data.bills || []);
       setPagination(response.data.pagination || {
@@ -46,8 +49,66 @@ const MyBets = () => {
   };
 
   useEffect(() => {
-    // fetchBets();
-  }, []);
+    fetchBets();
+
+    const setupSocket = async () => {
+      try {
+        // Ensure socket is connected
+        let socket = socketService.socket;
+        if (!socket || !socketService.isConnected) {
+          socket = await socketService.connect();
+        }
+
+        if (socket) {
+          const handleNewBet = (bet) => {
+            console.log('[MyBets] Received global-new-bet:', bet);
+            console.log('[MyBets] ID Comparison:', {
+              betUserId: bet.user_id,
+              betUserIdType: typeof bet.user_id,
+              currentUserId: user?._id,
+              currentUserIdType: typeof user?._id,
+              match: user && (bet.user_id === user._id || bet.user_id === String(user._id))
+            });
+
+            // Only add bets for the current user
+            // Robust comparison: Convert both to strings
+            const isMatch = user && (String(bet.user_id) === String(user._id));
+
+            if (isMatch) {
+              const newBet = {
+                transaction_id: bet.betId || Date.now(), // Fallback
+                transaction_type: bet.game || bet.transaction_type, // Use game name
+                game: bet.game || 'Game',
+                gameType: 'casino', // Match filter
+                timestamp: new Date().toISOString(),
+                amount: parseFloat(bet.betAmount),
+                currency: bet.currency || bet.token_name,
+                balance: parseFloat(bet.payout), // Payout amount
+                token_img: bet.token_img
+              };
+
+              setBets(prevBets => [newBet, ...prevBets].slice(0, 10));
+            }
+          };
+
+          socket.on('global-new-bet', handleNewBet);
+
+          // Cleanup listener
+          return () => {
+            socket.off('global-new-bet', handleNewBet);
+          };
+        }
+      } catch (error) {
+        console.error("Socket setup failed in MyBets:", error);
+      }
+    };
+
+    const cleanupPromise = setupSocket();
+
+    return () => {
+      cleanupPromise.then(cleanup => cleanup && cleanup());
+    };
+  }, [user]);
 
   // Handle page change
   const handlePageChange = (newPage) => {
@@ -56,7 +117,7 @@ const MyBets = () => {
     }
   };
 
-  const filteredBets = bets.filter(bet => 
+  const filteredBets = bets.filter(bet =>
     activeTab === 'Casino' ? bet.gameType === 'casino' : bet.gameType === 'sports'
   );
 
@@ -90,19 +151,19 @@ const MyBets = () => {
         <h1 className="my-bets-title">My Bets</h1>
         <div className="my-bets-icon">
           <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" />
           </svg>
         </div>
       </div>
 
       <div className="my-bets-tabs">
-        <button 
+        <button
           className={`tab-button ${activeTab === 'Casino' ? 'active' : ''}`}
           onClick={() => setActiveTab('Casino')}
         >
           Casino
         </button>
-        <button 
+        <button
           className={`tab-button ${activeTab === 'Sports' ? 'active' : ''}`}
           onClick={() => setActiveTab('Sports')}
         >
@@ -170,7 +231,7 @@ const MyBets = () => {
           <div className="empty-state">
             <div className="empty-icon">
               <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" />
               </svg>
             </div>
             <p className="empty-title">No bets found</p>
@@ -185,14 +246,14 @@ const MyBets = () => {
             <span>Showing {bets.length} of {pagination.total} bets | Page {pagination.page} of {pagination.totalPages}</span>
           </div>
           <div className="pagination-controls">
-            <button 
+            <button
               className="pagination-btn"
               onClick={handlePreviousPage}
               disabled={pagination.page === 1}
             >
               Previous
             </button>
-            <button 
+            <button
               className="pagination-btn"
               onClick={handleNextPage}
               disabled={pagination.page === pagination.totalPages}
