@@ -120,6 +120,7 @@ export default function AllBets() {
 
   useEffect(() => {
     const handleNewBet = (bet) => {
+      console.log('AllBets received bet:', bet);
       // Safely capitalize first letter
       const gameName = bet.game
         ? bet.game.charAt(0).toUpperCase() + bet.game.slice(1).toLowerCase()
