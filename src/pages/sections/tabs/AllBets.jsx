@@ -126,10 +126,15 @@ export default function AllBets() {
 
   useEffect(() => {
     const handleNewBet = (bet) => {
+      // Safely capitalize first letter
+      const gameName = bet.game
+        ? bet.game.charAt(0).toUpperCase() + bet.game.slice(1).toLowerCase()
+        : 'Unknown';
+
       const newBet = {
         id: Date.now(),
-        game: bet.game.charAt(0).toUpperCase() + bet.game.slice(1),
-        user: bet.hidden ? 'Hidden' : bet.name,
+        game: gameName,
+        user: bet.hidden ? 'Hidden' : (bet.name || 'Unknown User'),
         betAmount: parseFloat(bet.betAmount),
         multiplier: parseFloat(bet.multiplier).toFixed(2) + 'x',
         payout: parseFloat(bet.payout)
@@ -160,6 +165,7 @@ export default function AllBets() {
   }, []);
 
   const getGameIcon = (gameName) => {
+    if (!gameName) return FiZap;
     switch (gameName.toLowerCase()) {
       case 'crash':
         return FiZap

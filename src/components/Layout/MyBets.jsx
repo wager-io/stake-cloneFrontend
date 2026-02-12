@@ -117,9 +117,11 @@ const MyBets = () => {
     }
   };
 
-  const filteredBets = bets.filter(bet =>
-    activeTab === 'Casino' ? bet.gameType === 'casino' : bet.gameType === 'sports'
-  );
+  const filteredBets = bets.filter(bet => {
+    // If no gameType is provided, assume it's a casino bet (shim)
+    const type = bet.gameType || 'casino';
+    return activeTab === 'Casino' ? type === 'casino' : type === 'sports';
+  });
 
   const handlePreviousPage = () => {
     handlePageChange(pagination.page - 1);
@@ -217,9 +219,9 @@ const MyBets = () => {
                       <span className="multiplier">-</span>
                     </td>
                     <td className="payout-cell">
-                      <span className={`payout ${parseFloat(bet.amount) > 0 ? 'profit' : 'loss'}`}>
-                        {parseFloat(bet.balance).toFixed(4)}
-                        <span className="currency-icon">{bet.currency}</span>
+                      <span className={`payout ${parseFloat(bet.trx_amount) > 0 ? 'profit' : 'loss'}`}>
+                        {parseFloat(bet.trx_amount).toFixed(4)}
+                        <span className="currency-icon">{bet.currency || bet.token_name}</span>
                       </span>
                     </td>
                   </tr>
