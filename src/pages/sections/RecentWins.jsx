@@ -62,7 +62,7 @@ export default function RecentWins() {
         }
 
         if (socketService.socket) {
-          socketService.socket.off('global-new-bet', handleNewBet); // Prevent duplicates
+          socketService.socket.off('global-new-bet', handleNewBet);
           socketService.socket.on('global-new-bet', handleNewBet);
         }
       } catch (error) {
@@ -70,6 +70,23 @@ export default function RecentWins() {
       }
     };
 
+    const fetchInitialWins = async () => {
+      try {
+        const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/global/high-rollers`);
+        if (response.ok) {
+          const data = await response.json();
+          const formattedWins = data.map(win => ({
+            ...win,
+            isNew: false
+          }));
+          setWins(formattedWins);
+        }
+      } catch (error) {
+        console.error("Failed to fetch initial wins:", error);
+      }
+    };
+
+    fetchInitialWins();
     setupSocket();
 
     return () => {

@@ -68,6 +68,20 @@ export default function AllBets() {
       }
     };
 
+    // Fetch initial data
+    const fetchInitialBets = async () => {
+      try {
+        const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/global/all-bets`);
+        if (response.ok) {
+          const data = await response.json();
+          setBetsData(data);
+        }
+      } catch (error) {
+        console.error("Failed to fetch initial bets:", error);
+      }
+    };
+
+    fetchInitialBets();
     setupSocket();
 
     return () => {
