@@ -81,10 +81,11 @@ const MyBets = () => {
                 game: bet.game || 'Game',
                 gameType: 'casino', // Match filter
                 timestamp: new Date().toISOString(),
-                amount: parseFloat(bet.betAmount),
-                currency: bet.currency || bet.token_name,
-                balance: parseFloat(bet.payout), // Payout amount
-                token_img: bet.token_img
+                amount: parseFloat(bet.betAmount) || 0,
+                currency: bet.currency || bet.token_name || 'USDT',
+                balance: bet.payout !== undefined ? parseFloat(bet.payout) : (bet.multiplier * parseFloat(bet.betAmount) || 0), // Handle payout
+                trx_amount: bet.payout !== undefined ? parseFloat(bet.payout) : (bet.multiplier * parseFloat(bet.betAmount) || 0), // For payout column
+                token_img: bet.token_img || bet.currencyImage || '/assets/token/usdt.png'
               };
 
               setBets(prevBets => [newBet, ...prevBets].slice(0, 10));
