@@ -53,9 +53,22 @@ export default function AllBets() {
       }, 500);
     };
 
-    if (socketService.socket) {
-      socketService.socket.on('global-new-bet', handleNewBet);
-    }
+    const setupSocket = async () => {
+      try {
+        if (!socketService.socket) {
+          await socketService.connect();
+        }
+
+        if (socketService.socket) {
+          socketService.socket.off('global-new-bet', handleNewBet); // Prevent duplicates
+          socketService.socket.on('global-new-bet', handleNewBet);
+        }
+      } catch (error) {
+        console.error("Socket connection failed in AllBets:", error);
+      }
+    };
+
+    setupSocket();
 
     return () => {
       if (socketService.socket) {
