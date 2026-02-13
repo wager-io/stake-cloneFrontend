@@ -17,41 +17,7 @@ export default function RecentWins() {
   const [wins, setWins] = useState(initialWins)
   const [nextId, setNextId] = useState(6)
 
-  const gameNames = ['Crash', 'Dice', 'Hilo', 'Keno', 'Limbo', 'Mines', 'Plinko']
-  const usernames = ['BetMaster', 'CoinHunter', 'WinStreak', 'LuckyGamer', 'RiskTaker', 'BigBaller', 'CryptoWin', 'GameChanger', 'WagerKing', 'BetBeast']
-  const amounts = ['1.2 USDT', '40.8 usdt', '650 USDT', '27.1 USDT', '1.5 USDT', '890 USDT', '32.4 USDT', '10.9 USDT', '1250 USDT', '2.8 USDT']
-
-  const addNewWin = () => {
-    const randomGame = gameNames[Math.floor(Math.random() * gameNames.length)]
-    const randomUsername = usernames[Math.floor(Math.random() * usernames.length)]
-    const randomAmount = amounts[Math.floor(Math.random() * amounts.length)]
-
-    const newWin = {
-      id: nextId,
-      username: randomUsername,
-      game: randomGame,
-      amount: randomAmount,
-      isNew: true
-    }
-
-    setWins(prevWins => {
-      const updatedWins = [newWin, ...prevWins]
-      if (updatedWins.length > 10) {
-        updatedWins.pop()
-      }
-      return updatedWins
-    })
-
-    setNextId(prev => prev + 1)
-
-    setTimeout(() => {
-      setWins(prevWins =>
-        prevWins.map(win =>
-          win.id === newWin.id ? { ...win, isNew: false } : win
-        )
-      )
-    }, 500)
-  }
+  // Placeholder for real-time data logic
 
 
 

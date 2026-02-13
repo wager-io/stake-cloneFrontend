@@ -19,40 +19,8 @@ export default function AllBets() {
   const [nextId, setNextId] = useState(11)
   const [isNewBetAdding, setIsNewBetAdding] = useState(false)
 
-  const gameOptions = ['Crash', 'Dice', 'Hilo', 'Keno', 'Limbo', 'Mines', 'Plinko']
-  const userOptions = ['WinStreak', 'BetMaster', 'LuckyGamer', 'CryptoWin', 'GameChanger', 'RiskTaker', 'BigBaller', 'WagerKing', 'BetBeast', 'Hidden']
+  // Placeholder for real-time data logic
 
-  const generateNewBet = () => {
-    const randomGame = gameOptions[Math.floor(Math.random() * gameOptions.length)]
-    const randomUser = userOptions[Math.floor(Math.random() * userOptions.length)]
-    const randomBetAmount = parseFloat((Math.random() * 50 + 1).toFixed(2))
-    const isWin = Math.random() > 0.4
-    const randomMultiplier = isWin ? (Math.random() * 5 + 1).toFixed(2) + 'x' : '0.00x'
-    const payout = isWin ? parseFloat((randomBetAmount * parseFloat(randomMultiplier)).toFixed(2)) : 0.00
-
-    return {
-      id: nextId,
-      game: randomGame,
-      user: randomUser,
-      avatar: '',
-      betAmount: randomBetAmount,
-      multiplier: randomMultiplier,
-      payout: payout
-    }
-  }
-
-  const addNewBet = () => {
-    setIsNewBetAdding(true)
-    const newBet = generateNewBet()
-    setBetsData(prevBets => {
-      const updatedBets = [newBet, ...prevBets]
-      return updatedBets.slice(0, 10)
-    })
-    setNextId(prev => prev + 1)
-    setTimeout(() => {
-      setIsNewBetAdding(false)
-    }, 500)
-  }
 
   useEffect(() => {
     const handleNewBet = (bet) => {
