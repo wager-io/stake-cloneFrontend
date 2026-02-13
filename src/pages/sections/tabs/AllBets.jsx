@@ -13,71 +13,7 @@ export default function AllBets() {
     'Plinko': '/assets/InhouseGames/plinko.png'
   }
 
-  const initialBetsData = [
-    {
-      id: 1,
-      game: 'Crash',
-      user: 'Player123',
-      avatar: '',
-      betAmount: 10.50,
-      multiplier: '2.45x',
-      payout: 25.73
-    },
-    {
-      id: 2,
-      game: 'Dice',
-      user: 'LuckyWin88',
-      avatar: '',
-      betAmount: 5.00,
-      multiplier: '0.00x',
-      payout: 0.00
-    },
-    {
-      id: 3,
-      game: 'Hilo',
-      user: 'HighRoller',
-      avatar: '',
-      betAmount: 25.00,
-      multiplier: '3.20x',
-      payout: 80.00
-    },
-    {
-      id: 4,
-      game: 'Keno',
-      user: 'CryptoKing',
-      avatar: '',
-      betAmount: 15.75,
-      multiplier: '1.85x',
-      payout: 29.14
-    },
-    {
-      id: 5,
-      game: 'Limbo',
-      user: 'Hidden',
-      avatar: '',
-      betAmount: 8.25,
-      multiplier: '0.00x',
-      payout: 0.00
-    },
-    {
-      id: 6,
-      game: 'Mines',
-      user: 'BetMaster',
-      avatar: '',
-      betAmount: 12.00,
-      multiplier: '4.50x',
-      payout: 54.00
-    },
-    {
-      id: 7,
-      game: 'Plinko',
-      user: 'CardShark',
-      avatar: '',
-      betAmount: 20.00,
-      multiplier: '2.00x',
-      payout: 40.00
-    }
-  ]
+  const initialBetsData = []
 
   const [betsData, setBetsData] = useState(initialBetsData)
   const [nextId, setNextId] = useState(11)

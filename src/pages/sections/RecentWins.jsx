@@ -12,13 +12,7 @@ export default function RecentWins() {
     'Plinko': '/assets/InhouseGames/plinko.png'
   }
 
-  const initialWins = [
-    { id: 1, username: 'CryptoKing', game: 'Crash', amount: '288.5 USDT', isNew: false, multiplier: '2.50x' },
-    { id: 2, username: 'LuckyPlayer', game: 'Dice', amount: '10.8 USDT', isNew: false, multiplier: '1.50x' },
-    { id: 3, username: 'DiamondHands', game: 'Plinko', amount: '950 USDT', isNew: false, multiplier: '10.00x' },
-    { id: 4, username: 'MoonWalker', game: 'Limbo', amount: '3.2 USDT', isNew: false, multiplier: '1.10x' },
-    { id: 5, username: 'WagerMaster', game: 'Hilo', amount: '100.1 USDT', isNew: false, multiplier: '2.00x' }
-  ]
+  const initialWins = []
 
   const [wins, setWins] = useState(initialWins)
   const [nextId, setNextId] = useState(6)
