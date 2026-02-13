@@ -41,10 +41,11 @@ class SocketService {
         }
 
         // Create socket connection with more options for better reliability
+        console.log("Attempting socket connection to:", url);
         this.socket = io(url, {
           transports: ['websocket', 'polling'], // Try websocket first, fall back to polling
           reconnection: true,
-          reconnectionAttempts: 5,
+          reconnectionAttempts: 10, // Increased attempts
           reconnectionDelay: 1000,
           timeout: 20000, // Increase socket.io connection timeout
           query: { clientTime: new Date().toISOString() }, // Add timestamp for debugging
@@ -52,7 +53,7 @@ class SocketService {
 
         // Set up connection event handlers
         this.socket.on('connect', () => {
-          // console.log("Socket connected successfully");
+          console.log("Socket connected successfully to:", url, "Socket ID:", this.socket.id);
           this.isConnected = true;
 
           // Clear the timeout since we're connected
@@ -66,12 +67,12 @@ class SocketService {
         });
 
         this.socket.on('disconnect', (reason) => {
-          console.log("Socket disconnected, reason:", reason);
+          console.warn("Socket disconnected, reason:", reason);
           this.isConnected = false;
         });
 
         this.socket.on('connect_error', (error) => {
-          console.error("Socket connection error:", error);
+          console.error("Socket connection error:", error.message);
           this.isConnected = false;
 
           // Don't reject here, let the timeout handle it

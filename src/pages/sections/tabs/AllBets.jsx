@@ -1,90 +1,19 @@
 import React, { useState, useEffect } from 'react'
-import { FiChevronUp, FiChevronDown, FiZap, FiEyeOff, FiHexagon, FiTarget } from 'react-icons/fi'
+import { FiChevronUp, FiChevronDown, FiUser } from 'react-icons/fi'
 import socketService from '../../../services/socketService';
 
 export default function AllBets() {
-  const initialBetsData = [
-    {
-      id: 1,
-      game: 'Crash',
-      user: 'Player123',
-      betAmount: 10.50,
-      multiplier: '2.45x',
-      payout: 25.73
-    },
-    {
-      id: 2,
-      game: 'Dice',
-      user: 'LuckyWin88',
-      betAmount: 5.00,
-      multiplier: '0.00x',
-      payout: 0.00
-    },
-    {
-      id: 3,
-      game: 'Hilo',
-      user: 'HighRoller',
-      betAmount: 25.00,
-      multiplier: '3.20x',
-      payout: 80.00
-    },
-    {
-      id: 4,
-      game: 'Keno',
-      user: 'CryptoKing',
-      betAmount: 15.75,
-      multiplier: '1.85x',
-      payout: 29.14
-    },
-    {
-      id: 5,
-      game: 'Limbo',
-      user: 'Hidden',
-      betAmount: 8.25,
-      multiplier: '0.00x',
-      payout: 0.00
-    },
-    {
-      id: 6,
-      game: 'Mines',
-      user: 'BetMaster',
-      betAmount: 12.00,
-      multiplier: '4.50x',
-      payout: 54.00
-    },
-    {
-      id: 7,
-      game: 'Plinko',
-      user: 'CardShark',
-      betAmount: 20.00,
-      multiplier: '2.00x',
-      payout: 40.00
-    },
-    {
-      id: 8,
-      game: 'Crash',
-      user: 'SlotFan99',
-      betAmount: 3.50,
-      multiplier: '0.00x',
-      payout: 0.00
-    },
-    {
-      id: 9,
-      game: 'Dice',
-      user: 'RollDice',
-      betAmount: 7.25,
-      multiplier: '1.95x',
-      payout: 14.14
-    },
-    {
-      id: 10,
-      game: 'Hilo',
-      user: 'SpinWinner',
-      betAmount: 18.50,
-      multiplier: '5.75x',
-      payout: 106.38
-    }
-  ]
+  const gameImages = {
+    'Crash': '/assets/InhouseGames/crash-game.png',
+    'Dice': '/assets/InhouseGames/diceGame.png',
+    'Hilo': '/assets/InhouseGames/hiloGAMES.png',
+    'Keno': '/assets/InhouseGames/keno.png',
+    'Limbo': '/assets/InhouseGames/limboGame.png',
+    'Mines': '/assets/InhouseGames/mine.png',
+    'Plinko': '/assets/InhouseGames/plinko.png'
+  }
+
+  const initialBetsData = []
 
   const [betsData, setBetsData] = useState(initialBetsData)
   const [nextId, setNextId] = useState(11)
@@ -105,6 +34,7 @@ export default function AllBets() {
       id: nextId,
       game: randomGame,
       user: randomUser,
+      avatar: '',
       betAmount: randomBetAmount,
       multiplier: randomMultiplier,
       payout: payout
@@ -126,10 +56,17 @@ export default function AllBets() {
 
   useEffect(() => {
     const handleNewBet = (bet) => {
+      console.log('AllBets received bet:', bet);
+      // Safely capitalize first letter
+      const gameName = bet.game
+        ? bet.game.charAt(0).toUpperCase() + bet.game.slice(1).toLowerCase()
+        : 'Unknown';
+
       const newBet = {
         id: Date.now(),
-        game: bet.game.charAt(0).toUpperCase() + bet.game.slice(1),
-        user: bet.hidden ? 'Hidden' : bet.name,
+        game: gameName,
+        user: bet.hidden ? 'Hidden' : (bet.name || 'Unknown User'),
+        avatar: bet.avatar || '',
         betAmount: parseFloat(bet.betAmount),
         multiplier: parseFloat(bet.multiplier).toFixed(2) + 'x',
         payout: parseFloat(bet.payout)
@@ -159,27 +96,6 @@ export default function AllBets() {
     };
   }, []);
 
-  const getGameIcon = (gameName) => {
-    switch (gameName.toLowerCase()) {
-      case 'crash':
-        return FiZap
-      case 'dice':
-        return FiHexagon
-      case 'hilo':
-        return FiChevronUp
-      case 'keno':
-        return FiTarget
-      case 'limbo':
-        return FiZap
-      case 'mines':
-        return FiEyeOff
-      case 'plinko':
-        return FiTarget
-      default:
-        return FiZap
-    }
-  }
-
   return (
     <div className="p-0 sm:p-0">
       <div
@@ -190,7 +106,7 @@ export default function AllBets() {
         }}
       >
         <div
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 p-4 border-b font-semibold text-sm"
+          className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-5 gap-4 p-4 border-b font-semibold text-sm"
           style={{
             backgroundColor: 'var(--grey-600)',
             borderBottomColor: 'var(--grey-500)',
@@ -198,20 +114,21 @@ export default function AllBets() {
           }}
         >
           <div className="col-span-1">Game</div>
-          <div className="hidden text-center sm:block">User</div>
-          <div className="hidden text-center md:block">Bet Amount</div>
-          <div className="hidden text-center lg:block">Multiplier</div>
-          <div className="col-span-1 text-right sm:text-end pr-1">Payout</div>
+          <div className="hidden sm:block col-span-1">User</div>
+          <div className="hidden md:block text-center">Bet Amount</div>
+          <div className="hidden lg:block text-center">Multiplier</div>
+          <div className="col-span-1 text-right pr-1">Payout</div>
         </div>
 
-        <div className="overflow-hidden" >
+        <div className="overflow-hidden">
           {betsData.map((bet, index) => {
-            const GameIcon = getGameIcon(bet.game)
             const isCardRow = (bet.id + 1) % 2 === 0
+            const gameImage = gameImages[bet.game] || gameImages['Crash']; // Fallback
+
             return (
               <div
                 key={index}
-                className={`grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 p-4 transition-all duration-300 ease-in-out ${isCardRow ? 'rounded-lg mx-2 my-2 border' : 'my-2 mx-2'
+                className={`grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-5 gap-4 p-3 items-center transition-all duration-300 ease-in-out ${isCardRow ? 'rounded-lg mx-2 my-2 border' : 'my-2 mx-2'
                   } ${index === 0 && isNewBetAdding ? 'animate-slide-down' : ''}`}
                 style={{
                   backgroundColor: isCardRow ? 'var(--grey-600)' : 'transparent',
@@ -221,102 +138,102 @@ export default function AllBets() {
                 }}
                 onMouseEnter={(e) => {
                   if (isCardRow) {
-                    e.target.style.backgroundColor = 'var(--grey-500)'
-                    e.target.style.boxShadow = '0 2px 8px rgba(20, 117, 225, 0.3)'
+                    e.currentTarget.style.backgroundColor = 'var(--grey-500)';
+                    e.currentTarget.style.boxShadow = '0 2px 8px rgba(20, 117, 225, 0.3)';
                   }
                 }}
                 onMouseLeave={(e) => {
-                  e.target.style.backgroundColor = isCardRow ? 'var(--grey-600)' : 'transparent'
-                  e.target.style.boxShadow = 'none'
+                  e.currentTarget.style.backgroundColor = isCardRow ? 'var(--grey-600)' : 'transparent';
+                  e.currentTarget.style.boxShadow = 'none';
                 }}
               >
-                <div className="flex items-center gap-2 col-span-1">
-                  <div style={{ color: 'var(--blue-500)' }}>
-                    <GameIcon className="w-4 h-4" />
+                {/* Game Column */}
+                <div className="flex items-center gap-3 col-span-1 overflow-hidden">
+                  <div className="w-8 h-8 flex-shrink-0 rounded-md overflow-hidden bg-[var(--grey-800)] p-1 border border-[var(--grey-500)]">
+                    <img
+                      src={gameImage}
+                      alt={bet.game}
+                      className="w-full h-full object-contain"
+                    />
                   </div>
                   <a
                     href={`/games/${bet.game.toLowerCase().replace(/\s+/g, '-')}`}
-                    className="text-sm font-semibold truncate transition-colors duration-200 hover:underline"
+                    className="text-sm font-bold truncate transition-colors duration-200 hover:text-[var(--blue-400)]"
                     style={{ color: 'var(--grey-200)' }}
-                    onMouseEnter={(e) => e.target.style.color = 'var(--blue-400)'}
-                    onMouseLeave={(e) => e.target.style.color = 'var(--grey-200)'}
                   >
                     {bet.game}
                   </a>
                 </div>
-                <div className="hidden sm:flex items-center  justify-center">
+
+                {/* User Column */}
+                <div className="hidden sm:flex items-center gap-2 col-span-1 overflow-hidden">
+                  <div className="w-6 h-6 rounded-full overflow-hidden bg-[var(--grey-500)] flex items-center justify-center flex-shrink-0">
+                    {bet.avatar ? (
+                      <img src={bet.avatar} alt={bet.user} className="w-full h-full object-cover" />
+                    ) : (
+                      <FiUser className="text-[var(--grey-300)] w-4 h-4" />
+                    )}
+                  </div>
                   {bet.user !== 'Hidden' ? (
                     <a
                       href={`/users/${bet.user.toLowerCase()}`}
-                      className="text-sm truncate transition-colors duration-200 "
+                      className="text-sm truncate transition-colors duration-200 hover:text-[var(--blue-400)]"
                       style={{ color: 'var(--grey-300)' }}
-                      onMouseEnter={(e) => e.target.style.color = 'var(--blue-400)'}
-                      onMouseLeave={(e) => e.target.style.color = 'var(--grey-300)'}
                     >
                       {bet.user}
                     </a>
                   ) : (
-                    <span
-                      className="text-sm truncate"
-                      style={{ color: 'var(--grey-400)' }}
-                    >
+                    <span className="text-sm truncate text-[var(--grey-400)]">
                       {bet.user}
                     </span>
                   )}
                 </div>
+
+                {/* Bet Amount Column */}
                 <div className="hidden md:flex items-center justify-center">
-                  <span
-                    className="text-sm font-bold"
-                    style={{ color: 'var(--grey-300)' }}
-                  >
+                  <span className="text-sm font-bold text-[var(--grey-300)]">
                     ${bet.betAmount.toFixed(2)}
                   </span>
                 </div>
 
+                {/* Multiplier Column */}
                 <div className="hidden lg:flex items-center justify-center text-center">
-                  <span
-                    className="text-sm font-extrabold text-center"
-                    style={{ color: 'var(--grey-200)' }}
-                  >
+                  <span className={`text-sm font-extrabold px-2 py-0.5 rounded ${parseFloat(bet.payout) > 0 ? 'bg-[rgba(0,255,100,0.1)] text-[var(--green-500)]' : 'text-[var(--grey-400)]'
+                    }`}>
                     {bet.multiplier}
                   </span>
                 </div>
 
-                <div className="flex items-center justify-end sm:justify-end gap-2 col-span-1">
+                {/* Payout Column */}
+                <div className="flex items-center justify-end gap-2 col-span-1">
                   <span
-                    className="text-sm font-semibold"
+                    className="text-sm font-bold"
                     style={{
-                      color: 'var(--grey-300)'
+                      color: parseFloat(bet.payout) > 0 ? 'var(--green-500)' : 'var(--grey-400)'
                     }}
                   >
                     ${bet.payout.toFixed(2)}
                   </span>
                   <div
-                    className="transition-transform border duration-200 bg-[var(--grey-500)] rounded p-1"
+                    className={`transition-colors duration-200 rounded p-1 flex items-center justify-center border`}
                     style={{
-                      color: bet.payout > 0 ? 'var(--green-500)' : 'var(--red-500)',
-                      borderColor: "var(--grey-400)"
+                      backgroundColor: parseFloat(bet.payout) > 0 ? 'rgba(34, 197, 94, 0.1)' : 'rgba(107, 114, 128, 0.1)',
+                      borderColor: parseFloat(bet.payout) > 0 ? 'rgba(34, 197, 94, 0.3)' : 'rgba(107, 114, 128, 0.3)',
+                      color: parseFloat(bet.payout) > 0 ? 'var(--green-500)' : 'var(--grey-400)'
                     }}
                   >
-                    {bet.payout > 0 ?
+                    {parseFloat(bet.payout) > 0 ?
                       <FiChevronUp className="w-4 h-4" /> :
                       <FiChevronDown className="w-4 h-4" />
                     }
                   </div>
                 </div>
+
               </div>
             )
           })}
         </div>
-
-        {/* Mobile Info */}
-        <div className="sm:hidden p-4 text-center border-t" style={{ borderTopColor: 'var(--grey-500)' }}>
-          <p className="text-xs" style={{ color: 'var(--grey-400)' }}>
-            Tap any row for full details
-          </p>
-        </div>
       </div>
-
     </div>
   )
 }

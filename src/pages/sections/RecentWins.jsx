@@ -12,13 +12,7 @@ export default function RecentWins() {
     'Plinko': '/assets/InhouseGames/plinko.png'
   }
 
-  const initialWins = [
-    { id: 1, username: 'CryptoKing', game: 'Crash', amount: '288.5 USDT', isNew: false },
-    { id: 2, username: 'LuckyPlayer', game: 'Dice', amount: '10.8 USDT', isNew: false },
-    { id: 3, username: 'DiamondHands', game: 'Plinko', amount: '950 USDT', isNew: false },
-    { id: 4, username: 'MoonWalker', game: 'Limbo', amount: '3.2 USDT', isNew: false },
-    { id: 5, username: 'WagerMaster', game: 'Hilo', amount: '100.1 USDT', isNew: false }
-  ]
+  const initialWins = []
 
   const [wins, setWins] = useState(initialWins)
   const [nextId, setNextId] = useState(6)
@@ -63,14 +57,17 @@ export default function RecentWins() {
 
   useEffect(() => {
     const handleNewBet = (bet) => {
-      // Only show wins (> 1.00x multiplier)
-      if (parseFloat(bet.multiplier) <= 1) return;
+      console.log('RecentWins received bet:', bet);
+      // Only show wins (Payout > 0)
+      if (parseFloat(bet.payout) <= 0) return;
 
       const newWin = {
         id: Date.now(), // Unique ID
         username: bet.hidden ? 'Hidden' : bet.name,
+        avatar: bet.avatar || '',
         game: bet.game.charAt(0).toUpperCase() + bet.game.slice(1), // Capitalize
-        amount: `${parseFloat(bet.payout).toFixed(2)} ${bet.currency}`,
+        amount: `${parseFloat(bet.payout).toFixed(2)} ${bet.currency || 'USD'}`,
+        multiplier: parseFloat(bet.multiplier).toFixed(2) + 'x',
         isNew: true
       };
 
@@ -106,10 +103,11 @@ export default function RecentWins() {
   return (
     <div className="py-2 px-2 md:px-3 lg:px-3">
       <div
-        className="text-sm md:text-sm font-bold mb-2"
+        className="text-sm md:text-sm font-bold mb-2 flex items-center gap-2"
         style={{ color: 'var(--text-light)' }}
       >
-        Recent Wins
+        <span>High Rollers</span>
+        <span className="text-xs bg-[var(--green-500)] text-black px-1.5 py-0.5 rounded font-bold">LIVE</span>
       </div>
       <div className="relative">
         <div
@@ -123,40 +121,52 @@ export default function RecentWins() {
           {wins.map((win) => (
             <div
               key={win.id}
-              className={`flex-shrink-0 flex flex-col items-center p-2 rounded-xl transition-all duration-500 hover:scale-105 ${win.isNew ? 'animate-slide-in' : ''
+              className={`flex-shrink-0 flex flex-col items-center p-3 rounded-xl transition-all duration-500 hover:scale-105 ${win.isNew ? 'animate-slide-in' : ''
                 }`}
               style={{
                 backgroundColor: 'var(--grey-700)',
                 border: '1px solid var(--border-color)',
+                minWidth: '140px',
                 transform: win.isNew ? 'translateX(-100px)' : 'translateX(0)',
                 opacity: win.isNew ? 0 : 1,
                 animation: win.isNew ? 'slideIn 0.5s ease-out forwards' : 'none'
               }}
               onMouseEnter={(e) => {
-                e.target.style.boxShadow = '0 8px 24px var(--shadow-purple)'
+                e.currentTarget.style.boxShadow = '0 8px 24px var(--shadow-purple)'
+                e.currentTarget.style.borderColor = 'var(--accent-purple)'
               }}
               onMouseLeave={(e) => {
-                e.target.style.boxShadow = 'none'
+                e.currentTarget.style.boxShadow = 'none'
+                e.currentTarget.style.borderColor = 'var(--border-color)'
               }}
             >
-              <div className="w-16 h-16 md:w-26 md:h-26 rounded-lg overflow-hidden mb-1">
+              <div className="relative w-16 h-16 md:w-20 md:h-20 mb-2">
                 <img
-                  src={gameImages[win.game]}
+                  src={gameImages[win.game] || gameImages['Crash']}
                   alt={win.game}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain drop-shadow-lg"
                 />
+                {/* Multiplier Badge */}
+                <div className="absolute -top-2 -right-2 bg-[var(--grey-800)] border border-[var(--active-Item)] text-[var(--text-light)] text-[10px] font-bold px-1.5 py-0.5 rounded-full shadow-md">
+                  {win.multiplier || '0.00x'}
+                </div>
               </div>
 
-              <div className="text-center">
-                <div
-                  className="text-sm font-semibold mb-1"
-                  style={{ color: 'var( --accent-purple)' }}
-                >
-                  {win.username}
+              <div className="text-center w-full">
+                <div className="flex items-center justify-center gap-1.5 mb-1">
+                  {win.avatar && (
+                    <img src={win.avatar} alt="User" className="w-4 h-4 rounded-full border border-[var(--accent-purple)]" />
+                  )}
+                  <div
+                    className="text-xs font-semibold truncate max-w-[80px]"
+                    style={{ color: 'var( --text-light)' }}
+                  >
+                    {win.username}
+                  </div>
                 </div>
+
                 <div
-                  className="text-sm font-bold"
-                  style={{ color: 'var(--text-light)' }}
+                  className="text-sm font-bold bg-[rgba(34,197,94,0.1)] text-[var(--green-500)] px-2 py-1 rounded-md"
                 >
                   {win.amount}
                 </div>
