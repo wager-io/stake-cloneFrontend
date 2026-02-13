@@ -13,11 +13,11 @@ export default function RecentWins() {
   }
 
   const initialWins = [
-    { id: 1, username: 'CryptoKing', game: 'Crash', amount: '288.5 USDT', isNew: false },
-    { id: 2, username: 'LuckyPlayer', game: 'Dice', amount: '10.8 USDT', isNew: false },
-    { id: 3, username: 'DiamondHands', game: 'Plinko', amount: '950 USDT', isNew: false },
-    { id: 4, username: 'MoonWalker', game: 'Limbo', amount: '3.2 USDT', isNew: false },
-    { id: 5, username: 'WagerMaster', game: 'Hilo', amount: '100.1 USDT', isNew: false }
+    { id: 1, username: 'CryptoKing', game: 'Crash', amount: '288.5 USDT', isNew: false, multiplier: '2.50x' },
+    { id: 2, username: 'LuckyPlayer', game: 'Dice', amount: '10.8 USDT', isNew: false, multiplier: '1.50x' },
+    { id: 3, username: 'DiamondHands', game: 'Plinko', amount: '950 USDT', isNew: false, multiplier: '10.00x' },
+    { id: 4, username: 'MoonWalker', game: 'Limbo', amount: '3.2 USDT', isNew: false, multiplier: '1.10x' },
+    { id: 5, username: 'WagerMaster', game: 'Hilo', amount: '100.1 USDT', isNew: false, multiplier: '2.00x' }
   ]
 
   const [wins, setWins] = useState(initialWins)
@@ -63,6 +63,7 @@ export default function RecentWins() {
 
   useEffect(() => {
     const handleNewBet = (bet) => {
+      console.log('RecentWins received bet:', bet);
       // Only show wins (Payout > 0)
       if (parseFloat(bet.payout) <= 0) return;
 
