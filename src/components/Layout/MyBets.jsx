@@ -33,7 +33,17 @@ const MyBets = () => {
       });
 
       console.log(response.data);
-      setBets(response.data.bills || []);
+      // Map API response to match internal structure
+      const mappedBills = (response.data.bills || []).map(bill => ({
+        ...bill,
+        // API 'balance' is the Bet Amount (based on Bills model usage)
+        amount: parseFloat(bill.balance),
+        // API 'amount' is the Net Outcome (trx_amount)
+        trx_amount: parseFloat(bill.amount),
+        currency: bill.currency || 'USDT'
+      }));
+
+      setBets(mappedBills);
       setPagination(response.data.pagination || {
         page,
         limit: 10,
