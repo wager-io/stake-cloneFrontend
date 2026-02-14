@@ -83,16 +83,10 @@ export default function AllBets() {
     // Fetch initial data
     const fetchInitialBets = async () => {
       try {
-        const apiUrl = `${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/global/all-bets`;
-        console.log('[AllBets] Fetching initial bets from:', apiUrl);
-        const response = await fetch(apiUrl);
-        if (response.ok) {
-          const data = await response.json();
-          console.log('[AllBets] Fetched initial bets:', data.length);
-          setBetsData(data);
-        } else {
-          console.error('[AllBets] API response not ok:', response.status);
-        }
+        console.log('[AllBets] Fetching initial bets...');
+        const data = await api.fetchData('/api/global/all-bets');
+        console.log('[AllBets] Fetched initial bets:', data.length);
+        setBetsData(data);
       } catch (error) {
         console.error("[AllBets] Failed to fetch initial bets:", error);
       }
