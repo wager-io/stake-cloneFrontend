@@ -49,6 +49,7 @@ class SocketService {
           reconnectionDelay: 1000,
           timeout: 20000, // Increase socket.io connection timeout
           query: { clientTime: new Date().toISOString() }, // Add timestamp for debugging
+          forceNew: true // Ensure distinct connection from other socket instances (e.g. Crash)
         });
 
         // Set up connection event handlers
@@ -158,7 +159,7 @@ class SocketService {
   onMessage(event, callback) {
     if (this.socket) {
       console.log(`Registering listener for ${event}`);
-      this.socket.off(event); // Remove any existing listeners for this event
+      // this.socket.off(event); // REMOVED: Do not remove existing listeners as multiple components may listen
       this.socket.on(event, callback);
     } else {
       console.error("Cannot register listener - socket not initialized");

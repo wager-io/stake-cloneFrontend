@@ -22,6 +22,16 @@ const MyBets = () => {
   });
   const betsPerPage = 10;
 
+  const gameImages = {
+    'Crash': '/assets/InhouseGames/crash-game.png',
+    'Dice': '/assets/InhouseGames/diceGame.png',
+    'Hilo': '/assets/InhouseGames/hiloGAMES.png',
+    'Keno': '/assets/InhouseGames/keno.png',
+    'Limbo': '/assets/InhouseGames/limboGame.png',
+    'Mines': '/assets/InhouseGames/mine.png',
+    'Plinko': '/assets/InhouseGames/plinko.png'
+  };
+
 
   const fetchBets = async (page = 1) => {
     try {
@@ -208,8 +218,12 @@ const MyBets = () => {
                   <tr key={bet.transaction_id || index} className="bet-row">
                     <td className="game-cell">
                       <div className="game-info">
-                        <div className="game-icon">
-                          <span>{bet.transaction_type.charAt(0)}</span>
+                        <div className="game-icon" style={{ backgroundColor: 'transparent', border: 'none', width: '30px', height: '30px' }}>
+                          <img
+                            src={gameImages[bet.game] || gameImages['Crash']}
+                            alt={bet.game}
+                            style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                          />
                         </div>
                         <span className="game-name">{bet.transaction_type}</span>
                       </div>

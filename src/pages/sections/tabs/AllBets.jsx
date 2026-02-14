@@ -33,7 +33,7 @@ export default function AllBets() {
       const newBet = {
         id: Date.now(),
         game: gameName,
-        user: bet.hidden ? 'Hidden' : (bet.name || 'Unknown User'),
+        user: bet.hidden ? 'Hidden' : (bet.user || bet.name || bet.username || 'Unknown User'),
         avatar: bet.avatar || '',
         betAmount: parseFloat(bet.betAmount),
         multiplier: parseFloat(bet.multiplier).toFixed(2) + 'x',
@@ -43,7 +43,7 @@ export default function AllBets() {
       setIsNewBetAdding(true);
       setBetsData(prevBets => {
         const updatedBets = [newBet, ...prevBets];
-        return updatedBets.slice(0, 10); // Keep last 10
+        return updatedBets.slice(0, 20); // Keep last 20
       });
 
       setNextId(prev => prev + 1);
@@ -55,13 +55,25 @@ export default function AllBets() {
 
     const setupSocket = async () => {
       try {
-        if (!socketService.socket) {
+        if (!socketService.isSocketConnected()) {
+          console.log('[AllBets] Socket not connected, connecting...');
           await socketService.connect();
         }
 
         if (socketService.socket) {
-          socketService.socket.off('global-new-bet', handleNewBet); // Prevent duplicates
-          socketService.socket.on('global-new-bet', handleNewBet);
+          console.log('[AllBets] Socket connected:', socketService.socket.id);
+          socketService.socket.off('global-new-bet', handleNewBet);
+          socketService.socket.on('global-new-bet', (data) => {
+            // console.log('[AllBets] Raw global-new-bet received:', data);
+            handleNewBet(data);
+          });
+
+          // Add disconnect/reconnect listeners to re-bind
+          socketService.socket.on('reconnect', () => {
+            console.log('[AllBets] Socket reconnected, re-binding listener');
+            socketService.socket.off('global-new-bet', handleNewBet);
+            socketService.socket.on('global-new-bet', (data) => handleNewBet(data));
+          });
         }
       } catch (error) {
         console.error("Socket connection failed in AllBets:", error);
@@ -71,13 +83,18 @@ export default function AllBets() {
     // Fetch initial data
     const fetchInitialBets = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/global/all-bets`);
+        const apiUrl = `${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/global/all-bets`;
+        console.log('[AllBets] Fetching initial bets from:', apiUrl);
+        const response = await fetch(apiUrl);
         if (response.ok) {
           const data = await response.json();
+          console.log('[AllBets] Fetched initial bets:', data.length);
           setBetsData(data);
+        } else {
+          console.error('[AllBets] API response not ok:', response.status);
         }
       } catch (error) {
-        console.error("Failed to fetch initial bets:", error);
+        console.error("[AllBets] Failed to fetch initial bets:", error);
       }
     };
 
@@ -117,12 +134,12 @@ export default function AllBets() {
 
         <div className="overflow-hidden">
           {betsData.map((bet, index) => {
-            const isCardRow = (bet.id + 1) % 2 === 0
+            const isCardRow = (index) % 2 === 0 // Fix logic for row coloring based on displayed index
             const gameImage = gameImages[bet.game] || gameImages['Crash']; // Fallback
 
             return (
               <div
-                key={index}
+                key={bet.id || index}
                 className={`grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-5 gap-4 p-3 items-center transition-all duration-300 ease-in-out ${isCardRow ? 'rounded-lg mx-2 my-2 border' : 'my-2 mx-2'
                   } ${index === 0 && isNewBetAdding ? 'animate-slide-down' : ''}`}
                 style={{

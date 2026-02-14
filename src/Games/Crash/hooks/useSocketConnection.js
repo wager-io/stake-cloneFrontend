@@ -254,6 +254,11 @@ export default function useSocketConnection({
       socketRef.current.on('connect', handleConnect);
     }
 
+    // Authenticate socket when user is available and socket matches
+    if (user && socketRef.current) {
+      socketRef.current.emit('auth', user._id || user.id);
+    }
+
     // Set up all the event listeners
     socketRef.current.on('pr', (data) => {
       // Make sure we're setting the correct startTime

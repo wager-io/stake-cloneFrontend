@@ -57,13 +57,20 @@ export default function RecentWins() {
 
     const setupSocket = async () => {
       try {
-        if (!socketService.socket) {
+        if (!socketService.isSocketConnected()) {
           await socketService.connect();
         }
 
         if (socketService.socket) {
           socketService.socket.off('global-new-bet', handleNewBet);
           socketService.socket.on('global-new-bet', handleNewBet);
+
+          // Re-bind on reconnect
+          socketService.socket.on('reconnect', () => {
+            console.log('[RecentWins] Socket reconnected, re-binding listener');
+            socketService.socket.off('global-new-bet', handleNewBet);
+            socketService.socket.on('global-new-bet', handleNewBet);
+          });
         }
       } catch (error) {
         console.error("Socket connection failed in RecentWins:", error);
@@ -72,17 +79,22 @@ export default function RecentWins() {
 
     const fetchInitialWins = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/global/high-rollers`);
+        const apiUrl = `${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/global/high-rollers`;
+        // console.log('[RecentWins] Fetching high rollers from:', apiUrl);
+        const response = await fetch(apiUrl);
         if (response.ok) {
           const data = await response.json();
+          // console.log('[RecentWins] Fetched high rollers:', data.length);
           const formattedWins = data.map(win => ({
             ...win,
             isNew: false
           }));
           setWins(formattedWins);
+        } else {
+          console.error('[RecentWins] API response not ok:', response.status);
         }
       } catch (error) {
-        console.error("Failed to fetch initial wins:", error);
+        console.error("[RecentWins] Failed to fetch initial wins:", error);
       }
     };
 
