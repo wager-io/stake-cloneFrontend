@@ -22,10 +22,11 @@ const MyBets = () => {
   });
   const betsPerPage = 10;
 
+
   const fetchBets = async (page = 1) => {
     try {
       setLoading(true);
-      const response = await api.get('/api/transactions/bills', {
+      const response = await api.get('/api/bets', {
         params: {
           page,
           limit: pagination.limit
@@ -33,17 +34,23 @@ const MyBets = () => {
       });
 
       console.log(response.data);
-      // Map API response to match internal structure
-      const mappedBills = (response.data.bills || []).map(bill => ({
-        ...bill,
-        // API 'balance' is the Bet Amount (based on Bills model usage)
-        amount: parseFloat(bill.balance),
-        // API 'amount' is the Net Outcome (trx_amount)
-        trx_amount: parseFloat(bill.amount),
-        currency: bill.currency || 'USDT'
+      // Map API response to match table requirements
+      const mappedBets = (response.data.bets || []).map(bet => ({
+        transaction_id: bet.betId,
+        transaction_type: bet.gameType,
+        game: bet.gameType,
+        gameType: 'casino', // All derived from game history are casino
+        country_img: '', // Not used?
+        timestamp: bet.createdAt || bet.betTime,
+        amount: bet.betAmount,
+        multiplier: bet.multiplier,
+        trx_amount: bet.payout, // Payout (Total Return)
+        profit: bet.profit, // Net Profit
+        currency: bet.currency || 'USDT',
+        token_img: bet.currencyImage || '/assets/token/usdt.png'
       }));
 
-      setBets(mappedBills);
+      setBets(mappedBets);
       setPagination(response.data.pagination || {
         page,
         limit: 10,
@@ -72,29 +79,22 @@ const MyBets = () => {
         if (socket) {
           const handleNewBet = (bet) => {
             console.log('[MyBets] Received global-new-bet:', bet);
-            console.log('[MyBets] ID Comparison:', {
-              betUserId: bet.user_id,
-              betUserIdType: typeof bet.user_id,
-              currentUserId: user?._id,
-              currentUserIdType: typeof user?._id,
-              match: user && (bet.user_id === user._id || bet.user_id === String(user._id))
-            });
 
             // Only add bets for the current user
-            // Robust comparison: Convert both to strings
             const isMatch = user && (String(bet.user_id) === String(user._id));
 
             if (isMatch) {
               const newBet = {
-                transaction_id: bet.betId || Date.now(), // Fallback
-                transaction_type: bet.game || bet.transaction_type, // Use game name
-                game: bet.game || 'Game',
-                gameType: 'casino', // Match filter
+                transaction_id: bet.betId || Date.now(),
+                transaction_type: bet.game ? bet.game.charAt(0).toUpperCase() + bet.game.slice(1) : 'Game',
+                game: bet.game,
+                gameType: 'casino',
                 timestamp: new Date().toISOString(),
                 amount: parseFloat(bet.betAmount) || 0,
-                currency: bet.currency || bet.token_name || 'USDT',
-                balance: bet.payout !== undefined ? parseFloat(bet.payout) : (bet.multiplier * parseFloat(bet.betAmount) || 0), // Handle payout
-                trx_amount: bet.payout !== undefined ? parseFloat(bet.payout) : (bet.multiplier * parseFloat(bet.betAmount) || 0), // For payout column
+                multiplier: parseFloat(bet.multiplier) || 0,
+                trx_amount: parseFloat(bet.payout) || 0, // Payout
+                profit: parseFloat(bet.profit) || 0, // Profit
+                currency: bet.currency || 'USDT',
                 token_img: bet.token_img || bet.currencyImage || '/assets/token/usdt.png'
               };
 
@@ -227,10 +227,12 @@ const MyBets = () => {
                       </span>
                     </td>
                     <td className="multiplier-cell">
-                      <span className="multiplier">-</span>
+                      <span className={`multiplier ${parseFloat(bet.multiplier) >= 1 ? 'profit-text' : ''}`}>
+                        {bet.multiplier !== undefined ? formatMultiplier(parseFloat(bet.multiplier)) : '-'}
+                      </span>
                     </td>
                     <td className="payout-cell">
-                      <span className={`payout ${parseFloat(bet.trx_amount) > 0 ? 'profit' : 'loss'}`}>
+                      <span className={`payout ${parseFloat(bet.profit) > 0 ? 'profit' : 'loss'}`}>
                         {parseFloat(bet.trx_amount).toFixed(4)}
                         <span className="currency-icon">{bet.currency || bet.token_name}</span>
                       </span>
