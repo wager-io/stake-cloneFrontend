@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { FiChevronUp, FiChevronDown, FiUser } from 'react-icons/fi'
 import socketService from '../../../services/socketService';
+import api from '../../../utils/api';
 
 export default function AllBets() {
   const gameImages = {
@@ -83,10 +84,17 @@ export default function AllBets() {
     // Fetch initial data
     const fetchInitialBets = async () => {
       try {
-        console.log('[AllBets] Fetching initial bets...');
+        console.log('[AllBets] Fetching initial bets from /api/global/all-bets');
         const data = await api.fetchData('/api/global/all-bets');
-        console.log('[AllBets] Fetched initial bets:', data.length);
-        setBetsData(data);
+        console.log('[AllBets] Response:', data);
+
+        if (Array.isArray(data)) {
+          console.log('[AllBets] Setting bets data, length:', data.length);
+          setBetsData(data);
+        } else {
+          console.error('[AllBets] Expected array but got:', typeof data);
+          setBetsData([]);
+        }
       } catch (error) {
         console.error("[AllBets] Failed to fetch initial bets:", error);
       }

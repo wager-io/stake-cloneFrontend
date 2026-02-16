@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import socketService from '../../services/socketService';
+import api from '../../utils/api';
 
 export default function RecentWins() {
   const gameImages = {
@@ -79,13 +80,20 @@ export default function RecentWins() {
 
     const fetchInitialWins = async () => {
       try {
+        console.log('[RecentWins] Fetching high rollers...');
         const data = await api.fetchData('/api/global/high-rollers');
-        // console.log('[RecentWins] Fetched high rollers:', data.length);
-        const formattedWins = data.map(win => ({
-          ...win,
-          isNew: false
-        }));
-        setWins(formattedWins);
+
+        if (Array.isArray(data)) {
+          console.log('[RecentWins] Fetched high rollers:', data.length);
+          const formattedWins = data.map(win => ({
+            ...win,
+            isNew: false
+          }));
+          setWins(formattedWins);
+        } else {
+          console.error('[RecentWins] Expected array but got:', typeof data);
+          setWins([]);
+        }
       } catch (error) {
         console.error("[RecentWins] Failed to fetch initial wins:", error);
       }
@@ -176,7 +184,7 @@ export default function RecentWins() {
           ))}
         </div>
 
-        <style jsx>{`
+        <style>{`
           @keyframes slideIn {
             from {
               transform: translateX(-100px);
